@@ -18,7 +18,7 @@
     "prepare": "husky install && tsc",
     "build": "tsc",
     "docs": "typedoc",
-    "website": "http-server -p 3000 website",
+    "start": "http-server -p 3000 website",
     "lint": "eslint . --fix",
     "lint:ci": "eslint .",
     "lint:staged": "lint-staged",
@@ -29,7 +29,9 @@
     "type": "git",
     "url": "git+https://github.com/wix-incubator/jest-extend-report.git"
   },
-  "keywords": ["jest"],
+  "keywords": [
+    "jest"
+  ],
   "author": "Yaroslav Serhieiev <yaroslavs@wix.com>",
   "license": "MIT",
   "bugs": {
@@ -59,6 +61,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-unicorn": "^45.0.2",
+    "http-server": "^14.1.1",
     "husky": "^8.0.3",
     "jest": "^29.3.1",
     "lint-staged": "^13.1.0",

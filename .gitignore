@@ -106,3 +106,6 @@ dist
 # IDE-related
 .idea
 .vscode
+
+# Generated content
+/website
