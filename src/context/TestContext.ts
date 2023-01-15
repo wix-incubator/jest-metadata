@@ -6,7 +6,7 @@ import { DescribeBlockContext } from './DescribeBlockContext';
 import { TestInvocationContext } from './TestInvocationContext';
 
 export class TestContext implements Context {
-  public readonly invocations: TestInvocationContext[] = [new TestInvocationContext(this, 0)];
+  public readonly invocations: TestInvocationContext[] = [];
 
   constructor(
     public readonly parent: DescribeBlockContext,
@@ -21,9 +21,15 @@ export class TestContext implements Context {
     return this.testEntry;
   }
 
-  private get _currentInvocation() {
+  private get _currentInvocation(): TestInvocationContext {
     // eslint-disable-next-line unicorn/prefer-at
     return this.invocations[this.invocations.length - 1];
+  }
+
+  addInvocation(index: number) {
+    const context = new TestInvocationContext(this, index);
+    this.invocations.push(context);
+    return context;
   }
 
   assign(data: Record<string, unknown>): void {
