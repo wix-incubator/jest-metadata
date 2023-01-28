@@ -1,11 +1,11 @@
-import { MemoryStorage, Storage } from './storage';
+import { MemoryStorage, CircusContext } from './CircusContext';
 
 export type ServerOptions = {
   foo: string;
 };
 
 export class Server {
-  private readonly _storage: Storage = new MemoryStorage();
+  private readonly _storage: CircusContext = new MemoryStorage();
 
   constructor(private readonly _options: ServerOptions) {}
 
