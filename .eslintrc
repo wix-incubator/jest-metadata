@@ -50,6 +50,7 @@
         "unicorn/import-style": "off",
         "unicorn/prefer-node-protocol": "off",
         "unicorn/prefer-string-replace-all": "off",
+        "unicorn/prevent-abbreviations": "off",
         "unicorn/no-unused-properties": "off",
         "unicorn/prefer-module": "off",
         "jsdoc/require-jsdoc": "off"

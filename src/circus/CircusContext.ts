@@ -1,173 +1,169 @@
 // eslint-disable-next-line node/no-unpublished-import
 import { Circus } from '@jest/types';
 
-import { Context } from './Context';
+import {
+  Metadata,
+  AggregatedResultMetadata,
+  RunMetadata,
+  DescribeBlockMetadata,
+  TestEntryMetadata,
+  TestInvocationMetadata,
+  HookDefinitionMetadata,
+  HookInvocationMetadata,
+  Ref,
+} from '../state';
+
+import { InstanceCache } from './services';
+import { ContextAPI, CurrentQuery } from './types';
+
+let counter = 0;
 
 export class CircusContext {
-  private _runContext?: RunContext;
-  private _describeBlockContext?: DescribeBlockContext;
-  private _testContext?: TestContext;
-  private _currentContext?: Context;
+  public readonly current: CurrentQuery = Object.defineProperties<CurrentQuery>({} as any, {
+    aggregatedResult: { get: () => this._aggregatedResultMetadata },
+    describeBlock: { get: () => this._describeBlockMetadata },
+    execution: { get: () => this._testFnMetadata || this._hookMetadata },
+    hook: { get: () => this._hookMetadata },
+    metadata: { get: () => this._currentMetadata },
+    run: { get: () => this._runMetadata },
+    testEntry: { get: () => this._testEntryMetadata },
+    testFn: { get: () => this._testFnMetadata },
+    testInvocation: { get: () => this._testInvocationMetadata },
+  });
 
-  private readonly _cachedDescribeBlocks = new WeakMap<
+  private _aggregatedResultMetadata?: AggregatedResultMetadata;
+  private _currentMetadata?: Metadata;
+  private _describeBlockMetadata?: DescribeBlockMetadata;
+  private _hookMetadata?: HookDefinitionMetadata | HookInvocationMetadata;
+  private _runMetadata?: RunMetadata;
+  private _testEntryMetadata?: TestEntryMetadata;
+  private _testFnMetadata?: HookInvocationMetadata | HookDefinitionMetadata;
+  private _testInvocationMetadata?: TestInvocationMetadata;
+
+  private readonly _cachedDescribeBlocks = new InstanceCache<
     Circus.DescribeBlock,
-    DescribeBlockContext
+    DescribeBlockMetadata
   >();
+  private readonly _cachedHooks = new InstanceCache<object /* fn */, HookDefinitionMetadata>();
+  private readonly _cachedTestEntries = new InstanceCache<object /* fn */, TestEntryMetadata>();
 
-  private readonly _cachedTestEntries = new WeakMap<Circus.TestEntry, TestContext>();
+  private readonly _contextAPI: ContextAPI = {
+    flush: async () => {
+      /* ... */
+    },
+    createRef(_instance: object): Ref {
+      return new Ref(++counter);
+    },
+    emit(_event) {
+      // TODO: emit event
+    },
+  };
 
-  public get context(): Context | undefined {
-    return undefined;
-  }
-
-  public get run(): Context | undefined {
-    return undefined;
-  }
-
-  public get describeBlock(): Context | undefined {
-    return undefined;
-  }
-
-  public get testEntry(): Context | undefined {
-    return undefined;
-  }
-
-  public get testInvocation(): Context | undefined {
-    return undefined;
-  }
-
-  public get testFn(): Context | undefined {
-    return undefined;
-  }
-
-  public get hook(): Context | undefined {
-    return undefined;
-  }
-
-  public get execution(): Context | undefined {
-    return undefined;
-  }
-
-  openTestFile(testFilePath: string) {
-    if (this._context) {
-      throw new Error(`Invalid state: run_start does not match the previously open context`);
-    }
-
-    this._context = new RunContext(testFilePath);
-  }
-
-  openDescribeBlock(describeBlock: Circus.DescribeBlock) {
-    let context: DescribeBlockContext;
-
-    this._assertContext<RunContext | DescribeBlockContext>(
-      this._context,
-      RunContext,
-      DescribeBlockContext,
+  new_environment(testFilePath: string) {
+    this._aggregatedResultMetadata = new AggregatedResultMetadata(this._contextAPI);
+    this._runMetadata = this._aggregatedResultMetadata.testResults[testFilePath] = new RunMetadata(
+      this._contextAPI,
     );
-
-    if (describeBlock.parent) {
-      if (this._context?.mapping !== describeBlock.parent) {
-        throw new Error('Invalid state: describe_start does not match the parent describe block');
-      }
-    } else {
-      if (!(this._context instanceof RunContext)) {
-        throw new TypeError('Invalid state: describe_start does not match the run circus');
-      }
-    }
-
-    if (this._cachedDescribeBlocks.has(describeBlock)) {
-      context = this._cachedDescribeBlocks.get(describeBlock)!;
-    } else {
-      context = new DescribeBlockContext(this._context, describeBlock);
-      this._cachedDescribeBlocks.set(describeBlock, context);
-    }
-
-    this._context = context;
   }
-
-  openHook(hook: Circus.Hook) {
-    if (hook.type === 'beforeAll' || hook.type === 'afterAll') {
-      this._assertContext(this._context, DescribeBlockContext);
-      if (this._context?.mapping !== hook.parent) {
-        throw new Error(
-          `Invalid state: hook_start (${hook.type}) does not match the describe block`,
-        );
-      }
-
-      if (hook.type === 'beforeAll') {
-        this._context.openBeforeHook();
-      } else {
-        this._context.openAfterHook();
-      }
-    } else {
-      this._assertContext(this._context, TestInvocationContext);
-      if (this._context?.mapping !== (hook.parent as any)) {
-        throw new Error(`Invalid state: hook_start (${hook.type}) does not match the test entry`);
-      }
-
-      if (hook.type === 'beforeEach') {
-        this._context.openBeforeHook();
-      } else {
-        this._context.openAfterHook();
-      }
-    }
-  }
-
-  openTestEntry(testEntry: Circus.TestEntry) {
-    let context: TestContext;
-
-    this._assertContext(this._context, DescribeBlockContext);
-    if (this._context?.mapping !== testEntry.parent) {
-      throw new Error('Invalid state: test_start does not match the describe block');
-    }
-
-    if (this._cachedTestEntries.has(testEntry)) {
-      context = this._cachedTestEntries.get(testEntry)!;
-    } else {
-      context = new TestContext(this._context, testEntry);
-      this._cachedTestEntries.set(testEntry, context);
-    }
-
-    this._context = context.startInvocation();
-  }
-
-  openTestFunction(testEntry: Circus.TestEntry) {
-    this._assertContext(this._context, TestInvocationContext);
-    if (this._context.mapping !== testEntry) {
-      throw new Error('Invalid state: test_fn does not match the test');
-    }
-    this._context = new TestFunctionContext(this._context);
-  }
-
-  closeTestEntry() {
-    const context = this._context;
-    this._assertContext(context, TestInvocationContext);
-    this._context = context.parent;
-    // TODO: do a lot of work
-  }
-
-  closeHook() {
-    const context = this._context;
-    this._assertContext(context, HookContext);
-    this._context = context.parent;
-  }
-
-  closeDescribeBlock() {
-    const context = this._context;
-    this._assertContext<DescribeBlockContext | TestContext>(
-      context,
-      DescribeBlockContext,
-      TestContext,
+  start_describe_definition(
+    _event: Circus.Event & { name: 'start_describe_definition' },
+    state: Circus.State,
+  ) {
+    const currentDescribeBlock = state.currentDescribeBlock;
+    const currentDescribeBlockMetadata = this._cachedDescribeBlocks.get(
+      currentDescribeBlock,
+      () => new DescribeBlockMetadata(this._contextAPI),
     );
-    this._context = context.parent;
+    currentDescribeBlockMetadata.parent = this._describeBlockMetadata;
+    this._describeBlockMetadata = currentDescribeBlockMetadata;
   }
 
-  private _assertContext<T>(value: unknown, ...classes: Constructor<T>[]): asserts value is T {
-    if (!classes.some((Klass) => value instanceof Klass)) {
-      const names = classes.map((Klass) => Klass.name).join(' or ');
-      throw new TypeError(`Expected to have ${names} as a current context`);
+  add_hook(event: Circus.Event & { name: 'add_hook' }) {
+    const describeBlockMetadata = this._describeBlockMetadata;
+
+    if (describeBlockMetadata) {
+      this._hookMetadata = this._cachedHooks.get(
+        event.fn,
+        () => new HookDefinitionMetadata(this._contextAPI, describeBlockMetadata),
+      );
+      describeBlockMetadata.hookDefinitions.push(this._hookMetadata);
     }
+  }
+
+  add_test(event: Circus.Event & { name: 'add_test' }, _state: Circus.State) {
+    const describeBlockMetadata = this._describeBlockMetadata;
+
+    if (describeBlockMetadata) {
+      this._testEntryMetadata = this._cachedTestEntries.get(
+        event.fn,
+        () => new TestEntryMetadata(this._contextAPI, this._describeBlockMetadata!),
+      );
+    }
+  }
+
+  finish_describe_definition(_event: Circus.Event & { name: 'finish_describe_definition' }) {
+    this._describeBlockMetadata = undefined;
+  }
+
+  hook_start(_event: Circus.Event & { name: 'hook_start' }) {
+    // this._hookMetadata = new Metadata(this._contextAPI);
+  }
+
+  hook_success(_event: Circus.Event & { name: 'hook_success' }) {
+    this._hookMetadata = undefined;
+  }
+
+  hook_failure(_event: Circus.Event & { name: 'hook_failure' }) {
+    this._hookMetadata = undefined;
+  }
+
+  test_fn_start(_event: Circus.Event & { name: 'test_fn_start' }) {
+    // this._testFnMetadata = new Metadata(this._contextAPI);
+  }
+
+  test_fn_success(_event: Circus.Event & { name: 'test_fn_success' }) {
+    this._testFnMetadata = undefined;
+  }
+
+  test_fn_failure(_event: Circus.Event & { name: 'test_fn_failure' }) {
+    this._testFnMetadata = undefined;
+  }
+
+  test_retry(_event: Circus.Event & { name: 'test_retry' }) {
+    // this._testInvocationMetadata = new TestInvocationMetadata(this._contextAPI);
+  }
+
+  test_start(_event: Circus.Event & { name: 'test_start' }) {
+    // this._testEntryMetadata = this._cachedTestEntries.get(
+    //   event.test,
+    //   () => new TestEntryMetadata(this._contextAPI),
+    // );
+    // this._testInvocationMetadata = new TestInvocationMetadata(this._contextAPI);
+  }
+
+  test_skip(_event: Circus.Event & { name: 'test_skip' }) {
+    this._testEntryMetadata = undefined;
+    this._testInvocationMetadata = undefined;
+  }
+
+  test_todo(_event: Circus.Event & { name: 'test_todo' }) {
+    this._testEntryMetadata = undefined;
+    this._testInvocationMetadata = undefined;
+  }
+
+  test_done(_event: Circus.Event & { name: 'test_done' }) {
+    this._testEntryMetadata = undefined;
+    this._testInvocationMetadata = undefined;
+  }
+
+  run_describe_start(event: Circus.Event & { name: 'run_describe_start' }) {
+    this._describeBlockMetadata = this._cachedDescribeBlocks.get(
+      event.describeBlock,
+      () => new DescribeBlockMetadata(this._contextAPI),
+    );
+  }
+
+  run_describe_finish(_event: Circus.Event & { name: 'run_describe_finish' }) {
+    this._describeBlockMetadata = undefined;
   }
 }
-
-type Constructor<T> = new (...a: any[]) => T;
