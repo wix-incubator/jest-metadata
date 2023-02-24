@@ -109,3 +109,5 @@ dist
 
 # Generated content
 /website
+
+/__fixtures__/events/

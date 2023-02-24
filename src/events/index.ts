@@ -18,6 +18,26 @@ import { TestSkipEvent } from './TestSkipEvent';
 import { TestStartEvent } from './TestStartEvent';
 import { TestTodoEvent } from './TestTodoEvent';
 
+export { AddHookEvent } from './AddHookEvent';
+export { AddTestEvent } from './AddTestEvent';
+export { FinishDescribeDefinitionEvent } from './FinishDescribeDefinitionEvent';
+export { HookFailureEvent } from './HookFailureEvent';
+export { HookStartEvent } from './HookStartEvent';
+export { HookSuccessEvent } from './HookSuccessEvent';
+export { RunDescribeFinishEvent } from './RunDescribeFinishEvent';
+export { RunDescribeStartEvent } from './RunDescribeStartEvent';
+export { SetMetadataEvent } from './SetMetadataEvent';
+export { StartDescribeDefinitionEvent } from './StartDescribeDefinitionEvent';
+export { TestDoneEvent } from './TestDoneEvent';
+export { TestEnvironmentCreatedEvent } from './TestEnvironmentCreatedEvent';
+export { TestFnFailureEvent } from './TestFnFailureEvent';
+export { TestFnStartEvent } from './TestFnStartEvent';
+export { TestFnSuccessEvent } from './TestFnSuccessEvent';
+export { TestRetryEvent } from './TestRetryEvent';
+export { TestSkipEvent } from './TestSkipEvent';
+export { TestStartEvent } from './TestStartEvent';
+export { TestTodoEvent } from './TestTodoEvent';
+
 export type Event =
   | AddHookEvent
   | AddTestEvent
@@ -39,22 +59,3 @@ export type Event =
   | TestStartEvent
   | TestTodoEvent;
 
-export { AddHookEvent } from './AddHookEvent';
-export { AddTestEvent } from './AddTestEvent';
-export { FinishDescribeDefinitionEvent } from './FinishDescribeDefinitionEvent';
-export { HookFailureEvent } from './HookFailureEvent';
-export { HookStartEvent } from './HookStartEvent';
-export { HookSuccessEvent } from './HookSuccessEvent';
-export { RunDescribeFinishEvent } from './RunDescribeFinishEvent';
-export { RunDescribeStartEvent } from './RunDescribeStartEvent';
-export { SetMetadataEvent } from './SetMetadataEvent';
-export { StartDescribeDefinitionEvent } from './StartDescribeDefinitionEvent';
-export { TestDoneEvent } from './TestDoneEvent';
-export { TestEnvironmentCreatedEvent } from './TestEnvironmentCreatedEvent';
-export { TestFnFailureEvent } from './TestFnFailureEvent';
-export { TestFnStartEvent } from './TestFnStartEvent';
-export { TestFnSuccessEvent } from './TestFnSuccessEvent';
-export { TestRetryEvent } from './TestRetryEvent';
-export { TestSkipEvent } from './TestSkipEvent';
-export { TestStartEvent } from './TestStartEvent';
-export { TestTodoEvent } from './TestTodoEvent';

@@ -1,13 +1,12 @@
-import { ContextAPI } from '../circus/types';
-
 import { Metadata } from './Metadata';
+import { MetadataProperties } from './MetadataProperties';
 import { TestFnDefinitionMetadata } from './TestFnDefinitionMetadata';
 
 export class TestFnInvocationMetadata extends Metadata {
   constructor(
-    public readonly api: ContextAPI,
+    properties: MetadataProperties,
     public readonly definition: TestFnDefinitionMetadata,
   ) {
-    super(api);
+    super(properties);
   }
 }

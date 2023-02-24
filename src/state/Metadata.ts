@@ -1,16 +1,16 @@
 import lodashMerge from 'lodash.merge';
 
-import { ContextAPI } from '../circus/types/ContextAPI';
-import { SetMetadataEvent } from '../events';
 import { Data } from './Data';
-import { Ref } from './Ref';
+import { MetadataProperties } from './MetadataProperties';
 
 export class Metadata {
-  private readonly id: Ref;
+  private readonly id: string;
   private readonly data: Data = {};
+  private readonly emit: MetadataProperties['emit'];
 
-  constructor(protected readonly api: ContextAPI) {
-    this.id = api.createRef(this);
+  constructor({ id, emit }: MetadataProperties) {
+    this.id = id;
+    this.emit = emit;
   }
 
   get(): Data;
@@ -22,9 +22,9 @@ export class Metadata {
   set(key: string, value: unknown): this {
     this.data[key] = value;
 
-    this.api.emit<SetMetadataEvent>({
+    this.emit({
       type: 'set_metadata',
-      target: this.id.toString(),
+      targetId: this.id.toString(),
       value: { [key]: value },
       deepMerge: false,
     });
@@ -35,9 +35,9 @@ export class Metadata {
   assign(value: Data): this {
     Object.assign(this.data, value);
 
-    this.api.emit<SetMetadataEvent>({
+    this.emit({
       type: 'set_metadata',
-      target: this.id.toString(),
+      targetId: this.id.toString(),
       value,
       deepMerge: false,
     });
@@ -48,17 +48,13 @@ export class Metadata {
   merge(value: Data): this {
     lodashMerge(this.data, value);
 
-    this.api.emit<SetMetadataEvent>({
+    this.emit({
       type: 'set_metadata',
-      target: this.id.toString(),
+      targetId: this.id.toString(),
       value,
       deepMerge: true,
     });
 
     return this;
-  }
-
-  flush(): Promise<void> {
-    return this.api.flush();
   }
 }

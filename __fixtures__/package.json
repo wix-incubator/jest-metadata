@@ -1,0 +1,13 @@
+{
+  "name": "__fixtures__",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "jest": "^29.4.3",
+    "jest-extend-report": ".."
+  },
+  "jest": {
+    "testEnvironment": "./testEnvironment.js",
+    "reporters": ["default"]
+  }
+}

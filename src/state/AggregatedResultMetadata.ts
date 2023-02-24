@@ -1,6 +1,6 @@
 import { Metadata } from './Metadata';
-import { RunMetadata } from './index';
+import { RunMetadata } from './RunMetadata';
 
 export class AggregatedResultMetadata extends Metadata {
-  testResults: Record<string, RunMetadata> = {};
+  public readonly testResults: Record<string, RunMetadata> = {};
 }

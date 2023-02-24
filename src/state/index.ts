@@ -1,4 +1,5 @@
 export { AggregatedResultMetadata } from './AggregatedResultMetadata';
+export { CurrentQuery } from './CurrentQuery';
 export { DescribeBlockMetadata } from './DescribeBlockMetadata';
 export { HookDefinitionMetadata } from './HookDefinitionMetadata';
 export { HookInvocationMetadata } from './HookInvocationMetadata';
