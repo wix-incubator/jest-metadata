@@ -1,9 +1,10 @@
 export { AggregatedResultMetadata } from './AggregatedResultMetadata';
-export { CurrentQuery } from './CurrentQuery';
+export { BackupableQuery } from './BackupableQuery';
 export { DescribeBlockMetadata } from './DescribeBlockMetadata';
 export { HookDefinitionMetadata } from './HookDefinitionMetadata';
 export { HookInvocationMetadata } from './HookInvocationMetadata';
 export { Metadata } from './Metadata';
+export { Query } from './Query';
 export { ReadonlyMetadata } from './ReadonlyMetadata';
 export { Ref } from './Ref';
 export { RunMetadata } from './RunMetadata';

@@ -8,7 +8,12 @@ const { setEmitter, startTestFile, handleTestEvent } = require('jest-extend-repo
 class TestEnvironment extends NodeJestEnvironment {
   constructor(config, context) {
     super(config, context);
-    this._eventsPath = path.join(__dirname, 'events', path.basename(context.testPath, '.test.js') + '@' + JEST_VERSION + '.json');
+    this._eventsPath = path.join(
+      __dirname,
+      'events',
+      `${path.basename(context.testPath, '.test.js')}@${JEST_VERSION}.json`
+    );
+
     this._events = [];
     setEmitter({
       emit: (event) => this._events.push(event),

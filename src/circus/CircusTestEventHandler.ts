@@ -9,6 +9,65 @@ export class CircusTestEventHandler {
 
   constructor(protected readonly config: CircusTestEventHandlerConfig) {}
 
+  handleTestEvent: Circus.EventHandler = (event, state) => {
+    switch (event.name) {
+      case 'setup': {
+        return this.setup(event, state);
+      }
+      case 'hook_start': {
+        return this.hook_start(event);
+      }
+      case 'hook_success': {
+        return this.hook_success(event);
+      }
+      case 'hook_failure': {
+        return this.hook_failure(event);
+      }
+      case 'test_fn_start': {
+        return this.test_fn_start(event);
+      }
+      case 'test_fn_success': {
+        return this.test_fn_success(event);
+      }
+      case 'test_fn_failure': {
+        return this.test_fn_failure(event);
+      }
+      case 'test_retry': {
+        return this.test_retry(event);
+      }
+      case 'test_start': {
+        return this.test_start(event);
+      }
+      case 'test_skip': {
+        return this.test_skip(event);
+      }
+      case 'test_todo': {
+        return this.test_todo(event);
+      }
+      case 'test_done': {
+        return this.test_done(event);
+      }
+      case 'run_describe_start': {
+        return this.run_describe_start(event);
+      }
+      case 'run_describe_finish': {
+        return this.run_describe_finish(event);
+      }
+      case 'start_describe_definition': {
+        return this.start_describe_definition(event, state);
+      }
+      case 'finish_describe_definition': {
+        return this.finish_describe_definition(event, state);
+      }
+      case 'add_hook': {
+        return this.add_hook(event);
+      }
+      case 'add_test': {
+        return this.add_test(event);
+      }
+    }
+  };
+
   test_environment_created(testFilePath: string) {
     this.testFilePath = testFilePath;
     this.emit({
@@ -17,14 +76,28 @@ export class CircusTestEventHandler {
     });
   }
 
+  setup(_event: Circus.Event & { name: 'setup' }, state: Circus.State) {
+    // The root describe block is not emitted by Circus, so we emit it here.
+    this.emit({
+      type: 'start_describe_definition',
+      testFilePath: this.testFilePath,
+      describeId: this.config.getDescribeId(state.rootDescribeBlock),
+    });
+  }
+
   start_describe_definition(
     _event: Circus.Event & { name: 'start_describe_definition' },
     state: Circus.State,
   ) {
+    // Safeguard in case Circus ever starts emitting describe blocks.
+    if (state.currentDescribeBlock === state.rootDescribeBlock) {
+      return;
+    }
+
     this.emit({
       type: 'start_describe_definition',
       testFilePath: this.testFilePath,
-      describeId: this.config.getInstanceId(state.currentDescribeBlock),
+      describeId: this.config.getDescribeId(state.currentDescribeBlock),
     });
   }
 
@@ -33,7 +106,7 @@ export class CircusTestEventHandler {
       type: 'add_hook',
       testFilePath: this.testFilePath,
       hookType: event.hookType,
-      hookId: this.config.getInstanceId(event.fn),
+      hookId: this.config.getHookId(event.fn),
     });
   }
 
@@ -41,7 +114,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'add_test',
       testFilePath: this.testFilePath,
-      testId: this.config.getInstanceId(event.fn),
+      testId: this.config.getTestId(event.fn),
     });
   }
 
@@ -52,7 +125,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'finish_describe_definition',
       testFilePath: this.testFilePath,
-      describeId: this.config.getInstanceId(state.currentDescribeBlock),
+      describeId: this.config.getDescribeId(state.currentDescribeBlock),
     });
   }
 
@@ -60,7 +133,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'hook_start',
       testFilePath: this.testFilePath,
-      hookId: this.config.getInstanceId(event.hook.fn),
+      hookId: this.config.getHookId(event.hook.fn),
     });
   }
 
@@ -68,7 +141,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'hook_success',
       testFilePath: this.testFilePath,
-      hookId: this.config.getInstanceId(event.hook.fn),
+      hookId: this.config.getHookId(event.hook.fn),
     });
   }
 
@@ -76,7 +149,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'hook_failure',
       testFilePath: this.testFilePath,
-      hookId: this.config.getInstanceId(event.hook.fn),
+      hookId: this.config.getHookId(event.hook.fn),
     });
   }
 
@@ -84,7 +157,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'test_fn_start',
       testFilePath: this.testFilePath,
-      testId: this.config.getInstanceId(event.test.fn),
+      testId: this.config.getTestId(event.test.fn),
     });
   }
 
@@ -92,7 +165,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'test_fn_success',
       testFilePath: this.testFilePath,
-      testId: this.config.getInstanceId(event.test.fn),
+      testId: this.config.getTestId(event.test.fn),
     });
   }
 
@@ -100,7 +173,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'test_fn_failure',
       testFilePath: this.testFilePath,
-      testId: this.config.getInstanceId(event.test.fn),
+      testId: this.config.getTestId(event.test.fn),
     });
   }
 
@@ -108,7 +181,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'test_retry',
       testFilePath: this.testFilePath,
-      testId: this.config.getInstanceId(event.test.fn),
+      testId: this.config.getTestId(event.test.fn),
     });
   }
 
@@ -116,7 +189,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'test_start',
       testFilePath: this.testFilePath,
-      testId: this.config.getInstanceId(event.test.fn),
+      testId: this.config.getTestId(event.test.fn),
     });
   }
 
@@ -124,7 +197,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'test_skip',
       testFilePath: this.testFilePath,
-      testId: this.config.getInstanceId(event.test.fn),
+      testId: this.config.getTestId(event.test.fn),
     });
   }
 
@@ -132,7 +205,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'test_todo',
       testFilePath: this.testFilePath,
-      testId: this.config.getInstanceId(event.test.fn),
+      testId: this.config.getTestId(event.test.fn),
     });
   }
 
@@ -140,7 +213,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'test_done',
       testFilePath: this.testFilePath,
-      testId: this.config.getInstanceId(event.test.fn),
+      testId: this.config.getTestId(event.test.fn),
     });
   }
 
@@ -148,7 +221,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'run_describe_start',
       testFilePath: this.testFilePath,
-      describeId: this.config.getInstanceId(event.describeBlock),
+      describeId: this.config.getDescribeId(event.describeBlock),
     });
   }
 
@@ -156,7 +229,7 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'run_describe_finish',
       testFilePath: this.testFilePath,
-      describeId: this.config.getInstanceId(event.describeBlock),
+      describeId: this.config.getDescribeId(event.describeBlock),
     });
   }
 }

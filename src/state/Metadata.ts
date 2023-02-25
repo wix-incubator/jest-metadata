@@ -1,28 +1,23 @@
 import lodashMerge from 'lodash.merge';
 
 import { Data } from './Data';
-import { MetadataProperties } from './MetadataProperties';
+import { MetadataContext } from './MetadataContext';
 
 export class Metadata {
-  private readonly id: string;
-  private readonly data: Data = {};
-  private readonly emit: MetadataProperties['emit'];
+  private readonly _data: Data = {};
 
-  constructor({ id, emit }: MetadataProperties) {
-    this.id = id;
-    this.emit = emit;
-  }
+  constructor(protected readonly context: MetadataContext, protected readonly id: string) {}
 
   get(): Data;
   get(key: string): unknown;
   get(key?: string): Data | unknown {
-    return key ? this.data[key] : this.data;
+    return key ? this._data[key] : this._data;
   }
 
   set(key: string, value: unknown): this {
-    this.data[key] = value;
+    this._data[key] = value;
 
-    this.emit({
+    this.context.emit({
       type: 'set_metadata',
       targetId: this.id.toString(),
       value: { [key]: value },
@@ -33,9 +28,9 @@ export class Metadata {
   }
 
   assign(value: Data): this {
-    Object.assign(this.data, value);
+    Object.assign(this._data, value);
 
-    this.emit({
+    this.context.emit({
       type: 'set_metadata',
       targetId: this.id.toString(),
       value,
@@ -46,9 +41,9 @@ export class Metadata {
   }
 
   merge(value: Data): this {
-    lodashMerge(this.data, value);
+    lodashMerge(this._data, value);
 
-    this.emit({
+    this.context.emit({
       type: 'set_metadata',
       targetId: this.id.toString(),
       value,
@@ -56,5 +51,11 @@ export class Metadata {
     });
 
     return this;
+  }
+
+  protected register<T extends Metadata>(metadata: T): T {
+    this.context.register(metadata.id, metadata);
+
+    return metadata;
   }
 }
