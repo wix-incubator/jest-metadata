@@ -20,7 +20,9 @@ import {
   TestStartEvent,
   TestTodoEvent,
 } from '../events';
+import { EventHandler } from '../services';
 import { AggregatedResultMetadata, BackupableQuery, Query } from '../state';
+
 import { RootEventHandlerConfig } from './RootEventHandlerConfig';
 
 export class RootEventHandler {
@@ -30,8 +32,8 @@ export class RootEventHandler {
 
   constructor(protected readonly config: RootEventHandlerConfig) {
     this.metadata = new AggregatedResultMetadata({
-      emit: (event) => this.config.emit(event),
-      register: (id, metadata) => config.metadataRegistry.register(id, metadata),
+      eventQueue: config.eventQueue,
+      metadataRegistry: config.metadataRegistry,
     });
 
     this.last = new Query();
@@ -40,7 +42,12 @@ export class RootEventHandler {
     this.last.aggregatedResult = this.metadata;
   }
 
-  handleEvent(event: Event): void {
+  subscribe(): this {
+    this.config.eventQueue.registerHandler(this.handle);
+    return this;
+  }
+
+  handle: EventHandler = (event: Event): void => {
     switch (event.type) {
       case 'test_environment_created': {
         return this._handleTestEnvironmentCreated(event);
@@ -100,6 +107,10 @@ export class RootEventHandler {
         return this._handleTestTodo(event);
       }
     }
+  };
+
+  private _handleStartDescribeDefinition(_event: StartDescribeDefinitionEvent) {
+    // TODO: Implement
   }
 
   private _handleTestEnvironmentCreated(event: TestEnvironmentCreatedEvent) {
@@ -139,10 +150,6 @@ export class RootEventHandler {
   }
 
   private _handleSetMetadata(_event: SetMetadataEvent) {
-    // TODO: Implement
-  }
-
-  private _handleStartDescribeDefinition(_event: StartDescribeDefinitionEvent) {
     // TODO: Implement
   }
 

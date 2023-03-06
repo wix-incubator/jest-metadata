@@ -2,9 +2,9 @@
 import { Circus } from '@jest/types';
 
 import { CircusTestEventHandlerConfig } from './CircusTestEventHandlerConfig';
+import { Event } from '../events';
 
 export class CircusTestEventHandler {
-  protected readonly emit = this.config.emit.bind(this.config);
   protected testFilePath = '';
 
   constructor(protected readonly config: CircusTestEventHandlerConfig) {}
@@ -231,5 +231,9 @@ export class CircusTestEventHandler {
       testFilePath: this.testFilePath,
       describeId: this.config.getDescribeId(event.describeBlock),
     });
+  }
+
+  protected emit(event: Event) {
+    this.config.eventQueue.enqueue(event);
   }
 }

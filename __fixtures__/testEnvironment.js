@@ -3,7 +3,8 @@ const path = require('path');
 const { version: JEST_VERSION } = require('jest/package.json');
 
 const NodeJestEnvironment = require('jest-environment-node').default;
-const { setEmitter, startTestFile, handleTestEvent } = require('jest-extend-report/dist/circus');
+const { startTestFile, handleTestEvent } = require('jest-extend-report/dist/circus');
+const { hijackEventQueue } = require('jest-extend-report/dist/circus/__backdoors__/hijackEventQueue');
 
 class TestEnvironment extends NodeJestEnvironment {
   constructor(config, context) {
@@ -15,9 +16,7 @@ class TestEnvironment extends NodeJestEnvironment {
     );
 
     this._events = [];
-    setEmitter({
-      emit: (event) => this._events.push(event),
-    });
+    hijackEventQueue((event) => this._events.push(event));
 
     startTestFile(context.testPath);
   }

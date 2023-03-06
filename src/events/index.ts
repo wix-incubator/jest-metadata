@@ -59,3 +59,4 @@ export type Event =
   | TestStartEvent
   | TestTodoEvent;
 
+export type EventType = Event['type'];

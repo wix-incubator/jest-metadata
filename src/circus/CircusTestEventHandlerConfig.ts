@@ -1,7 +1,7 @@
-import { Event } from '../events';
+import { EventQueue } from '../services';
 
 export type CircusTestEventHandlerConfig = {
-  emit(event: Event): void;
+  readonly eventQueue: EventQueue;
   getDescribeId(block: object): string;
   // eslint-disable-next-line @typescript-eslint/ban-types
   getHookId(fn: Function): string;

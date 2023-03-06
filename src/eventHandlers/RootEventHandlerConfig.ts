@@ -1,7 +1,6 @@
-import { Event } from '../events';
-import { MetadataRegistry } from '../services';
+import { EventQueue, MetadataRegistry } from '../services';
 
 export type RootEventHandlerConfig = {
-  readonly emit: (event: Event) => void;
+  readonly eventQueue: EventQueue;
   readonly metadataRegistry: MetadataRegistry;
 };

@@ -1,7 +1,6 @@
-import { Event } from '../events';
-import { Metadata } from './Metadata';
+import { EventQueue, MetadataRegistry } from '../services';
 
 export type MetadataContext = {
-  emit: (event: Event) => void;
-  register: (id: string, metadata: Metadata) => void;
+  eventQueue: EventQueue;
+  metadataRegistry: MetadataRegistry;
 };

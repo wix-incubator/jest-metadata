@@ -17,7 +17,7 @@ export class Metadata {
   set(key: string, value: unknown): this {
     this._data[key] = value;
 
-    this.context.emit({
+    this.context.eventQueue.enqueue({
       type: 'set_metadata',
       targetId: this.id.toString(),
       value: { [key]: value },
@@ -30,7 +30,7 @@ export class Metadata {
   assign(value: Data): this {
     Object.assign(this._data, value);
 
-    this.context.emit({
+    this.context.eventQueue.enqueue({
       type: 'set_metadata',
       targetId: this.id.toString(),
       value,
@@ -43,7 +43,7 @@ export class Metadata {
   merge(value: Data): this {
     lodashMerge(this._data, value);
 
-    this.context.emit({
+    this.context.eventQueue.enqueue({
       type: 'set_metadata',
       targetId: this.id.toString(),
       value,
@@ -54,7 +54,7 @@ export class Metadata {
   }
 
   protected register<T extends Metadata>(metadata: T): T {
-    this.context.register(metadata.id, metadata);
+    this.context.metadataRegistry.register(metadata.id, metadata);
 
     return metadata;
   }

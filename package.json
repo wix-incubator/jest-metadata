@@ -44,6 +44,7 @@
     "@jest/environment": "^29.3.1",
     "@jest/reporters": "^29.3.1",
     "@jest/types": "^29.3.1",
+    "@types/debug": "^4.1.7",
     "@types/glob": "^8.0.0",
     "@types/jest": "^29.2.5",
     "@types/lodash": "^4.14.191",
@@ -83,6 +84,7 @@
     "jest": ">=27.2.5"
   },
   "dependencies": {
+    "debug": "^4.3.4",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.2",
     "lodash.set": "^4.3.2",
