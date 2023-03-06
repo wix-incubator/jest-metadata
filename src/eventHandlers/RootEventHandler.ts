@@ -20,26 +20,26 @@ import {
   TestStartEvent,
   TestTodoEvent,
 } from '../events';
-import { EventHandler } from '../services';
-import { AggregatedResultMetadata, BackupableQuery, Query } from '../state';
+import { EventHandler, ScopedIdentifier } from '../services';
+import { AggregatedResultMetadata, DescribeBlockMetadata, HookDefinitionMetadata } from '../state';
+import {
+  _addDescribeBlock,
+  _addHookDefinition,
+  _addTestEntry,
+  _start,
+  _finish,
+} from '../state/symbols';
 
 import { RootEventHandlerConfig } from './RootEventHandlerConfig';
 
 export class RootEventHandler {
-  public readonly current: Query;
-  public readonly last: Query;
   protected readonly metadata: AggregatedResultMetadata;
 
   constructor(protected readonly config: RootEventHandlerConfig) {
     this.metadata = new AggregatedResultMetadata({
       eventQueue: config.eventQueue,
-      metadataRegistry: config.metadataRegistry,
+      metadataRegistry: config.scopedMetadataRegistry,
     });
-
-    this.last = new Query();
-    this.current = new BackupableQuery(this.last);
-    this.current.aggregatedResult = this.metadata;
-    this.last.aggregatedResult = this.metadata;
   }
 
   subscribe(): this {
@@ -49,9 +49,11 @@ export class RootEventHandler {
 
   handle: EventHandler = (event: Event): void => {
     switch (event.type) {
+      /* Custom events */
       case 'test_environment_created': {
         return this._handleTestEnvironmentCreated(event);
       }
+      /* Circus events */
       case 'add_hook': {
         return this._handleAddHook(event);
       }
@@ -109,23 +111,65 @@ export class RootEventHandler {
     }
   };
 
-  private _handleStartDescribeDefinition(_event: StartDescribeDefinitionEvent) {
-    // TODO: Implement
-  }
-
   private _handleTestEnvironmentCreated(event: TestEnvironmentCreatedEvent) {
-    this.current.run = this.metadata.registerTestFile(event.testFilePath);
+    this.metadata.registerTestFile(event.testFilePath);
   }
 
-  private _handleAddHook(_event: AddHookEvent) {
-    // TODO: Implement
+  private _handleStartDescribeDefinition(event: StartDescribeDefinitionEvent) {
+    const run = this.metadata.getRunMetadata(event.testFilePath);
+    const describeId = new ScopedIdentifier(event.testFilePath, event.describeId);
+    run[_addDescribeBlock](describeId);
   }
 
-  private _handleAddTest(_event: AddTestEvent) {
-    // TODO: Implement
+  private _handleAddHook(event: AddHookEvent) {
+    const run = this.metadata.getRunMetadata(event.testFilePath);
+    const hookId = new ScopedIdentifier(event.testFilePath, event.hookId);
+    run.currentDescribeBlock[_addHookDefinition](hookId, event.hookType);
   }
 
-  private _handleFinishDescribeDefinition(_event: FinishDescribeDefinitionEvent) {
+  private _handleAddTest(event: AddTestEvent) {
+    const run = this.metadata.getRunMetadata(event.testFilePath);
+    const testId = new ScopedIdentifier(event.testFilePath, event.testId);
+    run.currentDescribeBlock[_addTestEntry](testId);
+  }
+
+  private _handleFinishDescribeDefinition(event: FinishDescribeDefinitionEvent) {
+    const describeId = new ScopedIdentifier(event.testFilePath, event.describeId);
+    this.config.scopedMetadataRegistry.get(describeId).as(DescribeBlockMetadata)[_finish]();
+  }
+
+  private _handleRunDescribeStart(event: RunDescribeStartEvent) {
+    const describeId = new ScopedIdentifier(event.testFilePath, event.describeId);
+    const describe = this.config.scopedMetadataRegistry.get(describeId).as(DescribeBlockMetadata);
+
+    describe[_start]();
+  }
+
+  private _handleHookStart(event: HookStartEvent) {
+    const hookId = new ScopedIdentifier(event.testFilePath, event.hookId);
+    const hookDef = this.config.scopedMetadataRegistry.get(hookId).as(HookDefinitionMetadata);
+
+    switch (hookDef.hookType) {
+      case 'beforeAll': {
+        // TODO: add hook invocation to describe and to run's list of invocations
+        break;
+      }
+      case 'afterAll': {
+        // TODO: add hook invocation to describe and to run's list of invocations
+        break;
+      }
+      case 'beforeEach': {
+        // TODO: add hook invocation to test invocation array
+        break;
+      }
+      case 'afterEach': {
+        // TODO: add hook invocation to test invocation array
+        break;
+      }
+    }
+  }
+
+  private _handleHookSuccess(_event: HookSuccessEvent) {
     // TODO: Implement
   }
 
@@ -133,47 +177,7 @@ export class RootEventHandler {
     // TODO: Implement
   }
 
-  private _handleHookStart(_event: HookStartEvent) {
-    // TODO: Implement
-  }
-
-  private _handleHookSuccess(_event: HookSuccessEvent) {
-    // TODO: Implement
-  }
-
   private _handleRunDescribeFinish(_event: RunDescribeFinishEvent) {
-    // TODO: Implement
-  }
-
-  private _handleRunDescribeStart(_event: RunDescribeStartEvent) {
-    // TODO: Implement
-  }
-
-  private _handleSetMetadata(_event: SetMetadataEvent) {
-    // TODO: Implement
-  }
-
-  private _handleTestDone(_event: TestDoneEvent) {
-    // TODO: Implement
-  }
-
-  private _handleTestFnFailure(_event: TestFnFailureEvent) {
-    // TODO: Implement
-  }
-
-  private _handleTestFnStart(_event: TestFnStartEvent) {
-    // TODO: Implement
-  }
-
-  private _handleTestFnSuccess(_event: TestFnSuccessEvent) {
-    // TODO: Implement
-  }
-
-  private _handleTestRetry(_event: TestRetryEvent) {
-    // TODO: Implement
-  }
-
-  private _handleTestSkip(_event: TestSkipEvent) {
     // TODO: Implement
   }
 
@@ -181,153 +185,46 @@ export class RootEventHandler {
     // TODO: Implement
   }
 
+  private _handleTestRetry(_event: TestRetryEvent) {
+    // TODO: Implement
+  }
+
+  private _handleTestFnStart(_event: TestFnStartEvent) {
+    // TODO: Implement
+  }
+
+  private _handleTestFnFailure(_event: TestFnFailureEvent) {
+    // TODO: Implement
+  }
+
+  private _handleTestFnSuccess(_event: TestFnSuccessEvent) {
+    // TODO: Implement
+  }
+
+  private _handleTestSkip(_event: TestSkipEvent) {
+    // TODO: Implement
+  }
+
   private _handleTestTodo(_event: TestTodoEvent) {
     // TODO: Implement
   }
-}
 
-// // eslint-disable-next-line node/no-unpublished-import
-// import { Circus } from '@jest/types';
-//
-// import { InstanceCache } from '../services';
-//
-// let counter = 0;
-//
-// export class CircusContext {
-//
-//   private _aggregatedResultMetadata?: AggregatedResultMetadata;
-//   private _currentMetadata?: Metadata;
-//   private _describeBlockMetadata?: DescribeBlockMetadata;
-//   private _hookMetadata?: HookDefinitionMetadata | HookInvocationMetadata;
-//   private _runMetadata?: RunMetadata;
-//   private _testEntryMetadata?: TestEntryMetadata;
-//   private _testFnMetadata?: HookInvocationMetadata | HookDefinitionMetadata;
-//   private _testInvocationMetadata?: TestInvocationMetadata;
-//
-//   private readonly _cachedDescribeBlocks = new InstanceCache<
-//     Circus.DescribeBlock,
-//     DescribeBlockMetadata
-//   >();
-//   private readonly _cachedHooks = new InstanceCache<object /* fn */, HookDefinitionMetadata>();
-//   private readonly _cachedTestEntries = new InstanceCache<object /* fn */, TestEntryMetadata>();
-//
-//   private readonly _contextAPI: ContextAPI = {
-//     flush: async () => {
-//       /* ... */
-//     },
-//     createRef(_instance: object): Ref {
-//       return new Ref(++counter);
-//     },
-//     emit(_event) {
-//       // TODO: emit event
-//     },
-//   };
-//
-//   new_environment(testFilePath: string) {
-//     this._aggregatedResultMetadata = new AggregatedResultMetadata(this._contextAPI);
-//     this._runMetadata = this._aggregatedResultMetadata.testResults[testFilePath] = new RunMetadata(
-//       this._contextAPI,
-//     );
-//   }
-//   start_describe_definition(
-//     _event: Circus.Event & { name: 'start_describe_definition' },
-//     state: Circus.State,
-//   ) {
-//     const currentDescribeBlock = state.currentDescribeBlock;
-//     const currentDescribeBlockMetadata = this._cachedDescribeBlocks.get(
-//       currentDescribeBlock,
-//       () => new DescribeBlockMetadata(this._contextAPI),
-//     );
-//     currentDescribeBlockMetadata.parent = this._describeBlockMetadata;
-//     this._describeBlockMetadata = currentDescribeBlockMetadata;
-//   }
-//
-//   add_hook(event: Circus.Event & { name: 'add_hook' }) {
-//     const describeBlockMetadata = this._describeBlockMetadata;
-//
-//     if (describeBlockMetadata) {
-//       this._hookMetadata = this._cachedHooks.get(
-//         event.fn,
-//         () => new HookDefinitionMetadata(this._contextAPI, describeBlockMetadata),
-//       );
-//       describeBlockMetadata.hookDefinitions.push(this._hookMetadata);
-//     }
-//   }
-//
-//   add_test(event: Circus.Event & { name: 'add_test' }, _state: Circus.State) {
-//     const describeBlockMetadata = this._describeBlockMetadata;
-//
-//     if (describeBlockMetadata) {
-//       this._testEntryMetadata = this._cachedTestEntries.get(
-//         event.fn,
-//         () => new TestEntryMetadata(this._contextAPI, this._describeBlockMetadata!),
-//       );
-//     }
-//   }
-//
-//   finish_describe_definition(_event: Circus.Event & { name: 'finish_describe_definition' }) {
-//     this._describeBlockMetadata = undefined;
-//   }
-//
-//   hook_start(_event: Circus.Event & { name: 'hook_start' }) {
-//     // this._hookMetadata = new Metadata(this._contextAPI);
-//   }
-//
-//   hook_success(_event: Circus.Event & { name: 'hook_success' }) {
-//     this._hookMetadata = undefined;
-//   }
-//
-//   hook_failure(_event: Circus.Event & { name: 'hook_failure' }) {
-//     this._hookMetadata = undefined;
-//   }
-//
-//   test_fn_start(_event: Circus.Event & { name: 'test_fn_start' }) {
-//     // this._testFnMetadata = new Metadata(this._contextAPI);
-//   }
-//
-//   test_fn_success(_event: Circus.Event & { name: 'test_fn_success' }) {
-//     this._testFnMetadata = undefined;
-//   }
-//
-//   test_fn_failure(_event: Circus.Event & { name: 'test_fn_failure' }) {
-//     this._testFnMetadata = undefined;
-//   }
-//
-//   test_retry(_event: Circus.Event & { name: 'test_retry' }) {
-//     // this._testInvocationMetadata = new TestInvocationMetadata(this._contextAPI);
-//   }
-//
-//   test_start(_event: Circus.Event & { name: 'test_start' }) {
-//     // this._testEntryMetadata = this._cachedTestEntries.get(
-//     //   event.test,
-//     //   () => new TestEntryMetadata(this._contextAPI),
-//     // );
-//     // this._testInvocationMetadata = new TestInvocationMetadata(this._contextAPI);
-//   }
-//
-//   test_skip(_event: Circus.Event & { name: 'test_skip' }) {
-//     this._testEntryMetadata = undefined;
-//     this._testInvocationMetadata = undefined;
-//   }
-//
-//   test_todo(_event: Circus.Event & { name: 'test_todo' }) {
-//     this._testEntryMetadata = undefined;
-//     this._testInvocationMetadata = undefined;
-//   }
-//
-//   test_done(_event: Circus.Event & { name: 'test_done' }) {
-//     this._testEntryMetadata = undefined;
-//     this._testInvocationMetadata = undefined;
-//   }
-//
-//   run_describe_start(event: Circus.Event & { name: 'run_describe_start' }) {
-//     this._describeBlockMetadata = this._cachedDescribeBlocks.get(
-//       event.describeBlock,
-//       () => new DescribeBlockMetadata(this._contextAPI),
-//     );
-//   }
-//
-//   run_describe_finish(_event: Circus.Event & { name: 'run_describe_finish' }) {
-//     this._describeBlockMetadata = undefined;
-//   }
-// }
+  private _handleTestDone(_event: TestDoneEvent) {
+    // TODO: Implement
+  }
+
+  private _handleSetMetadata(event: SetMetadataEvent) {
+    if (this.config.eventQueue.current === event) {
+      return;
+    }
+
+    const targetId = new ScopedIdentifier(event.testFilePath, event.targetId);
+    const metadata = this.config.scopedMetadataRegistry.get(targetId);
+
+    if (event.deepMerge) {
+      metadata.merge(event.value);
+    } else {
+      metadata.assign(event.value);
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import debug from 'debug';
 
 import { RootEventHandler } from '../eventHandlers';
-import { EventQueue, InstanceCache, MetadataRegistry } from '../services';
+import { EventQueue, InstanceCache, ScopedMetadataRegistry } from '../services';
 
 import { CircusTestEventHandler } from './CircusTestEventHandler';
 
@@ -11,16 +11,23 @@ export const eventQueue = new EventQueue().registerHandler((event) => {
   log(event);
 });
 
-const metadataRegistry = new MetadataRegistry();
-export const handler = new RootEventHandler({ eventQueue, metadataRegistry }).subscribe();
+const scopedMetadataRegistry = new ScopedMetadataRegistry();
 
 const describeInstances = new InstanceCache();
 const hookInstances = new InstanceCache();
 const testInstances = new InstanceCache();
 
+let currentTestFilePath = '';
 export const circusTestEventHandler = new CircusTestEventHandler({
-  getDescribeId: (block) => `describe:${describeInstances.getInstanceId(block)}`,
-  getHookId: (fn) => `hook:${hookInstances.getInstanceId(fn)}`,
-  getTestId: (fn) => `test:${testInstances.getInstanceId(fn)}`,
   eventQueue,
+  getDescribeId: (block) => {
+    return `${currentTestFilePath}:describe.${describeInstances.getInstanceId(block)}`;
+  },
+  getHookId: (fn) => `${currentTestFilePath}:hook.${hookInstances.getInstanceId(fn)}`,
+  getTestId: (fn) => `${currentTestFilePath}:test.${testInstances.getInstanceId(fn)}`,
+  setTestFilePath: (testFilePath) => {
+    currentTestFilePath = testFilePath;
+  },
 });
+
+export const handler = new RootEventHandler({ eventQueue, scopedMetadataRegistry }).subscribe();

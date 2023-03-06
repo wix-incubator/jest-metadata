@@ -1,6 +1,6 @@
-import { EventQueue, MetadataRegistry } from '../services';
+import { EventQueue, ScopedMetadataRegistry } from '../services';
 
 export type RootEventHandlerConfig = {
   readonly eventQueue: EventQueue;
-  readonly metadataRegistry: MetadataRegistry;
+  readonly scopedMetadataRegistry: ScopedMetadataRegistry;
 };

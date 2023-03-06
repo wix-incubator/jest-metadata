@@ -1,6 +1,6 @@
-import { EventQueue, MetadataRegistry } from '../services';
+import { EventQueue, ScopedMetadataRegistry } from '../services';
 
 export type MetadataContext = {
   eventQueue: EventQueue;
-  metadataRegistry: MetadataRegistry;
+  metadataRegistry: ScopedMetadataRegistry;
 };

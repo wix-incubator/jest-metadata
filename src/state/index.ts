@@ -1,12 +1,12 @@
 export { AggregatedResultMetadata } from './AggregatedResultMetadata';
-export { BackupableQuery } from './BackupableQuery';
 export { DescribeBlockMetadata } from './DescribeBlockMetadata';
 export { HookDefinitionMetadata } from './HookDefinitionMetadata';
 export { HookInvocationMetadata } from './HookInvocationMetadata';
+export { InvocationMetadata } from './InvocationMetadata';
 export { Metadata } from './Metadata';
-export { Query } from './Query';
 export { ReadonlyMetadata } from './ReadonlyMetadata';
-export { Ref } from './Ref';
+export { ScopedIdentifier } from './ScopedIdentifier';
+export { Data } from './Data';
 export { RunMetadata } from './RunMetadata';
 export { TestEntryMetadata } from './TestEntryMetadata';
 export { TestFnDefinitionMetadata } from './TestFnDefinitionMetadata';

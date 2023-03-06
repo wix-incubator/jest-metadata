@@ -105,8 +105,8 @@ export class CircusTestEventHandler {
     this.emit({
       type: 'add_hook',
       testFilePath: this.testFilePath,
-      hookType: event.hookType,
       hookId: this.config.getHookId(event.fn),
+      hookType: event.hookType,
     });
   }
 
