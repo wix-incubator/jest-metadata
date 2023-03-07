@@ -17,17 +17,13 @@ const describeInstances = new InstanceCache();
 const hookInstances = new InstanceCache();
 const testInstances = new InstanceCache();
 
-let currentTestFilePath = '';
 export const circusTestEventHandler = new CircusTestEventHandler({
   eventQueue,
   getDescribeId: (block) => {
-    return `${currentTestFilePath}:describe.${describeInstances.getInstanceId(block)}`;
+    return `describe.${describeInstances.getInstanceId(block)}`;
   },
-  getHookId: (fn) => `${currentTestFilePath}:hook.${hookInstances.getInstanceId(fn)}`,
-  getTestId: (fn) => `${currentTestFilePath}:test.${testInstances.getInstanceId(fn)}`,
-  setTestFilePath: (testFilePath) => {
-    currentTestFilePath = testFilePath;
-  },
+  getHookId: (fn) => `hook.${hookInstances.getInstanceId(fn)}`,
+  getTestId: (fn) => `test.${testInstances.getInstanceId(fn)}`,
 });
 
 export const handler = new RootEventHandler({ eventQueue, scopedMetadataRegistry }).subscribe();
