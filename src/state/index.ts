@@ -2,13 +2,12 @@ export { AggregatedResultMetadata } from './AggregatedResultMetadata';
 export { DescribeBlockMetadata } from './DescribeBlockMetadata';
 export { HookDefinitionMetadata } from './HookDefinitionMetadata';
 export { HookInvocationMetadata } from './HookInvocationMetadata';
-export { InvocationMetadata } from './InvocationMetadata';
 export { Metadata } from './Metadata';
-export { ReadonlyMetadata } from './ReadonlyMetadata';
-export { ScopedIdentifier } from './ScopedIdentifier';
-export { Data } from './Data';
 export { RunMetadata } from './RunMetadata';
 export { TestEntryMetadata } from './TestEntryMetadata';
-export { TestFnDefinitionMetadata } from './TestFnDefinitionMetadata';
 export { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
 export { TestInvocationMetadata } from './TestInvocationMetadata';
+
+export * as internal from './symbols';
+export { Data } from './Data';
+export { ScopedIdentifier } from './ScopedIdentifier';

@@ -9,6 +9,8 @@ import {
   HookSuccessEvent,
   RunDescribeFinishEvent,
   RunDescribeStartEvent,
+  RunFinishEvent,
+  RunStartEvent,
   SetMetadataEvent,
   StartDescribeDefinitionEvent,
   TestDoneEvent,
@@ -21,14 +23,13 @@ import {
   TestTodoEvent,
 } from '../events';
 import { EventHandler, ScopedIdentifier } from '../services';
-import { AggregatedResultMetadata, DescribeBlockMetadata, HookDefinitionMetadata } from '../state';
 import {
-  _addDescribeBlock,
-  _addHookDefinition,
-  _addTestEntry,
-  _start,
-  _finish,
-} from '../state/symbols';
+  AggregatedResultMetadata,
+  DescribeBlockMetadata,
+  HookDefinitionMetadata,
+  TestEntryMetadata,
+  internal,
+} from '../state';
 
 import { RootEventHandlerConfig } from './RootEventHandlerConfig';
 
@@ -78,6 +79,12 @@ export class RootEventHandler {
       case 'run_describe_start': {
         return this._handleRunDescribeStart(event);
       }
+      case 'run_finish': {
+        return this._handleRunFinish(event);
+      }
+      case 'run_start': {
+        return this._handleRunStart(event);
+      }
       case 'set_metadata': {
         return this._handleSetMetadata(event);
       }
@@ -118,99 +125,147 @@ export class RootEventHandler {
   private _handleStartDescribeDefinition(event: StartDescribeDefinitionEvent) {
     const run = this.metadata.getRunMetadata(event.testFilePath);
     const describeId = new ScopedIdentifier(event.testFilePath, event.describeId);
-    run[_addDescribeBlock](describeId);
+    const currentDescribeBlock = run.current.describeBlock;
+    (currentDescribeBlock ?? run)[internal.addDescribeBlock](describeId);
   }
 
   private _handleAddHook(event: AddHookEvent) {
     const run = this.metadata.getRunMetadata(event.testFilePath);
     const hookId = new ScopedIdentifier(event.testFilePath, event.hookId);
-    run.currentDescribeBlock[_addHookDefinition](hookId, event.hookType);
+    const currentDescribeBlock = run.current.describeBlock;
+    if (!currentDescribeBlock) {
+      throw new Error('No current describe block');
+    }
+    currentDescribeBlock[internal.addHookDefinition](hookId, event.hookType);
   }
 
   private _handleAddTest(event: AddTestEvent) {
     const run = this.metadata.getRunMetadata(event.testFilePath);
     const testId = new ScopedIdentifier(event.testFilePath, event.testId);
-    run.currentDescribeBlock[_addTestEntry](testId);
+    const currentDescribeBlock = run.current.describeBlock;
+    if (!currentDescribeBlock) {
+      throw new Error('No current describe block');
+    }
+
+    currentDescribeBlock[internal.addTestEntry](testId);
   }
 
   private _handleFinishDescribeDefinition(event: FinishDescribeDefinitionEvent) {
     const describeId = new ScopedIdentifier(event.testFilePath, event.describeId);
-    this.config.scopedMetadataRegistry.get(describeId).as(DescribeBlockMetadata)[_finish]();
+    this.config.scopedMetadataRegistry.get(describeId).as(DescribeBlockMetadata)[internal.finish]();
+  }
+
+  private _handleRunStart(event: RunStartEvent) {
+    const run = this.metadata.getRunMetadata(event.testFilePath);
+    run[internal.start]();
+  }
+
+  private _handleRunFinish(event: RunFinishEvent) {
+    const run = this.metadata.getRunMetadata(event.testFilePath);
+    run[internal.finish]();
   }
 
   private _handleRunDescribeStart(event: RunDescribeStartEvent) {
     const describeId = new ScopedIdentifier(event.testFilePath, event.describeId);
     const describe = this.config.scopedMetadataRegistry.get(describeId).as(DescribeBlockMetadata);
 
-    describe[_start]();
+    describe[internal.start]();
   }
 
   private _handleHookStart(event: HookStartEvent) {
     const hookId = new ScopedIdentifier(event.testFilePath, event.hookId);
     const hookDef = this.config.scopedMetadataRegistry.get(hookId).as(HookDefinitionMetadata);
 
-    switch (hookDef.hookType) {
-      case 'beforeAll': {
-        // TODO: add hook invocation to describe and to run's list of invocations
-        break;
-      }
-      case 'afterAll': {
-        // TODO: add hook invocation to describe and to run's list of invocations
-        break;
-      }
-      case 'beforeEach': {
-        // TODO: add hook invocation to test invocation array
-        break;
-      }
-      case 'afterEach': {
-        // TODO: add hook invocation to test invocation array
-        break;
-      }
+    hookDef[internal.start]();
+  }
+
+  private _handleHookSuccess(event: HookSuccessEvent) {
+    const hookId = new ScopedIdentifier(event.testFilePath, event.hookId);
+    const hookDef = this.config.scopedMetadataRegistry.get(hookId).as(HookDefinitionMetadata);
+
+    hookDef[internal.finish]();
+  }
+
+  private _handleHookFailure(event: HookFailureEvent) {
+    const hookId = new ScopedIdentifier(event.testFilePath, event.hookId);
+    const hookDef = this.config.scopedMetadataRegistry.get(hookId).as(HookDefinitionMetadata);
+
+    hookDef[internal.finish]();
+  }
+
+  private _handleRunDescribeFinish(event: RunDescribeFinishEvent) {
+    const describeId = new ScopedIdentifier(event.testFilePath, event.describeId);
+    const describe = this.config.scopedMetadataRegistry.get(describeId).as(DescribeBlockMetadata);
+
+    describe[internal.finish]();
+  }
+
+  private _handleTestStart(event: TestStartEvent) {
+    const testId = new ScopedIdentifier(event.testFilePath, event.testId);
+    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+
+    test[internal.start]();
+  }
+
+  private _handleTestRetry(event: TestRetryEvent) {
+    const testId = new ScopedIdentifier(event.testFilePath, event.testId);
+    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+
+    test[internal.start]();
+  }
+
+  private _handleTestFnStart(event: TestFnStartEvent) {
+    const testId = new ScopedIdentifier(event.testFilePath, event.testId);
+    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+    const lastInvocation = test.lastInvocation;
+    if (!lastInvocation) {
+      throw new Error('Cannot start test function without an invocation');
     }
+
+    lastInvocation[internal.start]();
   }
 
-  private _handleHookSuccess(_event: HookSuccessEvent) {
-    // TODO: Implement
+  private _handleTestFnFailure(event: TestFnFailureEvent) {
+    const testId = new ScopedIdentifier(event.testFilePath, event.testId);
+    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+    const lastInvocation = test.lastInvocation;
+    if (!lastInvocation) {
+      throw new Error('Cannot finish test function without an invocation');
+    }
+
+    lastInvocation[internal.finish]();
   }
 
-  private _handleHookFailure(_event: HookFailureEvent) {
-    // TODO: Implement
+  private _handleTestFnSuccess(event: TestFnSuccessEvent) {
+    const testId = new ScopedIdentifier(event.testFilePath, event.testId);
+    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+    const lastInvocation = test.lastInvocation;
+    if (!lastInvocation) {
+      throw new Error('Cannot finish test function without an invocation');
+    }
+
+    lastInvocation[internal.finish]();
   }
 
-  private _handleRunDescribeFinish(_event: RunDescribeFinishEvent) {
-    // TODO: Implement
+  private _handleTestSkip(event: TestSkipEvent) {
+    const testId = new ScopedIdentifier(event.testFilePath, event.testId);
+    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+
+    test[internal.finish]();
   }
 
-  private _handleTestStart(_event: TestStartEvent) {
-    // TODO: Implement
+  private _handleTestTodo(event: TestTodoEvent) {
+    const testId = new ScopedIdentifier(event.testFilePath, event.testId);
+    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+
+    test[internal.finish]();
   }
 
-  private _handleTestRetry(_event: TestRetryEvent) {
-    // TODO: Implement
-  }
+  private _handleTestDone(event: TestDoneEvent) {
+    const testId = new ScopedIdentifier(event.testFilePath, event.testId);
+    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
 
-  private _handleTestFnStart(_event: TestFnStartEvent) {
-    // TODO: Implement
-  }
-
-  private _handleTestFnFailure(_event: TestFnFailureEvent) {
-    // TODO: Implement
-  }
-
-  private _handleTestFnSuccess(_event: TestFnSuccessEvent) {
-    // TODO: Implement
-  }
-
-  private _handleTestSkip(_event: TestSkipEvent) {
-    // TODO: Implement
-  }
-
-  private _handleTestTodo(_event: TestTodoEvent) {
-    // TODO: Implement
-  }
-
-  private _handleTestDone(_event: TestDoneEvent) {
-    // TODO: Implement
+    test[internal.finish]();
   }
 
   private _handleSetMetadata(event: SetMetadataEvent) {

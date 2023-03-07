@@ -33,4 +33,8 @@ export class ScopedIdentifier {
   derive(identifier: string) {
     return new ScopedIdentifier(this._testFilePath, identifier);
   }
+
+  nest(subIdentifier: string) {
+    return new ScopedIdentifier(this._testFilePath, `${this._identifier}:${subIdentifier}`);
+  }
 }

@@ -53,6 +53,12 @@ export class CircusTestEventHandler {
       case 'run_describe_finish': {
         return this.run_describe_finish(event);
       }
+      case 'run_start': {
+        return this.run_start(event);
+      }
+      case 'run_finish': {
+        return this.run_finish(event);
+      }
       case 'start_describe_definition': {
         return this.start_describe_definition(event, state);
       }
@@ -230,6 +236,20 @@ export class CircusTestEventHandler {
       type: 'run_describe_finish',
       testFilePath: this.testFilePath,
       describeId: this.config.getDescribeId(event.describeBlock),
+    });
+  }
+
+  run_start(_event: Circus.Event & { name: 'run_start' }) {
+    this.emit({
+      type: 'run_start',
+      testFilePath: this.testFilePath,
+    });
+  }
+
+  run_finish(_event: Circus.Event & { name: 'run_finish' }) {
+    this.emit({
+      type: 'run_finish',
+      testFilePath: this.testFilePath,
     });
   }
 

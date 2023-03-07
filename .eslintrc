@@ -48,6 +48,7 @@
         "@typescript-eslint/member-ordering": "error",
         "unicorn/filename-case": "off",
         "unicorn/import-style": "off",
+        "unicorn/prefer-at": "off",
         "unicorn/prefer-node-protocol": "off",
         "unicorn/prefer-string-replace-all": "off",
         "unicorn/prevent-abbreviations": "off",

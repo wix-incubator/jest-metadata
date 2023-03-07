@@ -6,6 +6,8 @@ import { HookStartEvent } from './HookStartEvent';
 import { HookSuccessEvent } from './HookSuccessEvent';
 import { RunDescribeFinishEvent } from './RunDescribeFinishEvent';
 import { RunDescribeStartEvent } from './RunDescribeStartEvent';
+import { RunFinishEvent } from './RunFinishEvent';
+import { RunStartEvent } from './RunStartEvent';
 import { SetMetadataEvent } from './SetMetadataEvent';
 import { StartDescribeDefinitionEvent } from './StartDescribeDefinitionEvent';
 import { TestDoneEvent } from './TestDoneEvent';
@@ -26,6 +28,8 @@ export { HookStartEvent } from './HookStartEvent';
 export { HookSuccessEvent } from './HookSuccessEvent';
 export { RunDescribeFinishEvent } from './RunDescribeFinishEvent';
 export { RunDescribeStartEvent } from './RunDescribeStartEvent';
+export { RunFinishEvent } from './RunFinishEvent';
+export { RunStartEvent } from './RunStartEvent';
 export { SetMetadataEvent } from './SetMetadataEvent';
 export { StartDescribeDefinitionEvent } from './StartDescribeDefinitionEvent';
 export { TestDoneEvent } from './TestDoneEvent';
@@ -47,6 +51,8 @@ export type Event =
   | HookSuccessEvent
   | RunDescribeFinishEvent
   | RunDescribeStartEvent
+  | RunFinishEvent
+  | RunStartEvent
   | SetMetadataEvent
   | StartDescribeDefinitionEvent
   | TestDoneEvent

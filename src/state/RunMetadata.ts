@@ -1,67 +1,59 @@
 import { DescribeBlockMetadata } from './DescribeBlockMetadata';
-import { InvocationMetadata } from './InvocationMetadata';
 import { Metadata } from './Metadata';
+import { MetadataSelector } from './MetadataSelector';
 import { ScopedIdentifier } from './ScopedIdentifier';
 import { TestEntryMetadata } from './TestEntryMetadata';
-import {
-  _rootDescribeBlock,
-  _currentDescribeBlock,
-  _currentTestEntry,
-  _addDescribeBlock,
-} from './symbols';
+import * as symbols from './symbols';
 
 export class RunMetadata extends Metadata {
-  [_rootDescribeBlock]: DescribeBlockMetadata | undefined;
-  [_currentDescribeBlock]: DescribeBlockMetadata | undefined;
-  [_currentTestEntry]: TestEntryMetadata | undefined;
+  [symbols.rootDescribeBlock]: DescribeBlockMetadata | undefined;
+  [symbols.currentMetadata]: Metadata | undefined;
 
-  get rootDescribeBlock(): DescribeBlockMetadata {
-    if (!this[_rootDescribeBlock]) {
-      throw new Error('No root describe block');
-    }
+  // eslint-disable-next-line unicorn/consistent-function-scoping
+  readonly current = new MetadataSelector(() => this[symbols.currentMetadata]);
 
-    return this[_rootDescribeBlock];
+  get rootDescribeBlock(): DescribeBlockMetadata | undefined {
+    return this[symbols.rootDescribeBlock];
   }
 
-  get currentDescribeBlock(): DescribeBlockMetadata {
-    if (!this[_currentDescribeBlock]) {
-      throw new Error('No current describe block');
+  [symbols.addDescribeBlock](id: ScopedIdentifier): DescribeBlockMetadata {
+    if (this[symbols.rootDescribeBlock]) {
+      throw new Error('Unexpected state: root describe block already exists');
     }
 
-    return this[_currentDescribeBlock];
+    this[symbols.currentMetadata] = this[symbols.rootDescribeBlock] = new DescribeBlockMetadata(
+      this.context,
+      this,
+      id,
+    );
+
+    return this[symbols.rootDescribeBlock];
   }
 
-  [_addDescribeBlock](id: ScopedIdentifier): DescribeBlockMetadata {
-    if (this[_currentDescribeBlock]) {
-      this[_currentDescribeBlock] = this[_currentDescribeBlock][_addDescribeBlock](id);
-    } else {
-      if (this[_rootDescribeBlock]) {
-        throw new Error('Root describe block already exists');
-      }
+  [symbols.start](): void {
+    this[symbols.currentMetadata] = this;
+  }
 
-      this[_rootDescribeBlock] = new DescribeBlockMetadata(this.context, this, id);
-      this[_currentDescribeBlock] = this[_rootDescribeBlock];
-    }
-
-    return this[_currentDescribeBlock];
+  [symbols.finish](): void {
+    // Nothing to do yet
   }
 
   *allDescribeBlocks(): IterableIterator<DescribeBlockMetadata> {
-    if (this[_rootDescribeBlock]) {
-      yield this[_rootDescribeBlock];
-      yield* this[_rootDescribeBlock].allDescribeBlocks();
+    if (this[symbols.rootDescribeBlock]) {
+      yield this[symbols.rootDescribeBlock];
+      yield* this[symbols.rootDescribeBlock].allDescribeBlocks();
     }
   }
 
   *allTestEntries(): IterableIterator<TestEntryMetadata> {
-    if (this[_rootDescribeBlock]) {
-      yield* this[_rootDescribeBlock].allTestEntries();
+    if (this[symbols.rootDescribeBlock]) {
+      yield* this[symbols.rootDescribeBlock].allTestEntries();
     }
   }
 
-  *allInvocations(): IterableIterator<InvocationMetadata> {
-    if (this[_rootDescribeBlock]) {
-      yield* this[_rootDescribeBlock].allInvocations;
+  *allInvocations() {
+    if (this[symbols.rootDescribeBlock]) {
+      yield* this[symbols.rootDescribeBlock].allInvocations();
     }
   }
 }

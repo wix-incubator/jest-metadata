@@ -2,35 +2,27 @@ import { HookType } from '../types';
 
 import { HookDefinitionMetadata } from './HookDefinitionMetadata';
 import { HookInvocationMetadata } from './HookInvocationMetadata';
-import { InvocationMetadata } from './InvocationMetadata';
 import { Metadata } from './Metadata';
 import { MetadataContext } from './MetadataContext';
 import { RunMetadata } from './RunMetadata';
 import { ScopedIdentifier } from './ScopedIdentifier';
 import { TestEntryMetadata } from './TestEntryMetadata';
+import { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
 import { TestInvocationMetadata } from './TestInvocationMetadata';
-import {
-  _addDescribeBlock,
-  _addHookDefinition,
-  _addTestEntry,
-  _currentDescribeBlock,
-  _currentTestEntry,
-  _finish,
-  _start,
-} from './symbols';
+import * as symbols from './symbols';
+
+type DefinitionMetadata = DescribeBlockMetadata | TestEntryMetadata | HookDefinitionMetadata;
+type InvocationMetadata =
+  | DescribeBlockMetadata
+  | TestInvocationMetadata
+  | HookInvocationMetadata<DescribeBlockMetadata>;
+type LowLevelInvocationMetadata = HookInvocationMetadata | TestFnInvocationMetadata;
 
 export class DescribeBlockMetadata extends Metadata {
   readonly run: RunMetadata;
   readonly parent?: DescribeBlockMetadata;
-
-  readonly hookDefinitions: HookDefinitionMetadata[] = [];
-  readonly children: (DescribeBlockMetadata | TestEntryMetadata)[] = [];
-
-  readonly beforeHooks: HookInvocationMetadata[] = [];
-  readonly testInvocations: TestInvocationMetadata[] = [];
-  readonly afterHooks: HookInvocationMetadata[] = [];
-
-  readonly allInvocations: InvocationMetadata[] = [];
+  readonly children: DefinitionMetadata[] = [];
+  readonly invocations: InvocationMetadata[] = [];
 
   constructor(
     context: MetadataContext,
@@ -48,34 +40,37 @@ export class DescribeBlockMetadata extends Metadata {
     }
   }
 
-  [_addDescribeBlock](id: ScopedIdentifier): DescribeBlockMetadata {
+  [symbols.addDescribeBlock](id: ScopedIdentifier): DescribeBlockMetadata {
     const describeBlock = new DescribeBlockMetadata(this.context, this, id);
     this.children.push(describeBlock);
+    this.run[symbols.currentMetadata] = describeBlock;
 
     return describeBlock;
   }
 
-  [_addTestEntry](id: ScopedIdentifier): TestEntryMetadata {
+  [symbols.addTestEntry](id: ScopedIdentifier): TestEntryMetadata {
     const testEntry = new TestEntryMetadata(this.context, this, id);
     this.children.push(testEntry);
-    this.run[_currentTestEntry] = testEntry;
+    this.run[symbols.currentMetadata] = testEntry;
 
     return testEntry;
   }
 
-  [_addHookDefinition](id: ScopedIdentifier, hookType: HookType): HookDefinitionMetadata {
+  [symbols.addHookDefinition](id: ScopedIdentifier, hookType: HookType): HookDefinitionMetadata {
     const hookDefinition = new HookDefinitionMetadata(this.context, this, id, hookType);
-    this.hookDefinitions.push(hookDefinition);
+    this.children.push(hookDefinition);
+    this.run[symbols.currentMetadata] = hookDefinition;
 
     return hookDefinition;
   }
 
-  [_start](): void {
-    this.run[_currentDescribeBlock] = this;
+  [symbols.start](): void {
+    this.run[symbols.currentMetadata] = this;
+    this.parent?.invocations.push(this);
   }
 
-  [_finish](): void {
-    this.run[_currentDescribeBlock] = this.parent;
+  [symbols.finish](): void {
+    this.run[symbols.currentMetadata] = this.parent;
   }
 
   *describeBlocks(): IterableIterator<DescribeBlockMetadata> {
@@ -94,6 +89,14 @@ export class DescribeBlockMetadata extends Metadata {
     }
   }
 
+  *hookDefinitions(): IterableIterator<HookDefinitionMetadata> {
+    for (const child of this.children) {
+      if (child instanceof HookDefinitionMetadata) {
+        yield child;
+      }
+    }
+  }
+
   *allDescribeBlocks(): IterableIterator<DescribeBlockMetadata> {
     for (const child of this.children) {
       if (child instanceof DescribeBlockMetadata) {
@@ -107,8 +110,24 @@ export class DescribeBlockMetadata extends Metadata {
     for (const child of this.children) {
       if (child instanceof TestEntryMetadata) {
         yield child;
-      } else {
+      } else if (child instanceof DescribeBlockMetadata) {
         yield* child.allTestEntries();
+      }
+    }
+  }
+
+  *allInvocations(): IterableIterator<LowLevelInvocationMetadata> {
+    for (const invocation of this.invocations) {
+      if (invocation instanceof HookInvocationMetadata) {
+        yield invocation;
+      } else if (invocation instanceof DescribeBlockMetadata) {
+        yield* invocation.allInvocations();
+      } else if (invocation instanceof TestInvocationMetadata) {
+        yield* invocation.before;
+        if (invocation.fn) {
+          yield invocation.fn;
+        }
+        yield* invocation.after;
       }
     }
   }

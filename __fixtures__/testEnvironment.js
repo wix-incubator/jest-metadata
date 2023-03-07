@@ -3,7 +3,7 @@ const path = require('path');
 const { version: JEST_VERSION } = require('jest/package.json');
 
 const NodeJestEnvironment = require('jest-environment-node').default;
-const { startTestFile, handleTestEvent } = require('jest-extend-report/dist/circus');
+const { startTestFile, handleTestEvent, flush } = require('jest-extend-report/dist/circus');
 const { hijackEventQueue } = require('jest-extend-report/dist/circus/__backdoors__/hijackEventQueue');
 
 class TestEnvironment extends NodeJestEnvironment {
@@ -24,6 +24,7 @@ class TestEnvironment extends NodeJestEnvironment {
   handleTestEvent = handleTestEvent;
 
   async teardown() {
+    await flush();
     await fs.writeFile(this._eventsPath, JSON.stringify(this._events, null, 2));
     await super.teardown();
   }
