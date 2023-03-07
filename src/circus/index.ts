@@ -12,3 +12,5 @@ export const handleTestEvent: Circus.EventHandler = circusTestEventHandler.handl
 export const flush = (): Promise<void> => {
   return eventQueue.flush();
 };
+
+export { handler as rootEventHandler } from './state';
