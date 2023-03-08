@@ -1,7 +1,9 @@
 // eslint-disable-next-line node/no-unpublished-import
 import { Circus } from '@jest/types';
 
-import { eventQueue, circusTestEventHandler } from '../state';
+import realm from '../realms';
+
+const { eventQueue, circusTestEventHandler, rootEventHandler } = realm;
 
 export function startTestFile(testFilePath: string): void {
   circusTestEventHandler.test_environment_created(testFilePath);
@@ -13,4 +15,4 @@ export const flush = async () => {
   await eventQueue.flush();
 };
 
-export { handler as rootEventHandler } from '../state';
+export { rootEventHandler };

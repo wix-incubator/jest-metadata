@@ -1,6 +1,6 @@
 import { EventHandlerCallback } from '../../services';
-import { eventQueue } from '../../state';
+import realm from '../../realms';
 
 export function hijackEventQueue(handler: EventHandlerCallback) {
-  eventQueue.unregisterAllHandlers().registerHandler(handler);
+  realm.eventQueue.unregisterAllHandlers().registerHandler(handler);
 }

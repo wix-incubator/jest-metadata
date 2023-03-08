@@ -1,11 +1,19 @@
+import debug from 'debug';
+
 import { Event } from '../events';
 
 export type EventHandlerCallback = (event: Event) => Promise<void> | void;
+
+const log = debug('jest-metadata:event-queue');
 
 export class EventQueue {
   private readonly handlers: EventHandlerCallback[] = [];
   private _idle: Promise<unknown> = Promise.resolve();
   private _currentEvent?: Event = undefined;
+
+  constructor() {
+    this.registerHandler((event) => log(event));
+  }
 
   public get current(): Event | undefined {
     return this._currentEvent;

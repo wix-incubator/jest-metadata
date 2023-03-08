@@ -40,7 +40,7 @@ export class RootEventHandler {
   constructor(protected readonly config: RootEventHandlerConfig) {
     this.metadata = new AggregatedResultMetadata({
       eventQueue: config.eventQueue,
-      metadataRegistry: config.scopedMetadataRegistry,
+      metadataRegistry: config.aggregatedMetadataRegistry,
     });
   }
 
@@ -153,7 +153,10 @@ export class RootEventHandler {
 
   private _handleFinishDescribeDefinition(event: FinishDescribeDefinitionEvent) {
     const describeId = new AggregatedIdentifier(event.testFilePath, event.describeId);
-    this.config.scopedMetadataRegistry.get(describeId).as(DescribeBlockMetadata)[internal.finish]();
+    this.config.aggregatedMetadataRegistry
+      .get(describeId)
+      .as(DescribeBlockMetadata)
+      [internal.finish]();
   }
 
   private _handleRunStart(event: RunStartEvent) {
@@ -168,56 +171,60 @@ export class RootEventHandler {
 
   private _handleRunDescribeStart(event: RunDescribeStartEvent) {
     const describeId = new AggregatedIdentifier(event.testFilePath, event.describeId);
-    const describe = this.config.scopedMetadataRegistry.get(describeId).as(DescribeBlockMetadata);
+    const describe = this.config.aggregatedMetadataRegistry
+      .get(describeId)
+      .as(DescribeBlockMetadata);
 
     describe[internal.start]();
   }
 
   private _handleHookStart(event: HookStartEvent) {
     const hookId = new AggregatedIdentifier(event.testFilePath, event.hookId);
-    const hookDef = this.config.scopedMetadataRegistry.get(hookId).as(HookDefinitionMetadata);
+    const hookDef = this.config.aggregatedMetadataRegistry.get(hookId).as(HookDefinitionMetadata);
 
     hookDef[internal.start]();
   }
 
   private _handleHookSuccess(event: HookSuccessEvent) {
     const hookId = new AggregatedIdentifier(event.testFilePath, event.hookId);
-    const hookDef = this.config.scopedMetadataRegistry.get(hookId).as(HookDefinitionMetadata);
+    const hookDef = this.config.aggregatedMetadataRegistry.get(hookId).as(HookDefinitionMetadata);
 
     hookDef[internal.finish]();
   }
 
   private _handleHookFailure(event: HookFailureEvent) {
     const hookId = new AggregatedIdentifier(event.testFilePath, event.hookId);
-    const hookDef = this.config.scopedMetadataRegistry.get(hookId).as(HookDefinitionMetadata);
+    const hookDef = this.config.aggregatedMetadataRegistry.get(hookId).as(HookDefinitionMetadata);
 
     hookDef[internal.finish]();
   }
 
   private _handleRunDescribeFinish(event: RunDescribeFinishEvent) {
     const describeId = new AggregatedIdentifier(event.testFilePath, event.describeId);
-    const describe = this.config.scopedMetadataRegistry.get(describeId).as(DescribeBlockMetadata);
+    const describe = this.config.aggregatedMetadataRegistry
+      .get(describeId)
+      .as(DescribeBlockMetadata);
 
     describe[internal.finish]();
   }
 
   private _handleTestStart(event: TestStartEvent) {
     const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+    const test = this.config.aggregatedMetadataRegistry.get(testId).as(TestEntryMetadata);
 
     test[internal.start]();
   }
 
   private _handleTestRetry(event: TestRetryEvent) {
     const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+    const test = this.config.aggregatedMetadataRegistry.get(testId).as(TestEntryMetadata);
 
     test[internal.start]();
   }
 
   private _handleTestFnStart(event: TestFnStartEvent) {
     const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+    const test = this.config.aggregatedMetadataRegistry.get(testId).as(TestEntryMetadata);
     const lastInvocation = test.lastInvocation;
     if (!lastInvocation) {
       throw new Error('Cannot start test function without an invocation');
@@ -228,7 +235,7 @@ export class RootEventHandler {
 
   private _handleTestFnFailure(event: TestFnFailureEvent) {
     const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+    const test = this.config.aggregatedMetadataRegistry.get(testId).as(TestEntryMetadata);
     const lastInvocation = test.lastInvocation;
     if (!lastInvocation) {
       throw new Error('Cannot finish test function without an invocation');
@@ -239,7 +246,7 @@ export class RootEventHandler {
 
   private _handleTestFnSuccess(event: TestFnSuccessEvent) {
     const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+    const test = this.config.aggregatedMetadataRegistry.get(testId).as(TestEntryMetadata);
     const lastInvocation = test.lastInvocation;
     if (!lastInvocation) {
       throw new Error('Cannot finish test function without an invocation');
@@ -250,21 +257,21 @@ export class RootEventHandler {
 
   private _handleTestSkip(event: TestSkipEvent) {
     const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+    const test = this.config.aggregatedMetadataRegistry.get(testId).as(TestEntryMetadata);
 
     test[internal.finish]();
   }
 
   private _handleTestTodo(event: TestTodoEvent) {
     const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+    const test = this.config.aggregatedMetadataRegistry.get(testId).as(TestEntryMetadata);
 
     test[internal.finish]();
   }
 
   private _handleTestDone(event: TestDoneEvent) {
     const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-    const test = this.config.scopedMetadataRegistry.get(testId).as(TestEntryMetadata);
+    const test = this.config.aggregatedMetadataRegistry.get(testId).as(TestEntryMetadata);
 
     test[internal.finish]();
   }
@@ -275,7 +282,7 @@ export class RootEventHandler {
     }
 
     const targetId = new AggregatedIdentifier(event.testFilePath, event.targetId);
-    const metadata = this.config.scopedMetadataRegistry.get(targetId);
+    const metadata = this.config.aggregatedMetadataRegistry.get(targetId);
 
     if (event.deepMerge) {
       metadata.merge(event.value);
