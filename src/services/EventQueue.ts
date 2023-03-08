@@ -1,10 +1,10 @@
 import { Event } from '../events';
 
-export type EventHandler = (event: Event) => Promise<void> | void;
+export type EventHandlerCallback = (event: Event) => Promise<void> | void;
 
 export class EventQueue {
-  private readonly handlers: EventHandler[] = [];
-  private _idle: Promise<any> = Promise.resolve();
+  private readonly handlers: EventHandlerCallback[] = [];
+  private _idle: Promise<unknown> = Promise.resolve();
   private _currentEvent?: Event = undefined;
 
   public get current(): Event | undefined {
@@ -25,7 +25,7 @@ export class EventQueue {
     return this;
   }
 
-  public registerHandler(handler: EventHandler): this {
+  public registerHandler(handler: EventHandlerCallback): this {
     this.handlers.push(handler);
     return this;
   }
@@ -35,7 +35,7 @@ export class EventQueue {
     return this;
   }
 
-  public flush(): Promise<void> {
+  public flush(): Promise<unknown> {
     return this._idle;
   }
 

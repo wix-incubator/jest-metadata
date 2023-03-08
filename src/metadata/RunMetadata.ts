@@ -1,7 +1,7 @@
 import { DescribeBlockMetadata } from './DescribeBlockMetadata';
 import { Metadata } from './Metadata';
 import { MetadataSelector } from './MetadataSelector';
-import { ScopedIdentifier } from './ScopedIdentifier';
+import { AggregatedIdentifier } from './utils/AggregatedIdentifier';
 import { TestEntryMetadata } from './TestEntryMetadata';
 import * as symbols from './symbols';
 
@@ -16,13 +16,13 @@ export class RunMetadata extends Metadata {
     return this[symbols.rootDescribeBlock];
   }
 
-  [symbols.addDescribeBlock](id: ScopedIdentifier): DescribeBlockMetadata {
+  [symbols.addDescribeBlock](id: AggregatedIdentifier): DescribeBlockMetadata {
     if (this[symbols.rootDescribeBlock]) {
       throw new Error('Unexpected state: root describe block already exists');
     }
 
     this[symbols.currentMetadata] = this[symbols.rootDescribeBlock] = new DescribeBlockMetadata(
-      this.context,
+      this[symbols.context],
       this,
       id,
     );

@@ -4,14 +4,14 @@ We welcome issues and pull requests from the community. :purple_heart:
 
 ## Issues
 
-Open an issue on the [issue tracker](https://github.com/wix-incubator/jest-extend-report/issues).
+Open an issue on the [issue tracker](https://github.com/wix-incubator/jest-metadata/issues).
 
 Please include the following information:
 
 * Operating system
 * Node.js version
 * Jest version
-* `jest-extend-report` version
+* `jest-metadata` version
 * Reproduction repository
 * Steps to reproduce
 

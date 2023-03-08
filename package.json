@@ -1,5 +1,5 @@
 {
-  "name": "jest-extend-report",
+  "name": "jest-metadata",
   "version": "1.0.0",
   "description": "Extend Jest reports with custom metadata",
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wix-incubator/jest-extend-report.git"
+    "url": "git+https://github.com/wix-incubator/jest-metadata.git"
   },
   "keywords": [
     "jest"
@@ -36,9 +36,9 @@
   "author": "Yaroslav Serhieiev <yaroslavs@wix.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wix-incubator/jest-extend-report/issues"
+    "url": "https://github.com/wix-incubator/jest-metadata/issues"
   },
-  "homepage": "https://github.com/wix-incubator/jest-extend-report#readme",
+  "homepage": "https://github.com/wix-incubator/jest-metadata#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",

@@ -1,7 +1,7 @@
 import { HookDefinitionMetadata } from './HookDefinitionMetadata';
 import { Metadata } from './Metadata';
 import { MetadataContext } from './MetadataContext';
-import { ScopedIdentifier } from './ScopedIdentifier';
+import { AggregatedIdentifier } from './utils/AggregatedIdentifier';
 import { DescribeBlockMetadata } from './DescribeBlockMetadata';
 import { TestInvocationMetadata } from './TestInvocationMetadata';
 
@@ -14,7 +14,7 @@ export class HookInvocationMetadata<
     context: MetadataContext,
     public readonly definition: HookDefinitionMetadata,
     public readonly parent: ParentMetadata,
-    id: ScopedIdentifier,
+    id: AggregatedIdentifier,
   ) {
     super(context, id);
   }

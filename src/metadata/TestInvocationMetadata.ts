@@ -1,7 +1,7 @@
 import { HookInvocationMetadata } from './HookInvocationMetadata';
 import { Metadata } from './Metadata';
 import { MetadataContext } from './MetadataContext';
-import { ScopedIdentifier } from './ScopedIdentifier';
+import { AggregatedIdentifier } from './utils/AggregatedIdentifier';
 import { TestEntryMetadata } from './TestEntryMetadata';
 import { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
 import * as symbols from './symbols';
@@ -14,13 +14,14 @@ export class TestInvocationMetadata extends Metadata {
   constructor(
     context: MetadataContext,
     public readonly entry: TestEntryMetadata,
-    id: ScopedIdentifier,
+    id: AggregatedIdentifier,
   ) {
     super(context, id);
   }
 
   [symbols.start](): void {
-    const fn = new TestFnInvocationMetadata(this.context, this, this.id.nest('fn'));
+    const id = this[symbols.id].nest('fn');
+    const fn = new TestFnInvocationMetadata(this[symbols.context], this, id);
     const run = this.entry.describeBlock.run;
     run[symbols.currentMetadata] = this.fn = fn;
   }

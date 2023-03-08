@@ -1,13 +1,13 @@
 import { Metadata } from './Metadata';
 import { MetadataContext } from './MetadataContext';
-import { ScopedIdentifier } from './ScopedIdentifier';
+import { AggregatedIdentifier } from './utils/AggregatedIdentifier';
 import { TestInvocationMetadata } from './TestInvocationMetadata';
 
 export class TestFnInvocationMetadata extends Metadata {
   constructor(
     context: MetadataContext,
     public readonly test: TestInvocationMetadata,
-    id: ScopedIdentifier,
+    id: AggregatedIdentifier,
   ) {
     super(context, id);
   }

@@ -2,7 +2,7 @@ import { Metadata } from './Metadata';
 import { DescribeBlockMetadata } from './DescribeBlockMetadata';
 import { TestInvocationMetadata } from './TestInvocationMetadata';
 import { MetadataContext } from './MetadataContext';
-import { ScopedIdentifier } from './ScopedIdentifier';
+import { AggregatedIdentifier } from './utils/AggregatedIdentifier';
 import * as symbols from './symbols';
 
 export class TestEntryMetadata extends Metadata {
@@ -11,7 +11,7 @@ export class TestEntryMetadata extends Metadata {
   constructor(
     context: MetadataContext,
     public readonly describeBlock: DescribeBlockMetadata,
-    id: ScopedIdentifier,
+    id: AggregatedIdentifier,
   ) {
     super(context, id);
   }
@@ -29,11 +29,8 @@ export class TestEntryMetadata extends Metadata {
   }
 
   [symbols.start](): TestInvocationMetadata {
-    const invocation = new TestInvocationMetadata(
-      this.context,
-      this,
-      this.id.nest(`${this.invocations.length}`),
-    );
+    const id = this[symbols.id].nest(`${this.invocations.length}`);
+    const invocation = new TestInvocationMetadata(this[symbols.context], this, id);
 
     this.invocations.push(invocation);
     this.describeBlock.invocations.push(invocation);

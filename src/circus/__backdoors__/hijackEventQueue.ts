@@ -1,6 +1,6 @@
-import { EventHandler } from '../../services';
-import { eventQueue } from '../state';
+import { EventHandlerCallback } from '../../services';
+import { eventQueue } from '../../state';
 
-export function hijackEventQueue(handler: EventHandler) {
+export function hijackEventQueue(handler: EventHandlerCallback) {
   eventQueue.unregisterAllHandlers().registerHandler(handler);
 }

@@ -5,7 +5,7 @@ import { HookInvocationMetadata } from './HookInvocationMetadata';
 import { Metadata } from './Metadata';
 import { MetadataContext } from './MetadataContext';
 import { RunMetadata } from './RunMetadata';
-import { ScopedIdentifier } from './ScopedIdentifier';
+import { AggregatedIdentifier } from './utils/AggregatedIdentifier';
 import { TestEntryMetadata } from './TestEntryMetadata';
 import { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
 import { TestInvocationMetadata } from './TestInvocationMetadata';
@@ -27,7 +27,7 @@ export class DescribeBlockMetadata extends Metadata {
   constructor(
     context: MetadataContext,
     parent: RunMetadata | DescribeBlockMetadata,
-    id: ScopedIdentifier,
+    id: AggregatedIdentifier,
   ) {
     super(context, id);
 
@@ -40,24 +40,27 @@ export class DescribeBlockMetadata extends Metadata {
     }
   }
 
-  [symbols.addDescribeBlock](id: ScopedIdentifier): DescribeBlockMetadata {
-    const describeBlock = new DescribeBlockMetadata(this.context, this, id);
+  [symbols.addDescribeBlock](id: AggregatedIdentifier): DescribeBlockMetadata {
+    const describeBlock = new DescribeBlockMetadata(this[symbols.context], this, id);
     this.children.push(describeBlock);
     this.run[symbols.currentMetadata] = describeBlock;
 
     return describeBlock;
   }
 
-  [symbols.addTestEntry](id: ScopedIdentifier): TestEntryMetadata {
-    const testEntry = new TestEntryMetadata(this.context, this, id);
+  [symbols.addTestEntry](id: AggregatedIdentifier): TestEntryMetadata {
+    const testEntry = new TestEntryMetadata(this[symbols.context], this, id);
     this.children.push(testEntry);
     this.run[symbols.currentMetadata] = testEntry;
 
     return testEntry;
   }
 
-  [symbols.addHookDefinition](id: ScopedIdentifier, hookType: HookType): HookDefinitionMetadata {
-    const hookDefinition = new HookDefinitionMetadata(this.context, this, id, hookType);
+  [symbols.addHookDefinition](
+    id: AggregatedIdentifier,
+    hookType: HookType,
+  ): HookDefinitionMetadata {
+    const hookDefinition = new HookDefinitionMetadata(this[symbols.context], this, id, hookType);
     this.children.push(hookDefinition);
     this.run[symbols.currentMetadata] = hookDefinition;
 

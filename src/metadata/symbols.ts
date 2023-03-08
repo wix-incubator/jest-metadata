@@ -5,3 +5,6 @@ export const currentMetadata = Symbol('CURRENT_METADATA');
 export const finish = Symbol('FINISH');
 export const rootDescribeBlock = Symbol('ROOT_DESCRIBE_BLOCK');
 export const start = Symbol('START');
+export const id = Symbol('ID');
+export const context = Symbol('CONTEXT');
+export const data = Symbol('DATA');

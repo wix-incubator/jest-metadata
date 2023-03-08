@@ -3,8 +3,8 @@ const path = require('path');
 const { version: JEST_VERSION } = require('jest/package.json');
 
 const NodeJestEnvironment = require('jest-environment-node').default;
-const { startTestFile, handleTestEvent, flush } = require('jest-extend-report/dist/circus');
-const { hijackEventQueue } = require('jest-extend-report/dist/circus/__backdoors__/hijackEventQueue');
+const { startTestFile, handleTestEvent, flush } = require('jest-metadata/dist/circus');
+const { hijackEventQueue } = require('jest-metadata/dist/circus/__backdoors__/hijackEventQueue');
 
 class TestEnvironment extends NodeJestEnvironment {
   constructor(config, context) {

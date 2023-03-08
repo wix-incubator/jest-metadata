@@ -1,12 +1,12 @@
 import { HookType } from '../types';
 
-import * as symbols from './symbols';
 import { DescribeBlockMetadata } from './DescribeBlockMetadata';
 import { HookInvocationMetadata } from './HookInvocationMetadata';
 import { Metadata } from './Metadata';
 import { MetadataContext } from './MetadataContext';
-import { ScopedIdentifier } from './ScopedIdentifier';
+import { AggregatedIdentifier } from './utils/AggregatedIdentifier';
 import { TestInvocationMetadata } from './TestInvocationMetadata';
+import * as symbols from './symbols';
 
 export class HookDefinitionMetadata extends Metadata {
   invocations: HookInvocationMetadata[] = [];
@@ -14,7 +14,7 @@ export class HookDefinitionMetadata extends Metadata {
   constructor(
     context: MetadataContext,
     public readonly owner: DescribeBlockMetadata,
-    id: ScopedIdentifier,
+    id: AggregatedIdentifier,
     public readonly hookType: HookType,
   ) {
     super(context, id);
@@ -36,12 +36,8 @@ export class HookDefinitionMetadata extends Metadata {
       throw new Error('Cannot start hook invocation outside of test or describe block');
     }
 
-    const invocation = new HookInvocationMetadata(
-      this.context,
-      this,
-      parent,
-      this.id.nest(`${this.invocations.length}`),
-    );
+    const id = this[symbols.id].nest(`${this.invocations.length}`);
+    const invocation = new HookInvocationMetadata(this[symbols.context], this, parent, id);
 
     this.invocations.push(invocation);
     run[symbols.currentMetadata] = invocation;

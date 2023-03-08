@@ -1,23 +1,23 @@
 import { Metadata } from './Metadata';
 import { MetadataContext } from './MetadataContext';
 import { RunMetadata } from './RunMetadata';
-import { ScopedIdentifier } from './ScopedIdentifier';
+import { AggregatedIdentifier } from './utils/AggregatedIdentifier';
+import * as symbols from './symbols';
 
 export class AggregatedResultMetadata extends Metadata {
   public readonly testResults: RunMetadata[] = [];
-  private _lastTestResult: RunMetadata | undefined;
 
   constructor(context: MetadataContext) {
-    super(context, ScopedIdentifier.global('aggregatedResult'));
+    super(context, AggregatedIdentifier.global('aggregatedResult'));
   }
 
   public get lastTestResult(): RunMetadata | undefined {
-    return this._lastTestResult;
+    return this.testResults[this.testResults.length - 1];
   }
 
   public getRunMetadata(testFilePath: string): RunMetadata {
-    const runId = new ScopedIdentifier(testFilePath, '');
-    const metadata = this.context.metadataRegistry.get(runId);
+    const runId = new AggregatedIdentifier(testFilePath, '');
+    const metadata = this[symbols.context].metadataRegistry.get(runId);
     if (metadata && !(metadata instanceof RunMetadata)) {
       throw new TypeError(`Wrong metadata type found for: ${runId.toString()}`);
     }
@@ -26,10 +26,9 @@ export class AggregatedResultMetadata extends Metadata {
   }
 
   public registerTestFile(testFilePath: string): RunMetadata {
-    const runId = new ScopedIdentifier(testFilePath, '');
-    const runMetadata = new RunMetadata(this.context, runId);
+    const runId = new AggregatedIdentifier(testFilePath, '');
+    const runMetadata = new RunMetadata(this[symbols.context], runId);
 
-    this._lastTestResult = runMetadata;
     this.testResults.push(runMetadata);
 
     return runMetadata;

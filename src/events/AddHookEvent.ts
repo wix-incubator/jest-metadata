@@ -1,6 +1,8 @@
+import { HookType } from '../types';
+
 export type AddHookEvent = {
   type: 'add_hook';
   testFilePath: string;
-  hookType: 'beforeAll' | 'beforeEach' | 'afterEach' | 'afterAll';
+  hookType: HookType;
   hookId: string;
 };
