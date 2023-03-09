@@ -1,27 +1,35 @@
 const fs = require('fs').promises;
 const path = require('path');
-const { version: JEST_VERSION } = require('jest/package.json');
 
 const NodeJestEnvironment = require('jest-environment-node').default;
 const { startTestFile, handleTestEvent, flush } = require('jest-metadata/dist/circus');
-const { hijackEventQueue } = require('jest-metadata/dist/circus/__backdoors__/hijackEventQueue');
+const { hijackEventQueue } = require('jest-metadata/dist/__backdoors__/hijackEventQueue');
 
 class TestEnvironment extends NodeJestEnvironment {
   constructor(config, context) {
     super(config, context);
     this._eventsPath = path.join(
       __dirname,
-      'events',
-      `${path.basename(context.testPath, '.test.js')}@${JEST_VERSION}.json`
+      '../fixtures',
+      path.basename(context.testPath, '.js') + '.json',
     );
 
     this._events = [];
-    hijackEventQueue((event) => this._events.push(event));
+    hijackEventQueue((event) => {
+      if (event.testFilePath) {
+        event.testFilePath = path.relative(__dirname, event.testFilePath);
+      }
+
+      this._events.push(event);
+    });
 
     startTestFile(context.testPath);
   }
 
-  handleTestEvent = handleTestEvent;
+  handleTestEvent = (event, state) => {
+    // A good place for a breakpoint
+    handleTestEvent(event, state);
+  };
 
   async teardown() {
     await flush();

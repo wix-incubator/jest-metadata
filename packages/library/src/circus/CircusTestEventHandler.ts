@@ -56,7 +56,7 @@ export class CircusTestEventHandler {
         return this.run_describe_finish(event);
       }
       case 'run_start': {
-        return this.run_start(event);
+        return this.run_start(event, state);
       }
       case 'run_finish': {
         return this.run_finish(event);
@@ -131,10 +131,13 @@ export class CircusTestEventHandler {
     _event: Circus.Event & { name: 'finish_describe_definition' },
     state: Circus.State,
   ) {
+    const block = state.currentDescribeBlock;
+    const lastChild = block.children[block.children.length - 1]!;
+
     this.emit({
       type: 'finish_describe_definition',
       testFilePath: this.testFilePath,
-      describeId: this.instanceCache.getDescribeId(state.currentDescribeBlock),
+      describeId: this.instanceCache.getDescribeId(lastChild),
     });
   }
 
@@ -242,7 +245,13 @@ export class CircusTestEventHandler {
     });
   }
 
-  run_start(_event: Circus.Event & { name: 'run_start' }) {
+  run_start(_event: Circus.Event & { name: 'run_start' }, state: Circus.State) {
+    this.emit({
+      type: 'finish_describe_definition',
+      testFilePath: this.testFilePath,
+      describeId: this.instanceCache.getDescribeId(state.rootDescribeBlock),
+    });
+
     this.emit({
       type: 'run_start',
       testFilePath: this.testFilePath,

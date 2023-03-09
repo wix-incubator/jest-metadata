@@ -1,0 +1,353 @@
+[
+  {
+    "type": "test_environment_created",
+    "testFilePath": "__tests__/duplicate-name.js"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.0"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.0",
+    "hookType": "beforeEach"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.1"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.1",
+    "hookType": "beforeAll"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.2"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.2",
+    "hookType": "beforeAll"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.0"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.1"
+  },
+  {
+    "type": "finish_describe_definition",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.2"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.2"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.3"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.3"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.3",
+    "hookType": "beforeAll"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.4"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.5"
+  },
+  {
+    "type": "finish_describe_definition",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.3"
+  },
+  {
+    "type": "finish_describe_definition",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.1"
+  },
+  {
+    "type": "finish_describe_definition",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.0"
+  },
+  {
+    "type": "run_start",
+    "testFilePath": "__tests__/duplicate-name.js"
+  },
+  {
+    "type": "run_describe_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.0"
+  },
+  {
+    "type": "run_describe_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.1"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.1"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.1"
+  },
+  {
+    "type": "run_describe_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.2"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.2"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.2"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.0"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.0"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.0"
+  },
+  {
+    "type": "test_fn_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.0"
+  },
+  {
+    "type": "test_fn_failure",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.0"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.0"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.1"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.0"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.0"
+  },
+  {
+    "type": "test_fn_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.1"
+  },
+  {
+    "type": "test_fn_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.1"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.1"
+  },
+  {
+    "type": "test_retry",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.0"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.0"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.0"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.0"
+  },
+  {
+    "type": "test_fn_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.0"
+  },
+  {
+    "type": "test_fn_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.0"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.0"
+  },
+  {
+    "type": "run_describe_finish",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.2"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.2"
+  },
+  {
+    "type": "test_skip",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.2"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.3"
+  },
+  {
+    "type": "test_todo",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.3"
+  },
+  {
+    "type": "run_describe_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.3"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.3"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.3"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.4"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.0"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.0"
+  },
+  {
+    "type": "test_fn_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.4"
+  },
+  {
+    "type": "test_fn_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.4"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.4"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.5"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.0"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook.0"
+  },
+  {
+    "type": "test_fn_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.5"
+  },
+  {
+    "type": "test_fn_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.5"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test.5"
+  },
+  {
+    "type": "run_describe_finish",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.3"
+  },
+  {
+    "type": "run_describe_finish",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.1"
+  },
+  {
+    "type": "run_describe_finish",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "describeId": "describe.0"
+  },
+  {
+    "type": "run_finish",
+    "testFilePath": "__tests__/duplicate-name.js"
+  }
+]
