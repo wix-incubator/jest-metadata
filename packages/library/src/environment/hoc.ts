@@ -4,7 +4,7 @@ import globals from '../realms';
 
 type Constructor<T> = new (...args: any[]) => T;
 
-export function CircusEnvironmentHOC<E extends Constructor<JestEnvironment>>(
+export default function CircusEnvironmentHOC<E extends Constructor<JestEnvironment>>(
   JestEnvironmentClass: E,
 ): E {
   return class MetadataCircusEnvironment extends JestEnvironmentClass {
