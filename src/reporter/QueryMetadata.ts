@@ -6,7 +6,7 @@ import { AggregatedResultMetadata, RunMetadata, TestEntryMetadata } from '../met
 export interface QueryMetadata {
   filePath(value: string): RunMetadata | undefined;
   test(item: Test): RunMetadata | undefined;
-  testCaseResult(item: TestCaseResult): TestEntryMetadata | undefined;
+  testCaseResult(test: Test, testCaseResult: TestCaseResult): TestEntryMetadata | undefined;
   testResult(item: TestResult): RunMetadata | undefined;
   aggregatedResult(): AggregatedResultMetadata | undefined;
 }

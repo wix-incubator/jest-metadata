@@ -50,7 +50,7 @@ export class IPCClient {
     return this._serverConnection;
   }
 
-  async connect() {
+  async start() {
     const serverId = this._serverId;
 
     const connection = await new Promise<IPCConnection>((resolve, reject) => {
@@ -75,7 +75,7 @@ export class IPCClient {
     ));
   }
 
-  async disconnect() {
+  async stop() {
     await new Promise((resolve, reject) => {
       this._ipc.of[this._serverId]
         // @ts-expect-error TS2339: Property 'once' does not exist on type 'Client'.
