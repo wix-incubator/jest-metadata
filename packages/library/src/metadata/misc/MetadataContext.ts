@@ -1,5 +1,5 @@
 import type { AggregatedMetadataRegistry } from './AggregatedMetadataRegistry';
-import type { MetadataEventEmitter } from '../events/MetadataEventEmitter';
+import type { MetadataEventEmitter } from './MetadataEventEmitter';
 
 export type MetadataContext = {
   emitter: MetadataEventEmitter;

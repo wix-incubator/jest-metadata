@@ -2,8 +2,6 @@ import { JestMetadataError } from '../errors';
 
 import {
   MetadataEvent,
-  MetadataEventEmitter,
-  MetadataEventEmitterCallback,
   TestEnvironmentCreatedEvent,
   AddHookEvent,
   AddTestEvent,
@@ -36,7 +34,12 @@ import {
   TestEntryMetadata,
 } from './containers';
 
-import { AggregatedMetadataRegistry, AggregatedIdentifier } from './misc';
+import {
+  AggregatedMetadataRegistry,
+  AggregatedIdentifier,
+  MetadataEventEmitter,
+  MetadataEventEmitterCallback,
+} from './misc';
 
 import * as internal from './symbols';
 
@@ -267,7 +270,7 @@ export class MetadataEventHandler {
     });
   }
 
-  handle: MetadataEventEmitterCallback = (event: MetadataEvent): void => {
+  handle = (event: MetadataEvent): void => {
     const handler = this._handlers[event.type] as MetadataEventEmitterCallback;
     handler(event);
   };

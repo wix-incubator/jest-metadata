@@ -23,6 +23,3 @@ export { TestRetryEvent } from './TestRetryEvent';
 export { TestSkipEvent } from './TestSkipEvent';
 export { TestStartEvent } from './TestStartEvent';
 export { TestTodoEvent } from './TestTodoEvent';
-
-// Interfaces:
-export { MetadataEventEmitter, MetadataEventEmitterCallback } from './MetadataEventEmitter';

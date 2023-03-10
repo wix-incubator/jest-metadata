@@ -1,12 +1,25 @@
 import funpermaproxy from 'funpermaproxy';
-import { Metadata, NamespacedMetadata } from './metadata';
+import { Metadata, MetadataDSL, MetadataEventEmitter, NamespacedMetadata } from './metadata';
 
-function current(): Metadata {
+function getCurrentMetadata(): Metadata {
   throw new Error('not implemented');
 }
 
-export function namespaced(name?: string) {
-  return name ? new NamespacedMetadata(name, current) : metadata;
+function getEmitter(): MetadataEventEmitter {
+  throw new Error('not implemented');
 }
 
-export const metadata: Metadata = funpermaproxy(current);
+const currentMetadata = funpermaproxy(getCurrentMetadata);
+
+export function namespaced(name?: string) {
+  return new MetadataDSL(
+    getEmitter(),
+    name ? new NamespacedMetadata(name, getCurrentMetadata) : currentMetadata,
+  );
+}
+
+const currentMetadataDSL = namespaced();
+export const $Get = currentMetadataDSL.$Get;
+export const $Set = currentMetadataDSL.$Set;
+export const $Assign = currentMetadataDSL.$Assign;
+export const $Merge = currentMetadataDSL.$Merge;

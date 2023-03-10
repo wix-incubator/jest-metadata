@@ -15,10 +15,17 @@ export type JestMetadataServerReporterConfig = {
 };
 
 export class JestMetadataServer implements Reporter {
+  // private readonly _ipcServer: IPCServer;
+
   constructor(
     _globalConfig: Config.GlobalConfig,
     _reporterConfig: JestMetadataServerReporterConfig,
   ) {
+    // const seed = globalConfig.seed ?? +Math.random().toString().slice(2);
+    // this._ipcServer = new IPCServer({
+    //   serverId: 'jest-metadata-' + seed,
+    //   emitter: {} as any,
+    // });
     // TODO: maybe start IPC server here
   }
 

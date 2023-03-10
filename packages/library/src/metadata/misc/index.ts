@@ -1,4 +1,6 @@
-export { AggregatedIdentifier } from './AggregatedIdentifier';
-export { AggregatedMetadataRegistry } from './AggregatedMetadataRegistry';
-export { MetadataContext } from './MetadataContext';
-export { NamespacedMetadata } from './NamespacedMetadata';
+export * from './AggregatedIdentifier';
+export * from './AggregatedMetadataRegistry';
+export * from './MetadataContext';
+export * from './MetadataDSL';
+export * from './MetadataEventEmitter';
+export * from './NamespacedMetadata';
