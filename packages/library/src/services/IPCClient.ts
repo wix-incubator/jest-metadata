@@ -2,9 +2,9 @@ import debug from 'debug';
 import node_ipc from 'node-ipc';
 
 import { JestMetadataError } from '../errors';
-import { Event } from '../events';
-import { Emitter } from '../types';
+import type { MetadataEvent, MetadataEventEmitter } from '../metadata';
 import { sendAsyncMessage } from './utils/sendAsyncMessage';
+import { MessageQueue } from '../utils';
 
 const log = debug('jest-metadata:ipc:client');
 
@@ -14,16 +14,22 @@ type IPCConnection = (typeof node_ipc)['of'][string];
 export type IPCClientConfig = {
   clientId: string;
   serverId: string;
-  emitter: Emitter;
+  emitter: MetadataEventEmitter;
 };
 
 export class IPCClient {
   private readonly _ipc: IPC;
   private readonly _id: string;
   private readonly _serverId: string;
-  private readonly _emitter: Emitter;
+  private readonly _emitter: MetadataEventEmitter;
 
-  private _serverConnection?: IPCConnection;
+  private readonly _messageQueue = new MessageQueue<MetadataEvent>(
+    // eslint-disable-next-line unicorn/consistent-function-scoping
+    async (msg) => this._doSend(msg, 'clientMessage'),
+  );
+
+  private _doSend: (msg: any, type: 'clientMessage' | 'serverMessageDone') => Promise<unknown> =
+    this._throwNotConnected;
 
   constructor(config: IPCClientConfig) {
     this._ipc = new node_ipc.IPC();
@@ -40,16 +46,6 @@ export class IPCClient {
     });
   }
 
-  private get connection() {
-    if (!this._serverConnection) {
-      throw new JestMetadataError(
-        `IPC client (${this._id}) is not connected to server (${this._serverId}).`,
-      );
-    }
-
-    return this._serverConnection;
-  }
-
   async start() {
     const serverId = this._serverId;
 
@@ -59,7 +55,6 @@ export class IPCClient {
           // @ts-expect-error TS2339: Property 'once' does not exist on type 'Client'.
           .once('error', reject)
           .once('disconnect', () => {
-            this._serverConnection = undefined;
             reject(new JestMetadataError('IPC server has unexpectedly disconnected.'));
           })
           .once('connect', () => resolve(client.of[serverId]));
@@ -69,10 +64,8 @@ export class IPCClient {
       this._ipc.connectTo(serverId, onConnect);
     });
 
-    await (this._serverConnection = connection.on(
-      'serverMessage',
-      this._onServerMessage.bind(this),
-    ));
+    connection.on('serverMessage', this._onServerMessage.bind(this));
+    this._doSend = async (event, messageType) => sendAsyncMessage(connection, messageType, event);
   }
 
   async stop() {
@@ -85,15 +78,20 @@ export class IPCClient {
       this._ipc.disconnect(this._serverId);
     });
 
-    this._serverConnection = undefined;
+    this._doSend = this._throwNotConnected;
   }
 
-  async send(event: Event) {
-    await sendAsyncMessage(this.connection, 'clientMessage', event);
+  async send(event: MetadataEvent) {
+    this._messageQueue.enqueue(event);
+    return this._messageQueue.flush();
   }
 
-  async _onServerMessage(event: Event) {
-    await this._emitter.emit(event);
-    this.connection.emit('serverMessageDone', event);
+  async _onServerMessage(event: MetadataEvent) {
+    this._emitter.emit(event);
+    await this._doSend({}, 'serverMessageDone');
+  }
+
+  async _throwNotConnected() {
+    throw new JestMetadataError('IPC client is not connected to server.');
   }
 }

@@ -1,11 +1,11 @@
-import { Metadata } from './Metadata';
-import { DescribeBlockMetadata } from './DescribeBlockMetadata';
-import { HookDefinitionMetadata } from './HookDefinitionMetadata';
-import { TestEntryMetadata } from './TestEntryMetadata';
-import { HookInvocationMetadata } from './HookInvocationMetadata';
-import { TestInvocationMetadata } from './TestInvocationMetadata';
-import { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
-import { RunMetadata } from './RunMetadata';
+import { Metadata } from './containers/Metadata';
+import { DescribeBlockMetadata } from './containers/DescribeBlockMetadata';
+import { HookDefinitionMetadata } from './containers/HookDefinitionMetadata';
+import { TestEntryMetadata } from './containers/TestEntryMetadata';
+import { HookInvocationMetadata } from './containers/HookInvocationMetadata';
+import { TestInvocationMetadata } from './containers/TestInvocationMetadata';
+import { TestFnInvocationMetadata } from './containers/TestFnInvocationMetadata';
+import { RunMetadata } from './containers/RunMetadata';
 
 export class MetadataSelector {
   constructor(readonly value: () => Metadata | undefined) {}

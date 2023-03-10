@@ -2,8 +2,8 @@
   "name": "jest-metadata",
   "version": "1.0.0",
   "description": "Extend Jest with custom metadata",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/annotations.js",
+  "types": "dist/annotations.d.ts",
   "files": [
     "src",
     "dist",
@@ -12,6 +12,39 @@
     "!**/__tests__",
     "!**/*.test.*"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/annotations.js",
+      "require": "./dist/annotations.js",
+      "types": "./dist/annotations.d.ts"
+    },
+    "./environment-decorator": {
+      "import": "./dist/environment-decorator.js",
+      "require": "./dist/environment-decorator.js",
+      "types": "./dist/environment-decorator.d.ts"
+    },
+    "./environment-hooks": {
+      "import": "./dist/environment-hooks.js",
+      "require": "./dist/environment-hooks.js",
+      "types": "./dist/environment-hooks.d.ts"
+    },
+    "./environment-jsdom": {
+      "import": "./dist/environment-jsdom.js",
+      "require": "./dist/environment-jsdom.js",
+      "types": "./dist/environment-jsdom.d.ts"
+    },
+    "./environment-node": {
+      "import": "./dist/environment-node.js",
+      "require": "./dist/environment-node.js",
+      "types": "./dist/environment-node.d.ts"
+    },
+    "./server": {
+      "import": "./dist/server.js",
+      "require": "./dist/server.js",
+      "types": "./dist/server.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
   "engines": {
     "node": ">=14.0.0"
   },
@@ -80,6 +113,7 @@
     "jest": ">=27.2.5"
   },
   "dependencies": {
+    "funpermaproxy": "^1.1.0",
     "debug": "^4.3.4",
     "import-cwd": "^3.0.0",
     "lodash.get": "^4.4.2",

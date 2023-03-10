@@ -1,18 +1,7 @@
-// Base class:
-export { Metadata } from './Metadata';
-
-// Utils:
+export * from './containers';
+export * from './events';
+export * from './misc';
 export * as internal from './symbols';
-export { AggregatedIdentifier } from './utils/AggregatedIdentifier';
 
-// Definition metadata:
-export { AggregatedResultMetadata } from './AggregatedResultMetadata';
-export { RunMetadata } from './RunMetadata';
-export { DescribeBlockMetadata } from './DescribeBlockMetadata';
-export { HookDefinitionMetadata } from './HookDefinitionMetadata';
-export { TestEntryMetadata } from './TestEntryMetadata';
-
-// Invocation metadata:
-export { HookInvocationMetadata } from './HookInvocationMetadata';
-export { TestInvocationMetadata } from './TestInvocationMetadata';
-export { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
+export { MetadataEventHandler } from './MetadataEventHandler';
+export { MetadataSelector } from './MetadataSelector';

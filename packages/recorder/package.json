@@ -14,8 +14,9 @@
   },
   "jest": {
     "testRunner": "jest-circus/runner",
-    "testEnvironment": "./testEnvironment.js",
+    "testEnvironment": "jest-metadata/environment-node",
     "reporters": [
+      "jest-metadata/server",
       "default"
     ]
   }

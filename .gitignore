@@ -111,3 +111,5 @@ dist
 /website
 
 /__fixtures__/events/
+package-lock.json
+yarn.lock

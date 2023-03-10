@@ -1,3 +1,5 @@
+// TODO: think how to use it
+
 export function isServer(): boolean {
   return !getServerId();
 }
