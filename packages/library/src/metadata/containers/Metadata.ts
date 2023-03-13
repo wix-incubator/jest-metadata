@@ -2,7 +2,7 @@ import lodashGet from 'lodash.get';
 import lodashSet from 'lodash.set';
 import lodashMerge from 'lodash.merge';
 
-import { AggregatedIdentifier, MetadataContext } from '../misc';
+import type { AggregatedIdentifier, MetadataContext } from '../misc';
 import * as symbols from '../symbols';
 
 export type Data = Record<string, unknown>;
@@ -15,18 +15,6 @@ export class Metadata {
   constructor(context: MetadataContext, id: AggregatedIdentifier) {
     this[symbols.context] = context;
     this[symbols.id] = id;
-    context.aggregatedMetadataRegistry.register(id, this);
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [symbols.as]<T extends Metadata>(constructor: new (...args: any[]) => T): T {
-    if (!(this instanceof constructor)) {
-      throw new TypeError(
-        `Metadata (${this[symbols.id]}) is not an instance of ${constructor.name}`,
-      );
-    }
-
-    return this as T;
   }
 
   get(): Data;

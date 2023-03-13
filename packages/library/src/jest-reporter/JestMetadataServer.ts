@@ -10,58 +10,66 @@ import type {
   // eslint-disable-next-line node/no-unpublished-import
 } from '@jest/reporters';
 
+import realm from '../realms/parent';
+import { JestMetadataError } from '../errors';
+
 export type JestMetadataServerReporterConfig = {
-  // TODO: think about what config options we need
+  // empty for now
 };
 
 export class JestMetadataServer implements Reporter {
-  // private readonly _ipcServer: IPCServer;
-
   constructor(
     _globalConfig: Config.GlobalConfig,
     _reporterConfig: JestMetadataServerReporterConfig,
   ) {
-    // const seed = globalConfig.seed ?? +Math.random().toString().slice(2);
-    // this._ipcServer = new IPCServer({
-    //   serverId: 'jest-metadata-' + seed,
-    //   emitter: {} as any,
-    // });
-    // TODO: maybe start IPC server here
-  }
-
-  static onRequire(): void {
-    // TODO: think what should happen on this module require
-    // TODO: inject environment variables
-    // TODO: inject into itself an instance of AssociateMetadata helper
-    return undefined;
+    // no-op for now
   }
 
   getLastError(): Error | void {
     return undefined;
   }
 
-  onRunStart(_results: AggregatedResult, _options: ReporterOnStartOptions): Promise<void> | void {
-    // TODO: await until IPC server starts
+  async onRunStart(_results: AggregatedResult, _options: ReporterOnStartOptions) {
+    const { aggregatedResult } = realm.metadataRegistry;
+    realm.associate.aggregatedResult(aggregatedResult);
+
+    await realm.ipcServer.start();
   }
 
-  onTestFileStart(_test: Test): Promise<void> | void {
-    // TODO: associate test with metadata
-    // TODO: associate path.normalize(test.path) with metadata
+  onTestFileStart(test: Test): Promise<void> | void {
+    realm.rootEmitter.emit({
+      type: 'test_environment_created',
+      testFilePath: test.path,
+    });
+
+    const { lastTestResult } = realm.metadataRegistry.aggregatedResult;
+    if (!lastTestResult) {
+      throw new JestMetadataError('Internal error: lastTestResult is not defined');
+    }
+
+    realm.associate.filePath(test.path, lastTestResult);
+    realm.associate.test(test, lastTestResult);
   }
 
-  onTestCaseResult(_test: Test, _testCaseResult: TestCaseResult): Promise<void> | void {
-    // TODO: associate testCaseResult with metadata
+  onTestCaseResult(test: Test, testCaseResult: TestCaseResult): Promise<void> | void {
+    const { lastTestEntry } = realm.query.test(test);
+    if (!lastTestEntry) {
+      throw new JestMetadataError('Internal error: lastTestEntry is not defined');
+    }
+
+    realm.associate.testCaseResult(testCaseResult, lastTestEntry);
   }
 
   onTestFileResult(
-    _test: Test,
-    _testResult: TestResult,
+    test: Test,
+    testResult: TestResult,
     _aggregatedResult: AggregatedResult,
   ): Promise<void> | void {
-    // TODO: associate testResult with metadata
+    const runMetadata = realm.query.test(test);
+    realm.associate.testResult(testResult, runMetadata);
   }
 
-  onRunComplete(_testContexts: Set<TestContext>, _results: AggregatedResult): Promise<void> | void {
-    // TODO: await until IPC server stops
+  async onRunComplete(_testContexts: Set<TestContext>, _results: AggregatedResult): Promise<void> {
+    await realm.ipcServer.stop();
   }
 }

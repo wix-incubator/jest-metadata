@@ -1,20 +1,26 @@
-import { AggregatedIdentifier } from '../misc';
+import type { AggregatedIdentifier } from '../misc';
 import * as symbols from '../symbols';
 
-import { DescribeBlockMetadata } from './DescribeBlockMetadata';
 import { Metadata } from './Metadata';
-import { MetadataSelector } from '../MetadataSelector';
-import { TestEntryMetadata } from './TestEntryMetadata';
+import type { DescribeBlockMetadata } from './DescribeBlockMetadata';
+import type { TestEntryMetadata } from './TestEntryMetadata';
 
 export class RunMetadata extends Metadata {
   [symbols.rootDescribeBlock]: DescribeBlockMetadata | undefined;
-  [symbols.currentMetadata]: Metadata | undefined;
+  [symbols.lastTestEntry]: TestEntryMetadata | undefined;
+  [symbols.currentMetadata]: Metadata = this;
 
   // eslint-disable-next-line unicorn/consistent-function-scoping
-  readonly current = new MetadataSelector(() => this[symbols.currentMetadata]);
+  readonly current = this[symbols.context].createMetadataSelector(
+    () => this[symbols.currentMetadata],
+  );
 
   get rootDescribeBlock(): DescribeBlockMetadata | undefined {
     return this[symbols.rootDescribeBlock];
+  }
+
+  get lastTestEntry(): TestEntryMetadata | undefined {
+    return this[symbols.lastTestEntry];
   }
 
   [symbols.addDescribeBlock](id: AggregatedIdentifier): DescribeBlockMetadata {
@@ -22,11 +28,9 @@ export class RunMetadata extends Metadata {
       throw new Error('Unexpected state: root describe block already exists');
     }
 
-    this[symbols.currentMetadata] = this[symbols.rootDescribeBlock] = new DescribeBlockMetadata(
-      this[symbols.context],
-      this,
-      id,
-    );
+    this[symbols.currentMetadata] = this[symbols.rootDescribeBlock] = this[
+      symbols.context
+    ].factory.createDescribeBlockMetadata(this, id);
 
     return this[symbols.rootDescribeBlock];
   }

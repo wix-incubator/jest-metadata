@@ -1,6 +1,10 @@
 export * from './AggregatedIdentifier';
 export * from './AggregatedMetadataRegistry';
+export * from './MetadataChecker';
 export * from './MetadataContext';
 export * from './MetadataDSL';
 export * from './MetadataEventEmitter';
+export * from './MetadataFactory';
+export * from './MetadataSelector';
 export * from './NamespacedMetadata';
+export { SetMetadataEventEmitter } from './SetMetadataEventEmitter';

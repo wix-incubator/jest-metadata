@@ -26,11 +26,15 @@ export class IPCServer {
   constructor(config: IPCServerConfig) {
     this._ipc = new node_ipc.IPC();
     this._ipc.config.id = config.serverId;
-    this._ipc.config.appspace = 'detox.';
+    this._ipc.config.appspace = 'jest-metadata.';
     this._ipc.config.logger = (msg) => log(msg);
 
     this._connections = {};
     this._emitter = config.emitter;
+  }
+
+  get id(): string {
+    return this._ipc.config.id;
   }
 
   async start() {

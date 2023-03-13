@@ -1,11 +1,11 @@
-import { HookType } from '../../types';
-import { AggregatedIdentifier, MetadataContext } from '../misc';
+import type { HookType } from '../../types';
+import type { AggregatedIdentifier, MetadataContext } from '../misc';
 import * as symbols from '../symbols';
 
-import { DescribeBlockMetadata } from './DescribeBlockMetadata';
-import { HookInvocationMetadata } from './HookInvocationMetadata';
 import { Metadata } from './Metadata';
-import { TestInvocationMetadata } from './TestInvocationMetadata';
+import type { DescribeBlockMetadata } from './DescribeBlockMetadata';
+import type { HookInvocationMetadata } from './HookInvocationMetadata';
+import type { TestInvocationMetadata } from './TestInvocationMetadata';
 
 export class HookDefinitionMetadata extends Metadata {
   invocations: HookInvocationMetadata[] = [];
@@ -36,29 +36,30 @@ export class HookDefinitionMetadata extends Metadata {
     }
 
     const id = this[symbols.id].nest(`${this.invocations.length}`);
-    const invocation = new HookInvocationMetadata(this[symbols.context], this, parent, id);
+    const invocation = this[symbols.context].factory.createHookInvocationMetadata(this, parent, id);
 
     this.invocations.push(invocation);
     run[symbols.currentMetadata] = invocation;
 
+    const checker = this[symbols.context].checker;
     switch (this.hookType) {
       case 'beforeEach': {
-        parent[symbols.as](TestInvocationMetadata).before.push(
-          invocation as HookInvocationMetadata<TestInvocationMetadata>,
-        );
+        checker
+          .asTestInvocationMetadata(parent)
+          .before.push(invocation as HookInvocationMetadata<TestInvocationMetadata>);
         break;
       }
       case 'afterEach': {
-        parent[symbols.as](TestInvocationMetadata).after.push(
-          invocation as HookInvocationMetadata<TestInvocationMetadata>,
-        );
+        checker
+          .asTestInvocationMetadata(parent)
+          .after.push(invocation as HookInvocationMetadata<TestInvocationMetadata>);
         break;
       }
       case 'beforeAll':
       case 'afterAll': {
-        parent[symbols.as](DescribeBlockMetadata).invocations.push(
-          invocation as HookInvocationMetadata<DescribeBlockMetadata>,
-        );
+        checker
+          .asDescribeBlockMetadata(parent)
+          .invocations.push(invocation as HookInvocationMetadata<DescribeBlockMetadata>);
         break;
       }
     }

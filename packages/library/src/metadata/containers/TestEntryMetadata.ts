@@ -1,9 +1,9 @@
-import { AggregatedIdentifier, MetadataContext } from '../misc';
+import type { AggregatedIdentifier, MetadataContext } from '../misc';
 import * as symbols from '../symbols';
 
-import { DescribeBlockMetadata } from './DescribeBlockMetadata';
 import { Metadata } from './Metadata';
-import { TestInvocationMetadata } from './TestInvocationMetadata';
+import type { DescribeBlockMetadata } from './DescribeBlockMetadata';
+import type { TestInvocationMetadata } from './TestInvocationMetadata';
 
 export class TestEntryMetadata extends Metadata {
   readonly invocations: TestInvocationMetadata[] = [];
@@ -30,13 +30,14 @@ export class TestEntryMetadata extends Metadata {
 
   [symbols.start](): TestInvocationMetadata {
     const id = this[symbols.id].nest(`${this.invocations.length}`);
-    const invocation = new TestInvocationMetadata(this[symbols.context], this, id);
+    const invocation = this[symbols.context].factory.createTestInvocationMetadata(this, id);
 
     this.invocations.push(invocation);
     this.describeBlock.invocations.push(invocation);
 
     const run = this.describeBlock.run;
     run[symbols.currentMetadata] = invocation;
+    run[symbols.lastTestEntry] = this;
 
     return invocation;
   }

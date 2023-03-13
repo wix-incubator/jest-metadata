@@ -1,4 +1,4 @@
-import { HookType } from '../../types';
+import type { HookType } from '../../types';
 
 export type AddHookEvent = {
   type: 'add_hook';

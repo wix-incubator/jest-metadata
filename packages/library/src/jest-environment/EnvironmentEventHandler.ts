@@ -1,5 +1,5 @@
 // eslint-disable-next-line node/no-unpublished-import
-import { Circus } from '@jest/types';
+import type { Circus } from '@jest/types';
 
 import type { MetadataEventEmitter } from '../metadata';
 
@@ -212,6 +212,10 @@ export class EnvironmentEventHandler {
 
   constructor(config: CircusTestEventHandlerConfig) {
     this._emitter = config.emitter;
+  }
+
+  get testFilePath(): string {
+    return this._testFilePath;
   }
 
   handleEnvironmentCreated(testFilePath: string) {

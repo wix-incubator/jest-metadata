@@ -1,4 +1,4 @@
-import { Data, Metadata } from '../containers';
+import type { Data, Metadata } from '../containers';
 
 const $namespace: unique symbol = Symbol('namespace');
 const $metadata: unique symbol = Symbol('metadata');

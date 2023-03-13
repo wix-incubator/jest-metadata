@@ -1,14 +1,14 @@
-import { HookType } from '../../types';
-import { AggregatedIdentifier, MetadataContext } from '../misc';
+import type { HookType } from '../../types';
+import type { AggregatedIdentifier, MetadataContext } from '../misc';
 import * as symbols from '../symbols';
 
-import { HookDefinitionMetadata } from './HookDefinitionMetadata';
-import { HookInvocationMetadata } from './HookInvocationMetadata';
 import { Metadata } from './Metadata';
-import { RunMetadata } from './RunMetadata';
-import { TestEntryMetadata } from './TestEntryMetadata';
-import { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
-import { TestInvocationMetadata } from './TestInvocationMetadata';
+import type { HookDefinitionMetadata } from './HookDefinitionMetadata';
+import type { HookInvocationMetadata } from './HookInvocationMetadata';
+import type { RunMetadata } from './RunMetadata';
+import type { TestEntryMetadata } from './TestEntryMetadata';
+import type { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
+import type { TestInvocationMetadata } from './TestInvocationMetadata';
 
 type DefinitionMetadata = DescribeBlockMetadata | TestEntryMetadata | HookDefinitionMetadata;
 type InvocationMetadata =
@@ -30,7 +30,7 @@ export class DescribeBlockMetadata extends Metadata {
   ) {
     super(context, id);
 
-    if (parent instanceof RunMetadata) {
+    if (context.checker.isRunMetadata(parent)) {
       this.parent = undefined;
       this.run = parent;
     } else {
@@ -40,7 +40,7 @@ export class DescribeBlockMetadata extends Metadata {
   }
 
   [symbols.addDescribeBlock](id: AggregatedIdentifier): DescribeBlockMetadata {
-    const describeBlock = new DescribeBlockMetadata(this[symbols.context], this, id);
+    const describeBlock = this[symbols.context].factory.createDescribeBlockMetadata(this, id);
     this.children.push(describeBlock);
     this.run[symbols.currentMetadata] = describeBlock;
 
@@ -48,7 +48,8 @@ export class DescribeBlockMetadata extends Metadata {
   }
 
   [symbols.addTestEntry](id: AggregatedIdentifier): TestEntryMetadata {
-    const testEntry = new TestEntryMetadata(this[symbols.context], this, id);
+    const testEntry = this[symbols.context].factory.createTestEntryMetadata(this, id);
+
     this.children.push(testEntry);
     this.run[symbols.currentMetadata] = testEntry;
 
@@ -59,7 +60,11 @@ export class DescribeBlockMetadata extends Metadata {
     id: AggregatedIdentifier,
     hookType: HookType,
   ): HookDefinitionMetadata {
-    const hookDefinition = new HookDefinitionMetadata(this[symbols.context], this, id, hookType);
+    const hookDefinition = this[symbols.context].factory.createHookDefinitionMetadata(
+      this,
+      id,
+      hookType,
+    );
     this.children.push(hookDefinition);
     this.run[symbols.currentMetadata] = hookDefinition;
 
@@ -72,36 +77,44 @@ export class DescribeBlockMetadata extends Metadata {
   }
 
   [symbols.finish](): void {
-    this.run[symbols.currentMetadata] = this.parent;
+    this.run[symbols.currentMetadata] = this.parent ?? this.run;
   }
 
   *describeBlocks(): IterableIterator<DescribeBlockMetadata> {
+    const checker = this[symbols.context].checker;
+
     for (const child of this.children) {
-      if (child instanceof DescribeBlockMetadata) {
+      if (checker.isDescribeBlockMetadata(child)) {
         yield child;
       }
     }
   }
 
   *testEntries(): IterableIterator<TestEntryMetadata> {
+    const checker = this[symbols.context].checker;
+
     for (const child of this.children) {
-      if (child instanceof TestEntryMetadata) {
+      if (checker.isTestEntryMetadata(child)) {
         yield child;
       }
     }
   }
 
   *hookDefinitions(): IterableIterator<HookDefinitionMetadata> {
+    const checker = this[symbols.context].checker;
+
     for (const child of this.children) {
-      if (child instanceof HookDefinitionMetadata) {
+      if (checker.isHookDefinitionMetadata(child)) {
         yield child;
       }
     }
   }
 
   *allDescribeBlocks(): IterableIterator<DescribeBlockMetadata> {
+    const checker = this[symbols.context].checker;
+
     for (const child of this.children) {
-      if (child instanceof DescribeBlockMetadata) {
+      if (checker.isDescribeBlockMetadata(child)) {
         yield child;
         yield* child.allDescribeBlocks();
       }
@@ -109,22 +122,26 @@ export class DescribeBlockMetadata extends Metadata {
   }
 
   *allTestEntries(): IterableIterator<TestEntryMetadata> {
+    const checker = this[symbols.context].checker;
+
     for (const child of this.children) {
-      if (child instanceof TestEntryMetadata) {
+      if (checker.isTestEntryMetadata(child)) {
         yield child;
-      } else if (child instanceof DescribeBlockMetadata) {
+      } else if (checker.isDescribeBlockMetadata(child)) {
         yield* child.allTestEntries();
       }
     }
   }
 
   *allInvocations(): IterableIterator<LowLevelInvocationMetadata> {
+    const checker = this[symbols.context].checker;
+
     for (const invocation of this.invocations) {
-      if (invocation instanceof HookInvocationMetadata) {
+      if (checker.isHookInvocationMetadata(invocation)) {
         yield invocation;
-      } else if (invocation instanceof DescribeBlockMetadata) {
+      } else if (checker.isDescribeBlockMetadata(invocation)) {
         yield* invocation.allInvocations();
-      } else if (invocation instanceof TestInvocationMetadata) {
+      } else if (checker.isTestInvocationMetadata(invocation)) {
         yield* invocation.before;
         if (invocation.fn) {
           yield invocation.fn;

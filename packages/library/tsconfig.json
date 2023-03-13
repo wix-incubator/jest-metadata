@@ -7,6 +7,7 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "importHelpers": false,
+    "importsNotUsedAsValues": "error",
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,

@@ -1,24 +1,24 @@
-import { AddHookEvent } from './AddHookEvent';
-import { AddTestEvent } from './AddTestEvent';
-import { FinishDescribeDefinitionEvent } from './FinishDescribeDefinitionEvent';
-import { HookFailureEvent } from './HookFailureEvent';
-import { HookStartEvent } from './HookStartEvent';
-import { HookSuccessEvent } from './HookSuccessEvent';
-import { RunDescribeFinishEvent } from './RunDescribeFinishEvent';
-import { RunDescribeStartEvent } from './RunDescribeStartEvent';
-import { RunFinishEvent } from './RunFinishEvent';
-import { RunStartEvent } from './RunStartEvent';
-import { SetMetadataEvent } from './SetMetadataEvent';
-import { StartDescribeDefinitionEvent } from './StartDescribeDefinitionEvent';
-import { TestDoneEvent } from './TestDoneEvent';
-import { TestEnvironmentCreatedEvent } from './TestEnvironmentCreatedEvent';
-import { TestFnFailureEvent } from './TestFnFailureEvent';
-import { TestFnStartEvent } from './TestFnStartEvent';
-import { TestFnSuccessEvent } from './TestFnSuccessEvent';
-import { TestRetryEvent } from './TestRetryEvent';
-import { TestSkipEvent } from './TestSkipEvent';
-import { TestStartEvent } from './TestStartEvent';
-import { TestTodoEvent } from './TestTodoEvent';
+import type { AddHookEvent } from './AddHookEvent';
+import type { AddTestEvent } from './AddTestEvent';
+import type { FinishDescribeDefinitionEvent } from './FinishDescribeDefinitionEvent';
+import type { HookFailureEvent } from './HookFailureEvent';
+import type { HookStartEvent } from './HookStartEvent';
+import type { HookSuccessEvent } from './HookSuccessEvent';
+import type { RunDescribeFinishEvent } from './RunDescribeFinishEvent';
+import type { RunDescribeStartEvent } from './RunDescribeStartEvent';
+import type { RunFinishEvent } from './RunFinishEvent';
+import type { RunStartEvent } from './RunStartEvent';
+import type { SetMetadataEvent } from './SetMetadataEvent';
+import type { StartDescribeDefinitionEvent } from './StartDescribeDefinitionEvent';
+import type { TestDoneEvent } from './TestDoneEvent';
+import type { TestEnvironmentCreatedEvent } from './TestEnvironmentCreatedEvent';
+import type { TestFnFailureEvent } from './TestFnFailureEvent';
+import type { TestFnStartEvent } from './TestFnStartEvent';
+import type { TestFnSuccessEvent } from './TestFnSuccessEvent';
+import type { TestRetryEvent } from './TestRetryEvent';
+import type { TestSkipEvent } from './TestSkipEvent';
+import type { TestStartEvent } from './TestStartEvent';
+import type { TestTodoEvent } from './TestTodoEvent';
 
 export type MetadataEvent =
   | AddHookEvent

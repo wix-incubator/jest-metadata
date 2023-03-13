@@ -12,8 +12,8 @@ type IPC = Omit<typeof node_ipc, 'IPC'>;
 type IPCConnection = (typeof node_ipc)['of'][string];
 
 export type IPCClientConfig = {
-  clientId: string;
-  serverId: string;
+  clientId: string | undefined;
+  serverId: string | undefined;
   emitter: MetadataEventEmitter;
 };
 
@@ -32,6 +32,14 @@ export class IPCClient {
     this._throwNotConnected;
 
   constructor(config: IPCClientConfig) {
+    if (!config.serverId) {
+      throw new JestMetadataError('IPC server ID is not specified when creating IPC client.');
+    }
+
+    if (!config.clientId) {
+      throw new JestMetadataError('IPC client ID is not specified when creating IPC client.');
+    }
+
     this._ipc = new node_ipc.IPC();
     this._id = config.clientId;
     this._serverId = config.serverId;

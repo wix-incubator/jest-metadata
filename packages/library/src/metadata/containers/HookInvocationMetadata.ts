@@ -1,9 +1,9 @@
-import { AggregatedIdentifier, MetadataContext } from '../misc';
+import type { AggregatedIdentifier, MetadataContext } from '../misc';
 
-import { HookDefinitionMetadata } from './HookDefinitionMetadata';
 import { Metadata } from './Metadata';
-import { DescribeBlockMetadata } from './DescribeBlockMetadata';
-import { TestInvocationMetadata } from './TestInvocationMetadata';
+import type { HookDefinitionMetadata } from './HookDefinitionMetadata';
+import type { DescribeBlockMetadata } from './DescribeBlockMetadata';
+import type { TestInvocationMetadata } from './TestInvocationMetadata';
 
 type HookInvocationParentMetadata = DescribeBlockMetadata | TestInvocationMetadata;
 

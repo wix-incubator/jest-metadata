@@ -1,19 +1,19 @@
 import funpermaproxy from 'funpermaproxy';
-import { Metadata, MetadataDSL, MetadataEventEmitter, NamespacedMetadata } from './metadata';
+import { Metadata, MetadataDSL, NamespacedMetadata } from './metadata';
+import { realm } from './realms';
 
 function getCurrentMetadata(): Metadata {
-  throw new Error('not implemented');
-}
+  const { aggregatedResult } = realm.metadataRegistry;
+  const run = aggregatedResult.lastTestResult;
 
-function getEmitter(): MetadataEventEmitter {
-  throw new Error('not implemented');
+  return run ? run.current.value() ?? run : aggregatedResult;
 }
 
 const currentMetadata = funpermaproxy(getCurrentMetadata);
 
 export function namespaced(name?: string) {
   return new MetadataDSL(
-    getEmitter(),
+    realm.rootEmitter,
     name ? new NamespacedMetadata(name, getCurrentMetadata) : currentMetadata,
   );
 }

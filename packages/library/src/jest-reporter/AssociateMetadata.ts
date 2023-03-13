@@ -1,7 +1,14 @@
 // eslint-disable-next-line node/no-unpublished-import
 import type { Test, TestResult, TestCaseResult } from '@jest/reporters';
 
-import { AggregatedResultMetadata, Metadata, RunMetadata, TestEntryMetadata } from '../metadata';
+import path from 'path';
+
+import type {
+  AggregatedResultMetadata,
+  Metadata,
+  RunMetadata,
+  TestEntryMetadata,
+} from '../metadata';
 import { JestMetadataError } from '../errors';
 
 export class AssociateMetadata {
@@ -9,6 +16,12 @@ export class AssociateMetadata {
 
   filePath(value: string, metadata: RunMetadata): void {
     this._map.set(value, metadata);
+
+    if (path.isAbsolute(value)) {
+      this._map.set(path.relative(process.cwd(), value), metadata);
+    } else {
+      this._map.set(path.resolve(value), metadata);
+    }
   }
 
   test(item: Test, metadata: RunMetadata): void {

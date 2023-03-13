@@ -1,6 +1,6 @@
 import { JestMetadataError } from '../errors';
 
-import {
+import type {
   MetadataEvent,
   TestEnvironmentCreatedEvent,
   AddHookEvent,
@@ -26,7 +26,7 @@ import {
   MetadataEventType,
 } from './events';
 
-import {
+import type {
   AggregatedResultMetadata,
   Data,
   DescribeBlockMetadata,
@@ -35,17 +35,17 @@ import {
 } from './containers';
 
 import {
-  AggregatedMetadataRegistry,
   AggregatedIdentifier,
-  MetadataEventEmitter,
+  AggregatedMetadataRegistry,
   MetadataEventEmitterCallback,
+  MetadataFactory,
 } from './misc';
 
 import * as internal from './symbols';
 
 export type MetadataEventHandlerConfig = {
-  readonly emitter: MetadataEventEmitter;
-  readonly aggregatedMetadataRegistry: AggregatedMetadataRegistry;
+  readonly metadataRegistry: AggregatedMetadataRegistry;
+  readonly metadataFactory: MetadataFactory;
 };
 
 type MetadataEventHandlerCallback<K extends MetadataEventType> = <
@@ -59,22 +59,22 @@ type MetadataEventHandlerMap = {
 };
 
 export class MetadataEventHandler {
-  protected readonly metadata: AggregatedResultMetadata;
+  private readonly _metadata: AggregatedResultMetadata;
 
   private readonly _handlers: MetadataEventHandlerMap = {
     test_environment_created: (event: TestEnvironmentCreatedEvent) => {
-      this.metadata.registerTestFile(event.testFilePath);
+      this._metadata.registerTestFile(event.testFilePath);
     },
 
     start_describe_definition: (event: StartDescribeDefinitionEvent) => {
-      const run = this.metadata.getRunMetadata(event.testFilePath);
+      const run = this._metadata.getRunMetadata(event.testFilePath);
       const describeId = new AggregatedIdentifier(event.testFilePath, event.describeId);
       const currentDescribeBlock = run.current.describeBlock;
       (currentDescribeBlock ?? run)[internal.addDescribeBlock](describeId);
     },
 
     add_hook: (event: AddHookEvent) => {
-      const run = this.metadata.getRunMetadata(event.testFilePath);
+      const run = this._metadata.getRunMetadata(event.testFilePath);
       const hookId = new AggregatedIdentifier(event.testFilePath, event.hookId);
       const currentDescribeBlock = run.current.describeBlock;
       if (!currentDescribeBlock) {
@@ -84,7 +84,7 @@ export class MetadataEventHandler {
     },
 
     add_test: (event: AddTestEvent) => {
-      const run = this.metadata.getRunMetadata(event.testFilePath);
+      const run = this._metadata.getRunMetadata(event.testFilePath);
       const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
       const currentDescribeBlock = run.current.describeBlock;
       if (!currentDescribeBlock) {
@@ -96,90 +96,80 @@ export class MetadataEventHandler {
 
     finish_describe_definition: (event: FinishDescribeDefinitionEvent) => {
       const describeId = new AggregatedIdentifier(event.testFilePath, event.describeId);
-      this.config.aggregatedMetadataRegistry
-        .get(describeId)
-        [internal.as](DescribeBlockMetadata)
-        [internal.finish]();
+      (this.config.metadataRegistry.get(describeId) as DescribeBlockMetadata)[internal.finish]();
+      // TODO: [internal.as](DescribeBlockMetadata)
     },
 
     run_start: (event: RunStartEvent) => {
-      const run = this.metadata.getRunMetadata(event.testFilePath);
+      const run = this._metadata.getRunMetadata(event.testFilePath);
       run[internal.start]();
     },
 
     run_finish: (event: RunFinishEvent) => {
-      const run = this.metadata.getRunMetadata(event.testFilePath);
+      const run = this._metadata.getRunMetadata(event.testFilePath);
       run[internal.finish]();
     },
 
     run_describe_start: (event: RunDescribeStartEvent) => {
       const describeId = new AggregatedIdentifier(event.testFilePath, event.describeId);
-      const describe = this.config.aggregatedMetadataRegistry
-        .get(describeId)
-        [internal.as](DescribeBlockMetadata);
+      const describe = this.config.metadataRegistry.get(describeId) as DescribeBlockMetadata;
+      // TODO: [internal.as](DescribeBlockMetadata);
 
       describe[internal.start]();
     },
 
     hook_start: (event: HookStartEvent) => {
       const hookId = new AggregatedIdentifier(event.testFilePath, event.hookId);
-      const hookDef = this.config.aggregatedMetadataRegistry
-        .get(hookId)
-        [internal.as](HookDefinitionMetadata);
+      const hookDef = this.config.metadataRegistry.get(hookId) as HookDefinitionMetadata;
+      // TODO: [internal.as](HookDefinitionMetadata);
 
       hookDef[internal.start]();
     },
 
     hook_success: (event: HookSuccessEvent) => {
       const hookId = new AggregatedIdentifier(event.testFilePath, event.hookId);
-      const hookDef = this.config.aggregatedMetadataRegistry
-        .get(hookId)
-        [internal.as](HookDefinitionMetadata);
+      const hookDef = this.config.metadataRegistry.get(hookId) as HookDefinitionMetadata;
+      // TODO: [internal.as](HookDefinitionMetadata);
 
       hookDef[internal.finish]();
     },
 
     hook_failure: (event: HookFailureEvent) => {
       const hookId = new AggregatedIdentifier(event.testFilePath, event.hookId);
-      const hookDef = this.config.aggregatedMetadataRegistry
-        .get(hookId)
-        [internal.as](HookDefinitionMetadata);
+      const hookDef = this.config.metadataRegistry.get(hookId) as HookDefinitionMetadata;
+      // TODO: [internal.as](HookDefinitionMetadata);
 
       hookDef[internal.finish]();
     },
 
     run_describe_finish: (event: RunDescribeFinishEvent) => {
       const describeId = new AggregatedIdentifier(event.testFilePath, event.describeId);
-      const describe = this.config.aggregatedMetadataRegistry
-        .get(describeId)
-        [internal.as](DescribeBlockMetadata);
+      const describe = this.config.metadataRegistry.get(describeId) as DescribeBlockMetadata;
+      // TODO: [internal.as](DescribeBlockMetadata);
 
       describe[internal.finish]();
     },
 
     test_start: (event: TestStartEvent) => {
       const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-      const test = this.config.aggregatedMetadataRegistry
-        .get(testId)
-        [internal.as](TestEntryMetadata);
+      const test = this.config.metadataRegistry.get(testId) as TestEntryMetadata;
+      // TODO: [internal.as](TestEntryMetadata);
 
       test[internal.start]();
     },
 
     test_retry: (event: TestRetryEvent) => {
       const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-      const test = this.config.aggregatedMetadataRegistry
-        .get(testId)
-        [internal.as](TestEntryMetadata);
+      const test = this.config.metadataRegistry.get(testId) as TestEntryMetadata;
+      // TODO: [internal.as](TestEntryMetadata);
 
       test[internal.start]();
     },
 
     test_fn_start: (event: TestFnStartEvent) => {
       const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-      const test = this.config.aggregatedMetadataRegistry
-        .get(testId)
-        [internal.as](TestEntryMetadata);
+      const test = this.config.metadataRegistry.get(testId) as TestEntryMetadata;
+      // TODO: [internal.as](TestEntryMetadata);
       const lastInvocation = test.lastInvocation;
       if (!lastInvocation) {
         throw new JestMetadataError('Cannot start test function without an invocation');
@@ -190,9 +180,8 @@ export class MetadataEventHandler {
 
     test_fn_failure: (event: TestFnFailureEvent) => {
       const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-      const test = this.config.aggregatedMetadataRegistry
-        .get(testId)
-        [internal.as](TestEntryMetadata);
+      const test = this.config.metadataRegistry.get(testId) as TestEntryMetadata;
+      // TODO: [internal.as](TestEntryMetadata);
       const lastInvocation = test.lastInvocation;
       if (!lastInvocation) {
         throw new JestMetadataError('Cannot finish test function without an invocation');
@@ -203,9 +192,8 @@ export class MetadataEventHandler {
 
     test_fn_success: (event: TestFnSuccessEvent) => {
       const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-      const test = this.config.aggregatedMetadataRegistry
-        .get(testId)
-        [internal.as](TestEntryMetadata);
+      const test = this.config.metadataRegistry.get(testId) as TestEntryMetadata;
+      // TODO: [internal.as](TestEntryMetadata);
       const lastInvocation = test.lastInvocation;
       if (!lastInvocation) {
         throw new JestMetadataError('Cannot finish test function without an invocation');
@@ -216,34 +204,31 @@ export class MetadataEventHandler {
 
     test_skip: (event: TestSkipEvent) => {
       const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-      const test = this.config.aggregatedMetadataRegistry
-        .get(testId)
-        [internal.as](TestEntryMetadata);
+      const test = this.config.metadataRegistry.get(testId) as TestEntryMetadata;
+      // TODO: [internal.as](TestEntryMetadata);
 
       test[internal.finish]();
     },
 
     test_todo: (event: TestTodoEvent) => {
       const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-      const test = this.config.aggregatedMetadataRegistry
-        .get(testId)
-        [internal.as](TestEntryMetadata);
+      const test = this.config.metadataRegistry.get(testId) as TestEntryMetadata;
+      // TODO: [internal.as](TestEntryMetadata);
 
       test[internal.finish]();
     },
 
     test_done: (event: TestDoneEvent) => {
       const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-      const test = this.config.aggregatedMetadataRegistry
-        .get(testId)
-        [internal.as](TestEntryMetadata);
+      const test = this.config.metadataRegistry.get(testId) as TestEntryMetadata;
+      // TODO: [internal.as](TestEntryMetadata);
 
       test[internal.finish]();
     },
 
     set_metadata: (event: SetMetadataEvent) => {
       const targetId = new AggregatedIdentifier(event.testFilePath, event.targetId);
-      const metadata = this.config.aggregatedMetadataRegistry.get(targetId);
+      const metadata = this.config.metadataRegistry.get(targetId);
 
       switch (event.operation) {
         case 'set': {
@@ -264,10 +249,7 @@ export class MetadataEventHandler {
   };
 
   constructor(protected readonly config: MetadataEventHandlerConfig) {
-    this.metadata = new AggregatedResultMetadata({
-      emitter: config.emitter,
-      aggregatedMetadataRegistry: config.aggregatedMetadataRegistry,
-    });
+    this._metadata = config.metadataFactory.createAggregatedResultMetadata();
   }
 
   handle = (event: MetadataEvent): void => {

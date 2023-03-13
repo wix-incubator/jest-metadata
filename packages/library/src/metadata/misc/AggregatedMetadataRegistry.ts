@@ -1,12 +1,14 @@
-import { Metadata, AggregatedIdentifier } from '../index';
-
-// TODO: maybe drop ambiguous signature and use only AggregatedIdentifier
-type RawScopedIdentifier = string | AggregatedIdentifier;
+import type { Metadata, AggregatedResultMetadata } from '../containers';
+import { AggregatedIdentifier } from './AggregatedIdentifier';
 
 export class AggregatedMetadataRegistry {
   private readonly scopes: Record<string, MetadataRegistry> = {};
 
-  public get(scopedId: RawScopedIdentifier): Metadata {
+  public get aggregatedResult(): AggregatedResultMetadata {
+    return this.get(AggregatedIdentifier.global('aggregatedResult')) as AggregatedResultMetadata;
+  }
+
+  public get(scopedId: AggregatedIdentifier): Metadata {
     const { testFilePath, identifier } = AggregatedIdentifier.normalize(scopedId);
     const registry = this.scopes[testFilePath];
 
@@ -17,7 +19,7 @@ export class AggregatedMetadataRegistry {
     return registry.get(identifier);
   }
 
-  public register(scopedId: RawScopedIdentifier, metadata: Metadata): void {
+  public register(scopedId: AggregatedIdentifier, metadata: Metadata): void {
     const { testFilePath, identifier } = AggregatedIdentifier.normalize(scopedId);
     if (!this.scopes[testFilePath]) {
       this.scopes[testFilePath] = new MetadataRegistry(testFilePath);

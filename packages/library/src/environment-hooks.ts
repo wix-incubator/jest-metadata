@@ -1,25 +1,41 @@
-// eslint-disable-next-line node/no-unpublished-import
-import type { JestEnvironment, JestEnvironmentConfig, EnvironmentContext } from '@jest/environment';
-// eslint-disable-next-line node/no-unpublished-import
-import type { Circus } from '@jest/types';
+import { realm, injectRealmIntoSandbox } from './realms';
 
+// TODO: how to use JSDoc to link to the types
+
+/**
+ * @param jestEnvironment {@link JestEnvironment}
+ * @param _jestEnvironmentConfig {@link JestEnvironmentConfig}
+ * @param environmentContext {@link EnvironmentContext}
+ */
 export function onTestEnvironmentCreate(
-  environment: JestEnvironment,
-  _config: JestEnvironmentConfig,
-  context: EnvironmentContext,
+  jestEnvironment: any,
+  _jestEnvironmentConfig: any,
+  environmentContext: any,
 ): void {
-  environment.global.__JEST_METADATA__ = { foo: 'bar' };
-  window.postMessage('hoho', context.testPath);
+  injectRealmIntoSandbox(jestEnvironment.global, realm);
+  realm.environmentHandler.handleEnvironmentCreated(environmentContext.testPath);
 }
 
 export async function onTestEnvironmentSetup(): Promise<void> {
-  // TODO: start IPC client
+  if (realm.type === 'child_process') {
+    await realm.ipcClient.start();
+  }
 }
 
 export async function onTestEnvironmentTeardown(): Promise<void> {
-  // TODO: stop IPC client
+  if (realm.type === 'child_process') {
+    await realm.ipcClient.stop();
+  }
 }
 
-export function onHandleTestEvent(_event: Circus.Event, _state: Circus.State): void {
-  // TODO: call our circus handler
-}
+/**
+ * Pass Jest Circus event and state to the handler.
+ *
+ * @param circusEvent
+ * @param circusState
+ * @see {@link Circus.Event}
+ * @see {@link Circus.State}
+ */
+export const onHandleTestEvent = (circusEvent: any, circusState: any): void => {
+  realm.environmentHandler.handleTestEvent(circusEvent, circusState);
+};

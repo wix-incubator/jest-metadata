@@ -4,4 +4,3 @@ export * from './misc';
 export * as internal from './symbols';
 
 export { MetadataEventHandler } from './MetadataEventHandler';
-export { MetadataSelector } from './MetadataSelector';

@@ -1,4 +1,4 @@
-import { Emitter } from '../types';
+import type { Emitter } from '../types';
 
 /**
  * An event emitter that emits events in the order they are received.

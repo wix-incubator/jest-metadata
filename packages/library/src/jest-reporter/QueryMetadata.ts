@@ -1,36 +1,49 @@
 // eslint-disable-next-line node/no-unpublished-import
 import type { Test, TestResult, TestCaseResult } from '@jest/reporters';
 
-import { AggregatedResultMetadata, RunMetadata, TestEntryMetadata, internal } from '../metadata';
+import type {
+  AggregatedResultMetadata,
+  RunMetadata,
+  TestEntryMetadata,
+  MetadataChecker,
+} from '../metadata';
 
-import { AssociateMetadata } from './AssociateMetadata';
+import type { AssociateMetadata } from './AssociateMetadata';
 
 const _associate = Symbol('associate');
+const _checker = Symbol('checker');
 
 export class QueryMetadata {
   private readonly [_associate]: AssociateMetadata;
+  private readonly [_checker]: MetadataChecker;
 
-  constructor(associate: AssociateMetadata) {
+  constructor(associate: AssociateMetadata, checker: MetadataChecker) {
     this[_associate] = associate;
+    this[_checker] = checker;
   }
 
   filePath(filePath: string): RunMetadata {
-    return this[_associate].get(filePath)[internal.as](RunMetadata);
+    const metadata = this[_associate].get(filePath);
+    return this[_checker].asRunMetadata(metadata);
   }
 
   test(test: Test): RunMetadata {
-    return this[_associate].get(test)[internal.as](RunMetadata);
+    const metadata = this[_associate].get(test);
+    return this[_checker].asRunMetadata(metadata);
   }
 
   testCaseResult(testCaseResult: TestCaseResult): TestEntryMetadata {
-    return this[_associate].get(testCaseResult)[internal.as](TestEntryMetadata);
+    const metadata = this[_associate].get(testCaseResult);
+    return this[_checker].asTestEntryMetadata(metadata);
   }
 
   testResult(testResult: TestResult): RunMetadata {
-    return this[_associate].get(testResult)[internal.as](RunMetadata);
+    const metadata = this[_associate].get(testResult);
+    return this[_checker].asRunMetadata(metadata);
   }
 
   aggregatedResult(): AggregatedResultMetadata {
-    return this[_associate].get()[internal.as](AggregatedResultMetadata);
+    const metadata = this[_associate].get();
+    return this[_checker].asAggregatedResultMetadata(metadata);
   }
 }

@@ -1,4 +1,4 @@
-// TODO: think how to use it
+import type { ProcessRealm } from './ProcessRealm';
 
 export function isServer(): boolean {
   return !getServerId();
@@ -10,6 +10,14 @@ export function isClient(): boolean | undefined {
 
 export function registerServerId(id: string): void {
   process.env.JEST_METADATA_SERVER = id;
+}
+
+export function injectRealmIntoSandbox(sandbox: any, realm: ProcessRealm): void {
+  sandbox.__JEST_METADATA__ = realm;
+}
+
+export function getSandboxedRealm(): ProcessRealm | undefined {
+  return (global as any).__JEST_METADATA__;
 }
 
 export function getServerId(): string | undefined {

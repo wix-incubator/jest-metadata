@@ -1,7 +1,7 @@
-import { AggregatedIdentifier, MetadataContext } from '../misc';
+import type { AggregatedIdentifier, MetadataContext } from '../misc';
 
 import { Metadata } from './Metadata';
-import { TestInvocationMetadata } from './TestInvocationMetadata';
+import type { TestInvocationMetadata } from './TestInvocationMetadata';
 
 export class TestFnInvocationMetadata extends Metadata {
   constructor(

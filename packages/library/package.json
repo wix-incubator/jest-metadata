@@ -18,6 +18,11 @@
       "require": "./dist/annotations.js",
       "types": "./dist/annotations.d.ts"
     },
+    "./annotations": {
+      "import": "./dist/annotations.js",
+      "require": "./dist/annotations.js",
+      "types": "./dist/annotations.d.ts"
+    },
     "./environment-decorator": {
       "import": "./dist/environment-decorator.js",
       "require": "./dist/environment-decorator.js",
@@ -73,10 +78,10 @@
   },
   "homepage": "https://github.com/wix-incubator/jest-metadata#readme",
   "devDependencies": {
+    "@jest-metadata/fixtures": "^1.0.0",
     "@jest/environment": "^29.3.1",
     "@jest/reporters": "^29.3.1",
     "@jest/types": "^29.3.1",
-    "@jest-metadata/fixtures": "^1.0.0",
     "@types/debug": "^4.1.7",
     "@types/glob": "^8.0.0",
     "@types/jest": "^29.2.5",
@@ -92,7 +97,7 @@
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-import-resolver-typescript": "^3.5.3",
-    "eslint-plugin-import": "^2.27.4",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsdoc": "^39.6.4",
     "eslint-plugin-no-only-tests": "^3.1.0",
     "eslint-plugin-node": "^11.1.0",
@@ -113,8 +118,8 @@
     "jest": ">=27.2.5"
   },
   "dependencies": {
-    "funpermaproxy": "^1.1.0",
     "debug": "^4.3.4",
+    "funpermaproxy": "^1.1.0",
     "import-cwd": "^3.0.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.2",
