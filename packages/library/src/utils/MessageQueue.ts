@@ -1,4 +1,4 @@
-import { SimpleEmitter } from './SimpleEmitter';
+import { SerialEmitter } from './SerialEmitter';
 
 export type SendMethod<Message> = (message: Message) => Promise<unknown>;
 
@@ -7,7 +7,7 @@ export type MessageQueueEvent<Message> =
   | { type: 'drain' }
   | { type: 'next'; message: Message };
 
-export class MessageQueue<Message> extends SimpleEmitter<MessageQueueEvent<Message>> {
+export class MessageQueue<Message> extends SerialEmitter<MessageQueueEvent<Message>> {
   private _idle: Promise<unknown> = Promise.resolve();
   private _queue: Message[] = [];
   constructor(protected readonly send: SendMethod<Message>) {
