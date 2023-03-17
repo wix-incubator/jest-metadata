@@ -7,7 +7,7 @@
     "npm": ">=8.0.0"
   },
   "scripts": {
-    "prepare": "husky install && lerna bootstrap",
+    "prepare": "husky install && lerna bootstrap --no-ci",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "clean": "lerna clean",
