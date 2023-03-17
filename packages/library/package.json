@@ -5,7 +5,6 @@
   "main": "dist/annotations.js",
   "types": "dist/annotations.d.ts",
   "files": [
-    "images/logo.png",
     "src",
     "dist",
     "!**/__utils__",

@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="images/logo.png" width=256 height=256 />
+<img src="https://raw.githubusercontent.com/wix-incubator/jest-metadata/master/docs/images/logo.png" width=256 height=256 />
 
 # jest-metadata
 
