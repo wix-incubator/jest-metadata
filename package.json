@@ -1,80 +1,30 @@
 {
-  "name": "jest-extend-report",
-  "version": "1.0.0",
-  "description": "Extend Jest reports with custom metadata",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "src",
-    "dist",
-    "!**/__utils__",
-    "!**/__tests__",
-    "!**/*.test.*"
-  ],
+  "name": "@jest-metadata/monorepo",
+  "version": "0.0.0",
+  "private": true,
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   },
   "scripts": {
-    "prepare": "husky install && tsc",
-    "build": "tsc",
-    "docs": "typedoc",
-    "start": "http-server -p 3000 website",
-    "lint": "eslint . --fix",
-    "lint:ci": "eslint .",
-    "lint:staged": "lint-staged",
-    "test": "jest",
-    "test:ci": "jest --coverage"
+    "prepare": "husky install && lerna bootstrap",
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "clean": "lerna clean",
+    "test": "lerna run test",
+    "generate:fixture": "zx scripts/generate-fixture.mjs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wix-incubator/jest-extend-report.git"
-  },
-  "keywords": [
-    "jest"
-  ],
-  "author": "Yaroslav Serhieiev <yaroslavs@wix.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/wix-incubator/jest-extend-report/issues"
-  },
-  "homepage": "https://github.com/wix-incubator/jest-extend-report#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
-    "@jest/environment": "^29.3.1",
-    "@jest/reporters": "^29.3.1",
-    "@jest/types": "^29.3.1",
-    "@types/glob": "^8.0.0",
-    "@types/jest": "^29.2.5",
-    "@types/lodash": "^4.14.191",
-    "@types/node": "^18.11.18",
-    "@types/rimraf": "^3.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.48.1",
-    "@typescript-eslint/parser": "^5.48.1",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-import-resolver-typescript": "^3.5.3",
-    "eslint-plugin-import": "^2.27.4",
-    "eslint-plugin-jsdoc": "^39.6.4",
-    "eslint-plugin-no-only-tests": "^3.1.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-unicorn": "^45.0.2",
-    "http-server": "^14.1.1",
     "husky": "^8.0.3",
-    "jest": "^29.3.1",
-    "lint-staged": "^13.1.0",
-    "lodash": "^4.17.21",
-    "prettier": "^2.8.2",
+    "lerna": "^6.5.1",
     "semantic-release": "^20.0.2",
-    "ts-jest": "^29.0.5",
-    "ts-node": "^10.9.1",
-    "typedoc": "^0.23.24",
-    "typescript": "^4.9.4",
     "zx": "^7.1.1"
   },
-  "peerDependencies": {
-    "jest": ">=27.2.5"
-  }
+  "workspaces": [
+    "packages/*",
+    "packages/examples/*"
+  ]
 }

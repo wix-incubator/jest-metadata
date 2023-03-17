@@ -1,0 +1,11 @@
+export const addDescribeBlock = Symbol('ADD_DESCRIBE_BLOCK');
+export const addHookDefinition = Symbol('ADD_HOOK_DEFINITION');
+export const addTestEntry = Symbol('ADD_TEST_ENTRY');
+export const context = Symbol('CONTEXT');
+export const currentMetadata = Symbol('CURRENT_METADATA');
+export const lastTestEntry = Symbol('LAST_TEST_ENTRY');
+export const data = Symbol('DATA');
+export const finish = Symbol('FINISH');
+export const id = Symbol('ID');
+export const rootDescribeBlock = Symbol('ROOT_DESCRIBE_BLOCK');
+export const start = Symbol('START');

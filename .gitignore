@@ -109,3 +109,8 @@ dist
 
 # Generated content
 /website
+
+/__fixtures__/events/
+package-lock.json
+yarn.lock
+.DS_Store

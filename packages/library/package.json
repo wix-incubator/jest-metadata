@@ -1,0 +1,142 @@
+{
+  "name": "jest-metadata",
+  "version": "0.0.0",
+  "description": "Extend Jest with custom metadata",
+  "main": "dist/annotations.js",
+  "types": "dist/annotations.d.ts",
+  "files": [
+    "src",
+    "dist",
+    "!**/__utils__",
+    "!**/__tests__",
+    "!**/*.test.*"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/annotations.js",
+      "require": "./dist/annotations.js",
+      "types": "./dist/annotations.d.ts"
+    },
+    "./annotations": {
+      "import": "./dist/annotations.js",
+      "require": "./dist/annotations.js",
+      "types": "./dist/annotations.d.ts"
+    },
+    "./environment-decorator": {
+      "import": "./dist/environment-decorator.js",
+      "require": "./dist/environment-decorator.js",
+      "types": "./dist/environment-decorator.d.ts"
+    },
+    "./environment-hooks": {
+      "import": "./dist/environment-hooks.js",
+      "require": "./dist/environment-hooks.js",
+      "types": "./dist/environment-hooks.d.ts"
+    },
+    "./environment-jsdom": {
+      "import": "./dist/environment-jsdom.js",
+      "require": "./dist/environment-jsdom.js",
+      "types": "./dist/environment-jsdom.d.ts"
+    },
+    "./environment-node": {
+      "import": "./dist/environment-node.js",
+      "require": "./dist/environment-node.js",
+      "types": "./dist/environment-node.d.ts"
+    },
+    "./reporter": {
+      "import": "./dist/reporter.js",
+      "require": "./dist/reporter.js",
+      "types": "./dist/reporter.d.ts"
+    },
+    "./server": {
+      "import": "./dist/server.js",
+      "require": "./dist/server.js",
+      "types": "./dist/server.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "prepare": "tsc",
+    "build": "tsc",
+    "docs": "typedoc",
+    "start": "http-server -p 3000 website",
+    "lint": "eslint . --fix",
+    "lint:ci": "eslint .",
+    "lint:staged": "lint-staged",
+    "test": "jest",
+    "test:ci": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wix-incubator/jest-metadata.git"
+  },
+  "keywords": [
+    "jest"
+  ],
+  "author": "Yaroslav Serhieiev <yaroslavs@wix.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wix-incubator/jest-metadata/issues"
+  },
+  "homepage": "https://github.com/wix-incubator/jest-metadata#readme",
+  "devDependencies": {
+    "@jest-metadata/fixtures": "^0.0.0",
+    "@jest/environment": "^29.3.1",
+    "@jest/reporters": "^29.3.1",
+    "@jest/types": "^29.3.1",
+    "@types/debug": "^4.1.7",
+    "@types/glob": "^8.0.0",
+    "@types/jest": "^29.2.5",
+    "@types/lodash": "^4.14.191",
+    "@types/lodash.get": "^4.4.7",
+    "@types/lodash.memoize": "^4.1.7",
+    "@types/lodash.merge": "^4.6.7",
+    "@types/lodash.once": "^4.1.7",
+    "@types/lodash.set": "^4.3.7",
+    "@types/node": "^18.11.18",
+    "@types/node-ipc": "^9.2.0",
+    "@types/rimraf": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsdoc": "^39.6.4",
+    "eslint-plugin-no-only-tests": "^3.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-unicorn": "^45.0.2",
+    "http-server": "^14.1.1",
+    "jest": "^29.3.1",
+    "jest-environment-node": "^29.3.1",
+    "lint-staged": "^13.1.0",
+    "lodash": "^4.17.21",
+    "prettier": "^2.8.2",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "typedoc": "^0.23.24",
+    "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "jest": ">=27.2.5"
+  },
+  "peerDependenciesMeta": {
+    "jest": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "funpermaproxy": "^1.1.0",
+    "import-cwd": "^3.0.0",
+    "lodash.get": "^4.4.2",
+    "lodash.memoize": "^4.1.2",
+    "lodash.merge": "^4.6.2",
+    "lodash.once": "^4.1.1",
+    "lodash.set": "^4.3.2",
+    "node-ipc": "^9.2.1"
+  }
+}

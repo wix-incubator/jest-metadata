@@ -1,0 +1,584 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`metadata: integration test should create state: aggregatedResult 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+aggregated_result : data = {"vendor":{"runStartedAt":"2023-01-01T00:00:00.000Z"}}
+
+
+@enduml
+"
+`;
+
+exports[`metadata: integration test should create state: duplicate-cases 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_duplicate_cases_js #def
+object "DescribeBlockMetadata" as tests_duplicate_cases_js_describe_0 #ded
+tests_duplicate_cases_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_duplicate_cases_js_hook_0 #fdd
+tests_duplicate_cases_js_hook_0 : id = "hook_0"
+tests_duplicate_cases_js_hook_0 : hookType = "beforeEach"
+object "DescribeBlockMetadata" as tests_duplicate_cases_js_describe_1 #ded
+tests_duplicate_cases_js_describe_1 : id = "describe_1"
+object "TestEntryMetadata" as tests_duplicate_cases_js_test_0 #ffd
+tests_duplicate_cases_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as tests_duplicate_cases_js_test_1 #ffd
+tests_duplicate_cases_js_test_1 : id = "test_1"
+object "DescribeBlockMetadata" as tests_duplicate_cases_js_describe_2 #ded
+tests_duplicate_cases_js_describe_2 : id = "describe_2"
+object "TestEntryMetadata" as tests_duplicate_cases_js_test_2 #ffd
+tests_duplicate_cases_js_test_2 : id = "test_2"
+object "TestEntryMetadata" as tests_duplicate_cases_js_test_3 #ffd
+tests_duplicate_cases_js_test_3 : id = "test_3"
+object "TestInvocationMetadata" as tests_duplicate_cases_js_test_0_0 #ffb
+tests_duplicate_cases_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_duplicate_cases_js_hook_0_0 #fcb
+tests_duplicate_cases_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_duplicate_cases_js_test_0_0_fn #fea
+tests_duplicate_cases_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as tests_duplicate_cases_js_test_1_0 #ffb
+tests_duplicate_cases_js_test_1_0 : id = "test_1.0"
+object "HookInvocationMetadata" as tests_duplicate_cases_js_hook_0_1 #fcb
+tests_duplicate_cases_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as tests_duplicate_cases_js_test_1_0_fn #fea
+tests_duplicate_cases_js_test_1_0_fn : id = "test_1.0.fn"
+object "TestInvocationMetadata" as tests_duplicate_cases_js_test_2_0 #ffb
+tests_duplicate_cases_js_test_2_0 : id = "test_2.0"
+object "HookInvocationMetadata" as tests_duplicate_cases_js_hook_0_2 #fcb
+tests_duplicate_cases_js_hook_0_2 : id = "hook_0.2"
+object "TestFnInvocationMetadata" as tests_duplicate_cases_js_test_2_0_fn #fea
+tests_duplicate_cases_js_test_2_0_fn : id = "test_2.0.fn"
+object "TestInvocationMetadata" as tests_duplicate_cases_js_test_3_0 #ffb
+tests_duplicate_cases_js_test_3_0 : id = "test_3.0"
+object "HookInvocationMetadata" as tests_duplicate_cases_js_hook_0_3 #fcb
+tests_duplicate_cases_js_hook_0_3 : id = "hook_0.3"
+object "TestFnInvocationMetadata" as tests_duplicate_cases_js_test_3_0_fn #fea
+tests_duplicate_cases_js_test_3_0_fn : id = "test_3.0.fn"
+aggregated_result --> tests_duplicate_cases_js : testResults[0]
+tests_duplicate_cases_js --> tests_duplicate_cases_js_describe_0 : rootDescribeBlock
+tests_duplicate_cases_js_describe_0 --> tests_duplicate_cases_js_hook_0 : children[0]
+tests_duplicate_cases_js_describe_0 --> tests_duplicate_cases_js_describe_1 : children[1]
+tests_duplicate_cases_js_describe_0 --> tests_duplicate_cases_js_describe_2 : children[2]
+tests_duplicate_cases_js_hook_0 --> tests_duplicate_cases_js_hook_0_0 : invocations[0]
+tests_duplicate_cases_js_hook_0 --> tests_duplicate_cases_js_hook_0_1 : invocations[1]
+tests_duplicate_cases_js_hook_0 --> tests_duplicate_cases_js_hook_0_2 : invocations[2]
+tests_duplicate_cases_js_hook_0 --> tests_duplicate_cases_js_hook_0_3 : invocations[3]
+tests_duplicate_cases_js_describe_1 --> tests_duplicate_cases_js_test_0 : children[0]
+tests_duplicate_cases_js_describe_1 --> tests_duplicate_cases_js_test_1 : children[1]
+tests_duplicate_cases_js_test_0 --> tests_duplicate_cases_js_test_0_0 : invocations[0]
+tests_duplicate_cases_js_test_1 --> tests_duplicate_cases_js_test_1_0 : invocations[0]
+tests_duplicate_cases_js_describe_2 --> tests_duplicate_cases_js_test_2 : children[0]
+tests_duplicate_cases_js_describe_2 --> tests_duplicate_cases_js_test_3 : children[1]
+tests_duplicate_cases_js_test_2 --> tests_duplicate_cases_js_test_2_0 : invocations[0]
+tests_duplicate_cases_js_test_3 --> tests_duplicate_cases_js_test_3_0 : invocations[0]
+tests_duplicate_cases_js_test_0_0 --> tests_duplicate_cases_js_hook_0_0 : before[0]
+tests_duplicate_cases_js_test_0_0 --> tests_duplicate_cases_js_test_0_0_fn : fn
+tests_duplicate_cases_js_test_0_0_fn --> tests_duplicate_cases_js_test_0_0 : test
+tests_duplicate_cases_js_test_1_0 --> tests_duplicate_cases_js_hook_0_1 : before[0]
+tests_duplicate_cases_js_test_1_0 --> tests_duplicate_cases_js_test_1_0_fn : fn
+tests_duplicate_cases_js_test_1_0_fn --> tests_duplicate_cases_js_test_1_0 : test
+tests_duplicate_cases_js_test_2_0 --> tests_duplicate_cases_js_hook_0_2 : before[0]
+tests_duplicate_cases_js_test_2_0 --> tests_duplicate_cases_js_test_2_0_fn : fn
+tests_duplicate_cases_js_test_2_0_fn --> tests_duplicate_cases_js_test_2_0 : test
+tests_duplicate_cases_js_test_3_0 --> tests_duplicate_cases_js_hook_0_3 : before[0]
+tests_duplicate_cases_js_test_3_0 --> tests_duplicate_cases_js_test_3_0_fn : fn
+tests_duplicate_cases_js_test_3_0_fn --> tests_duplicate_cases_js_test_3_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata: integration test should create state: duplicate-generation 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_duplicate_generation_js #def
+object "DescribeBlockMetadata" as tests_duplicate_generation_js_describe_0 #ded
+tests_duplicate_generation_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_duplicate_generation_js_hook_0 #fdd
+tests_duplicate_generation_js_hook_0 : id = "hook_0"
+tests_duplicate_generation_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as tests_duplicate_generation_js_test_0 #ffd
+tests_duplicate_generation_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as tests_duplicate_generation_js_test_1 #ffd
+tests_duplicate_generation_js_test_1 : id = "test_1"
+object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_0 #ffb
+tests_duplicate_generation_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_duplicate_generation_js_hook_0_0 #fcb
+tests_duplicate_generation_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_0_fn #fea
+tests_duplicate_generation_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as tests_duplicate_generation_js_test_1_0 #ffb
+tests_duplicate_generation_js_test_1_0 : id = "test_1.0"
+object "HookInvocationMetadata" as tests_duplicate_generation_js_hook_0_1 #fcb
+tests_duplicate_generation_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_1_0_fn #fea
+tests_duplicate_generation_js_test_1_0_fn : id = "test_1.0.fn"
+object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
+tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
+object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_2 #ffb
+tests_duplicate_generation_js_test_0_2 : id = "test_0.2"
+object "HookInvocationMetadata" as tests_duplicate_generation_js_hook_0_2 #fcb
+tests_duplicate_generation_js_hook_0_2 : id = "hook_0.2"
+object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_2_fn #fea
+tests_duplicate_generation_js_test_0_2_fn : id = "test_0.2.fn"
+aggregated_result --> tests_duplicate_generation_js : testResults[0]
+tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
+tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_hook_0 : children[0]
+tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_0 : children[1]
+tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_1 : children[2]
+tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_0 : invocations[0]
+tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_1 : invocations[1]
+tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_2 : invocations[2]
+tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
+tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
+tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_2 : invocations[2]
+tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
+tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_hook_0_0 : before[0]
+tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_test_0_0_fn : fn
+tests_duplicate_generation_js_test_0_0_fn --> tests_duplicate_generation_js_test_0_0 : test
+tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_hook_0_1 : before[0]
+tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_test_1_0_fn : fn
+tests_duplicate_generation_js_test_1_0_fn --> tests_duplicate_generation_js_test_1_0 : test
+tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_hook_0_2 : before[0]
+tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_test_0_2_fn : fn
+tests_duplicate_generation_js_test_0_2_fn --> tests_duplicate_generation_js_test_0_2 : test
+
+@enduml
+"
+`;
+
+exports[`metadata: integration test should create state: duplicate-name 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_duplicate_name_js #def
+object "DescribeBlockMetadata" as tests_duplicate_name_js_describe_0 #ded
+tests_duplicate_name_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_duplicate_name_js_hook_0 #fdd
+tests_duplicate_name_js_hook_0 : id = "hook_0"
+tests_duplicate_name_js_hook_0 : hookType = "beforeEach"
+object "DescribeBlockMetadata" as tests_duplicate_name_js_describe_1 #ded
+tests_duplicate_name_js_describe_1 : id = "describe_1"
+object "HookDefinitionMetadata" as tests_duplicate_name_js_hook_1 #fdd
+tests_duplicate_name_js_hook_1 : id = "hook_1"
+tests_duplicate_name_js_hook_1 : hookType = "beforeAll"
+object "DescribeBlockMetadata" as tests_duplicate_name_js_describe_2 #ded
+tests_duplicate_name_js_describe_2 : id = "describe_2"
+object "HookDefinitionMetadata" as tests_duplicate_name_js_hook_2 #fdd
+tests_duplicate_name_js_hook_2 : id = "hook_2"
+tests_duplicate_name_js_hook_2 : hookType = "beforeAll"
+object "TestEntryMetadata" as tests_duplicate_name_js_test_0 #ffd
+tests_duplicate_name_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as tests_duplicate_name_js_test_1 #ffd
+tests_duplicate_name_js_test_1 : id = "test_1"
+object "TestEntryMetadata" as tests_duplicate_name_js_test_2 #ffd
+tests_duplicate_name_js_test_2 : id = "test_2"
+object "TestEntryMetadata" as tests_duplicate_name_js_test_3 #ffd
+tests_duplicate_name_js_test_3 : id = "test_3"
+object "DescribeBlockMetadata" as tests_duplicate_name_js_describe_3 #ded
+tests_duplicate_name_js_describe_3 : id = "describe_3"
+object "HookDefinitionMetadata" as tests_duplicate_name_js_hook_3 #fdd
+tests_duplicate_name_js_hook_3 : id = "hook_3"
+tests_duplicate_name_js_hook_3 : hookType = "beforeAll"
+object "TestEntryMetadata" as tests_duplicate_name_js_test_4 #ffd
+tests_duplicate_name_js_test_4 : id = "test_4"
+object "TestEntryMetadata" as tests_duplicate_name_js_test_5 #ffd
+tests_duplicate_name_js_test_5 : id = "test_5"
+object "HookInvocationMetadata" as tests_duplicate_name_js_hook_1_0 #fcb
+tests_duplicate_name_js_hook_1_0 : id = "hook_1.0"
+object "HookInvocationMetadata" as tests_duplicate_name_js_hook_2_0 #fcb
+tests_duplicate_name_js_hook_2_0 : id = "hook_2.0"
+object "TestInvocationMetadata" as tests_duplicate_name_js_test_0_0 #ffb
+tests_duplicate_name_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_0 #fcb
+tests_duplicate_name_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_0_0_fn #fea
+tests_duplicate_name_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
+tests_duplicate_name_js_test_1_0 : id = "test_1.0"
+object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_1 #fcb
+tests_duplicate_name_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_0_fn #fea
+tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
+object "TestInvocationMetadata" as tests_duplicate_name_js_test_0_1 #ffb
+tests_duplicate_name_js_test_0_1 : id = "test_0.1"
+object "TestInvocationMetadata" as tests_duplicate_name_js_test_0_2 #ffb
+tests_duplicate_name_js_test_0_2 : id = "test_0.2"
+object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
+tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_0_2_fn #fea
+tests_duplicate_name_js_test_0_2_fn : id = "test_0.2.fn"
+object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
+tests_duplicate_name_js_test_2_0 : id = "test_2.0"
+object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_0 #ffb
+tests_duplicate_name_js_test_3_0 : id = "test_3.0"
+object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
+tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
+object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
+tests_duplicate_name_js_test_4_0 : id = "test_4.0"
+object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_3 #fcb
+tests_duplicate_name_js_hook_0_3 : id = "hook_0.3"
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_0_fn #fea
+tests_duplicate_name_js_test_4_0_fn : id = "test_4.0.fn"
+object "TestInvocationMetadata" as tests_duplicate_name_js_test_5_0 #ffb
+tests_duplicate_name_js_test_5_0 : id = "test_5.0"
+object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_4 #fcb
+tests_duplicate_name_js_hook_0_4 : id = "hook_0.4"
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_5_0_fn #fea
+tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
+aggregated_result --> tests_duplicate_name_js : testResults[0]
+tests_duplicate_name_js --> tests_duplicate_name_js_describe_0 : rootDescribeBlock
+tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_hook_0 : children[0]
+tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_describe_1 : children[1]
+tests_duplicate_name_js_hook_0 --> tests_duplicate_name_js_hook_0_0 : invocations[0]
+tests_duplicate_name_js_hook_0 --> tests_duplicate_name_js_hook_0_1 : invocations[1]
+tests_duplicate_name_js_hook_0 --> tests_duplicate_name_js_hook_0_2 : invocations[2]
+tests_duplicate_name_js_hook_0 --> tests_duplicate_name_js_hook_0_3 : invocations[3]
+tests_duplicate_name_js_hook_0 --> tests_duplicate_name_js_hook_0_4 : invocations[4]
+tests_duplicate_name_js_describe_1 --> tests_duplicate_name_js_hook_1 : children[0]
+tests_duplicate_name_js_describe_1 --> tests_duplicate_name_js_describe_2 : children[1]
+tests_duplicate_name_js_describe_1 --> tests_duplicate_name_js_test_2 : children[2]
+tests_duplicate_name_js_describe_1 --> tests_duplicate_name_js_test_3 : children[3]
+tests_duplicate_name_js_describe_1 --> tests_duplicate_name_js_describe_3 : children[4]
+tests_duplicate_name_js_hook_1 --> tests_duplicate_name_js_hook_1_0 : invocations[0]
+tests_duplicate_name_js_describe_2 --> tests_duplicate_name_js_hook_2 : children[0]
+tests_duplicate_name_js_describe_2 --> tests_duplicate_name_js_test_0 : children[1]
+tests_duplicate_name_js_describe_2 --> tests_duplicate_name_js_test_1 : children[2]
+tests_duplicate_name_js_hook_2 --> tests_duplicate_name_js_hook_2_0 : invocations[0]
+tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
+tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_1 : invocations[1]
+tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_2 : invocations[2]
+tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
+tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
+tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
+tests_duplicate_name_js_describe_3 --> tests_duplicate_name_js_hook_3 : children[0]
+tests_duplicate_name_js_describe_3 --> tests_duplicate_name_js_test_4 : children[1]
+tests_duplicate_name_js_describe_3 --> tests_duplicate_name_js_test_5 : children[2]
+tests_duplicate_name_js_hook_3 --> tests_duplicate_name_js_hook_3_0 : invocations[0]
+tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
+tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
+tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
+tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_hook_0_1 : before[0]
+tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
+tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
+tests_duplicate_name_js_test_0_2 --> tests_duplicate_name_js_hook_0_2 : before[0]
+tests_duplicate_name_js_test_0_2 --> tests_duplicate_name_js_test_0_2_fn : fn
+tests_duplicate_name_js_test_0_2_fn --> tests_duplicate_name_js_test_0_2 : test
+tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
+tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
+tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
+tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_hook_0_4 : before[0]
+tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
+tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata: integration test should create state: hook-afterAll-fail 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_hook_after_all_fail_js #def
+object "DescribeBlockMetadata" as tests_hook_after_all_fail_js_describe_0 #ded
+tests_hook_after_all_fail_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_hook_after_all_fail_js_hook_0 #fdd
+tests_hook_after_all_fail_js_hook_0 : id = "hook_0"
+tests_hook_after_all_fail_js_hook_0 : hookType = "beforeEach"
+object "HookDefinitionMetadata" as tests_hook_after_all_fail_js_hook_1 #fdd
+tests_hook_after_all_fail_js_hook_1 : id = "hook_1"
+tests_hook_after_all_fail_js_hook_1 : hookType = "afterAll"
+object "DescribeBlockMetadata" as tests_hook_after_all_fail_js_describe_1 #ded
+tests_hook_after_all_fail_js_describe_1 : id = "describe_1"
+object "TestEntryMetadata" as tests_hook_after_all_fail_js_test_0 #ffd
+tests_hook_after_all_fail_js_test_0 : id = "test_0"
+object "HookDefinitionMetadata" as tests_hook_after_all_fail_js_hook_2 #fdd
+tests_hook_after_all_fail_js_hook_2 : id = "hook_2"
+tests_hook_after_all_fail_js_hook_2 : hookType = "afterAll"
+object "TestInvocationMetadata" as tests_hook_after_all_fail_js_test_0_0 #ffb
+tests_hook_after_all_fail_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_hook_after_all_fail_js_hook_0_0 #fcb
+tests_hook_after_all_fail_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_hook_after_all_fail_js_test_0_0_fn #fea
+tests_hook_after_all_fail_js_test_0_0_fn : id = "test_0.0.fn"
+object "HookInvocationMetadata" as tests_hook_after_all_fail_js_hook_2_0 #fcb
+tests_hook_after_all_fail_js_hook_2_0 : id = "hook_2.0"
+object "HookInvocationMetadata" as tests_hook_after_all_fail_js_hook_1_0 #fcb
+tests_hook_after_all_fail_js_hook_1_0 : id = "hook_1.0"
+aggregated_result --> tests_hook_after_all_fail_js : testResults[0]
+tests_hook_after_all_fail_js --> tests_hook_after_all_fail_js_describe_0 : rootDescribeBlock
+tests_hook_after_all_fail_js_describe_0 --> tests_hook_after_all_fail_js_hook_0 : children[0]
+tests_hook_after_all_fail_js_describe_0 --> tests_hook_after_all_fail_js_hook_1 : children[1]
+tests_hook_after_all_fail_js_describe_0 --> tests_hook_after_all_fail_js_describe_1 : children[2]
+tests_hook_after_all_fail_js_hook_0 --> tests_hook_after_all_fail_js_hook_0_0 : invocations[0]
+tests_hook_after_all_fail_js_hook_1 --> tests_hook_after_all_fail_js_hook_1_0 : invocations[0]
+tests_hook_after_all_fail_js_describe_1 --> tests_hook_after_all_fail_js_test_0 : children[0]
+tests_hook_after_all_fail_js_describe_1 --> tests_hook_after_all_fail_js_hook_2 : children[1]
+tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : invocations[0]
+tests_hook_after_all_fail_js_hook_2 --> tests_hook_after_all_fail_js_hook_2_0 : invocations[0]
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_0_0 : before[0]
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_test_0_0_fn : fn
+tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata: integration test should create state: hook-beforeAll-fail 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_hook_before_all_fail_js #def
+object "DescribeBlockMetadata" as tests_hook_before_all_fail_js_describe_0 #ded
+tests_hook_before_all_fail_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_hook_before_all_fail_js_hook_0 #fdd
+tests_hook_before_all_fail_js_hook_0 : id = "hook_0"
+tests_hook_before_all_fail_js_hook_0 : hookType = "beforeEach"
+object "HookDefinitionMetadata" as tests_hook_before_all_fail_js_hook_1 #fdd
+tests_hook_before_all_fail_js_hook_1 : id = "hook_1"
+tests_hook_before_all_fail_js_hook_1 : hookType = "beforeAll"
+object "DescribeBlockMetadata" as tests_hook_before_all_fail_js_describe_1 #ded
+tests_hook_before_all_fail_js_describe_1 : id = "describe_1"
+object "TestEntryMetadata" as tests_hook_before_all_fail_js_test_0 #ffd
+tests_hook_before_all_fail_js_test_0 : id = "test_0"
+object "HookInvocationMetadata" as tests_hook_before_all_fail_js_hook_1_0 #fcb
+tests_hook_before_all_fail_js_hook_1_0 : id = "hook_1.0"
+object "TestInvocationMetadata" as tests_hook_before_all_fail_js_test_0_0 #ffb
+tests_hook_before_all_fail_js_test_0_0 : id = "test_0.0"
+object "TestFnInvocationMetadata" as tests_hook_before_all_fail_js_test_0_0_fn #fea
+tests_hook_before_all_fail_js_test_0_0_fn : id = "test_0.0.fn"
+aggregated_result --> tests_hook_before_all_fail_js : testResults[0]
+tests_hook_before_all_fail_js --> tests_hook_before_all_fail_js_describe_0 : rootDescribeBlock
+tests_hook_before_all_fail_js_describe_0 --> tests_hook_before_all_fail_js_hook_0 : children[0]
+tests_hook_before_all_fail_js_describe_0 --> tests_hook_before_all_fail_js_hook_1 : children[1]
+tests_hook_before_all_fail_js_describe_0 --> tests_hook_before_all_fail_js_describe_1 : children[2]
+tests_hook_before_all_fail_js_hook_1 --> tests_hook_before_all_fail_js_hook_1_0 : invocations[0]
+tests_hook_before_all_fail_js_describe_1 --> tests_hook_before_all_fail_js_test_0 : children[0]
+tests_hook_before_all_fail_js_test_0 --> tests_hook_before_all_fail_js_test_0_0 : invocations[0]
+tests_hook_before_all_fail_js_test_0_0 --> tests_hook_before_all_fail_js_test_0_0_fn : fn
+tests_hook_before_all_fail_js_test_0_0_fn --> tests_hook_before_all_fail_js_test_0_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata: integration test should create state: hook-nesting 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_hook_nesting_js #def
+object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_0 #ded
+tests_hook_nesting_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_0 #fdd
+tests_hook_nesting_js_hook_0 : id = "hook_0"
+tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
+object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
+tests_hook_nesting_js_describe_1 : id = "describe_1"
+tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"description":"This is a sample test suite."}}
+object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
+tests_hook_nesting_js_hook_1 : id = "hook_1"
+tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
+tests_hook_nesting_js_hook_1 : hookType = "beforeAll"
+object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_2 #fdd
+tests_hook_nesting_js_hook_2 : id = "hook_2"
+tests_hook_nesting_js_hook_2 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_2 : hookType = "beforeEach"
+object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_3 #fdd
+tests_hook_nesting_js_hook_3 : id = "hook_3"
+tests_hook_nesting_js_hook_3 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_3 : hookType = "afterEach"
+object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_4 #fdd
+tests_hook_nesting_js_hook_4 : id = "hook_4"
+tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the environment"}}
+tests_hook_nesting_js_hook_4 : hookType = "afterAll"
+object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
+tests_hook_nesting_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
+tests_hook_nesting_js_test_1 : id = "test_1"
+object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
+tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
+object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
+tests_hook_nesting_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
+tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
+object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
+tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
+object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
+tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
+object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
+tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
+object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
+tests_hook_nesting_js_test_1_0 : id = "test_1.0"
+object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
+tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
+object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
+tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
+object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
+tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
+object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
+tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
+object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
+tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
+aggregated_result --> tests_hook_nesting_js : testResults[0]
+tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
+tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
+tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_describe_1 : children[1]
+tests_hook_nesting_js_hook_0 --> tests_hook_nesting_js_hook_0_0 : invocations[0]
+tests_hook_nesting_js_hook_0 --> tests_hook_nesting_js_hook_0_1 : invocations[1]
+tests_hook_nesting_js_describe_1 --> tests_hook_nesting_js_hook_1 : children[0]
+tests_hook_nesting_js_describe_1 --> tests_hook_nesting_js_hook_2 : children[1]
+tests_hook_nesting_js_describe_1 --> tests_hook_nesting_js_hook_3 : children[2]
+tests_hook_nesting_js_describe_1 --> tests_hook_nesting_js_hook_4 : children[3]
+tests_hook_nesting_js_describe_1 --> tests_hook_nesting_js_test_0 : children[4]
+tests_hook_nesting_js_describe_1 --> tests_hook_nesting_js_test_1 : children[5]
+tests_hook_nesting_js_hook_1 --> tests_hook_nesting_js_hook_1_0 : invocations[0]
+tests_hook_nesting_js_hook_2 --> tests_hook_nesting_js_hook_2_0 : invocations[0]
+tests_hook_nesting_js_hook_2 --> tests_hook_nesting_js_hook_2_1 : invocations[1]
+tests_hook_nesting_js_hook_3 --> tests_hook_nesting_js_hook_3_0 : invocations[0]
+tests_hook_nesting_js_hook_3 --> tests_hook_nesting_js_hook_3_1 : invocations[1]
+tests_hook_nesting_js_hook_4 --> tests_hook_nesting_js_hook_4_0 : invocations[0]
+tests_hook_nesting_js_test_0 --> tests_hook_nesting_js_test_0_0 : invocations[0]
+tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
+tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_0_0 : before[0]
+tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_2_0 : before[1]
+tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_test_0_0_fn : fn
+tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_3_0 : after[0]
+tests_hook_nesting_js_test_0_0_fn --> tests_hook_nesting_js_test_0_0 : test
+tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_0_1 : before[0]
+tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_2_1 : before[1]
+tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_test_1_0_fn : fn
+tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_3_1 : after[0]
+tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata: integration test should create state: test-fail 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_fail_js #def
+object "DescribeBlockMetadata" as tests_test_fail_js_describe_0 #ded
+tests_test_fail_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_fail_js_hook_0 #fdd
+tests_test_fail_js_hook_0 : id = "hook_0"
+tests_test_fail_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as tests_test_fail_js_test_0 #ffd
+tests_test_fail_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_fail_js_test_0_0 #ffb
+tests_test_fail_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_test_fail_js_hook_0_0 #fcb
+tests_test_fail_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_test_fail_js_test_0_0_fn #fea
+tests_test_fail_js_test_0_0_fn : id = "test_0.0.fn"
+aggregated_result --> tests_test_fail_js : testResults[0]
+tests_test_fail_js --> tests_test_fail_js_describe_0 : rootDescribeBlock
+tests_test_fail_js_describe_0 --> tests_test_fail_js_hook_0 : children[0]
+tests_test_fail_js_describe_0 --> tests_test_fail_js_test_0 : children[1]
+tests_test_fail_js_hook_0 --> tests_test_fail_js_hook_0_0 : invocations[0]
+tests_test_fail_js_test_0 --> tests_test_fail_js_test_0_0 : invocations[0]
+tests_test_fail_js_test_0_0 --> tests_test_fail_js_hook_0_0 : before[0]
+tests_test_fail_js_test_0_0 --> tests_test_fail_js_test_0_0_fn : fn
+tests_test_fail_js_test_0_0_fn --> tests_test_fail_js_test_0_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata: integration test should create state: test-pass 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_pass_js #def
+object "DescribeBlockMetadata" as tests_test_pass_js_describe_0 #ded
+tests_test_pass_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_pass_js_hook_0 #fdd
+tests_test_pass_js_hook_0 : id = "hook_0"
+tests_test_pass_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as tests_test_pass_js_test_0 #ffd
+tests_test_pass_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_pass_js_test_0_0 #ffb
+tests_test_pass_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_test_pass_js_hook_0_0 #fcb
+tests_test_pass_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_test_pass_js_test_0_0_fn #fea
+tests_test_pass_js_test_0_0_fn : id = "test_0.0.fn"
+aggregated_result --> tests_test_pass_js : testResults[0]
+tests_test_pass_js --> tests_test_pass_js_describe_0 : rootDescribeBlock
+tests_test_pass_js_describe_0 --> tests_test_pass_js_hook_0 : children[0]
+tests_test_pass_js_describe_0 --> tests_test_pass_js_test_0 : children[1]
+tests_test_pass_js_hook_0 --> tests_test_pass_js_hook_0_0 : invocations[0]
+tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
+tests_test_pass_js_test_0_0 --> tests_test_pass_js_hook_0_0 : before[0]
+tests_test_pass_js_test_0_0 --> tests_test_pass_js_test_0_0_fn : fn
+tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata: integration test should create state: test-skip 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_skip_js #def
+object "DescribeBlockMetadata" as tests_test_skip_js_describe_0 #ded
+tests_test_skip_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_skip_js_hook_0 #fdd
+tests_test_skip_js_hook_0 : id = "hook_0"
+tests_test_skip_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as tests_test_skip_js_test_0 #ffd
+tests_test_skip_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_skip_js_test_0_0 #ffb
+tests_test_skip_js_test_0_0 : id = "test_0.0"
+aggregated_result --> tests_test_skip_js : testResults[0]
+tests_test_skip_js --> tests_test_skip_js_describe_0 : rootDescribeBlock
+tests_test_skip_js_describe_0 --> tests_test_skip_js_hook_0 : children[0]
+tests_test_skip_js_describe_0 --> tests_test_skip_js_test_0 : children[1]
+tests_test_skip_js_test_0 --> tests_test_skip_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata: integration test should create state: test-todo 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_todo_js #def
+object "DescribeBlockMetadata" as tests_test_todo_js_describe_0 #ded
+tests_test_todo_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_todo_js_hook_0 #fdd
+tests_test_todo_js_hook_0 : id = "hook_0"
+tests_test_todo_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as tests_test_todo_js_test_0 #ffd
+tests_test_todo_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_todo_js_test_0_0 #ffb
+tests_test_todo_js_test_0_0 : id = "test_0.0"
+aggregated_result --> tests_test_todo_js : testResults[0]
+tests_test_todo_js --> tests_test_todo_js_describe_0 : rootDescribeBlock
+tests_test_todo_js_describe_0 --> tests_test_todo_js_hook_0 : children[0]
+tests_test_todo_js_describe_0 --> tests_test_todo_js_test_0 : children[1]
+tests_test_todo_js_test_0 --> tests_test_todo_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;

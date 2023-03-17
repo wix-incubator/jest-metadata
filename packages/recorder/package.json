@@ -1,0 +1,23 @@
+{
+  "name": "@jest-metadata/recorder",
+  "description": "Fixture recorder for testing jest-metadata with a wide range of Jest versions",
+  "private": true,
+  "version": "0.0.0",
+  "devDependencies": {
+    "jest": "latest",
+    "jest-metadata": "^0.0.0"
+  },
+  "scripts": {
+    "prepare": "jest || true",
+    "pretest": "cd ../library && npm run build",
+    "test": "jest || true"
+  },
+  "jest": {
+    "testEnvironment": "jest-metadata/environment-node",
+    "reporters": [
+      "jest-metadata/reporter",
+      "default",
+      "./mockReporter"
+    ]
+  }
+}
