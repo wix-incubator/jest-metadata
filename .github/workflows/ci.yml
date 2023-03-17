@@ -20,7 +20,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - uses: bahmutov/npm-install@v3
+      - uses: bahmutov/npm-install@v1
         with:
           useLockFile: false
 
