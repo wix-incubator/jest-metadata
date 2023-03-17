@@ -1,6 +1,6 @@
 {
   "name": "@jest-metadata/fixtures",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "private": true,
   "main": "index.js",
   "types": "index.d.ts"

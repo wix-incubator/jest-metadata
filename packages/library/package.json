@@ -1,6 +1,6 @@
 {
   "name": "jest-metadata",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "description": "Extend Jest with custom metadata",
   "main": "dist/annotations.js",
   "types": "dist/annotations.d.ts",
@@ -82,7 +82,7 @@
   },
   "homepage": "https://github.com/wix-incubator/jest-metadata#readme",
   "devDependencies": {
-    "@jest-metadata/fixtures": "^1.0.0",
+    "@jest-metadata/fixtures": "^1.0.0-beta.1",
     "@jest/environment": "^29.3.1",
     "@jest/reporters": "^29.3.1",
     "@jest/types": "^29.3.1",
