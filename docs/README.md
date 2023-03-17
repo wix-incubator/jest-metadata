@@ -2,8 +2,8 @@
 
 <div align="center">
 
-![](images/logo.svg)
-
+<img src="images/logo.png" width=256 height=256 />
+  
 # jest-metadata
 
 Share your custom data across all Jest contexts.
