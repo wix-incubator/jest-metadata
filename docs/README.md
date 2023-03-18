@@ -8,7 +8,7 @@
 
 Share your custom data across all Jest contexts.
 
-[![npm version](https://badge.fury.io/js/jest-metadata.svg)](https://badge.fury.io/js/jest-metadata)
+[![npm version](https://badge.fury.io/js/jest-metadata.svg?rnd=42)](https://badge.fury.io/js/jest-metadata)
 
 </div>
 
