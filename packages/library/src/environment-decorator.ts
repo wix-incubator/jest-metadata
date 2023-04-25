@@ -30,10 +30,10 @@ interface JestEnvironmentLike {
  * You can use this decorator to extend a base JestEnvironment class inside
  * your own environment class in a declarative way. If you prefer to control
  * the integration with {@link module:jest-metadata} yourself, you can use
- * low-level hooks from {@link module:@jest-metadata/environment/hooks}.
+ * low-level hooks from {@link module:jest-metadata/environment/hooks}.
  *
  * @example
- * import WithMetadata from '@jest-metadata/environment-decorator';
+ * import WithMetadata from 'jest-metadata/environment-decorator';
  *
  * class MyEnvironment extends WithMetadata(JestEnvironmentNode) {
  *   constructor(config, context) {
