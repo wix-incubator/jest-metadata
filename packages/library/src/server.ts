@@ -5,8 +5,6 @@ import once from 'lodash.once';
 
 import { realm } from './realms';
 
-export * from './index';
-
 export const onRunStart: () => Promise<void> = once(async () => {
   await realm.ipc.start();
 });

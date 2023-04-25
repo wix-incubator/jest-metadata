@@ -6,6 +6,7 @@ import type { Circus } from '@jest/types';
 
 import {
   onHandleTestEvent,
+  onHandleTestEventSync,
   onTestEnvironmentCreate,
   onTestEnvironmentSetup,
   onTestEnvironmentTeardown,
@@ -86,7 +87,7 @@ export function WithMetadata<E extends Constructor<JestEnvironmentLike>>(
           case 'add_hook':
           case 'add_test': {
             super.handleTestEvent?.(circusEvent, circusState);
-            onHandleTestEvent(circusEvent, circusState);
+            onHandleTestEventSync(circusEvent, circusState);
             break;
           }
           default: {

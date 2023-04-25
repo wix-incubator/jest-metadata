@@ -3,7 +3,7 @@
 <div align="center">
 
 <img src="images/logo.png" width=256 height=256 />
-  
+
 # jest-metadata
 
 Share your custom data across all Jest contexts.
@@ -78,7 +78,8 @@ describe('Login flow', () => {
 Access metadata in a custom Jest reporter:
 
 ```js
-import { state, JestMetadataReporter } from 'jest-metadata/reporter';
+import { state } from 'jest-metadata';
+import { JestMetadataReporter } from 'jest-metadata/reporter';
 
 class CustomReporter extends JestMetadataReporter {
   async onTestCaseResult(test, testCaseResult) {

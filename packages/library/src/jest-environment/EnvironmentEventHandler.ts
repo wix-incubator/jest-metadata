@@ -227,7 +227,7 @@ export class EnvironmentEventHandler {
     });
   }
 
-  handleTestEvent: Circus.EventHandler = (event, state) => {
+  handleTestEvent = (event: Circus.Event, state: Circus.State): void => {
     return this._circusEventHandlers[event.name]?.(event, state);
   };
 }

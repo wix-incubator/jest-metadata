@@ -8,7 +8,6 @@
     "jest-metadata": "^0.0.0"
   },
   "scripts": {
-    "prepare": "jest || true",
     "pretest": "cd ../library && npm run build",
     "test": "jest || true"
   },
