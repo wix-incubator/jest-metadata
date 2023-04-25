@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const { state, events, JestMetadataReporter } = require('jest-metadata/reporter');
+const { state, events } = require('jest-metadata');
+const { JestMetadataReporter } = require('jest-metadata/reporter');
 
 const cwd = process.cwd();
 
@@ -12,7 +13,7 @@ class MockReporter extends JestMetadataReporter {
   _events = {};
 
   constructor(globalConfig, reporterConfig) {
-    super();
+    super(globalConfig, reporterConfig);
 
     events.on('*', (event) => {
       const id = event.testFilePath
@@ -27,14 +28,14 @@ class MockReporter extends JestMetadataReporter {
     });
   }
 
-  async onRunStart() {
-    await super.onRunStart();
+  async onRunStart(results, options) {
+    await super.onRunStart(results, options);
 
     state.set('vendor.runStartedAt', '2023-01-01T00:00:00.000Z');
   }
 
-  async onRunComplete() {
-    await super.onRunComplete();
+  async onRunComplete(testContexts, results) {
+    await super.onRunComplete(testContexts, results);
 
     for (const [fileName, events] of Object.entries(this._events)) {
       const contents = JSON.stringify(events, null, 2);

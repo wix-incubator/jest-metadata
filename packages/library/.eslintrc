@@ -49,6 +49,10 @@
     "node/no-missing-import": "off",
     "node/no-unsupported-features/es-syntax": "off",
     "@typescript-eslint/member-ordering": "error",
+    "@typescript-eslint/no-unused-vars": ["error", {
+      "argsIgnorePattern": "^_",
+      "varsIgnorePattern": "^_"
+    }],
     "unicorn/filename-case": "off",
     "unicorn/prefer-at": "off",
     "unicorn/prefer-node-protocol": "off",
@@ -56,7 +60,10 @@
     "unicorn/prevent-abbreviations": "off",
     "unicorn/no-unused-properties": "off",
     "unicorn/prefer-module": "off",
-    "jsdoc/require-jsdoc": "off"
+    "jsdoc/require-jsdoc": "off",
+    "jsdoc/require-param-type": "off",
+    "jsdoc/require-returns-type": "off",
+    "jsdoc/require-param-description": "off"
   },
   "overrides": [
     {

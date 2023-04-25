@@ -6,6 +6,7 @@ import type { Circus } from '@jest/types';
 
 import {
   onHandleTestEvent,
+  onHandleTestEventSync,
   onTestEnvironmentCreate,
   onTestEnvironmentSetup,
   onTestEnvironmentTeardown,
@@ -13,10 +14,14 @@ import {
 
 type Constructor<T> = new (...args: any[]) => T;
 
-interface JestEnvironmentLike {
+export interface JestEnvironmentLike {
   setup(): Promise<unknown>;
-  handleTestEvent?(event: any, state: any): Promise<unknown>;
+  handleTestEvent?(event: unknown, state: unknown): void | Promise<void>;
   teardown(): Promise<unknown>;
+}
+
+export interface WithTestEventHandler {
+  handleTestEvent(event: unknown, state: unknown): void | Promise<void>;
 }
 
 /**
@@ -29,10 +34,10 @@ interface JestEnvironmentLike {
  * You can use this decorator to extend a base JestEnvironment class inside
  * your own environment class in a declarative way. If you prefer to control
  * the integration with {@link module:jest-metadata} yourself, you can use
- * low-level hooks from {@link module:@jest-metadata/environment/hooks}.
+ * low-level hooks from {@link module:jest-metadata/environment/hooks}.
  *
  * @example
- * import WithMetadata from '@jest-metadata/environment-decorator';
+ * import WithMetadata from 'jest-metadata/environment-decorator';
  *
  * class MyEnvironment extends WithMetadata(JestEnvironmentNode) {
  *   constructor(config, context) {
@@ -57,12 +62,13 @@ interface JestEnvironmentLike {
  * @param JestEnvironmentClass - Jest environment subclass to decorate
  * @returns a decorated Jest environment subclass, e.g. `WithMetadata(JestEnvironmentNode)`
  */
-export function WithMetadata<E extends Constructor<JestEnvironmentLike>>(
-  JestEnvironmentClass: E,
-): E {
+export function WithMetadata<E extends JestEnvironmentLike>(
+  JestEnvironmentClass: Constructor<E>,
+): Constructor<E & WithTestEventHandler> {
   const compositeName = `WithMetadata(${JestEnvironmentClass.name})`;
 
   return {
+    // @ts-expect-error TS2415: Class '[`${compositeName}`]' incorrectly extends base class 'E'.
     [`${compositeName}`]: class extends JestEnvironmentClass {
       constructor(...args: any[]) {
         super(...args);
@@ -74,7 +80,6 @@ export function WithMetadata<E extends Constructor<JestEnvironmentLike>>(
         await onTestEnvironmentSetup();
       }
 
-      // @ts-expect-error TS2425: Class 'WithMetadata(JestEnvironmentNode)' incorrectly extends
       handleTestEvent(event: unknown, state: unknown): void | Promise<void> {
         const circusEvent = event as Circus.Event;
         const circusState = state as Circus.State;
@@ -86,7 +91,7 @@ export function WithMetadata<E extends Constructor<JestEnvironmentLike>>(
           case 'add_hook':
           case 'add_test': {
             super.handleTestEvent?.(circusEvent, circusState);
-            onHandleTestEvent(circusEvent, circusState);
+            onHandleTestEventSync(circusEvent, circusState);
             break;
           }
           default: {
@@ -105,7 +110,7 @@ export function WithMetadata<E extends Constructor<JestEnvironmentLike>>(
         await onTestEnvironmentTeardown();
       }
     },
-  }[compositeName] as E;
+  }[compositeName] as Constructor<E & WithTestEventHandler>;
 }
 
 /**
