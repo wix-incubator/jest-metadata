@@ -1,4 +1,4 @@
-import snakeCase from 'lodash/snakeCase';
+import { snakeCase } from 'lodash';
 
 export type PlantObjectConfig = {
   id: string;

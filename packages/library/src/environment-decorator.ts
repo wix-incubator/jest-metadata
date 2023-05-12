@@ -35,7 +35,6 @@ export interface WithTestEventHandler {
  * your own environment class in a declarative way. If you prefer to control
  * the integration with {@link module:jest-metadata} yourself, you can use
  * low-level hooks from {@link module:jest-metadata/environment/hooks}.
- *
  * @example
  * import WithMetadata from 'jest-metadata/environment-decorator';
  *

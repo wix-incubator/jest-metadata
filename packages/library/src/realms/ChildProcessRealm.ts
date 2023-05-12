@@ -1,6 +1,6 @@
-// TODO: import packageManifest from '../../package.json';
 import { IPCClient } from '../ipc';
 import { EnvironmentEventHandler } from '../jest-environment';
+import { getVersion } from '../utils';
 
 import { BaseRealm } from './BaseRealm';
 import { getClientId, getServerId } from './detect';
@@ -12,7 +12,7 @@ export class ChildProcessRealm extends BaseRealm {
   });
 
   readonly ipc = new IPCClient({
-    appspace: `jest-metadata@1.0.0-`, // TODO: packageManifest.version,
+    appspace: `jest-metadata@${getVersion()}-`,
     serverId: getServerId()!,
     clientId: getClientId(),
     emitter: this.rootEmitter,
@@ -27,6 +27,8 @@ export class ChildProcessRealm extends BaseRealm {
     });
 
     this.rootEmitter.on('*', (event) => {
+      // if the event is global (aggregated result), we need to handle it
+      // otherwise, we need to handle it only if the test file path matches
       if (!event.testFilePath || event.testFilePath === this.environmentHandler.testFilePath) {
         this.metadataHandler.handle(event);
       }

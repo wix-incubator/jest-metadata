@@ -1,5 +1,6 @@
 import { EnvironmentEventHandler } from '../jest-environment';
 
+import { AssociateMetadata, QueryMetadata } from '../jest-reporter';
 import {
   AggregatedMetadataRegistry,
   MetadataEventEmitter,
@@ -23,4 +24,6 @@ export abstract class BaseRealm {
     aggregatedResultMetadata: this.aggregatedResultMetadata,
     metadataRegistry: this.metadataRegistry,
   });
+  readonly associate = new AssociateMetadata();
+  readonly query = new QueryMetadata(this.associate, this.metadataFactory.checker);
 }

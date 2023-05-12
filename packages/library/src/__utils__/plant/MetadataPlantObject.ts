@@ -1,5 +1,4 @@
-import isEmpty from 'lodash/isEmpty';
-import omitBy from 'lodash/omitBy';
+import { isEmpty, omitBy } from 'lodash';
 
 import type { Metadata } from '../../metadata';
 import { PlantObject } from './PlantObject';

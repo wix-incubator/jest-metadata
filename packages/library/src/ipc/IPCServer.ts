@@ -26,7 +26,8 @@ class SocketQueue extends MessageQueue<MetadataEvent> {
 }
 
 export class IPCServer {
-  private _active = false;
+  private _startPromise?: Promise<void>;
+  private _stopPromise?: Promise<void>;
   private readonly _sockets = new Map<Socket, SocketQueue>();
   private readonly _socketsByFile = new Map<string, SocketQueue>();
   private readonly _filesBySocket = new Map<SocketQueue, string>();
@@ -46,9 +47,28 @@ export class IPCServer {
   }
 
   async start() {
-    if (this._active) {
-      return;
+    if (!this._startPromise) {
+      this._startPromise = this._doStart();
     }
+
+    return this._startPromise;
+  }
+
+  async stop() {
+    if (!this._stopPromise) {
+      this._stopPromise = this._doStop();
+    }
+
+    return this._stopPromise;
+  }
+
+  async flush(): Promise<unknown> {
+    return Promise.all(Object.values(this._sockets).map((connection) => connection.flush()));
+  }
+
+  private async _doStart(): Promise<void> {
+    await this._stopPromise;
+    this._stopPromise = undefined;
 
     await new Promise((resolve, reject) => {
       this._ipc.serve(() => resolve(void 0));
@@ -74,45 +94,16 @@ export class IPCServer {
       this._ipc.server.once('error', reject);
       this._ipc.server.start();
     });
-
-    this._active = true;
   }
 
-  async stop() {
-    if (this._active) {
-      this._active = false;
-
-      await new Promise((resolve, reject) => {
-        // @ts-expect-error TS2339: Property 'server' does not exist on type 'Server'.
-        this._ipc.server.server.close((e) => (e ? reject(e) : resolve()));
-        this._ipc.server.stop();
-      });
-    }
-  }
-
-  async send(event: MetadataEvent) {
-    if (!event.testFilePath) {
-      return this._broadcast(event);
-    }
-
-    const connection = this._socketsByFile.get(event.testFilePath);
-    if (!connection) {
-      throw new JestMetadataError(
-        'IPC server is not connected to client for test file: ' + event.testFilePath,
-      );
-    }
-
-    connection.enqueue(event);
-  }
-
-  async flush(): Promise<unknown> {
-    return Promise.all(Object.values(this._sockets).map((connection) => connection.flush()));
-  }
-
-  private _broadcast(event: MetadataEvent): void {
-    for (const connection of Object.values(this._sockets)) {
-      connection.enqueue(event);
-    }
+  private async _doStop(): Promise<void> {
+    await this._startPromise;
+    this._startPromise = undefined;
+    await new Promise((resolve, reject) => {
+      // @ts-expect-error TS2339: Property 'server' does not exist on type 'Server'.
+      this._ipc.server.server.close((e) => (e ? reject(e) : resolve()));
+      this._ipc.server.stop();
+    });
   }
 
   private _onClientMessage(event: MetadataEvent, socket: Socket) {
