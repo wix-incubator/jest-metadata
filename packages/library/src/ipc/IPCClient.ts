@@ -1,12 +1,12 @@
-import debug from 'debug';
 import node_ipc from 'node-ipc';
+import stripAnsi from 'strip-ansi';
 
 import { JestMetadataError } from '../errors';
-import type { MetadataEvent, MetadataEventEmitter } from '../metadata';
-import { MessageQueue } from '../utils';
+import type { MetadataEvent } from '../metadata';
+import { logger, MessageQueue } from '../utils';
 import { sendAsyncMessage } from './sendAsyncMessage';
 
-const log = debug('jest-metadata:ipc:client');
+const log = logger.child({ cat: 'ipc', tid: 'ipc-client' });
 
 type IPC = Omit<typeof node_ipc, 'IPC'>;
 type IPCConnection = (typeof node_ipc)['of'][string];
@@ -15,23 +15,19 @@ export type IPCClientConfig = {
   appspace: string;
   clientId: string | undefined;
   serverId: string | undefined;
-  emitter: MetadataEventEmitter;
 };
 
 export class IPCClient {
   private readonly _ipc: IPC;
   private readonly _serverId: string;
-  private readonly _emitter: MetadataEventEmitter;
   private _startPromise?: Promise<void>;
   private _stopPromise?: Promise<void>;
 
-  private readonly _messageQueue = new MessageQueue<MetadataEvent>(
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    async (msg) => this._doSend(msg, 'clientMessage'),
+  private readonly _messageQueue = new MessageQueue<MetadataEvent>(this.start(), async (msg) =>
+    log.trace.complete({ data: msg }, 'send', this._doSend(msg)),
   );
 
-  private _doSend: (msg: unknown, type: 'clientMessage' | 'serverMessageDone') => Promise<unknown> =
-    this._throwNotConnected;
+  private _doSend: (msg: unknown) => Promise<unknown> = this._throwNotConnected;
 
   constructor(config: IPCClientConfig) {
     if (!config.serverId) {
@@ -44,12 +40,11 @@ export class IPCClient {
 
     this._ipc = new node_ipc.IPC();
     this._serverId = config.serverId;
-    this._emitter = config.emitter;
 
     Object.assign(this._ipc.config, {
       id: config.clientId,
       appspace: config.appspace,
-      logger: (msg: string) => log(msg),
+      logger: (msg: string) => log.trace(stripAnsi(msg)),
       stopRetrying: 0,
       maxRetries: 0,
     });
@@ -61,7 +56,7 @@ export class IPCClient {
 
   start(): Promise<void> {
     if (!this._startPromise) {
-      this._startPromise = this._doStart();
+      this._startPromise = log.trace.complete('start', this._doStart());
     }
 
     return this._startPromise;
@@ -69,7 +64,7 @@ export class IPCClient {
 
   stop(): Promise<void> {
     if (!this._stopPromise) {
-      this._stopPromise = this._doStop();
+      this._stopPromise = log.trace.complete('stop', this._doStop());
     }
 
     return this._stopPromise;
@@ -77,7 +72,7 @@ export class IPCClient {
 
   async send(event: MetadataEvent) {
     this._messageQueue.enqueue(event);
-    return this._messageQueue.flush();
+    return this.flush();
   }
 
   async flush(): Promise<unknown> {
@@ -105,8 +100,7 @@ export class IPCClient {
       this._ipc.connectTo(serverId, onConnect);
     });
 
-    connection.on('serverMessage', this._onServerMessage.bind(this));
-    this._doSend = async (event, messageType) => sendAsyncMessage(connection, messageType, event);
+    this._doSend = async (event) => sendAsyncMessage(connection, 'clientMessage', event);
   }
 
   async _doStop() {
@@ -124,11 +118,6 @@ export class IPCClient {
     });
 
     this._doSend = this._throwNotConnected;
-  }
-
-  async _onServerMessage(event: MetadataEvent) {
-    this._emitter.emit(event);
-    await this._doSend({}, 'serverMessageDone');
   }
 
   async _throwNotConnected() {

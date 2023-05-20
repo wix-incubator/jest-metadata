@@ -2,6 +2,7 @@
 import type { Test, TestCaseResult, TestResult } from '@jest/reporters';
 import { realm } from './realms';
 import * as server from './server';
+import { logger } from './utils';
 
 export type JestMetadataServerReporterConfig = {
   // empty for now
@@ -13,6 +14,8 @@ export const query = realm.query;
  * @implements {import('@jest/reporters').Reporter}
  */
 export class JestMetadataReporter {
+  #log = logger.child({ cat: 'reporter', tid: 'reporter' });
+
   constructor(_globalConfig: unknown, _options: JestMetadataServerReporterConfig) {}
 
   getLastError(): Error | void {
@@ -40,6 +43,7 @@ export class JestMetadataReporter {
    */
   onTestFileStart(test: unknown): void {
     const testPath = (test as Test).path;
+    this.#log.debug.begin({ tid: ['reporter', testPath] }, testPath);
     server.addTestFile(testPath);
     const runMetadata = realm.aggregatedResultMetadata.getRunMetadata(testPath);
     realm.associate.filePath(testPath, runMetadata);
@@ -50,6 +54,9 @@ export class JestMetadataReporter {
    * @see {import('@jest/reporters').TestCaseResult}
    */
   onTestCaseResult(_test: unknown, _testCaseResult: unknown): void {
+    const test = _test as Test;
+    this.#log.debug({ tid: ['reporter', test.path] }, 'onTestCaseResult');
+
     const { lastTestEntry } = realm.query.test(_test as Test);
     if (lastTestEntry) {
       realm.associate.testCaseResult(_testCaseResult as TestCaseResult, lastTestEntry);
@@ -72,13 +79,16 @@ export class JestMetadataReporter {
    * @see {import('@jest/reporters').AggregatedResult}
    */
   onTestFileResult(_test: unknown, _testResult: unknown, _aggregatedResult: unknown): void {
-    const runMetadata = realm.query.test(_test as Test);
+    const test = _test as Test;
+    const runMetadata = realm.query.test(test as Test);
     const allTestEntries = [...runMetadata.allTestEntries()];
     const testResults = (_testResult as TestResult).testResults;
 
     for (const [index, testEntry] of allTestEntries.entries()) {
       realm.associate.testCaseResult(testResults[index], testEntry);
     }
+
+    this.#log.debug.end({ tid: ['reporter', test.path] });
   }
 
   /**

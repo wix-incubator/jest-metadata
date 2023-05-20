@@ -15,7 +15,6 @@ export class ChildProcessRealm extends BaseRealm {
     appspace: `jest-metadata@${getVersion()}-`,
     serverId: getServerId()!,
     clientId: getClientId(),
-    emitter: this.rootEmitter,
   });
 
   constructor() {
@@ -27,11 +26,8 @@ export class ChildProcessRealm extends BaseRealm {
     });
 
     this.rootEmitter.on('*', (event) => {
-      // if the event is global (aggregated result), we need to handle it
-      // otherwise, we need to handle it only if the test file path matches
-      if (!event.testFilePath || event.testFilePath === this.environmentHandler.testFilePath) {
-        this.metadataHandler.handle(event);
-      }
+      this.metadataHandler.handle(event);
+      return this.ipc.send(event);
     });
   }
 }

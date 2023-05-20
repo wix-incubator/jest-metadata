@@ -3,10 +3,13 @@ import lodashGet from 'lodash.get';
 import lodashMerge from 'lodash.merge';
 import lodashSet from 'lodash.set';
 
+import { logger } from '../../utils';
 import type { AggregatedIdentifier } from '../ids';
 import * as symbols from '../symbols';
 import type { Data, Metadata } from '../types';
 import type { MetadataContext } from './MetadataContext';
+
+const log = logger.child({ cat: 'metadata', tid: 'metadata' });
 
 export abstract class BaseMetadata implements Metadata {
   readonly [symbols.id]: AggregatedIdentifier;
@@ -14,6 +17,7 @@ export abstract class BaseMetadata implements Metadata {
   readonly [symbols.data]: Data = {};
 
   constructor(context: MetadataContext, id: AggregatedIdentifier) {
+    log.trace({ id }, this.constructor.name);
     this[symbols.context] = context;
     this[symbols.id] = id;
   }

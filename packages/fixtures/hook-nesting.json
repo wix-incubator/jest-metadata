@@ -38,6 +38,25 @@
     "type": "set_metadata",
     "testFilePath": "__tests__/hook-nesting.js",
     "targetId": "describe_1",
+    "path": "vendor.maintainer",
+    "value": {
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com"
+    },
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "describe_1",
+    "path": "vendor.description",
+    "value": "This is a sample test suite.",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "describe_1",
     "path": "vendor.description",
     "value": "This is a sample test suite.",
     "operation": "set"
@@ -47,6 +66,14 @@
     "testFilePath": "__tests__/hook-nesting.js",
     "hookId": "hook_1",
     "hookType": "beforeAll"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "hook_1",
+    "path": "vendor.description",
+    "value": "Prepare the environment",
+    "operation": "set"
   },
   {
     "type": "set_metadata",
@@ -71,10 +98,26 @@
     "operation": "set"
   },
   {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "hook_2",
+    "path": "vendor.description",
+    "value": "Visit the website",
+    "operation": "set"
+  },
+  {
     "type": "add_hook",
     "testFilePath": "__tests__/hook-nesting.js",
     "hookId": "hook_3",
     "hookType": "afterEach"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "hook_3",
+    "path": "vendor.description",
+    "value": "Visit the website",
+    "operation": "set"
   },
   {
     "type": "set_metadata",
@@ -99,6 +142,14 @@
     "operation": "set"
   },
   {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "hook_4",
+    "path": "vendor.description",
+    "value": "Tear down the environment",
+    "operation": "set"
+  },
+  {
     "type": "add_test",
     "testFilePath": "__tests__/hook-nesting.js",
     "testId": "test_0"
@@ -113,6 +164,21 @@
     ],
     "value": [
       "sanity"
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "test_0",
+    "path": [
+      "vendor",
+      "labels"
+    ],
+    "value": [
+      [
+        "sanity"
+      ]
     ],
     "operation": "push"
   },
@@ -143,7 +209,37 @@
       "labels"
     ],
     "value": [
+      [
+        "flaky"
+      ]
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "test_1",
+    "path": [
+      "vendor",
+      "labels"
+    ],
+    "value": [
       "sanity"
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "test_1",
+    "path": [
+      "vendor",
+      "labels"
+    ],
+    "value": [
+      [
+        "sanity"
+      ]
     ],
     "operation": "push"
   },
@@ -190,6 +286,21 @@
     "operation": "push"
   },
   {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "hook_1.0",
+    "path": "vendor.steps",
+    "value": [
+      [
+        {
+          "text": "Open the browser",
+          "startedAt": 1672524000000
+        }
+      ]
+    ],
+    "operation": "push"
+  },
+  {
     "type": "hook_success",
     "testFilePath": "__tests__/hook-nesting.js",
     "hookId": "hook_1"
@@ -228,6 +339,21 @@
     "operation": "push"
   },
   {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "hook_2.0",
+    "path": "vendor.steps",
+    "value": [
+      [
+        {
+          "text": "Goto the URL: https://example.com",
+          "startedAt": 1672524001000
+        }
+      ]
+    ],
+    "operation": "push"
+  },
+  {
     "type": "hook_success",
     "testFilePath": "__tests__/hook-nesting.js",
     "hookId": "hook_2"
@@ -256,10 +382,40 @@
     "targetId": "test_0.0.fn",
     "path": "vendor.steps",
     "value": [
+      [
+        {
+          "text": "Enter invalid credentials",
+          "startedAt": 1672524001100
+        }
+      ]
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "test_0.0.fn",
+    "path": "vendor.steps",
+    "value": [
       {
         "text": "Assert that the login failed",
         "startedAt": 1672524001200
       }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "test_0.0.fn",
+    "path": "vendor.steps",
+    "value": [
+      [
+        {
+          "text": "Assert that the login failed",
+          "startedAt": 1672524001200
+        }
+      ]
     ],
     "operation": "push"
   },
@@ -283,6 +439,21 @@
         "text": "Clear cookies",
         "startedAt": 1672524001200
       }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "hook_3.0",
+    "path": "vendor.steps",
+    "value": [
+      [
+        {
+          "text": "Clear cookies",
+          "startedAt": 1672524001200
+        }
+      ]
     ],
     "operation": "push"
   },
@@ -330,6 +501,21 @@
     "operation": "push"
   },
   {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "hook_2.1",
+    "path": "vendor.steps",
+    "value": [
+      [
+        {
+          "text": "Goto the URL: https://example.com",
+          "startedAt": 1672524001250
+        }
+      ]
+    ],
+    "operation": "push"
+  },
+  {
     "type": "hook_success",
     "testFilePath": "__tests__/hook-nesting.js",
     "hookId": "hook_2"
@@ -358,10 +544,40 @@
     "targetId": "test_1.0.fn",
     "path": "vendor.steps",
     "value": [
+      [
+        {
+          "text": "Enter valid credentials",
+          "startedAt": 1672524001350
+        }
+      ]
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "test_1.0.fn",
+    "path": "vendor.steps",
+    "value": [
       {
         "text": "Assert that the login succeeded",
         "startedAt": 1672524001450
       }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "test_1.0.fn",
+    "path": "vendor.steps",
+    "value": [
+      [
+        {
+          "text": "Assert that the login succeeded",
+          "startedAt": 1672524001450
+        }
+      ]
     ],
     "operation": "push"
   },
@@ -385,6 +601,21 @@
         "text": "Clear cookies",
         "startedAt": 1672524001450
       }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "hook_3.1",
+    "path": "vendor.steps",
+    "value": [
+      [
+        {
+          "text": "Clear cookies",
+          "startedAt": 1672524001450
+        }
+      ]
     ],
     "operation": "push"
   },
@@ -413,6 +644,21 @@
         "text": "Close the browser",
         "startedAt": 1672524001500
       }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "hook_4.0",
+    "path": "vendor.steps",
+    "value": [
+      [
+        {
+          "text": "Close the browser",
+          "startedAt": 1672524001500
+        }
+      ]
     ],
     "operation": "push"
   },

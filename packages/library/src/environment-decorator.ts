@@ -29,7 +29,7 @@ export interface WithTestEventHandler {
  * {@link JestEnvironment#constructor}, {@link JestEnvironment#global},
  * {@link JestEnvironment#setup}, and {@link JestEnvironment#handleTestEvent}
  * and {@link JestEnvironment#teardown} in a way that is compatible with
- * {@link jest-metadata}.
+ * jest-metadata.
  *
  * You can use this decorator to extend a base JestEnvironment class inside
  * your own environment class in a declarative way. If you prefer to control

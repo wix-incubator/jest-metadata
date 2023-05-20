@@ -3,6 +3,7 @@ const path = require('path');
 
 const { state, events } = require('jest-metadata');
 const { JestMetadataReporter } = require('jest-metadata/reporter');
+const { uniteTraceEventsToFile } = require('bunyamin');
 
 const cwd = process.cwd();
 
@@ -42,7 +43,28 @@ class MockReporter extends JestMetadataReporter {
       const fixturePath = path.join(__dirname, '../fixtures', fileName);
       fs.writeFileSync(fixturePath, contents + '\n');
     }
+
+    if (process.env.DEBUG) {
+      await this._aggregateLogs();
+    }
   }
+
+  async _aggregateLogs() {
+    await sleep(1000);
+    const logs = fs.readdirSync('.').filter(x => x.match(/^jest-metadata\..*\.json$/));
+    if (fs.existsSync('jest-metadata.json')) {
+      fs.rmSync('jest-metadata.json');
+    }
+
+    if (logs.length > 1) {
+      await uniteTraceEventsToFile(logs, 'jest-metadata.json');
+      logs.forEach(x => fs.rmSync(x));
+    }
+  }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 module.exports = MockReporter;

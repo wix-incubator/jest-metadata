@@ -60,5 +60,5 @@ export const onHandleTestEvent = async (
   circusState: unknown,
 ): Promise<void> => {
   onHandleTestEventSync(circusEvent, circusState);
-  await realm.ipc.flush();
+  await realm.ipc.flush?.();
 };

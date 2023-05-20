@@ -29,10 +29,3 @@ jobs:
 
       - name: Test
         run: npm run test
-
-      - name: Semantic release
-        if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta' }}
-        run: npx --no-install semantic-release --debug
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

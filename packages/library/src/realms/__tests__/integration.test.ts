@@ -1,7 +1,7 @@
-import { realm, ParentProcessRealm } from '..';
+import { realm } from '..';
 
 describe('realms: integration test', () => {
   test('should be a parent realm', () => {
-    expect(realm).toBeInstanceOf(ParentProcessRealm);
+    expect(Object.getPrototypeOf(realm).constructor.name).toBe('ParentProcessRealm');
   });
 });

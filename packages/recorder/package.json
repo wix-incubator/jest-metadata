@@ -4,6 +4,7 @@
   "private": true,
   "version": "1.0.0-beta.3",
   "devDependencies": {
+    "bunyamin": "^1.0.1",
     "jest": "latest",
     "jest-metadata": "^1.0.0-beta.3"
   },
