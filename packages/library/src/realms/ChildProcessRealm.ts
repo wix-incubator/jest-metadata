@@ -1,6 +1,6 @@
-// TODO: import packageManifest from '../../package.json';
 import { IPCClient } from '../ipc';
 import { EnvironmentEventHandler } from '../jest-environment';
+import { getVersion } from '../utils';
 
 import { BaseRealm } from './BaseRealm';
 import { getClientId, getServerId } from './detect';
@@ -12,10 +12,9 @@ export class ChildProcessRealm extends BaseRealm {
   });
 
   readonly ipc = new IPCClient({
-    appspace: `jest-metadata@1.0.0-`, // TODO: packageManifest.version,
+    appspace: `jest-metadata@${getVersion()}-`,
     serverId: getServerId()!,
     clientId: getClientId(),
-    emitter: this.rootEmitter,
   });
 
   constructor() {
@@ -27,9 +26,8 @@ export class ChildProcessRealm extends BaseRealm {
     });
 
     this.rootEmitter.on('*', (event) => {
-      if (!event.testFilePath || event.testFilePath === this.environmentHandler.testFilePath) {
-        this.metadataHandler.handle(event);
-      }
+      this.metadataHandler.handle(event);
+      return this.ipc.send(event);
     });
   }
 }

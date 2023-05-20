@@ -10,7 +10,6 @@ export class RunMetadata extends BaseMetadata {
   [symbols.lastTestEntry]: TestEntryMetadata | undefined;
   [symbols.currentMetadata]: BaseMetadata = this;
 
-  // eslint-disable-next-line unicorn/consistent-function-scoping
   readonly current = this[symbols.context].createMetadataSelector(
     () => this[symbols.currentMetadata],
   );

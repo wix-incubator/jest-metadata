@@ -1,6 +1,7 @@
 // eslint-disable-next-line node/no-unpublished-import
 import type { Test, TestCaseResult, TestResult } from '@jest/reporters';
 
+import { JestMetadataError } from '../errors';
 import type {
   AggregatedResultMetadata,
   MetadataChecker,
@@ -24,22 +25,38 @@ export class QueryMetadata {
   }
 
   filePath(filePath: string): RunMetadata {
+    if (!filePath) {
+      throw new JestMetadataError('Cannot query metadata for an empty file path');
+    }
+
     const metadata = this[_associate].get(filePath);
     return this[_checker].asRunMetadata(metadata);
   }
 
   test(test: Test): RunMetadata {
+    if (!test) {
+      throw new JestMetadataError('Cannot query metadata for an undefined test');
+    }
+
     const metadata = this[_associate].get(test.path);
     return this[_checker].asRunMetadata(metadata);
   }
 
   testCaseResult(testCaseResult: TestCaseResult): TestEntryMetadata {
+    if (!testCaseResult) {
+      throw new JestMetadataError('Cannot query metadata for an undefined test case result');
+    }
+
     const metadata = this[_associate].get(testCaseResult);
     return this[_checker].asTestEntryMetadata(metadata);
   }
 
   testResult(testResult: TestResult): RunMetadata {
-    const metadata = this[_associate].get(testResult);
+    if (!testResult) {
+      throw new JestMetadataError('Cannot query metadata for an undefined test result');
+    }
+
+    const metadata = this[_associate].get(testResult.testFilePath);
     return this[_checker].asRunMetadata(metadata);
   }
 

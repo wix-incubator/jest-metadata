@@ -12,7 +12,7 @@ import { SerialEmitter } from '../../utils';
 
 describe('metadata: integration test', () => {
   test.each(Object.values(fixtures))(`should create state: %s`, (_name: string, fixture: any[]) => {
-    const emitter: SetMetadataEventEmitter = new SerialEmitter();
+    const emitter: SetMetadataEventEmitter = new SerialEmitter('set');
     const metadataRegistry = new AggregatedMetadataRegistry();
     const metadataFactory = new MetadataFactoryImpl(metadataRegistry, emitter);
     const aggregatedResultMetadata = metadataFactory.createAggregatedResultMetadata();

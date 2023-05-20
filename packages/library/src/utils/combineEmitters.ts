@@ -5,8 +5,8 @@ export function combineEmitters<A extends { type: string }, B extends { type: st
   a: ReadonlyEmitter<A>,
   b: ReadonlyEmitter<B>,
 ): ReadonlyEmitter<A | B> {
-  const emitter = new SerialEmitter<A | B>();
-  a.on('*', (event) => emitter.emit(event));
-  b.on('*', (event) => emitter.emit(event));
-  return emitter;
+  const reemitter = new SerialEmitter<A | B>('combined');
+  a.on('*', (event) => /* A */ reemitter.emit(event));
+  b.on('*', (event) => /* B */ reemitter.emit(event));
+  return reemitter;
 }

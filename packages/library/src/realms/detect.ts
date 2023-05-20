@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ProcessRealm } from './ProcessRealm';
 
 const _initialServerId = getServerId();

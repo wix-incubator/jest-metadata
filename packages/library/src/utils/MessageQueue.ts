@@ -1,3 +1,4 @@
+import type { MetadataEvent } from '../metadata';
 import { SerialEmitter } from './SerialEmitter';
 
 export type SendMethod<Message> = (message: Message) => Promise<unknown>;
@@ -7,25 +8,27 @@ export type MessageQueueEvent<Message> =
   | { type: 'drain' }
   | { type: 'next'; message: Message };
 
-export class MessageQueue<Message> extends SerialEmitter<MessageQueueEvent<Message>> {
-  private _idle: Promise<unknown> = Promise.resolve();
-  private _queue: Message[] = [];
-  constructor(protected readonly send: SendMethod<Message>) {
-    super();
+export class MessageQueue<Message extends MetadataEvent> extends SerialEmitter<
+  MessageQueueEvent<Message>
+> {
+  protected readonly messages: Message[] = [];
+
+  constructor(protected idle: Promise<unknown>, protected readonly send: SendMethod<Message>) {
+    super('queue');
   }
 
   public enqueue(message: Message): this {
-    this._queue.push(message);
-    this._idle = this._idle.then(this._unshift, this._unshift);
+    this.messages.push(message);
+    this.idle = this.idle.then(this._unshift, this._unshift);
     return this;
   }
 
   public flush(): Promise<unknown> {
-    return this._idle;
+    return this.idle;
   }
 
   private _unshift = () => {
-    const message = this._queue.shift();
+    const message = this.messages.shift();
     /* istanbul ignore next */
     if (!message) {
       this.emit({ type: 'drain' });

@@ -10,7 +10,7 @@ describe('MessageQueue', () => {
       .mockImplementationOnce(async (msg) => sleep(10).then(() => receive(msg)))
       .mockImplementationOnce(async (msg) => receive(msg));
 
-    const queue = new MessageQueue(send);
+    const queue = new MessageQueue(Promise.resolve(), send);
     queue.enqueue('abc');
     queue.enqueue('def');
     await queue.flush();
@@ -33,7 +33,7 @@ describe('MessageQueue', () => {
     const onDrain = jest.fn();
     const onNext = jest.fn();
 
-    const queue = new MessageQueue(send)
+    const queue = new MessageQueue(Promise.resolve(), send)
       .on('error', onError)
       .on('drain', onDrain)
       .on('next', onNext)

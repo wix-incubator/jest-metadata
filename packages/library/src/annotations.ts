@@ -1,7 +1,6 @@
-import { MetadataDSL } from './metadata';
-import { state, events } from './index';
+import { realm } from './realms';
 
-const { $Get, $Set, $Push, $Assign, $Merge } = new MetadataDSL(events, () => state.currentMetadata);
+const { $Get, $Set, $Push, $Assign, $Merge } = realm.metadataDSL;
 
-export { $Get, $Set, $Push, $Assign, $Merge };
 export * from './index';
+export { $Get, $Set, $Push, $Assign, $Merge };

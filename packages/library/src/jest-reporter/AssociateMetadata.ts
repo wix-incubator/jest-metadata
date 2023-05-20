@@ -1,7 +1,7 @@
 import path from 'path';
 
 // eslint-disable-next-line node/no-unpublished-import
-import type { Test, TestCaseResult, TestResult } from '@jest/reporters';
+import type { TestCaseResult } from '@jest/reporters';
 
 import { JestMetadataError } from '../errors';
 import type {
@@ -15,6 +15,10 @@ export class AssociateMetadata {
   private readonly _map = new Map<unknown, Metadata>();
 
   filePath(value: string, metadata: RunMetadata): void {
+    if (!value) {
+      throw new JestMetadataError('Cannot associate metadata with an empty file path');
+    }
+
     this._map.set(value, metadata);
 
     if (path.isAbsolute(value)) {
@@ -24,16 +28,12 @@ export class AssociateMetadata {
     }
   }
 
-  test(item: Test, metadata: RunMetadata): void {
-    this.filePath(item.path, metadata);
-  }
-
   testCaseResult(testCaseResult: TestCaseResult, metadata: TestEntryMetadata): void {
-    this._map.set(testCaseResult, metadata);
-  }
+    if (testCaseResult == undefined) {
+      throw new JestMetadataError('Cannot associate metadata with an undefined test case result');
+    }
 
-  testResult(item: TestResult, metadata: RunMetadata): void {
-    this._map.set(item, metadata);
+    this._map.set(testCaseResult, metadata);
   }
 
   aggregatedResult(metadata: AggregatedResultMetadata): void {

@@ -35,7 +35,6 @@ export async function onTestEnvironmentTeardown(): Promise<void> {
 /**
  * Pass Jest Circus event and state to the handler.
  * This method does not synchronize with the metadata server.
- *
  * @param circusEvent
  * @param circusState
  * @see {@link Circus.Event}
@@ -51,7 +50,6 @@ export const onHandleTestEventSync = (circusEvent: unknown, circusState: unknown
 /**
  * Pass Jest Circus event and state to the handler.
  * After recalculating the state, this method synchronizes with the metadata server.
- *
  * @param circusEvent
  * @param circusState
  * @see {@link Circus.Event}
@@ -62,5 +60,5 @@ export const onHandleTestEvent = async (
   circusState: unknown,
 ): Promise<void> => {
   onHandleTestEventSync(circusEvent, circusState);
-  await realm.ipc.flush();
+  await realm.ipc.flush?.();
 };
