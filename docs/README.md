@@ -115,7 +115,7 @@ We welcome contributions from the community! To get involved, please follow thes
 
 For more information, see our [Contribution Guidelines].
 
-📃 License
+## 📃 License
 
 This project is licensed under the [MIT License].
 
