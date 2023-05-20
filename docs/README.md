@@ -50,7 +50,7 @@ In your Jest config, add the following:
 
 If you need to use `jest-metadata` in a JSDOM environment or another custom test environment, please refer to the [Integrating `jest-metadata` into test environment](jest-environment.md) document.
 
-📖 Usage
+## 📖 Usage
 
 ### In a Test File
 
