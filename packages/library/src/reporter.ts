@@ -57,7 +57,7 @@ export class JestMetadataReporter {
     const test = _test as Test;
     this.#log.debug({ tid: ['reporter', test.path] }, 'onTestCaseResult');
 
-    const { lastTestEntry } = realm.query.test(_test as Test);
+    const lastTestEntry = realm.query.test(_test as Test)?.lastTestEntry;
     if (lastTestEntry) {
       realm.associate.testCaseResult(_testCaseResult as TestCaseResult, lastTestEntry);
     }
@@ -80,12 +80,15 @@ export class JestMetadataReporter {
    */
   onTestFileResult(_test: unknown, _testResult: unknown, _aggregatedResult: unknown): void {
     const test = _test as Test;
-    const runMetadata = realm.query.test(test as Test);
-    const allTestEntries = [...runMetadata.allTestEntries()];
-    const testResults = (_testResult as TestResult).testResults;
 
-    for (const [index, testEntry] of allTestEntries.entries()) {
-      realm.associate.testCaseResult(testResults[index], testEntry);
+    const runMetadata = realm.query.test(test as Test);
+    if (runMetadata) {
+      const allTestEntries = [...runMetadata.allTestEntries()];
+      const testResults = (_testResult as TestResult).testResults;
+
+      for (const [index, testEntry] of allTestEntries.entries()) {
+        realm.associate.testCaseResult(testResults[index], testEntry);
+      }
     }
 
     this.#log.debug.end({ tid: ['reporter', test.path] });

@@ -28,13 +28,13 @@ export interface MetadataChecker {
 
   isTestFnInvocationMetadata(metadata: Metadata | undefined): metadata is TestFnInvocationMetadata;
 
-  asTestInvocationMetadata(metadata: Metadata | undefined): TestInvocationMetadata;
+  asTestInvocationMetadata(metadata: Metadata | undefined): TestInvocationMetadata | undefined;
 
-  asDescribeBlockMetadata(metadata: Metadata | undefined): DescribeBlockMetadata;
+  asDescribeBlockMetadata(metadata: Metadata | undefined): DescribeBlockMetadata | undefined;
 
-  asRunMetadata(metadata: Metadata | undefined): RunMetadata;
+  asRunMetadata(metadata: Metadata | undefined): RunMetadata | undefined;
 
-  asTestEntryMetadata(metadata: Metadata | undefined): TestEntryMetadata;
+  asTestEntryMetadata(metadata: Metadata | undefined): TestEntryMetadata | undefined;
 
-  asAggregatedResultMetadata(metadata: Metadata | undefined): AggregatedResultMetadata;
+  asAggregatedResultMetadata(metadata: Metadata | undefined): AggregatedResultMetadata | undefined;
 }

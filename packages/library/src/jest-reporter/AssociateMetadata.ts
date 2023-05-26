@@ -40,12 +40,7 @@ export class AssociateMetadata {
     this._map.set(undefined, metadata);
   }
 
-  get(key?: unknown): Metadata {
-    const metadata = this._map.get(key);
-    if (!metadata) {
-      throw new JestMetadataError(`Metadata not found for ${key}`);
-    }
-
-    return metadata;
+  get(key?: unknown): Metadata | undefined {
+    return this._map.get(key);
   }
 }

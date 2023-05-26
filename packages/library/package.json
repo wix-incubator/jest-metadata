@@ -1,6 +1,6 @@
 {
   "name": "jest-metadata",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "Extend Jest with custom metadata",
   "main": "dist/annotations.js",
   "types": "dist/annotations.d.ts",
