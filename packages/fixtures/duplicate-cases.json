@@ -4,10 +4,6 @@
     "testFilePath": "__tests__/duplicate-cases.js"
   },
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/duplicate-cases.js"
-  },
-  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/duplicate-cases.js",
     "describeId": "describe_0"

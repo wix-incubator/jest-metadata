@@ -79,7 +79,13 @@ export class IPCServer {
   }
 
   private _onClientMessage(event: MetadataEvent, socket: Socket) {
-    this._emitter.emit(event);
+    if (event.type !== 'add_test_file') {
+      // Jest Metadata server adds new test files before we get
+      // the independent confirmation from the Jest worker via IPC.
+      // So, we don't want to emit the event twice.
+      this._emitter.emit(event);
+    }
+
     this._ipc.server.emit(socket, 'clientMessageDone');
   }
 }

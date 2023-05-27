@@ -10,18 +10,13 @@ export class ParentProcessRealm extends BaseRealm {
   readonly ipc = new IPCServer({
     appspace: `jest-metadata@${getVersion()}-`,
     serverId: `${process.pid}`,
-    emitter: this.rootEmitter,
+    emitter: this.coreEmitter,
   });
 
   constructor() {
     super();
 
     registerServerId(this.ipc.id);
-
     this.associate.aggregatedResult(this.aggregatedResultMetadata);
-
-    this.rootEmitter.on('*', (event) => {
-      this.metadataHandler.handle(event);
-    });
   }
 }

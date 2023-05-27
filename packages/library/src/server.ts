@@ -5,7 +5,7 @@ import { realm } from './realms';
 export const onRunStart: () => Promise<void> = () => realm.ipc.start();
 
 export const addTestFile: (testFilePath: string) => void = (testFilePath: string) =>
-  realm.rootEmitter.emit({
+  realm.coreEmitter.emit({
     type: 'add_test_file',
     testFilePath,
   });

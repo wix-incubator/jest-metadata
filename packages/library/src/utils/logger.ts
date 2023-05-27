@@ -31,9 +31,11 @@ function createBunyanImpl() {
           threadGroups: [
             { id: 'ipc-server', displayName: 'IPC Server' },
             { id: 'ipc-client', displayName: 'IPC Client' },
-            { id: 'emitter-root', displayName: 'Emitter (root)' },
+            { id: 'emitter-core', displayName: 'Emitter (core)' },
             { id: 'emitter-set', displayName: 'Emitter (set)' },
             { id: 'emitter-combined', displayName: 'Emitter (combined)' },
+            { id: 'metadata', displayName: 'Metadata' },
+            { id: 'reporter', displayName: 'Reporter' },
           ],
         }),
       },

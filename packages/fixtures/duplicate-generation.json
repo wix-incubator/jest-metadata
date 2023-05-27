@@ -4,10 +4,6 @@
     "testFilePath": "__tests__/duplicate-generation.js"
   },
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/duplicate-generation.js"
-  },
-  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/duplicate-generation.js",
     "describeId": "describe_0"

@@ -4,10 +4,6 @@
     "testFilePath": "__tests__/duplicate-name.js"
   },
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/duplicate-name.js"
-  },
-  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/duplicate-name.js",
     "describeId": "describe_0"

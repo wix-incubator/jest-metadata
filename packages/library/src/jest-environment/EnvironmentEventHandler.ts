@@ -218,13 +218,15 @@ export class EnvironmentEventHandler {
     return this._testFilePath;
   }
 
-  handleEnvironmentCreated(testFilePath: string) {
+  /**
+   * Since this class is instantiated only once per the whole test session
+   * in the global realm (parent or child), we need to reset its instance cache
+   * and update the test file path when a new test file is started.
+   * @param testFilePath
+   */
+  handleEnvironmentCreated(testFilePath: string): void {
     this._instanceCache = new CircusInstanceCache();
     this._testFilePath = testFilePath;
-    this._emitter.emit({
-      type: 'add_test_file',
-      testFilePath,
-    });
   }
 
   handleTestEvent = (event: Circus.Event, state: Circus.State): void => {

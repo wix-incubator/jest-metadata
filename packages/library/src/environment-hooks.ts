@@ -15,9 +15,16 @@ export function onTestEnvironmentCreate(
   environmentContext: unknown,
 ): void {
   injectRealmIntoSandbox((jestEnvironment as JestEnvironment).global, realm);
-  realm.environmentHandler.handleEnvironmentCreated(
-    (environmentContext as EnvironmentContext).testPath,
-  );
+  const testFilePath = (environmentContext as EnvironmentContext).testPath;
+  realm.environmentHandler.handleEnvironmentCreated(testFilePath);
+  realm.events.add(realm.setEmitter);
+
+  if (realm.type === 'child_process') {
+    realm.coreEmitter.emit({
+      type: 'add_test_file',
+      testFilePath,
+    });
+  }
 }
 
 export async function onTestEnvironmentSetup(): Promise<void> {
