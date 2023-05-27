@@ -3,7 +3,7 @@ import stripAnsi from 'strip-ansi';
 
 import { JestMetadataError } from '../errors';
 import type { MetadataEvent } from '../metadata';
-import { logger, MessageQueue } from '../utils';
+import { logger, MessageQueue, optimizeForLogger } from '../utils';
 import { sendAsyncMessage } from './sendAsyncMessage';
 
 const log = logger.child({ cat: 'ipc', tid: 'ipc-client' });
@@ -17,6 +17,8 @@ export type IPCClientConfig = {
   serverId: string | undefined;
 };
 
+const __SEND = optimizeForLogger((msg: unknown) => ({ msg }));
+
 export class IPCClient {
   private readonly _ipc: IPC;
   private readonly _serverId: string;
@@ -24,7 +26,7 @@ export class IPCClient {
   private _stopPromise?: Promise<void>;
 
   private readonly _messageQueue = new MessageQueue<MetadataEvent>(this.start(), async (msg) =>
-    log.trace.complete({ data: msg }, 'send', this._doSend(msg)),
+    log.trace.complete(__SEND(msg), 'send', this._doSend(msg)),
   );
 
   private _doSend: (msg: unknown) => Promise<unknown> = this._throwNotConnected;
@@ -44,7 +46,7 @@ export class IPCClient {
     Object.assign(this._ipc.config, {
       id: config.clientId,
       appspace: config.appspace,
-      logger: (msg: string) => log.trace(stripAnsi(msg)),
+      logger: optimizeForLogger((msg: string) => log.trace(stripAnsi(msg))),
       stopRetrying: 0,
       maxRetries: 0,
     });

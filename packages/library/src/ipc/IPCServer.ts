@@ -4,7 +4,7 @@ import node_ipc from 'node-ipc';
 import stripAnsi from 'strip-ansi';
 
 import type { MetadataEvent, MetadataEventEmitter } from '../metadata';
-import { logger } from '../utils';
+import { logger, optimizeForLogger } from '../utils';
 
 const log = logger.child({ cat: 'ipc', tid: 'ipc-server' });
 
@@ -26,7 +26,7 @@ export class IPCServer {
     this._ipc = new node_ipc.IPC();
     this._ipc.config.id = config.serverId;
     this._ipc.config.appspace = config.appspace;
-    this._ipc.config.logger = (msg) => log.trace(stripAnsi(msg));
+    this._ipc.config.logger = optimizeForLogger((msg) => log.trace(stripAnsi(msg)));
     this._emitter = config.emitter;
   }
 

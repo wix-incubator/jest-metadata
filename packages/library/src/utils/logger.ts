@@ -1,29 +1,33 @@
 import { traceEventStream, wrapLogger } from 'bunyamin';
 import { createLogger } from 'bunyan';
+import { noop } from './noop';
+
+export const logger = create();
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const optimizeForLogger: <F>(f: F) => F = isEnabled() ? (f) => f : ((() => noop) as any);
 
 function create() {
-  const label = process.env.JEST_WORKER_ID ? `Worker ${process.env.JEST_WORKER_ID}` : 'Main';
-
-  const bunyan = createLogger({
-    name: `Jest Metadata (${label})`,
-    streams: streams(),
-  });
-
-  bunyan.debug({ env: process.env }, 'logger created');
   return wrapLogger({
-    logger: bunyan,
+    logger: (isEnabled() ? createBunyanImpl : createBunyanNoop)(),
   });
 }
 
-function streams() {
-  if (process.env.DEBUG) {
-    const suffix = process.env.JEST_WORKER_ID ? `-${process.env.JEST_WORKER_ID}` : '';
+function isEnabled(): boolean {
+  return process.env.JEST_METADATA_DEBUG === 'true';
+}
 
-    return [
+function createBunyanImpl() {
+  const label = process.env.JEST_WORKER_ID ? `Worker ${process.env.JEST_WORKER_ID}` : 'Main';
+  const suffix = process.env.JEST_WORKER_ID ? `-${process.env.JEST_WORKER_ID}` : '';
+
+  const bunyan = createLogger({
+    name: `Jest Metadata (${label})`,
+    streams: [
       {
         level: 'trace' as const,
         stream: traceEventStream({
-          filePath: `jest-metadata.${process.pid}${suffix}.json`,
+          filePath: `jest-metadata.${process.pid}${suffix}.log`,
           threadGroups: [
             { id: 'ipc-server', displayName: 'IPC Server' },
             { id: 'ipc-client', displayName: 'IPC Client' },
@@ -33,10 +37,19 @@ function streams() {
           ],
         }),
       },
-    ];
-  } else {
-    return [];
-  }
+    ],
+  });
+
+  return bunyan;
 }
 
-export const logger = create();
+function createBunyanNoop() {
+  return {
+    trace: noop,
+    debug: noop,
+    info: noop,
+    warn: noop,
+    error: noop,
+    fatal: noop,
+  };
+}

@@ -1,5 +1,30 @@
 import type { Emitter } from '../types';
-import { logger } from './logger';
+import { logger, optimizeForLogger } from './logger';
+
+//#region Optimized event helpers
+
+const CATEGORIES = {
+  LISTENERS: ['listeners'],
+  ENQUEUE: ['enqueue'],
+  EMIT: ['emit'],
+  INVOKE: ['invoke'],
+};
+
+const __LISTENERS = optimizeForLogger((listener: unknown) => ({
+  cat: CATEGORIES.LISTENERS,
+  fn: `${listener}`,
+}));
+const __ENQUEUE = optimizeForLogger((event: unknown) => ({ cat: CATEGORIES.ENQUEUE, event }));
+const __EMIT = optimizeForLogger((event: unknown) => ({ cat: CATEGORIES.EMIT, event }));
+const __INVOKE = optimizeForLogger((listener: unknown, type?: '*') => ({
+  cat: CATEGORIES.INVOKE,
+  fn: `${listener}`,
+  type,
+}));
+
+//#endregion
+
+const ONCE: unique symbol = Symbol('ONCE');
 
 /**
  * An event emitter that emits events in the order they are received.
@@ -17,9 +42,9 @@ export class SerialEmitter<Event extends { type: string }, EventType = Event['ty
     this.log = logger.child({ cat: `emitter`, tid: `emitter-${name}` });
   }
 
-  on(type: EventType, listener: ((event: Event) => void) & { __ONCE?: true }): this {
-    if (!listener.__ONCE) {
-      this.log.trace({ cat: ['listeners'], fn: `${listener}` }, `on(${type})`);
+  on(type: EventType, listener: ((event: Event) => void) & { [ONCE]?: true }): this {
+    if (!listener[ONCE]) {
+      this.log.trace(__LISTENERS(listener), `on(${type})`);
     }
 
     if (!this.listeners.has(type)) {
@@ -30,17 +55,13 @@ export class SerialEmitter<Event extends { type: string }, EventType = Event['ty
   }
 
   once(type: EventType, listener: (event: Event) => void): this {
-    this.log.trace({ cat: ['listeners'], fn: `${listener}` }, `once(${type})`);
-    const onceListener = (event: Event) => {
-      this.off(type, onceListener);
-      listener(event);
-    };
-    return this.on(type, onceListener);
+    this.log.trace(__LISTENERS(listener), `once(${type})`);
+    return this.on(type, this.#createOnceListener(type, listener));
   }
 
-  off(type: EventType, listener: ((event: Event) => void) & { __ONCE?: true }): this {
-    if (!listener.__ONCE) {
-      this.log.trace({ cat: ['listeners'], fn: `${listener}` }, `off(${type})`);
+  off(type: EventType, listener: ((event: Event) => void) & { [ONCE]?: true }): this {
+    if (!listener[ONCE]) {
+      this.log.trace(__LISTENERS(listener), `off(${type})`);
     }
 
     const listeners = this.listeners.get(type) || [];
@@ -51,21 +72,11 @@ export class SerialEmitter<Event extends { type: string }, EventType = Event['ty
     return this;
   }
 
-  _createOnceListener(type: EventType, listener: (event: Event) => void): (event: Event) => void {
-    const onceListener = (event: Event) => {
-      this.off(type, onceListener);
-      listener(event);
-    };
-
-    onceListener['__ONCE'] = true as const;
-    return onceListener;
-  }
-
   emit(nextEvent: Event) {
     this.queue.push(Object.freeze(nextEvent));
 
     if (this.queue.length > 1) {
-      this.log.trace({ data: nextEvent }, `enqueue(${nextEvent.type})`);
+      this.log.trace(__ENQUEUE(nextEvent), `enqueue(${nextEvent.type})`);
       return;
     }
 
@@ -75,17 +86,17 @@ export class SerialEmitter<Event extends { type: string }, EventType = Event['ty
       const listeners = this.listeners.get(eventType)?.slice();
       const listenersForAll = this.listeners.get('*' as EventType)?.slice();
 
-      this.log.trace.complete({ cat: ['emit'], data: event }, event.type, () => {
+      this.log.trace.complete(__EMIT(event), event.type, () => {
         if (listeners) {
           for (const listener of listeners) {
-            this.log.trace({ fn: `${listener}` }, 'invoke');
+            this.log.trace(__INVOKE(listener), 'invoke');
             listener(event);
           }
         }
 
         if (listenersForAll) {
           for (const listener of listenersForAll) {
-            this.log.trace({ fn: `${listener}` }, 'invoke');
+            this.log.trace(__INVOKE(listener, '*'), 'invoke');
             listener(event);
           }
         }
@@ -93,5 +104,15 @@ export class SerialEmitter<Event extends { type: string }, EventType = Event['ty
 
       this.queue.shift();
     }
+  }
+
+  #createOnceListener(type: EventType, listener: (event: Event) => void) {
+    const onceListener: ((event: Event) => void) & { [ONCE]?: true } = (event: Event) => {
+      this.off(type, onceListener);
+      listener(event);
+    };
+
+    onceListener[ONCE] = true as const;
+    return onceListener;
   }
 }

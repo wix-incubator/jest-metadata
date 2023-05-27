@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type EventEmitterLike = {
   on(event: string, listener: (...args: any[]) => void): EventEmitterLike;
   off(event: string, listener: (...args: any[]) => void): EventEmitterLike;

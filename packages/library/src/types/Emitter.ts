@@ -4,7 +4,21 @@ export interface ReadonlyEmitter<Event extends { type: string }, EventType = Eve
   off(type: EventType, listener: (event: Event) => void): this;
 }
 
+export interface ReadonlyAsyncEmitter<
+  Event extends { type: string },
+  EventType = Event['type'] | '*',
+> {
+  on(type: EventType, listener: (event: Event) => void | Promise<void>): this;
+  once(type: EventType, listener: (event: Event) => void | Promise<void>): this;
+  off(type: EventType, listener: (event: Event) => void | Promise<void>): this;
+}
+
 export interface Emitter<Event extends { type: string }, EventType = Event['type'] | '*'>
   extends ReadonlyEmitter<Event, EventType> {
   emit(event: Event): void;
+}
+
+export interface AsyncEmitter<Event extends { type: string }, EventType = Event['type'] | '*'>
+  extends ReadonlyAsyncEmitter<Event, EventType> {
+  emit(event: Event): Promise<void>;
 }
