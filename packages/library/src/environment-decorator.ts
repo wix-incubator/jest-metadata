@@ -51,8 +51,8 @@ export type ForwardedCircusEventType =
 
 export type ForwardedCircusEvent = {
   type: ForwardedCircusEventType;
-  event: unknown;
-  state: unknown;
+  event: any;
+  state: any;
 };
 
 /**
