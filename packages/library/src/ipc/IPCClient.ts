@@ -3,7 +3,7 @@ import stripAnsi from 'strip-ansi';
 
 import { JestMetadataError } from '../errors';
 import type { MetadataEvent } from '../metadata';
-import { logger, MessageQueue, optimizeForLogger } from '../utils';
+import { logger, optimizeForLogger } from '../utils';
 import { sendAsyncMessage } from './sendAsyncMessage';
 
 const log = logger.child({ cat: 'ipc', tid: 'ipc-client' });
@@ -24,12 +24,8 @@ export class IPCClient {
   private readonly _serverId: string;
   private _startPromise?: Promise<void>;
   private _stopPromise?: Promise<void>;
-
-  private readonly _messageQueue = new MessageQueue<MetadataEvent>(this.start(), async (msg) =>
-    log.trace.complete(__SEND(msg), 'send', this._doSend(msg)),
-  );
-
-  private _doSend: (msg: unknown) => Promise<unknown> = this._throwNotConnected;
+  private _queue: MetadataEvent[] = [];
+  private _connection?: IPCConnection;
 
   constructor(config: IPCClientConfig) {
     if (!config.serverId) {
@@ -72,22 +68,39 @@ export class IPCClient {
     return this._stopPromise;
   }
 
+  enqueue(event: MetadataEvent) {
+    this._queue.push(event);
+  }
+
   async send(event: MetadataEvent) {
-    this._messageQueue.enqueue(event);
+    this.enqueue(event);
     return this.flush();
   }
 
-  async flush(): Promise<unknown> {
-    return this._messageQueue.flush();
+  async flush(): Promise<void> {
+    if (!this._connection) {
+      throw new JestMetadataError('IPC client is not connected to server.');
+    }
+
+    const connection = this._connection;
+    const batch = this._queue.splice(0, this._queue.length);
+    if (batch.length > 0) {
+      const msg = { batch };
+      await log.trace.complete(__SEND(msg), 'send', () =>
+        sendAsyncMessage(connection, 'clientMessageBatch', msg),
+      );
+    } else {
+      log.trace('empty-queue');
+    }
   }
 
-  async _doStart() {
+  private async _doStart() {
     await this._stopPromise;
     this._stopPromise = undefined;
 
     const serverId = this._serverId;
 
-    const connection = await new Promise<IPCConnection>((resolve, reject) => {
+    this._connection = await new Promise<IPCConnection>((resolve, reject) => {
       const onConnect = (client: typeof node_ipc) => {
         client.of[serverId]
           // @ts-expect-error TS2339: Property 'once' does not exist on type 'Client'.
@@ -101,15 +114,13 @@ export class IPCClient {
       // @ts-expect-error TS2769: No overload matches this call.
       this._ipc.connectTo(serverId, onConnect);
     });
-
-    this._doSend = async (event) => sendAsyncMessage(connection, 'clientMessage', event);
   }
 
-  async _doStop() {
+  private async _doStop() {
     await this._startPromise;
     this._startPromise = undefined;
 
-    await this._messageQueue.flush();
+    await this.flush();
     await new Promise((resolve, reject) => {
       this._ipc.of[this._serverId]
         // @ts-expect-error TS2339: Property 'once' does not exist on type 'Client'.
@@ -119,10 +130,6 @@ export class IPCClient {
       this._ipc.disconnect(this._serverId);
     });
 
-    this._doSend = this._throwNotConnected;
-  }
-
-  async _throwNotConnected() {
-    throw new JestMetadataError('IPC client is not connected to server.');
+    this._connection = undefined;
   }
 }

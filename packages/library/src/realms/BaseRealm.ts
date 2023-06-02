@@ -11,17 +11,17 @@ import {
   SetMetadataEventEmitter,
 } from '../metadata';
 
-import { CombinedEmitter, SerialEmitter } from '../utils';
+import { AggregatedEmitter, SerialSyncEmitter } from '../utils';
 
 export abstract class BaseRealm {
-  readonly coreEmitter: MetadataEventEmitter = new SerialEmitter<MetadataEvent>('core').on(
+  readonly coreEmitter: MetadataEventEmitter = new SerialSyncEmitter<MetadataEvent>('core').on(
     '*',
     (event) => {
       this.metadataHandler.handle(event);
     },
   );
-  readonly setEmitter: SetMetadataEventEmitter = new SerialEmitter('set');
-  readonly events = new CombinedEmitter<MetadataEvent>().add(this.coreEmitter);
+  readonly setEmitter: SetMetadataEventEmitter = new SerialSyncEmitter('set');
+  readonly events = new AggregatedEmitter<MetadataEvent>('events').add(this.coreEmitter);
 
   readonly metadataRegistry = new AggregatedMetadataRegistry();
   readonly metadataFactory = new MetadataFactoryImpl(this.metadataRegistry, this.setEmitter);

@@ -44,20 +44,20 @@ class MockReporter extends JestMetadataReporter {
       fs.writeFileSync(fixturePath, contents + '\n');
     }
 
-    if (process.env.DEBUG) {
+    if (process.env.JEST_METADATA_DEBUG && process.env.JEST_WORKER_ID !== '1') {
       await this._aggregateLogs();
     }
   }
 
   async _aggregateLogs() {
     await sleep(1000);
-    const logs = fs.readdirSync('.').filter(x => x.match(/^jest-metadata\..*\.json$/));
+    const logs = fs.readdirSync('.').filter(x => x.match(/^jest-metadata\..*\.log$/));
     if (fs.existsSync('jest-metadata.json')) {
       fs.rmSync('jest-metadata.json');
     }
 
     if (logs.length > 1) {
-      await uniteTraceEventsToFile(logs, 'jest-metadata.json');
+      await uniteTraceEventsToFile(logs, 'jest-metadata.log');
       logs.forEach(x => fs.rmSync(x));
     }
   }

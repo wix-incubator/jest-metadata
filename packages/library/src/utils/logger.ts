@@ -4,6 +4,10 @@ import { noop } from './noop';
 
 export const logger = create();
 
+export const nologger = wrapLogger({
+  logger: createBunyanNoop(),
+});
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const optimizeForLogger: <F>(f: F) => F = isEnabled() ? (f) => f : ((() => noop) as any);
 
@@ -33,7 +37,8 @@ function createBunyanImpl() {
             { id: 'ipc-client', displayName: 'IPC Client' },
             { id: 'emitter-core', displayName: 'Emitter (core)' },
             { id: 'emitter-set', displayName: 'Emitter (set)' },
-            { id: 'emitter-combined', displayName: 'Emitter (combined)' },
+            { id: 'emitter-events', displayName: 'Emitter (events)' },
+            { id: 'emitter-environment', displayName: 'Test Environment' },
             { id: 'metadata', displayName: 'Metadata' },
             { id: 'reporter', displayName: 'Reporter' },
           ],

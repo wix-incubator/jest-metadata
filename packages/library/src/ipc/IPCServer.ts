@@ -10,6 +10,10 @@ const log = logger.child({ cat: 'ipc', tid: 'ipc-server' });
 
 type IPC = Omit<typeof node_ipc, 'IPC'>;
 
+type BatchMessage = {
+  batch: MetadataEvent[];
+};
+
 export type IPCServerConfig = {
   appspace: string;
   serverId: string;
@@ -60,7 +64,7 @@ export class IPCServer {
 
     await new Promise((resolve, reject) => {
       this._ipc.serve(() => resolve(void 0));
-      this._ipc.server.on('clientMessage', this._onClientMessage.bind(this));
+      this._ipc.server.on('clientMessageBatch', this._onClientMessageBatch.bind(this));
 
       // @ts-expect-error TS2339: Property 'once' does not exist on type 'Server'.
       this._ipc.server.once('error', reject);
@@ -78,14 +82,16 @@ export class IPCServer {
     });
   }
 
-  private _onClientMessage(event: MetadataEvent, socket: Socket) {
-    if (event.type !== 'add_test_file') {
-      // Jest Metadata server adds new test files before we get
-      // the independent confirmation from the Jest worker via IPC.
-      // So, we don't want to emit the event twice.
-      this._emitter.emit(event);
+  private _onClientMessageBatch({ batch }: BatchMessage, socket: Socket) {
+    for (const event of batch) {
+      if (event.type !== 'add_test_file') {
+        // Jest Metadata server adds new test files before we get
+        // the independent confirmation from the Jest worker via IPC.
+        // So, we don't want to emit the event twice.
+        this._emitter.emit(event);
+      }
     }
 
-    this._ipc.server.emit(socket, 'clientMessageDone');
+    this._ipc.server.emit(socket, 'clientMessageBatchDone');
   }
 }

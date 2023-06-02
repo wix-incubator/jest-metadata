@@ -22,7 +22,7 @@ export class ChildProcessRealm extends BaseRealm {
     super();
 
     this.events.on('*', (event) => {
-      return this.ipc.send(event);
+      return this.ipc.enqueue(event);
     });
   }
 }
