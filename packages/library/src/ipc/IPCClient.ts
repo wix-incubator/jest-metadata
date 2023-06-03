@@ -114,6 +114,8 @@ export class IPCClient {
       // @ts-expect-error TS2769: No overload matches this call.
       this._ipc.connectTo(serverId, onConnect);
     });
+
+    await this.flush();
   }
 
   private async _doStop() {
