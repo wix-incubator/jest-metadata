@@ -2,11 +2,11 @@
   "name": "@jest-metadata/recorder",
   "description": "Fixture recorder for testing jest-metadata with a wide range of Jest versions",
   "private": true,
-  "version": "1.0.0-beta.9",
+  "version": "1.0.0-beta.10",
   "devDependencies": {
     "bunyamin": "^1.0.1",
     "jest": "latest",
-    "jest-metadata": "^1.0.0-beta.9"
+    "jest-metadata": "^1.0.0-beta.10"
   },
   "scripts": {
     "pretest": "cd ../library && npm run build",
