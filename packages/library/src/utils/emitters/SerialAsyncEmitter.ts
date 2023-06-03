@@ -1,6 +1,6 @@
 import type { AsyncEmitter } from '../../types';
 import { ReadonlyEmitterBase } from './ReadonlyEmitterBase';
-import { __EMIT, __ENQUEUE, __INVOKE } from './syncEmitterCommons';
+import { __EMIT, __INVOKE } from './syncEmitterCommons';
 
 export class SerialAsyncEmitter<
     Event extends { type: string } = any,
@@ -24,20 +24,12 @@ export class SerialAsyncEmitter<
 
   async #doEmit(event: Event) {
     const eventType = event.type as EventType;
-    const listeners = this._listeners.get(eventType)?.slice();
-    const listenersForAll = this._listeners.get('*' as EventType)?.slice();
+    const listeners = [...this._getListeners(eventType)];
 
     await this._log.trace.complete(__EMIT(event), event.type, async () => {
       if (listeners) {
         for (const listener of listeners) {
           this._log.trace(__INVOKE(listener), 'invoke');
-          await listener(event);
-        }
-      }
-
-      if (listenersForAll) {
-        for (const listener of listenersForAll) {
-          this._log.trace(__INVOKE(listener, '*'), 'invoke');
           await listener(event);
         }
       }

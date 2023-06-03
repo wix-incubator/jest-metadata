@@ -12,7 +12,8 @@
     "plugin:unicorn/all",
     "plugin:jsdoc/recommended",
     "plugin:node/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:ecmascript-compat/recommended"
   ],
   "ignorePatterns": [
     "__fixtures__",

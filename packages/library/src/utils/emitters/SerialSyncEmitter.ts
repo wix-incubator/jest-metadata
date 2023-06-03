@@ -28,20 +28,12 @@ export class SerialSyncEmitter<
     while (this.#queue.length > 0) {
       const event = this.#queue[0];
       const eventType = event.type as EventType;
-      const listeners = this._listeners.get(eventType)?.slice();
-      const listenersForAll = this._listeners.get('*' as EventType)?.slice();
+      const listeners = [...this._getListeners(eventType)];
 
       this._log.trace.complete(__EMIT(event), event.type, () => {
         if (listeners) {
           for (const listener of listeners) {
             this._log.trace(__INVOKE(listener), 'invoke');
-            listener(event);
-          }
-        }
-
-        if (listenersForAll) {
-          for (const listener of listenersForAll) {
-            this._log.trace(__INVOKE(listener, '*'), 'invoke');
             listener(event);
           }
         }
