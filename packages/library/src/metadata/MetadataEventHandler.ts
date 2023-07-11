@@ -29,6 +29,7 @@ import type {
   TestRetryEvent,
   TestSkipEvent,
   TestStartEvent,
+  TestStartedEvent,
   TestTodoEvent,
   MetadataEventType,
 } from './events';
@@ -150,6 +151,10 @@ export class MetadataEventHandler {
       // TODO: [internal.as](TestEntryMetadata);
 
       test[internal.start]();
+    },
+
+    test_started: (_event: TestStartedEvent) => {
+      // no-op at the moment
     },
 
     test_retry: (event: TestRetryEvent) => {

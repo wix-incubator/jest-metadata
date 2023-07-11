@@ -22,4 +22,5 @@ export { TestFnSuccessEvent } from './TestFnSuccessEvent';
 export { TestRetryEvent } from './TestRetryEvent';
 export { TestSkipEvent } from './TestSkipEvent';
 export { TestStartEvent } from './TestStartEvent';
+export { TestStartedEvent } from './TestStartedEvent';
 export { TestTodoEvent } from './TestTodoEvent';

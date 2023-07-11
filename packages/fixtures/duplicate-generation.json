@@ -4,10 +4,6 @@
     "testFilePath": "__tests__/duplicate-generation.js"
   },
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/duplicate-generation.js"
-  },
-  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/duplicate-generation.js",
     "describeId": "describe_0"
@@ -48,6 +44,11 @@
     "testId": "test_0"
   },
   {
+    "type": "test_started",
+    "testFilePath": "__tests__/duplicate-generation.js",
+    "testId": "test_0"
+  },
+  {
     "type": "hook_start",
     "testFilePath": "__tests__/duplicate-generation.js",
     "hookId": "hook_0"
@@ -74,6 +75,11 @@
   },
   {
     "type": "test_start",
+    "testFilePath": "__tests__/duplicate-generation.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "test_started",
     "testFilePath": "__tests__/duplicate-generation.js",
     "testId": "test_1"
   },
@@ -109,6 +115,11 @@
   },
   {
     "type": "test_start",
+    "testFilePath": "__tests__/duplicate-generation.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "test_started",
     "testFilePath": "__tests__/duplicate-generation.js",
     "testId": "test_0"
   },

@@ -4,10 +4,6 @@
     "testFilePath": "__tests__/hook-nesting.js"
   },
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/hook-nesting.js"
-  },
-  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/hook-nesting.js",
     "describeId": "describe_0"
@@ -200,6 +196,11 @@
     "testId": "test_0"
   },
   {
+    "type": "test_started",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "testId": "test_0"
+  },
+  {
     "type": "hook_start",
     "testFilePath": "__tests__/hook-nesting.js",
     "hookId": "hook_0"
@@ -298,6 +299,11 @@
   },
   {
     "type": "test_start",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "test_started",
     "testFilePath": "__tests__/hook-nesting.js",
     "testId": "test_1"
   },

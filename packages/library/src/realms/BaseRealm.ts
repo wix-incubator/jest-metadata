@@ -1,26 +1,42 @@
 import { EnvironmentEventHandler } from '../jest-environment';
 
+import { AssociateMetadata, QueryMetadata } from '../jest-reporter';
 import {
   AggregatedMetadataRegistry,
+  MetadataDSL,
+  MetadataEvent,
   MetadataEventEmitter,
   MetadataEventHandler,
   MetadataFactoryImpl,
   SetMetadataEventEmitter,
 } from '../metadata';
 
-import { SerialEmitter } from '../utils';
+import { AggregatedEmitter, SerialSyncEmitter } from '../utils';
 
 export abstract class BaseRealm {
-  readonly rootEmitter: MetadataEventEmitter = new SerialEmitter();
-  readonly setEmitter: SetMetadataEventEmitter = new SerialEmitter();
+  readonly coreEmitter: MetadataEventEmitter = new SerialSyncEmitter<MetadataEvent>('core').on(
+    '*',
+    (event) => {
+      this.metadataHandler.handle(event);
+    },
+  );
+  readonly setEmitter: SetMetadataEventEmitter = new SerialSyncEmitter('set');
+  readonly events = new AggregatedEmitter<MetadataEvent>('events').add(this.coreEmitter);
+
   readonly metadataRegistry = new AggregatedMetadataRegistry();
   readonly metadataFactory = new MetadataFactoryImpl(this.metadataRegistry, this.setEmitter);
   readonly aggregatedResultMetadata = this.metadataFactory.createAggregatedResultMetadata();
   readonly environmentHandler: EnvironmentEventHandler = new EnvironmentEventHandler({
-    emitter: this.rootEmitter,
+    emitter: this.coreEmitter,
   });
   readonly metadataHandler: MetadataEventHandler = new MetadataEventHandler({
     aggregatedResultMetadata: this.aggregatedResultMetadata,
     metadataRegistry: this.metadataRegistry,
   });
+  readonly associate = new AssociateMetadata();
+  readonly query = new QueryMetadata(this.associate, this.metadataFactory.checker);
+  readonly metadataDSL = new MetadataDSL(
+    this.coreEmitter,
+    () => this.aggregatedResultMetadata.currentMetadata,
+  );
 }

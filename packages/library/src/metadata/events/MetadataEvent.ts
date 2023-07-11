@@ -17,6 +17,7 @@ import type { TestFnStartEvent } from './TestFnStartEvent';
 import type { TestFnSuccessEvent } from './TestFnSuccessEvent';
 import type { TestRetryEvent } from './TestRetryEvent';
 import type { TestSkipEvent } from './TestSkipEvent';
+import type { TestStartedEvent } from './TestStartedEvent';
 import type { TestStartEvent } from './TestStartEvent';
 import type { TestTodoEvent } from './TestTodoEvent';
 
@@ -41,6 +42,7 @@ export type MetadataEvent =
   | TestRetryEvent
   | TestSkipEvent
   | TestStartEvent
+  | TestStartedEvent
   | TestTodoEvent;
 
 export type MetadataEventType = MetadataEvent['type'];

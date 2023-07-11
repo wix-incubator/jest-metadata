@@ -50,15 +50,13 @@ describe('Login flow', () => {
 From your reporter, you can access the metadata using `jest-metadata/reporter` module:
 
 ```javascript
-import {state} from 'jest-metadata';
-
-const query = new MetadataDSL(realm.rootEmitter, realm.namespaced('your-custom-reporter'));
+import { query } from 'jest-metadata/reporter';
 
 export default class YourCustomReporter {
   html = '<!DOCTYPE html><html><head><title>Test results</title></head><body>';
 
   onTestCaseResult(test, testCaseResult) {
-    const metadata = state.getRunMetadata(test.path).lastInvocation;
+    const metadata = query.test(test).lastTestEntry.lastInvocation;
     const artifacts = metadata.fn.get('Artifacts');
     this.html += `
       <h3>${testCaseResult.fullName}</h3>
@@ -76,7 +74,7 @@ export default class YourCustomReporter {
     }
   }
 
-  onRunComplete(contexts, {testResults}) {
+  onRunComplete(contexts, { testResults }) {
     this.html += '</body></html>';
   }
 }

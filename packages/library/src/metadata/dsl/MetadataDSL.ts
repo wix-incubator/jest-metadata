@@ -13,9 +13,19 @@ export class MetadataDSL {
 
   constructor(emitter: ReadonlyMetadataEventEmitter, metadata: () => Metadata) {
     this[$metadata] = metadata;
-    this[$emitter] = emitter.once('run_start', () => {
-      this[$deferred] = false;
-    });
+    this[$emitter] = emitter
+      .on('run_start', () => {
+        // This allows to set metadata via fancy annotations before
+        // actual addition of test hooks and functions, which improves
+        // readability of the test files.
+        this[$deferred] = false;
+      })
+      .on('add_test_file', () => {
+        // When running `jest --runInBand`, the MetadataDSL instance is shared between
+        // multiple test files. We need to reset the deferred state when a new test file
+        // is added.
+        this[$deferred] = true;
+      });
   }
 
   $Get = (path: string | string[], fallbackValue?: unknown): unknown => {

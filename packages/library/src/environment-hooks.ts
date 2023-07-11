@@ -15,9 +15,16 @@ export function onTestEnvironmentCreate(
   environmentContext: unknown,
 ): void {
   injectRealmIntoSandbox((jestEnvironment as JestEnvironment).global, realm);
-  realm.environmentHandler.handleEnvironmentCreated(
-    (environmentContext as EnvironmentContext).testPath,
-  );
+  const testFilePath = (environmentContext as EnvironmentContext).testPath;
+  realm.environmentHandler.handleEnvironmentCreated(testFilePath);
+  realm.events.add(realm.setEmitter);
+
+  if (realm.type === 'child_process') {
+    realm.coreEmitter.emit({
+      type: 'add_test_file',
+      testFilePath,
+    });
+  }
 }
 
 export async function onTestEnvironmentSetup(): Promise<void> {
@@ -34,33 +41,25 @@ export async function onTestEnvironmentTeardown(): Promise<void> {
 
 /**
  * Pass Jest Circus event and state to the handler.
- * This method does not synchronize with the metadata server.
- *
- * @param circusEvent
- * @param circusState
- * @see {@link Circus.Event}
- * @see {@link Circus.State}
- */
-export const onHandleTestEventSync = (circusEvent: unknown, circusState: unknown): void => {
-  realm.environmentHandler.handleTestEvent(
-    circusEvent as Circus.Event,
-    circusState as Circus.State,
-  );
-};
-
-/**
- * Pass Jest Circus event and state to the handler.
  * After recalculating the state, this method synchronizes with the metadata server.
- *
  * @param circusEvent
  * @param circusState
- * @see {@link Circus.Event}
- * @see {@link Circus.State}
  */
-export const onHandleTestEvent = async (
+export const onHandleTestEvent = (
   circusEvent: unknown,
   circusState: unknown,
-): Promise<void> => {
-  onHandleTestEventSync(circusEvent, circusState);
-  await realm.ipc.flush();
+): void | Promise<void> => {
+  const event = circusEvent as Circus.Event;
+  const state = circusState as Circus.State;
+
+  realm.environmentHandler.handleTestEvent(event, state);
+
+  switch (event.name) {
+    case 'run_start':
+    case 'test_start':
+    case 'test_done':
+    case 'run_finish': {
+      return realm.ipc.flush?.();
+    }
+  }
 };

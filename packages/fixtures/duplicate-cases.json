@@ -4,10 +4,6 @@
     "testFilePath": "__tests__/duplicate-cases.js"
   },
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/duplicate-cases.js"
-  },
-  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/duplicate-cases.js",
     "describeId": "describe_0"
@@ -83,6 +79,11 @@
     "testId": "test_0"
   },
   {
+    "type": "test_started",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_0"
+  },
+  {
     "type": "hook_start",
     "testFilePath": "__tests__/duplicate-cases.js",
     "hookId": "hook_0"
@@ -109,6 +110,11 @@
   },
   {
     "type": "test_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "test_started",
     "testFilePath": "__tests__/duplicate-cases.js",
     "testId": "test_1"
   },
@@ -153,6 +159,11 @@
     "testId": "test_2"
   },
   {
+    "type": "test_started",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_2"
+  },
+  {
     "type": "hook_start",
     "testFilePath": "__tests__/duplicate-cases.js",
     "hookId": "hook_0"
@@ -179,6 +190,11 @@
   },
   {
     "type": "test_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_3"
+  },
+  {
+    "type": "test_started",
     "testFilePath": "__tests__/duplicate-cases.js",
     "testId": "test_3"
   },

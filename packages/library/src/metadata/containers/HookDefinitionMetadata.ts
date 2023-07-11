@@ -46,20 +46,20 @@ export class HookDefinitionMetadata extends BaseMetadata {
     switch (this.hookType) {
       case 'beforeEach': {
         checker
-          .asTestInvocationMetadata(parent)
+          .asTestInvocationMetadata(parent)!
           .before.push(invocation as HookInvocationMetadata<TestInvocationMetadata>);
         break;
       }
       case 'afterEach': {
         checker
-          .asTestInvocationMetadata(parent)
+          .asTestInvocationMetadata(parent)!
           .after.push(invocation as HookInvocationMetadata<TestInvocationMetadata>);
         break;
       }
       case 'beforeAll':
       case 'afterAll': {
         checker
-          .asDescribeBlockMetadata(parent)
+          .asDescribeBlockMetadata(parent)!
           .invocations.push(invocation as HookInvocationMetadata<DescribeBlockMetadata>);
         break;
       }

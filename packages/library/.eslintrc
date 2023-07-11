@@ -12,7 +12,8 @@
     "plugin:unicorn/all",
     "plugin:jsdoc/recommended",
     "plugin:node/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:ecmascript-compat/recommended"
   ],
   "ignorePatterns": [
     "__fixtures__",
@@ -53,8 +54,10 @@
       "argsIgnorePattern": "^_",
       "varsIgnorePattern": "^_"
     }],
+    "unicorn/consistent-function-scoping": "off",
     "unicorn/filename-case": "off",
     "unicorn/prefer-at": "off",
+    "unicorn/prefer-json-parse-buffer": "off",
     "unicorn/prefer-node-protocol": "off",
     "unicorn/prefer-string-replace-all": "off",
     "unicorn/prevent-abbreviations": "off",
@@ -67,12 +70,13 @@
   },
   "overrides": [
     {
-      "files": ["**/__tests__/*.ts", "**/__utils__/**/*.ts", "*.test.ts"],
+      "files": ["**/__*__/**.ts", "**.test.ts"],
       "rules": {
         "@typescript-eslint/no-explicit-any": "off",
-        "node/no-unpublished-import": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
         "import/no-internal-modules": "off",
-        "no-only-tests/no-only-tests": "error"
+        "no-only-tests/no-only-tests": "error",
+        "node/no-unpublished-import": "off"
       }
     }
   ]

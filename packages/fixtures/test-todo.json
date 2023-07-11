@@ -4,10 +4,6 @@
     "testFilePath": "__tests__/test-todo.js"
   },
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/test-todo.js"
-  },
-  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/test-todo.js",
     "describeId": "describe_0"

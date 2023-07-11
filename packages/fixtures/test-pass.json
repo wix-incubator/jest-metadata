@@ -4,10 +4,6 @@
     "testFilePath": "__tests__/test-pass.js"
   },
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/test-pass.js"
-  },
-  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/test-pass.js",
     "describeId": "describe_0"
@@ -39,6 +35,11 @@
   },
   {
     "type": "test_start",
+    "testFilePath": "__tests__/test-pass.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "test_started",
     "testFilePath": "__tests__/test-pass.js",
     "testId": "test_0"
   },

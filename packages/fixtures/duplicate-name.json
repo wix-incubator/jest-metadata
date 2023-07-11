@@ -4,10 +4,6 @@
     "testFilePath": "__tests__/duplicate-name.js"
   },
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/duplicate-name.js"
-  },
-  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/duplicate-name.js",
     "describeId": "describe_0"
@@ -146,6 +142,11 @@
     "testId": "test_0"
   },
   {
+    "type": "test_started",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_0"
+  },
+  {
     "type": "hook_start",
     "testFilePath": "__tests__/duplicate-name.js",
     "hookId": "hook_0"
@@ -172,6 +173,11 @@
   },
   {
     "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "test_started",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_1"
   },
@@ -207,6 +213,11 @@
   },
   {
     "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "test_started",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_0"
   },
@@ -281,6 +292,11 @@
     "testId": "test_4"
   },
   {
+    "type": "test_started",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_4"
+  },
+  {
     "type": "hook_start",
     "testFilePath": "__tests__/duplicate-name.js",
     "hookId": "hook_0"
@@ -307,6 +323,11 @@
   },
   {
     "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_5"
+  },
+  {
+    "type": "test_started",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_5"
   },

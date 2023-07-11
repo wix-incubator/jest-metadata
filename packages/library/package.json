@@ -1,9 +1,9 @@
 {
   "name": "jest-metadata",
-  "version": "0.0.0",
+  "version": "1.0.0-beta.10",
   "description": "Extend Jest with custom metadata",
-  "main": "dist/annotations.js",
-  "types": "dist/annotations.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "src",
     "dist",
@@ -13,9 +13,9 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/annotations.js",
-      "require": "./dist/annotations.js",
-      "types": "./dist/annotations.d.ts"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./annotations": {
       "import": "./dist/annotations.js",
@@ -55,10 +55,10 @@
     "./package.json": "./package.json"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=14.20.0"
   },
   "scripts": {
-    "prepare": "tsc",
+    "prepack": "tsc",
     "build": "tsc",
     "docs": "typedoc",
     "start": "http-server -p 3000 website",
@@ -82,11 +82,11 @@
   },
   "homepage": "https://github.com/wix-incubator/jest-metadata#readme",
   "devDependencies": {
-    "@jest-metadata/fixtures": "^0.0.0",
+    "@jest-metadata/fixtures": "^1.0.0-beta.7",
     "@jest/environment": "^29.3.1",
     "@jest/reporters": "^29.3.1",
     "@jest/types": "^29.3.1",
-    "@types/debug": "^4.1.7",
+    "@types/bunyan": "^1.8.8",
     "@types/glob": "^8.0.0",
     "@types/jest": "^29.2.5",
     "@types/lodash": "^4.14.191",
@@ -100,15 +100,16 @@
     "@types/rimraf": "^3.0.2",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
-    "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-ecmascript-compat": "^3.0.0",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsdoc": "^39.6.4",
+    "eslint-plugin-jsdoc": "^44.2.3",
     "eslint-plugin-no-only-tests": "^3.1.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-unicorn": "^45.0.2",
+    "eslint-plugin-unicorn": "^47.0.0",
     "http-server": "^14.1.1",
     "jest": "^29.3.1",
     "jest-environment-node": "^29.3.1",
@@ -129,14 +130,18 @@
     }
   },
   "dependencies": {
-    "debug": "^4.3.4",
-    "funpermaproxy": "^1.1.0",
+    "bunyamin": "^1.0.1",
+    "bunyan": "^1.8.15",
     "import-cwd": "^3.0.0",
     "lodash.get": "^4.4.2",
     "lodash.memoize": "^4.1.2",
     "lodash.merge": "^4.6.2",
-    "lodash.once": "^4.1.1",
     "lodash.set": "^4.3.2",
-    "node-ipc": "^9.2.1"
-  }
+    "node-ipc": "9.2.1",
+    "strip-ansi": "^6.0.0",
+    "tslib": "^2.5.3"
+  },
+  "browserslist": [
+    "node 14"
+  ]
 }

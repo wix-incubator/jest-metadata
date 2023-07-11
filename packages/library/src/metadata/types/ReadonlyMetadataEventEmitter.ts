@@ -1,4 +1,4 @@
 import type { ReadonlyEmitter } from '../../types';
-import type { MetadataEvent } from '../events';
+import type { MetadataEvent, MetadataEventType } from '../events';
 
-export type ReadonlyMetadataEventEmitter = ReadonlyEmitter<MetadataEvent>;
+export type ReadonlyMetadataEventEmitter = ReadonlyEmitter<MetadataEvent, MetadataEventType | '*'>;

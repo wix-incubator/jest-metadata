@@ -21,7 +21,7 @@ import type { HookType, SetMetadataEventEmitter } from '../types';
 import type { MetadataFactory } from './MetadataFactory';
 
 export class MetadataFactoryImpl implements MetadataFactory {
-  private readonly _checker = new InstanceOfMetadataChecker({
+  readonly #checker = new InstanceOfMetadataChecker({
     AggregatedResultMetadata,
     DescribeBlockMetadata,
     HookDefinitionMetadata,
@@ -32,32 +32,34 @@ export class MetadataFactoryImpl implements MetadataFactory {
     TestInvocationMetadata,
   });
 
-  private readonly _context: MetadataContext = {
-    factory: this,
-    checker: this._checker,
-    emitter: this.emitter,
-    createMetadataSelector: (fn) => new MetadataSelectorImpl(this._checker, fn),
-  };
+  readonly #context: MetadataContext;
 
   constructor(
     private readonly metadataRegistry: MetadataRegistry<unknown>,
     private readonly emitter: SetMetadataEventEmitter,
-  ) {}
+  ) {
+    this.#context = {
+      factory: this,
+      checker: this.#checker,
+      emitter: this.emitter,
+      createMetadataSelector: (fn) => new MetadataSelectorImpl(this.#checker, fn),
+    };
+  }
 
   get checker() {
-    return this._checker;
+    return this.#checker;
   }
 
   createAggregatedResultMetadata() {
     const id = AggregatedIdentifier.global('aggregatedResult');
-    return this._register(new AggregatedResultMetadata(this._context, id));
+    return this._register(new AggregatedResultMetadata(this.#context, id));
   }
 
   createDescribeBlockMetadata(
     parent: RunMetadata | DescribeBlockMetadata,
     id: AggregatedIdentifier,
   ) {
-    return this._register(new DescribeBlockMetadata(this._context, parent, id));
+    return this._register(new DescribeBlockMetadata(this.#context, parent, id));
   }
 
   createHookDefinitionMetadata(
@@ -65,7 +67,7 @@ export class MetadataFactoryImpl implements MetadataFactory {
     id: AggregatedIdentifier,
     hookType: HookType,
   ) {
-    return this._register(new HookDefinitionMetadata(this._context, owner, id, hookType));
+    return this._register(new HookDefinitionMetadata(this.#context, owner, id, hookType));
   }
 
   createHookInvocationMetadata(
@@ -73,24 +75,24 @@ export class MetadataFactoryImpl implements MetadataFactory {
     parent: TestInvocationMetadata | DescribeBlockMetadata,
     id: AggregatedIdentifier,
   ) {
-    return this._register(new HookInvocationMetadata(this._context, hookDefinition, parent, id));
+    return this._register(new HookInvocationMetadata(this.#context, hookDefinition, parent, id));
   }
 
   createRunMetadata(testFilePath: string) {
     const runId = new AggregatedIdentifier(testFilePath, '');
-    return this._register(new RunMetadata(this._context, runId));
+    return this._register(new RunMetadata(this.#context, runId));
   }
 
   createTestEntryMetadata(describeBlock: DescribeBlockMetadata, id: AggregatedIdentifier) {
-    return this._register(new TestEntryMetadata(this._context, describeBlock, id));
+    return this._register(new TestEntryMetadata(this.#context, describeBlock, id));
   }
 
   createTestFnInvocationMetadata(testInvocation: TestInvocationMetadata, id: AggregatedIdentifier) {
-    return this._register(new TestFnInvocationMetadata(this._context, testInvocation, id));
+    return this._register(new TestFnInvocationMetadata(this.#context, testInvocation, id));
   }
 
   createTestInvocationMetadata(testEntry: TestEntryMetadata, id: AggregatedIdentifier) {
-    return this._register(new TestInvocationMetadata(this._context, testEntry, id));
+    return this._register(new TestInvocationMetadata(this.#context, testEntry, id));
   }
 
   private _register<T extends BaseMetadata>(metadata: T): T {
