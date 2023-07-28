@@ -57,7 +57,7 @@ If you need to use `jest-metadata` in a JSDOM environment or another custom test
 Attach metadata to test entities using annotations:
 
 ```js
-import { $Set } from 'jest-metadata/annotations';
+import { $Set } from 'jest-metadata';
 
 // Write your own DSL for attaching metadata to test entities
 // Try to namespace your metadata to avoid collisions with other libraries

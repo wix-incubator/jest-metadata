@@ -9,3 +9,4 @@ recorderManifest.devDependencies.jest = process.env.JEST_VERSION || 'latest';
 fs.writeFileSync(recorderManifestPath, JSON.stringify(recorderManifest, null, 2) + '\n');
 
 await $`lerna bootstrap`;
+await $`lerna run test --scope @jest-metadata/recorder --stream`;

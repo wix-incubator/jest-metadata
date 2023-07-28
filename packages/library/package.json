@@ -17,11 +17,6 @@
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./annotations": {
-      "import": "./dist/annotations.js",
-      "require": "./dist/annotations.js",
-      "types": "./dist/annotations.d.ts"
-    },
     "./environment-decorator": {
       "import": "./dist/environment-decorator.js",
       "require": "./dist/environment-decorator.js",
@@ -132,6 +127,7 @@
   "dependencies": {
     "bunyamin": "^1.0.1",
     "bunyan": "^1.8.15",
+    "funpermaproxy": "^1.1.0",
     "import-cwd": "^3.0.0",
     "lodash.get": "^4.4.2",
     "lodash.memoize": "^4.1.2",

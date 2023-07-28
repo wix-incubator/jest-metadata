@@ -19,7 +19,7 @@
 ## Example suite
 
 ```js
-const { $Set, $Push } = require('jest-metadata/annotations');
+const { $Set, $Push } = require('jest-metadata');
 
 const $Description = (text) => $Set('vendor.description', text);
 const $Maintainer = (name, email) => $Set('vendor.maintainer', { name, email });

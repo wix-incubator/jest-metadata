@@ -4,16 +4,16 @@ Think about using a namespace for your metadata, so that it doesn't clash with o
 For example, if you're adding data for `your-custom-reporter`, you can use `your-custom-reporter` as a namespace:
 
 ```javascript
-import { $Assign, $Merge, $Set } from 'jest-metadata/annotate';
+import { metadata, $Assign, $Merge, $Set } from 'jest-metadata/annotate';
 
 $Set('your-custom-reporter.maintainer', 'Jane Doe <jane.doe@example.com>');
 describe('Login flow', () => {
   $Assign('your-custom-reporter', { tags: ['sanity', 'flaky'] });
   test('should pass CAPTCHA', () => {
     // open page
-    $Merge('your-custom-reporter', { artifacts: { 'Before login': '/path/to/screenshot-before.png' } });
+    metadata.merge('your-custom-reporter', { artifacts: { 'Before login': '/path/to/screenshot-before.png' } });
     // pass captcha
-    $Merge('your-custom-reporter', { artifacts: { 'After login': '/path/to/screenshot-after.png' } });
+    metadata.merge('your-custom-reporter', { artifacts: { 'After login': '/path/to/screenshot-after.png' } });
   });
 });
 ```
@@ -21,14 +21,14 @@ describe('Login flow', () => {
 Of course, this looks too low-level, so you can create your own domain-specific helpers:
 
 ```javascript
-import {  $Get, $Set, $Assign, $Merge  } from 'jest-metadata/annotate';
+import { metadata, $Assign, $Merge, $Push, $Set } from 'jest-metadata/annotate';
 
 const scope = 'your-custom-reporter';
 
 export const $Maintainer = (name) => $Set([scope, 'maintainer'], name);
-export const $Tag = (name) => $Assign([scope], { tags: [...$Get('tags', []), name] });
+export const $Tag = (name) => $Push([scope, 'tags'], name);
 export const $Flaky = () => $Tag('flaky');
-export const reportArtifact = (name, filePath) => $Merge([scope], { artifacts: { [name]: filePath } });
+export const reportArtifact = (name, filePath) => metadata.merge([scope], { artifacts: { [name]: filePath } });
 ```
 
 And then your test will look like this:
