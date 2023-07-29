@@ -1,9 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const globby = require('globby');
 
-module.exports = [];
-fs.readdirSync(__dirname).forEach((file) => {
-  if (file.endsWith('.json') && file !== 'package.json') {
-    module.exports.push([path.basename(file, '.json'), require(`./${file}`)]);
-  }
-});
+module.exports = globby.sync('*.x.x/**/*.json', { cwd: __dirname })
+  .map(f => [path.join(path.dirname(f), path.basename(f, '.json')), require('./' + f)]);

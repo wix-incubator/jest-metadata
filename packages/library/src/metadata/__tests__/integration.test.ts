@@ -10,8 +10,8 @@ import {
 import { PlantSerializer } from '../../__utils__';
 import { SerialSyncEmitter } from '../../utils';
 
-describe('metadata: integration test', () => {
-  test.each(Object.values(fixtures))(`should create state: %s`, (_name: string, fixture: any[]) => {
+describe('metadata - integration test:', () => {
+  test.each(Object.values(fixtures))(`fixtures/%s`, (_name: string, fixture: any[]) => {
     const emitter: SetMetadataEventEmitter = new SerialSyncEmitter('set');
     const metadataRegistry = new AggregatedMetadataRegistry();
     const metadataFactory = new MetadataFactoryImpl(metadataRegistry, emitter);

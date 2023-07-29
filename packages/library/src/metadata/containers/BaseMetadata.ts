@@ -57,7 +57,7 @@ export abstract class BaseMetadata implements Metadata {
     return this;
   }
 
-  push(path: string | readonly string[], ...values: unknown[]): this {
+  push(path: string | readonly string[], values: unknown[]): this {
     if (path == null) {
       throw new TypeError('Path is required for set operation');
     }

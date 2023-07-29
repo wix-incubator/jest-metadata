@@ -1,0 +1,220 @@
+[
+  {
+    "type": "add_test_file",
+    "testFilePath": "__tests__/duplicate-cases.js"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_0"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "hookId": "hook_0",
+    "hookType": "beforeEach"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_1"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "finish_describe_definition",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_1"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_2"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_2"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_3"
+  },
+  {
+    "type": "finish_describe_definition",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_2"
+  },
+  {
+    "type": "finish_describe_definition",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_0"
+  },
+  {
+    "type": "run_start",
+    "testFilePath": "__tests__/duplicate-cases.js"
+  },
+  {
+    "type": "run_describe_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_0"
+  },
+  {
+    "type": "run_describe_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_1"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "hookId": "hook_0"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "hookId": "hook_0"
+  },
+  {
+    "type": "test_fn_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "test_fn_success",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "hookId": "hook_0"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "hookId": "hook_0"
+  },
+  {
+    "type": "test_fn_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "test_fn_failure",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "run_describe_finish",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_1"
+  },
+  {
+    "type": "run_describe_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_2"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_2"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "hookId": "hook_0"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "hookId": "hook_0"
+  },
+  {
+    "type": "test_fn_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_2"
+  },
+  {
+    "type": "test_fn_failure",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_2"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_2"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_3"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "hookId": "hook_0"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "hookId": "hook_0"
+  },
+  {
+    "type": "test_fn_start",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_3"
+  },
+  {
+    "type": "test_fn_success",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_3"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "testId": "test_3"
+  },
+  {
+    "type": "run_describe_finish",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_2"
+  },
+  {
+    "type": "run_describe_finish",
+    "testFilePath": "__tests__/duplicate-cases.js",
+    "describeId": "describe_0"
+  },
+  {
+    "type": "run_finish",
+    "testFilePath": "__tests__/duplicate-cases.js"
+  }
+]
