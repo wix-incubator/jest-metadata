@@ -162,7 +162,7 @@
     "testId": "test_0"
   },
   {
-    "type": "test_fn_failure",
+    "type": "test_fn_success",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_0"
   },
@@ -197,7 +197,7 @@
     "testId": "test_1"
   },
   {
-    "type": "test_fn_success",
+    "type": "test_fn_failure",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_1"
   },
@@ -209,17 +209,17 @@
   {
     "type": "test_retry",
     "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_0"
+    "testId": "test_1"
   },
   {
     "type": "test_start",
     "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_0"
+    "testId": "test_1"
   },
   {
     "type": "test_started",
     "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_0"
+    "testId": "test_1"
   },
   {
     "type": "hook_start",
@@ -234,17 +234,17 @@
   {
     "type": "test_fn_start",
     "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_0"
+    "testId": "test_1"
   },
   {
     "type": "test_fn_success",
     "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_0"
+    "testId": "test_1"
   },
   {
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_0"
+    "testId": "test_1"
   },
   {
     "type": "run_describe_finish",
@@ -312,7 +312,7 @@
     "testId": "test_4"
   },
   {
-    "type": "test_fn_success",
+    "type": "test_fn_failure",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_4"
   },
@@ -355,6 +355,46 @@
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_5"
+  },
+  {
+    "type": "test_retry",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_4"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_4"
+  },
+  {
+    "type": "test_started",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_4"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook_0"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook_0"
+  },
+  {
+    "type": "test_fn_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_4"
+  },
+  {
+    "type": "test_fn_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_4"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_4"
   },
   {
     "type": "run_describe_finish",
