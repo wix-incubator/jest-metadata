@@ -12,6 +12,7 @@
     "build": "lerna run build",
     "clean": "lerna clean",
     "lint": "lerna run lint",
+    "lint:ci": "lerna run lint:ci",
     "test": "lerna run test",
     "setup-fixture": "node scripts/setup-fixture.mjs"
   },
