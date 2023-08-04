@@ -83,6 +83,7 @@
   "homepage": "https://github.com/wix-incubator/jest-metadata#readme",
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/bunyan": "^1.8.8",
     "@jest-metadata/fixtures": "^1.0.0-beta.10",
     "@jest/environment": "^29.3.1",
     "@jest/reporters": "^29.3.1",

@@ -13,7 +13,7 @@
     "clean": "lerna clean",
     "lint": "lerna run lint",
     "test": "lerna run test",
-    "generate:fixture": "zx scripts/generate-fixture.mjs"
+    "setup-fixture": "zx scripts/setup-fixture.mjs"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",

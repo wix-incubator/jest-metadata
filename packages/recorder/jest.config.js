@@ -1,7 +1,16 @@
+const fs = require('fs');
 const path = require('path');
 const CI = require('is-ci');
 
+const artifactsDir = path.join(__dirname, '../../artifacts');
+
 const PRESET = process.env.PRESET || 'env-1';
+
+if (CI) {
+  const logsDir = path.join(artifactsDir, PRESET, 'logs');
+  fs.mkdirSync(logsDir, { recursive: true });
+  process.env.JEST_METADATA_DEBUG = logsDir;
+}
 
 const mixins = {
   env: () => ({
@@ -31,7 +40,7 @@ const presets = {
 
 module.exports = {
   collectCoverage: CI,
-  coverageDirectory: path.join(__dirname, '../../coverage', PRESET),
+  coverageDirectory: path.join(artifactsDir, PRESET, 'coverage'),
 
   reporters: [
     'default',
@@ -40,6 +49,3 @@ module.exports = {
 
   ...presets[PRESET],
 };
-
-
-

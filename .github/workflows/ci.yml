@@ -26,24 +26,29 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      - name: Setup Jest
+        run: npm run setup-fixture
+        env:
+          JEST_VERSION: ${{ matrix.jest }}
+
       - uses: bahmutov/npm-install@v1
         with:
           useLockFile: false
 
-      - name: Bootstrap
-        run: npm run bootstrap
-
       - name: Build library
-        run: npm run build
-        working-directory: packages/library
+        run: npm run build --workspace=jest-metadata
 
       - name: Instrument library
-        run: npm run instrument
-        working-directory: packages/library
+        run: npm run instrument --workspace=jest-metadata
 
       - name: Build fixtures
-        run: npm run build
-        working-directory: packages/recorder
+        run: npm run build --workspace=@jest-metadata/recorder
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: fixture-jest-${{ matrix.jest }}
+          path: artifacts/
 
       - name: Assert no Git changes
         run: git diff --exit-code
@@ -65,9 +70,6 @@ jobs:
       - uses: bahmutov/npm-install@v1
         with:
           useLockFile: false
-
-      - name: Bootstrap
-        run: npm run bootstrap
 
       - name: Lint
         run: npm run lint:ci

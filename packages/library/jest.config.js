@@ -3,7 +3,7 @@ const CI = require('is-ci');
 /** @type {import('@jest/types').Config} */
 module.exports = {
   collectCoverage: CI,
-  coverageDirectory: '../../coverage/unit',
+  coverageDirectory: '../../artifacts/unit/coverage',
   preset: 'ts-jest',
   testMatch: [
     '<rootDir>/src/**/*.test.{js,ts}',
