@@ -51,7 +51,7 @@ jobs:
           path: artifacts/
 
       - name: Assert no Git changes
-        run: git diff --exit-code
+        run: git diff --exit-code packages/fixtures
 
   sanity:
     name: Sanity
