@@ -17,7 +17,7 @@ const $Maintainer = (name, email) => $Set('vendor.maintainer', { name, email });
 const $Tag = (value) => $Push(['vendor', 'labels'], value);
 const $Flaky = () => $Tag('flaky');
 
-const step = (text) => metadata.push('vendor.steps', { text, startedAt: now });
+const step = (text) => metadata.push('vendor.steps', [{ text, startedAt: now }]);
 
 $Maintainer('Jane Smith', 'jane.smith@example.com');
 $Description('This is a sample test suite.');

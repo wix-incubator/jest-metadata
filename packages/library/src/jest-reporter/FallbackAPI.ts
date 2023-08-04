@@ -1,5 +1,5 @@
 /* eslint-disable node/no-unpublished-import */
-import type { TestCaseResult } from '@jest/reporters';
+import type { TestCaseResult, TestResult } from '@jest/reporters';
 import { JestMetadataError } from '../errors';
 import type {
   AggregatedResultMetadata,
@@ -67,9 +67,7 @@ export class FallbackAPI {
         testId,
       });
 
-      const lastChild = rootDescribeBlock.children[
-        rootDescribeBlock.children.length - 1
-      ] as TestEntryMetadata;
+      const lastChild = run.lastTestEntry!;
 
       let rotator: Rotator<TestEntryInfo>;
       if (this._cache.has(nameIdentifier)) {
@@ -114,6 +112,59 @@ export class FallbackAPI {
         testId: info.testId,
       });
     }
+  }
+
+  reportTestFileResult(testFileResult: TestResult): TestEntryMetadata[] {
+    const result: TestEntryMetadata[] = [];
+    const { testFilePath, testResults } = testFileResult;
+    const run = this.aggregatedMetadata.getRunMetadata(testFilePath);
+    const rootDescribeBlock = run.rootDescribeBlock;
+
+    if (!rootDescribeBlock) {
+      return result;
+    }
+
+    if (!this._fallbackMode) {
+      return [...rootDescribeBlock.allTestEntries()];
+    }
+
+    for (const testCaseResult of testResults) {
+      const nameId = this._getNameIdentifier(testFilePath, testCaseResult);
+      const tests = this._cache.get(nameId);
+      const info = tests
+        ?.reset()
+        .items.reverse()
+        .find((t) => t.testCaseResult.status === testCaseResult.status);
+
+      if (!info) {
+        const testId = `test_${rootDescribeBlock.children.length}`;
+        this.eventEmitter.emit({
+          type: 'add_test',
+          testFilePath,
+          testId,
+        });
+
+        this.eventEmitter.emit({
+          type: 'test_start',
+          testFilePath,
+          testId,
+        });
+
+        this.eventEmitter.emit({
+          type: this._getCompletionEventType(testCaseResult),
+          testFilePath,
+          testId,
+        });
+      }
+
+      result.push(info ? info.testEntryMetadata : run.lastTestEntry!);
+    }
+
+    return result;
+  }
+
+  private _getNameIdentifier(testFilePath: string, testCaseResult: TestCaseResult) {
+    return [testFilePath, ...testCaseResult.ancestorTitles, testCaseResult.title].join('\u001F');
   }
 
   private _getCompletionEventType(

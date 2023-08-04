@@ -1,4 +1,4 @@
-/* eslint-disable node/no-unpublished-import, @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function */
+/* eslint-disable node/no-unpublished-import, @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function,unicorn/no-for-loop */
 import type { Test, TestCaseResult, TestResult } from '@jest/reporters';
 import { realm } from './realms';
 import { logger } from './utils';
@@ -95,13 +95,12 @@ export class JestMetadataReporter {
    */
   onTestFileResult(_test: unknown, _testResult: unknown, _aggregatedResult: unknown): void {
     const test = _test as Test;
+    const testResult = _testResult as TestResult;
 
-    const runMetadata = realm.query.test(test as Test)!;
-    const allTestEntries = [...runMetadata.allTestEntries()];
-    const testResults = (_testResult as TestResult).testResults;
-
-    for (const [index, testEntry] of allTestEntries.entries()) {
-      realm.associate.testCaseResult(testResults[index], testEntry);
+    const allTestEntries = realm.fallbackAPI.reportTestFileResult(testResult);
+    const testResults = testResult.testResults;
+    for (let i = 0; i < testResults.length; i++) {
+      realm.associate.testCaseResult(testResults[i], allTestEntries[i]);
     }
 
     this.#log.debug.end({ tid: ['reporter', test.path] });

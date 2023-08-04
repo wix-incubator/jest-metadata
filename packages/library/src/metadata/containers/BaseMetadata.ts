@@ -62,6 +62,12 @@ export abstract class BaseMetadata implements Metadata {
       throw new TypeError('Path is required for set operation');
     }
 
+    if (!Array.isArray(values)) {
+      throw new TypeError(
+        `Cannot push a non-array value to the array at path "${path}". Value: ${values}`,
+      );
+    }
+
     const array = lodashGet(this[symbols.data], path, []);
     if (!Array.isArray(array)) {
       throw new TypeError(

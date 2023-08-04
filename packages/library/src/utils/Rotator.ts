@@ -10,7 +10,7 @@ export class Rotator<T> {
     return this.#offset;
   }
 
-  get items(): readonly T[] {
+  get items(): T[] {
     return [...this.#items.slice(this.offset), ...this.#items.slice(0, this.offset)];
   }
 

@@ -102,5 +102,20 @@
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_3"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_5"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_5"
+  },
+  {
+    "type": "test_skip",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "testId": "test_5"
   }
 ]
