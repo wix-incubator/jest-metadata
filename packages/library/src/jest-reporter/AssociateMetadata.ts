@@ -14,6 +14,8 @@ import type {
 export class AssociateMetadata {
   private readonly _map = new Map<unknown, Metadata>();
 
+  constructor(private readonly _cwd: string) {}
+
   filePath(value: string, metadata: RunMetadata): void {
     if (!value) {
       throw new JestMetadataError('Cannot associate metadata with an empty file path');
@@ -22,10 +24,14 @@ export class AssociateMetadata {
     this._map.set(value, metadata);
 
     if (path.isAbsolute(value)) {
-      this._map.set(path.relative(process.cwd(), value), metadata);
+      this._map.set(path.relative(this._cwd, value), metadata);
     } else {
       this._map.set(path.resolve(value), metadata);
     }
+  }
+
+  testCaseName(nameIdentifier: string[], metadata: TestEntryMetadata): void {
+    this._map.set(nameIdentifier.join('\u001F'), metadata);
   }
 
   testCaseResult(testCaseResult: TestCaseResult, metadata: TestEntryMetadata): void {

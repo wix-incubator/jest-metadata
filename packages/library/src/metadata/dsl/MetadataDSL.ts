@@ -39,7 +39,7 @@ export class MetadataDSL {
   $Push = (path: string | readonly string[], ...values: unknown[]): void => {
     this.schedule(() => {
       const metadata = this.#metadata();
-      metadata.push(path, ...values);
+      metadata.push(path, values);
     });
   };
 

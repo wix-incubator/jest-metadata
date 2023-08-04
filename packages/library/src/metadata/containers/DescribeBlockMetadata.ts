@@ -16,7 +16,6 @@ type InvocationMetadata =
   | DescribeBlockMetadata
   | TestInvocationMetadata
   | HookInvocationMetadata<DescribeBlockMetadata>;
-type LowLevelInvocationMetadata = HookInvocationMetadata | TestFnInvocationMetadata;
 
 export class DescribeBlockMetadata extends BaseMetadata {
   readonly run: RunMetadata;
@@ -134,7 +133,7 @@ export class DescribeBlockMetadata extends BaseMetadata {
     }
   }
 
-  *allInvocations(): IterableIterator<LowLevelInvocationMetadata> {
+  *allInvocations(): IterableIterator<HookInvocationMetadata | TestFnInvocationMetadata> {
     const checker = this[symbols.context].checker;
 
     for (const invocation of this.invocations) {

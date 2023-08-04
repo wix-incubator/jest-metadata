@@ -1,6 +1,10 @@
-import { traceEventStream, wrapLogger } from 'bunyamin';
+import fs from 'fs';
+import path from 'path';
+import { traceEventStream, uniteTraceEventsToFile, wrapLogger } from 'bunyamin';
 import { createLogger } from 'bunyan';
 import { noop } from './noop';
+
+const logsDirectory = process.env.JEST_METADATA_DEBUG;
 
 export const logger = create();
 
@@ -18,7 +22,7 @@ function create() {
 }
 
 function isEnabled(): boolean {
-  return process.env.JEST_METADATA_DEBUG === 'true';
+  return !!logsDirectory;
 }
 
 function createBunyanImpl() {
@@ -31,7 +35,10 @@ function createBunyanImpl() {
       {
         level: 'trace' as const,
         stream: traceEventStream({
-          filePath: `jest-metadata.${process.pid}${suffix}.log`,
+          filePath: path.join(
+            process.env.JEST_METADATA_DEBUG!,
+            `jest-metadata.${process.pid}${suffix}.log`,
+          ),
           threadGroups: [
             { id: 'ipc-server', displayName: 'IPC Server' },
             { id: 'ipc-client', displayName: 'IPC Client' },
@@ -59,4 +66,27 @@ function createBunyanNoop() {
     error: noop,
     fatal: noop,
   };
+}
+
+const LOG_PATTERN = /^jest-metadata\..*\.log$/;
+
+export async function aggregateLogs() {
+  const root = logsDirectory;
+  if (!root) {
+    return;
+  }
+
+  const logs = fs
+    .readdirSync(root)
+    .filter((x) => LOG_PATTERN.test(x))
+    .map((x) => path.join(root, x));
+
+  if (fs.existsSync('jest-metadata.json')) {
+    fs.rmSync('jest-metadata.json');
+  }
+
+  if (logs.length > 1) {
+    await uniteTraceEventsToFile(logs, path.join(root, 'jest-metadata.log'));
+    for (const x of logs) fs.rmSync(x);
+  }
 }

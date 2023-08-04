@@ -1,16 +1,15 @@
 {
+  "root": true,
   "env": {
     "node": true,
     "jest": true
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
     "plugin:unicorn/all",
-    "plugin:jsdoc/recommended",
     "plugin:node/recommended",
     "plugin:prettier/recommended",
     "plugin:ecmascript-compat/recommended"
@@ -49,6 +48,7 @@
     "import/no-internal-modules": "error",
     "node/no-missing-import": "off",
     "node/no-unsupported-features/es-syntax": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/member-ordering": "error",
     "@typescript-eslint/no-unused-vars": ["error", {
       "argsIgnorePattern": "^_",
@@ -62,22 +62,6 @@
     "unicorn/prefer-string-replace-all": "off",
     "unicorn/prevent-abbreviations": "off",
     "unicorn/no-unused-properties": "off",
-    "unicorn/prefer-module": "off",
-    "jsdoc/require-jsdoc": "off",
-    "jsdoc/require-param-type": "off",
-    "jsdoc/require-returns-type": "off",
-    "jsdoc/require-param-description": "off"
-  },
-  "overrides": [
-    {
-      "files": ["**/__*__/**.ts", "**.test.ts"],
-      "rules": {
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-non-null-assertion": "off",
-        "import/no-internal-modules": "off",
-        "no-only-tests/no-only-tests": "error",
-        "node/no-unpublished-import": "off"
-      }
-    }
-  ]
+    "unicorn/prefer-module": "off"
+  }
 }

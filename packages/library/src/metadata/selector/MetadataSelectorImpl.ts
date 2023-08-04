@@ -12,7 +12,10 @@ import type {
 import type { MetadataSelector } from './MetadataSelector';
 
 export class MetadataSelectorImpl implements MetadataSelector {
-  constructor(readonly check: MetadataChecker, readonly value: () => BaseMetadata | undefined) {}
+  constructor(
+    readonly check: MetadataChecker,
+    readonly value: () => BaseMetadata | undefined,
+  ) {}
 
   get run(): RunMetadata | undefined {
     const metadata = this.value();

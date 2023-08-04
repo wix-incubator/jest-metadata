@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ master, beta ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -10,9 +10,55 @@ on:
 
 jobs:
 
-  main:
-    name: Default
+  compatibility:
+    name: Compatibility Testing
+    strategy:
+      matrix:
+        jest:
+          - '27.x.x'
+          - '28.x.x'
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Setup Jest
+        run: npm run setup-fixture
+        env:
+          JEST_VERSION: ${{ matrix.jest }}
+
+      - uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+
+      - name: Build library
+        run: npm run build --workspace=jest-metadata
+
+      - name: Instrument library
+        run: npm run instrument --workspace=jest-metadata
+
+      - name: Build fixtures
+        run: npm run build --workspace=@jest-metadata/recorder
+
+      - name: Assert no Git changes
+        run: git diff --exit-code packages/fixtures
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts-jest-${{ matrix.jest }}
+          path: artifacts/
+  sanity:
+    name: Platform Testing
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
 
@@ -25,7 +71,70 @@ jobs:
           useLockFile: false
 
       - name: Lint
-        run: npm run lint
+        run: npm run lint:ci
 
-      - name: Test
-        run: npm run test
+      - name: Unit and Integration
+        run: npm run test --workspace=jest-metadata
+
+      - name: Build library
+        run: npm run build --workspace=jest-metadata
+
+      - name: Instrument library
+        run: npm run instrument --workspace=jest-metadata
+
+      - name: Build fixtures
+        run: npm run build --workspace=@jest-metadata/recorder
+
+      - name: Assert no Git changes
+        run: git diff --exit-code packages/fixtures
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts-os-${{ matrix.os }}
+          path: artifacts/
+
+  coverage:
+    name: Coverage Report
+    needs: [sanity, compatibility]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (default)
+        if: github.event_name != 'pull_request'
+        uses: actions/checkout@v3
+
+      - name: Checkout (pull request)
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: artifacts
+
+      - uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        run: npm -g install "lcov-result-merger@3.x.x" "lcov-badge2"
+
+      - name: Merge coverage reports
+        run: lcov-result-merger 'artifacts/**/lcov.info' 'artifacts/lcov.info'
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: artifacts/coverage.lcov
+
+      - name: Generate coverage badge
+        run: lcov-badge2 -o docs/images/coverage.svg artifacts/lcov.info
+
+      - name: Commit and Push
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: docs/images/coverage.svg
+          message: 'chore: update coverage badge'

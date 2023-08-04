@@ -9,6 +9,7 @@
 Share your custom data across all Jest contexts.
 
 [![npm version](https://badge.fury.io/js/jest-metadata.svg?rnd=42)](https://badge.fury.io/js/jest-metadata)
+![test coverage](images/coverage.svg)
 
 </div>
 

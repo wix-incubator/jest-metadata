@@ -1,6 +1,6 @@
 import { EnvironmentEventHandler } from '../jest-environment';
 
-import { AssociateMetadata, QueryMetadata } from '../jest-reporter';
+import { AssociateMetadata, FallbackAPI, QueryMetadata } from '../jest-reporter';
 import {
   AggregatedMetadataRegistry,
   MetadataDSL,
@@ -33,8 +33,9 @@ export abstract class BaseRealm {
     aggregatedResultMetadata: this.aggregatedResultMetadata,
     metadataRegistry: this.metadataRegistry,
   });
-  readonly associate = new AssociateMetadata();
+  readonly associate = new AssociateMetadata(process.cwd());
   readonly query = new QueryMetadata(this.associate, this.metadataFactory.checker);
+  readonly fallbackAPI = new FallbackAPI(this.aggregatedResultMetadata, this.coreEmitter);
   readonly metadataDSL = new MetadataDSL(
     this.coreEmitter,
     () => this.aggregatedResultMetadata.currentMetadata,
