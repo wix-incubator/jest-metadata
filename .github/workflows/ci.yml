@@ -10,14 +10,13 @@ on:
 
 jobs:
 
-  fixtures:
-    name: Fixture generation
+  compatibility:
+    name: Compatibility Testing
     strategy:
       matrix:
         jest:
           - '27.x.x'
           - '28.x.x'
-          - '29.x.x'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -44,21 +43,22 @@ jobs:
       - name: Build fixtures
         run: npm run build --workspace=@jest-metadata/recorder
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: fixture-jest-${{ matrix.jest }}
-          path: artifacts/
-
       - name: Assert no Git changes
         run: git diff --exit-code packages/fixtures
 
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts-jest-${{ matrix.jest }}
+          path: artifacts/
   sanity:
-    name: Sanity
-    needs: fixtures
+    name: Platform Testing
     strategy:
       matrix:
-        os: ['ubuntu-latest', 'windows-latest']
+        os:
+          - ubuntu-latest
+          - windows-latest
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -74,5 +74,24 @@ jobs:
       - name: Lint
         run: npm run lint:ci
 
-      - name: Test
-        run: npm run test
+      - name: Unit and Integration
+        run: npm run test --workspace=jest-metadata
+
+      - name: Build library
+        run: npm run build --workspace=jest-metadata
+
+      - name: Instrument library
+        run: npm run instrument --workspace=jest-metadata
+
+      - name: Build fixtures
+        run: npm run build --workspace=@jest-metadata/recorder
+
+      - name: Assert no Git changes
+        run: git diff --exit-code packages/fixtures
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts-os-${{ matrix.os }}
+          path: artifacts/
