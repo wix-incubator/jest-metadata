@@ -1,6 +1,6 @@
 const { metadata, $Set, $Push } = require('jest-metadata');
 
-let now = +(new Date(2023, 0, 1, 0, 0, 0, 0));
+let now = 1672524000000;
 
 const sleep = (ms) => now += ms;
 
