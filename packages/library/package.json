@@ -1,6 +1,6 @@
 {
   "name": "jest-metadata",
-  "version": "1.0.0-beta.10",
+  "version": "1.0.0-beta.11",
   "description": "Extend Jest with custom metadata",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -83,11 +83,11 @@
   "homepage": "https://github.com/wix-incubator/jest-metadata#readme",
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
-    "@types/bunyan": "^1.8.8",
-    "@jest-metadata/fixtures": "^1.0.0-beta.10",
+    "@jest-metadata/fixtures": "^1.0.0-beta.11",
     "@jest/environment": "^29.3.1",
     "@jest/reporters": "^29.3.1",
     "@jest/types": "^29.3.1",
+    "@types/bunyan": "^1.8.8",
     "@types/glob": "^8.0.0",
     "@types/jest": "^29.2.5",
     "@types/lodash": "^4.14.191",
