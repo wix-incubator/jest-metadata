@@ -13,15 +13,14 @@
     "clean": "lerna clean",
     "lint": "lerna run lint",
     "test": "lerna run test",
-    "setup-fixture": "zx scripts/setup-fixture.mjs"
+    "setup-fixture": "node scripts/setup-fixture.mjs"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
-    "lerna": "^6.5.1",
-    "zx": "^7.1.1"
+    "lerna": "^6.5.1"
   },
   "workspaces": [
     "packages/*",
