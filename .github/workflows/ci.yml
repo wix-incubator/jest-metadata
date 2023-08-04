@@ -95,3 +95,27 @@ jobs:
         with:
           name: artifacts-os-${{ matrix.os }}
           path: artifacts/
+
+  coverage:
+    name: Coverage Report
+    needs: [sanity, compatibility]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: artifacts
+
+      - uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        run: npm -g install "lcov-result-merger@3.x.x"
+
+      - name: Merge coverage reports
+        run: lcov-result-merger 'artifacts/**/*.lcov' 'artifacts/coverage.lcov'
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: artifacts/coverage.lcov
