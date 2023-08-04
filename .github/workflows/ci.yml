@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ master, beta ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -10,8 +10,14 @@ on:
 
 jobs:
 
-  main:
-    name: Default
+  fixtures:
+    name: Fixture generation
+    strategy:
+      matrix:
+        jest:
+          - '27.x.x'
+          - '28.x.x'
+          - '29.x.x'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -24,8 +30,47 @@ jobs:
         with:
           useLockFile: false
 
+      - name: Bootstrap
+        run: npm run bootstrap
+
+      - name: Build library
+        run: npm run build
+        working-directory: packages/library
+
+      - name: Instrument library
+        run: npm run instrument
+        working-directory: packages/library
+
+      - name: Build fixtures
+        run: npm run build
+        working-directory: packages/recorder
+
+      - name: Assert no Git changes
+        run: git diff --exit-code
+
+  sanity:
+    name: Sanity
+    needs: fixtures
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'windows-latest']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+
+      - name: Bootstrap
+        run: npm run bootstrap
+
       - name: Lint
-        run: npm run lint
+        run: npm run lint:ci
 
       - name: Test
         run: npm run test
