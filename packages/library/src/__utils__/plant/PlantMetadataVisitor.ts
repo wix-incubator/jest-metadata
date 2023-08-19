@@ -66,9 +66,11 @@ export class PlantMetadataVisitor extends MetadataVisitor {
   }
 
   protected visitTestInvocation(metadata: TestInvocationMetadata): void {
+    this._registerLink(metadata, 'beforeAll');
     this._registerLink(metadata, 'before');
     this._registerLink(metadata, 'fn');
     this._registerLink(metadata, 'after');
+    this._registerLink(metadata, 'afterAll');
   }
 
   private _registerLink<T extends Metadata>(metadata: T, key: keyof T & string): void {

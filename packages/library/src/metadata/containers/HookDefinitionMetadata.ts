@@ -60,7 +60,7 @@ export class HookDefinitionMetadata extends BaseMetadata {
       case 'afterAll': {
         checker
           .asDescribeBlockMetadata(parent)!
-          .invocations.push(invocation as HookInvocationMetadata<DescribeBlockMetadata>);
+          [symbols.pushExecution](invocation as HookInvocationMetadata<DescribeBlockMetadata>);
         break;
       }
     }

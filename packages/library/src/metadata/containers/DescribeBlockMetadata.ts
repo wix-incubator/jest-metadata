@@ -12,7 +12,7 @@ import type { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
 import type { TestInvocationMetadata } from './TestInvocationMetadata';
 
 type DefinitionMetadata = DescribeBlockMetadata | TestEntryMetadata | HookDefinitionMetadata;
-type InvocationMetadata =
+type ExecutionMetadata =
   | DescribeBlockMetadata
   | TestInvocationMetadata
   | HookInvocationMetadata<DescribeBlockMetadata>;
@@ -21,7 +21,12 @@ export class DescribeBlockMetadata extends BaseMetadata {
   readonly run: RunMetadata;
   readonly parent?: DescribeBlockMetadata;
   readonly children: DefinitionMetadata[] = [];
-  readonly invocations: InvocationMetadata[] = [];
+  readonly executions: ExecutionMetadata[] = [];
+
+  #pendingBeforeAll: HookInvocationMetadata<DescribeBlockMetadata>[] = [];
+  #pendingAfterAll: HookInvocationMetadata<DescribeBlockMetadata>[] = [];
+  #firstTestInvocation?: TestInvocationMetadata;
+  #lastAttachable?: DescribeBlockMetadata | TestInvocationMetadata;
 
   constructor(
     context: MetadataContext,
@@ -71,13 +76,64 @@ export class DescribeBlockMetadata extends BaseMetadata {
     return hookDefinition;
   }
 
+  [symbols.pushExecution](metadata: ExecutionMetadata): void {
+    this.executions.push(metadata);
+
+    const { checker } = this[symbols.context];
+    if (checker.isHookInvocationMetadata(metadata)) {
+      if (metadata.definition.hookType === 'afterAll') {
+        this.#pendingAfterAll.push(metadata);
+      } else {
+        this.#pendingBeforeAll.push(metadata);
+      }
+    } else {
+      if (!this.#firstTestInvocation && checker.isTestInvocationMetadata(metadata)) {
+        this.#firstTestInvocation = metadata;
+      }
+
+      this.#lastAttachable = metadata;
+    }
+  }
+
+  [symbols.pushBeforeAll](testInvocation: TestInvocationMetadata): void {
+    if (this.parent) {
+      this.parent[symbols.pushBeforeAll](testInvocation);
+    }
+
+    if (this.#pendingBeforeAll.length > 0) {
+      testInvocation[symbols.pushBeforeAll](this.#pendingBeforeAll.splice(0));
+    }
+  }
+
+  [symbols.pushAfterAll](invocations: HookInvocationMetadata<DescribeBlockMetadata>[]): void {
+    this.#lastAttachable?.[symbols.pushAfterAll](invocations);
+  }
+
   [symbols.start](): void {
     this.run[symbols.currentMetadata] = this;
-    this.parent?.invocations.push(this);
+    this.parent?.[symbols.pushExecution](this);
   }
 
   [symbols.finish](): void {
     this.run[symbols.currentMetadata] = this.parent ?? this.run;
+
+    if (this.#pendingBeforeAll.length > 0 && this.#firstTestInvocation) {
+      // NOTE: special case when it.todo() is the only test in a describe block
+      // For some unknown reason, the hooks surrounding it are executed, so
+      // it's better not to lose the information about them.
+      this[symbols.pushBeforeAll](this.#firstTestInvocation);
+    }
+
+    if (this.#pendingAfterAll.length > 0) {
+      this[symbols.pushAfterAll](this.#pendingAfterAll.splice(0));
+    }
+  }
+
+  *ancestors(): IterableIterator<DescribeBlockMetadata> {
+    let it: DescribeBlockMetadata | undefined = this;
+    while ((it = it.parent)) {
+      yield it;
+    }
   }
 
   *describeBlocks(): IterableIterator<DescribeBlockMetadata> {
@@ -136,17 +192,25 @@ export class DescribeBlockMetadata extends BaseMetadata {
   *allInvocations(): IterableIterator<HookInvocationMetadata | TestFnInvocationMetadata> {
     const checker = this[symbols.context].checker;
 
-    for (const invocation of this.invocations) {
-      if (checker.isHookInvocationMetadata(invocation)) {
-        yield invocation;
-      } else if (checker.isDescribeBlockMetadata(invocation)) {
-        yield* invocation.allInvocations();
-      } else if (checker.isTestInvocationMetadata(invocation)) {
-        yield* invocation.before;
-        if (invocation.fn) {
-          yield invocation.fn;
-        }
-        yield* invocation.after;
+    for (const execution of this.executions) {
+      if (checker.isHookInvocationMetadata(execution)) {
+        yield execution;
+      } else if (checker.isDescribeBlockMetadata(execution)) {
+        yield* execution.allInvocations();
+      } else if (checker.isTestInvocationMetadata(execution)) {
+        yield* execution.invocations();
+      }
+    }
+  }
+
+  *allTestInvocations(): IterableIterator<TestInvocationMetadata> {
+    const checker = this[symbols.context].checker;
+
+    for (const execution of this.executions) {
+      if (checker.isDescribeBlockMetadata(execution)) {
+        yield* execution.allTestInvocations();
+      } else if (checker.isTestInvocationMetadata(execution)) {
+        yield execution;
       }
     }
   }

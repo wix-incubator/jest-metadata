@@ -9,3 +9,6 @@ export const finish = Symbol('FINISH');
 export const id = Symbol('ID');
 export const rootDescribeBlock = Symbol('ROOT_DESCRIBE_BLOCK');
 export const start = Symbol('START');
+export const pushExecution = Symbol('PUSH_EXECUTION');
+export const pushBeforeAll = Symbol('PUSH_BEFORE_ALL');
+export const pushAfterAll = Symbol('PUSH_AFTER_ALL');
