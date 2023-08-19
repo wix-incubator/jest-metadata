@@ -268,7 +268,7 @@
   {
     "type": "set_metadata",
     "testFilePath": "__tests__/duplicate-name.js",
-    "targetId": "test_1.2.fn",
+    "targetId": "test_1.1.fn",
     "path": "note",
     "value": "Nested suite 1 > Test 2",
     "operation": "set"
@@ -453,7 +453,7 @@
   {
     "type": "set_metadata",
     "testFilePath": "__tests__/duplicate-name.js",
-    "targetId": "test_4.2.fn",
+    "targetId": "test_4.1.fn",
     "path": "note",
     "value": "Nested suite 2 > Test 1",
     "operation": "set"

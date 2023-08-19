@@ -157,12 +157,8 @@ export class MetadataEventHandler {
       // no-op at the moment
     },
 
-    test_retry: (event: TestRetryEvent) => {
-      const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-      const test = this._metadataRegistry.get(testId) as TestEntryMetadata;
-      // TODO: [internal.as](TestEntryMetadata);
-
-      test[internal.start]();
+    test_retry: (_event: TestRetryEvent) => {
+      // Nothing to do, because Jest Circus will emit a `test_start` event anyway right after this
     },
 
     test_fn_start: (event: TestFnStartEvent) => {

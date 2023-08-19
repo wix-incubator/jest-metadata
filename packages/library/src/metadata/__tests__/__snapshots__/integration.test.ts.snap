@@ -122,12 +122,10 @@ object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_1_0_fn #
 tests_duplicate_generation_js_test_1_0_fn : id = "test_1.0.fn"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
 tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_2 #ffb
-tests_duplicate_generation_js_test_0_2 : id = "test_0.2"
 object "HookInvocationMetadata" as tests_duplicate_generation_js_hook_0_2 #fcb
 tests_duplicate_generation_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_2_fn #fea
-tests_duplicate_generation_js_test_0_2_fn : id = "test_0.2.fn"
+object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_1_fn #fea
+tests_duplicate_generation_js_test_0_1_fn : id = "test_0.1.fn"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_hook_0 : children[0]
@@ -138,7 +136,6 @@ tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_1 
 tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_2 : invocations[2]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_2 : invocations[2]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_hook_0_0 : before[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_test_0_0_fn : fn
@@ -146,9 +143,9 @@ tests_duplicate_generation_js_test_0_0_fn --> tests_duplicate_generation_js_test
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_hook_0_1 : before[0]
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_test_1_0_fn : fn
 tests_duplicate_generation_js_test_1_0_fn --> tests_duplicate_generation_js_test_1_0 : test
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_hook_0_2 : before[0]
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_test_0_2_fn : fn
-tests_duplicate_generation_js_test_0_2_fn --> tests_duplicate_generation_js_test_0_2 : test
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_hook_0_2 : before[0]
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_test_0_1_fn : fn
+tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test_0_1 : test
 
 @enduml
 "
@@ -220,13 +217,11 @@ tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
 tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_2 #ffb
-tests_duplicate_name_js_test_1_2 : id = "test_1.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_2_fn #fea
-tests_duplicate_name_js_test_1_2_fn : id = "test_1.2.fn"
-tests_duplicate_name_js_test_1_2_fn : data = {"note":"Nested suite 1 > Test 2"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
+tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
+tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
 tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
@@ -253,13 +248,11 @@ tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
 tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_2 #ffb
-tests_duplicate_name_js_test_4_2 : id = "test_4.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_2_fn #fea
-tests_duplicate_name_js_test_4_2_fn : id = "test_4.2.fn"
-tests_duplicate_name_js_test_4_2_fn : data = {"note":"Nested suite 2 > Test 1"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
+tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
+tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
 tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
@@ -288,7 +281,6 @@ tests_duplicate_name_js_hook_3 --> tests_duplicate_name_js_hook_3_0 : invocation
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_2 : invocations[2]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_describe_3 --> tests_duplicate_name_js_hook_4 : children[0]
@@ -299,7 +291,6 @@ tests_duplicate_name_js_hook_4 --> tests_duplicate_name_js_hook_4_0 : invocation
 tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
-tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_2 : invocations[2]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
@@ -307,18 +298,18 @@ tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_hook_0_1 : before[0]
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_hook_0_2 : before[0]
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_test_1_2_fn : fn
-tests_duplicate_name_js_test_1_2_fn --> tests_duplicate_name_js_test_1_2 : test
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_hook_0_4 : before[0]
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_hook_0_5 : before[0]
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_test_4_2_fn : fn
-tests_duplicate_name_js_test_4_2_fn --> tests_duplicate_name_js_test_4_2 : test
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
 "
@@ -682,6 +673,64 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_0 #fdd
+tests_test_retry_js_hook_0 : id = "hook_0"
+tests_test_retry_js_hook_0 : hookType = "beforeEach"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_1 #fdd
+tests_test_retry_js_hook_1 : id = "hook_1"
+tests_test_retry_js_hook_1 : hookType = "beforeAll"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_2 #fdd
+tests_test_retry_js_hook_2 : id = "hook_2"
+tests_test_retry_js_hook_2 : hookType = "afterAll"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_1_0 #fcb
+tests_test_retry_js_hook_1_0 : id = "hook_1.0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_0 #fcb
+tests_test_retry_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_0_fn #fea
+tests_test_retry_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_1 #ffb
+tests_test_retry_js_test_0_1 : id = "test_0.1"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_1 #fcb
+tests_test_retry_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_1_fn #fea
+tests_test_retry_js_test_0_1_fn : id = "test_0.1.fn"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_2_0 #fcb
+tests_test_retry_js_hook_2_0 : id = "hook_2.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_0 : children[0]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_1 : children[1]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[2]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_2 : children[3]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_0 : invocations[0]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_1 : invocations[1]
+tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
+tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
+tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/test-skip 1`] = `
 "@startuml
 
@@ -914,12 +963,10 @@ object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_1_0_fn #
 tests_duplicate_generation_js_test_1_0_fn : id = "test_1.0.fn"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
 tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_2 #ffb
-tests_duplicate_generation_js_test_0_2 : id = "test_0.2"
 object "HookInvocationMetadata" as tests_duplicate_generation_js_hook_0_2 #fcb
 tests_duplicate_generation_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_2_fn #fea
-tests_duplicate_generation_js_test_0_2_fn : id = "test_0.2.fn"
+object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_1_fn #fea
+tests_duplicate_generation_js_test_0_1_fn : id = "test_0.1.fn"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_hook_0 : children[0]
@@ -930,7 +977,6 @@ tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_1 
 tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_2 : invocations[2]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_2 : invocations[2]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_hook_0_0 : before[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_test_0_0_fn : fn
@@ -938,9 +984,9 @@ tests_duplicate_generation_js_test_0_0_fn --> tests_duplicate_generation_js_test
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_hook_0_1 : before[0]
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_test_1_0_fn : fn
 tests_duplicate_generation_js_test_1_0_fn --> tests_duplicate_generation_js_test_1_0 : test
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_hook_0_2 : before[0]
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_test_0_2_fn : fn
-tests_duplicate_generation_js_test_0_2_fn --> tests_duplicate_generation_js_test_0_2 : test
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_hook_0_2 : before[0]
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_test_0_1_fn : fn
+tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test_0_1 : test
 
 @enduml
 "
@@ -1012,13 +1058,11 @@ tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
 tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_2 #ffb
-tests_duplicate_name_js_test_1_2 : id = "test_1.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_2_fn #fea
-tests_duplicate_name_js_test_1_2_fn : id = "test_1.2.fn"
-tests_duplicate_name_js_test_1_2_fn : data = {"note":"Nested suite 1 > Test 2"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
+tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
+tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
 tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
@@ -1045,13 +1089,11 @@ tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
 tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_2 #ffb
-tests_duplicate_name_js_test_4_2 : id = "test_4.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_2_fn #fea
-tests_duplicate_name_js_test_4_2_fn : id = "test_4.2.fn"
-tests_duplicate_name_js_test_4_2_fn : data = {"note":"Nested suite 2 > Test 1"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
+tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
+tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
 tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
@@ -1080,7 +1122,6 @@ tests_duplicate_name_js_hook_3 --> tests_duplicate_name_js_hook_3_0 : invocation
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_2 : invocations[2]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_describe_3 --> tests_duplicate_name_js_hook_4 : children[0]
@@ -1091,7 +1132,6 @@ tests_duplicate_name_js_hook_4 --> tests_duplicate_name_js_hook_4_0 : invocation
 tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
-tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_2 : invocations[2]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
@@ -1099,18 +1139,18 @@ tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_hook_0_1 : before[0]
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_hook_0_2 : before[0]
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_test_1_2_fn : fn
-tests_duplicate_name_js_test_1_2_fn --> tests_duplicate_name_js_test_1_2 : test
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_hook_0_4 : before[0]
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_hook_0_5 : before[0]
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_test_4_2_fn : fn
-tests_duplicate_name_js_test_4_2_fn --> tests_duplicate_name_js_test_4_2 : test
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
 "
@@ -1474,6 +1514,64 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_0 #fdd
+tests_test_retry_js_hook_0 : id = "hook_0"
+tests_test_retry_js_hook_0 : hookType = "beforeEach"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_1 #fdd
+tests_test_retry_js_hook_1 : id = "hook_1"
+tests_test_retry_js_hook_1 : hookType = "beforeAll"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_2 #fdd
+tests_test_retry_js_hook_2 : id = "hook_2"
+tests_test_retry_js_hook_2 : hookType = "afterAll"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_1_0 #fcb
+tests_test_retry_js_hook_1_0 : id = "hook_1.0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_0 #fcb
+tests_test_retry_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_0_fn #fea
+tests_test_retry_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_1 #ffb
+tests_test_retry_js_test_0_1 : id = "test_0.1"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_1 #fcb
+tests_test_retry_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_1_fn #fea
+tests_test_retry_js_test_0_1_fn : id = "test_0.1.fn"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_2_0 #fcb
+tests_test_retry_js_hook_2_0 : id = "hook_2.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_0 : children[0]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_1 : children[1]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[2]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_2 : children[3]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_0 : invocations[0]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_1 : invocations[1]
+tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
+tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
+tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/test-skip 1`] = `
 "@startuml
 
@@ -1651,14 +1749,11 @@ object "TestEntryMetadata" as tests_duplicate_generation_js_test_1 #ffd
 tests_duplicate_generation_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_1_0 #ffb
 tests_duplicate_generation_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
-tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_0 : children[0]
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_1 : children[1]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 
 @enduml
@@ -1681,8 +1776,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_1 #ffd
 tests_duplicate_name_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
-tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_2 #ffd
 tests_duplicate_name_js_test_2 : id = "test_2"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
@@ -1691,8 +1784,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_3 #ffd
 tests_duplicate_name_js_test_3 : id = "test_3"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_0 #ffb
 tests_duplicate_name_js_test_3_0 : id = "test_3.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_1 #ffb
-tests_duplicate_name_js_test_2_1 : id = "test_2.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_4 #ffd
 tests_duplicate_name_js_test_4 : id = "test_4"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
@@ -1711,9 +1802,7 @@ tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_4 : children
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_5 : children[5]
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
-tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_1 : invocations[1]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
@@ -1884,6 +1973,27 @@ tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
 "
 `;
 
+exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/test-skip 1`] = `
 "@startuml
 
@@ -1975,14 +2085,11 @@ object "TestEntryMetadata" as tests_duplicate_generation_js_test_1 #ffd
 tests_duplicate_generation_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_1_0 #ffb
 tests_duplicate_generation_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
-tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_0 : children[0]
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_1 : children[1]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 
 @enduml
@@ -2005,8 +2112,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_1 #ffd
 tests_duplicate_name_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
-tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_2 #ffd
 tests_duplicate_name_js_test_2 : id = "test_2"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
@@ -2015,8 +2120,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_3 #ffd
 tests_duplicate_name_js_test_3 : id = "test_3"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_0 #ffb
 tests_duplicate_name_js_test_3_0 : id = "test_3.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_1 #ffb
-tests_duplicate_name_js_test_2_1 : id = "test_2.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_4 #ffd
 tests_duplicate_name_js_test_4 : id = "test_4"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
@@ -2035,9 +2138,7 @@ tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_4 : children
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_5 : children[5]
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
-tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_1 : invocations[1]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
@@ -2208,6 +2309,27 @@ tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
 "
 `;
 
+exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/test-skip 1`] = `
 "@startuml
 
@@ -2354,12 +2476,10 @@ object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_1_0_fn #
 tests_duplicate_generation_js_test_1_0_fn : id = "test_1.0.fn"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
 tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_2 #ffb
-tests_duplicate_generation_js_test_0_2 : id = "test_0.2"
 object "HookInvocationMetadata" as tests_duplicate_generation_js_hook_0_2 #fcb
 tests_duplicate_generation_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_2_fn #fea
-tests_duplicate_generation_js_test_0_2_fn : id = "test_0.2.fn"
+object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_1_fn #fea
+tests_duplicate_generation_js_test_0_1_fn : id = "test_0.1.fn"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_hook_0 : children[0]
@@ -2370,7 +2490,6 @@ tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_1 
 tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_2 : invocations[2]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_2 : invocations[2]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_hook_0_0 : before[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_test_0_0_fn : fn
@@ -2378,9 +2497,9 @@ tests_duplicate_generation_js_test_0_0_fn --> tests_duplicate_generation_js_test
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_hook_0_1 : before[0]
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_test_1_0_fn : fn
 tests_duplicate_generation_js_test_1_0_fn --> tests_duplicate_generation_js_test_1_0 : test
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_hook_0_2 : before[0]
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_test_0_2_fn : fn
-tests_duplicate_generation_js_test_0_2_fn --> tests_duplicate_generation_js_test_0_2 : test
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_hook_0_2 : before[0]
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_test_0_1_fn : fn
+tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test_0_1 : test
 
 @enduml
 "
@@ -2452,13 +2571,11 @@ tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
 tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_2 #ffb
-tests_duplicate_name_js_test_1_2 : id = "test_1.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_2_fn #fea
-tests_duplicate_name_js_test_1_2_fn : id = "test_1.2.fn"
-tests_duplicate_name_js_test_1_2_fn : data = {"note":"Nested suite 1 > Test 2"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
+tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
+tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
 tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
@@ -2485,13 +2602,11 @@ tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
 tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_2 #ffb
-tests_duplicate_name_js_test_4_2 : id = "test_4.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_2_fn #fea
-tests_duplicate_name_js_test_4_2_fn : id = "test_4.2.fn"
-tests_duplicate_name_js_test_4_2_fn : data = {"note":"Nested suite 2 > Test 1"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
+tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
+tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
 tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
@@ -2520,7 +2635,6 @@ tests_duplicate_name_js_hook_3 --> tests_duplicate_name_js_hook_3_0 : invocation
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_2 : invocations[2]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_describe_3 --> tests_duplicate_name_js_hook_4 : children[0]
@@ -2531,7 +2645,6 @@ tests_duplicate_name_js_hook_4 --> tests_duplicate_name_js_hook_4_0 : invocation
 tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
-tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_2 : invocations[2]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
@@ -2539,18 +2652,18 @@ tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_hook_0_1 : before[0]
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_hook_0_2 : before[0]
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_test_1_2_fn : fn
-tests_duplicate_name_js_test_1_2_fn --> tests_duplicate_name_js_test_1_2 : test
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_hook_0_4 : before[0]
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_hook_0_5 : before[0]
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_test_4_2_fn : fn
-tests_duplicate_name_js_test_4_2_fn --> tests_duplicate_name_js_test_4_2 : test
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
 "
@@ -2894,6 +3007,64 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_0 #fdd
+tests_test_retry_js_hook_0 : id = "hook_0"
+tests_test_retry_js_hook_0 : hookType = "beforeEach"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_1 #fdd
+tests_test_retry_js_hook_1 : id = "hook_1"
+tests_test_retry_js_hook_1 : hookType = "beforeAll"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_2 #fdd
+tests_test_retry_js_hook_2 : id = "hook_2"
+tests_test_retry_js_hook_2 : hookType = "afterAll"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_1_0 #fcb
+tests_test_retry_js_hook_1_0 : id = "hook_1.0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_0 #fcb
+tests_test_retry_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_0_fn #fea
+tests_test_retry_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_1 #ffb
+tests_test_retry_js_test_0_1 : id = "test_0.1"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_1 #fcb
+tests_test_retry_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_1_fn #fea
+tests_test_retry_js_test_0_1_fn : id = "test_0.1.fn"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_2_0 #fcb
+tests_test_retry_js_hook_2_0 : id = "hook_2.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_0 : children[0]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_1 : children[1]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[2]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_2 : children[3]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_0 : invocations[0]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_1 : invocations[1]
+tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
+tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
+tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/test-skip 1`] = `
 "@startuml
 
@@ -3126,12 +3297,10 @@ object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_1_0_fn #
 tests_duplicate_generation_js_test_1_0_fn : id = "test_1.0.fn"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
 tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_2 #ffb
-tests_duplicate_generation_js_test_0_2 : id = "test_0.2"
 object "HookInvocationMetadata" as tests_duplicate_generation_js_hook_0_2 #fcb
 tests_duplicate_generation_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_2_fn #fea
-tests_duplicate_generation_js_test_0_2_fn : id = "test_0.2.fn"
+object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_1_fn #fea
+tests_duplicate_generation_js_test_0_1_fn : id = "test_0.1.fn"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_hook_0 : children[0]
@@ -3142,7 +3311,6 @@ tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_1 
 tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_2 : invocations[2]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_2 : invocations[2]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_hook_0_0 : before[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_test_0_0_fn : fn
@@ -3150,9 +3318,9 @@ tests_duplicate_generation_js_test_0_0_fn --> tests_duplicate_generation_js_test
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_hook_0_1 : before[0]
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_test_1_0_fn : fn
 tests_duplicate_generation_js_test_1_0_fn --> tests_duplicate_generation_js_test_1_0 : test
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_hook_0_2 : before[0]
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_test_0_2_fn : fn
-tests_duplicate_generation_js_test_0_2_fn --> tests_duplicate_generation_js_test_0_2 : test
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_hook_0_2 : before[0]
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_test_0_1_fn : fn
+tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test_0_1 : test
 
 @enduml
 "
@@ -3224,13 +3392,11 @@ tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
 tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_2 #ffb
-tests_duplicate_name_js_test_1_2 : id = "test_1.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_2_fn #fea
-tests_duplicate_name_js_test_1_2_fn : id = "test_1.2.fn"
-tests_duplicate_name_js_test_1_2_fn : data = {"note":"Nested suite 1 > Test 2"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
+tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
+tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
 tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
@@ -3257,13 +3423,11 @@ tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
 tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_2 #ffb
-tests_duplicate_name_js_test_4_2 : id = "test_4.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_2_fn #fea
-tests_duplicate_name_js_test_4_2_fn : id = "test_4.2.fn"
-tests_duplicate_name_js_test_4_2_fn : data = {"note":"Nested suite 2 > Test 1"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
+tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
+tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
 tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
@@ -3292,7 +3456,6 @@ tests_duplicate_name_js_hook_3 --> tests_duplicate_name_js_hook_3_0 : invocation
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_2 : invocations[2]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_describe_3 --> tests_duplicate_name_js_hook_4 : children[0]
@@ -3303,7 +3466,6 @@ tests_duplicate_name_js_hook_4 --> tests_duplicate_name_js_hook_4_0 : invocation
 tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
-tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_2 : invocations[2]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
@@ -3311,18 +3473,18 @@ tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_hook_0_1 : before[0]
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_hook_0_2 : before[0]
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_test_1_2_fn : fn
-tests_duplicate_name_js_test_1_2_fn --> tests_duplicate_name_js_test_1_2 : test
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_hook_0_4 : before[0]
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_hook_0_5 : before[0]
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_test_4_2_fn : fn
-tests_duplicate_name_js_test_4_2_fn --> tests_duplicate_name_js_test_4_2 : test
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
 "
@@ -3666,6 +3828,64 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_0 #fdd
+tests_test_retry_js_hook_0 : id = "hook_0"
+tests_test_retry_js_hook_0 : hookType = "beforeEach"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_1 #fdd
+tests_test_retry_js_hook_1 : id = "hook_1"
+tests_test_retry_js_hook_1 : hookType = "beforeAll"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_2 #fdd
+tests_test_retry_js_hook_2 : id = "hook_2"
+tests_test_retry_js_hook_2 : hookType = "afterAll"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_1_0 #fcb
+tests_test_retry_js_hook_1_0 : id = "hook_1.0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_0 #fcb
+tests_test_retry_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_0_fn #fea
+tests_test_retry_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_1 #ffb
+tests_test_retry_js_test_0_1 : id = "test_0.1"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_1 #fcb
+tests_test_retry_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_1_fn #fea
+tests_test_retry_js_test_0_1_fn : id = "test_0.1.fn"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_2_0 #fcb
+tests_test_retry_js_hook_2_0 : id = "hook_2.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_0 : children[0]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_1 : children[1]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[2]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_2 : children[3]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_0 : invocations[0]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_1 : invocations[1]
+tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
+tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
+tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/test-skip 1`] = `
 "@startuml
 
@@ -3843,14 +4063,11 @@ object "TestEntryMetadata" as tests_duplicate_generation_js_test_1 #ffd
 tests_duplicate_generation_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_1_0 #ffb
 tests_duplicate_generation_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
-tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_0 : children[0]
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_1 : children[1]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 
 @enduml
@@ -3873,8 +4090,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_1 #ffd
 tests_duplicate_name_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
-tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_2 #ffd
 tests_duplicate_name_js_test_2 : id = "test_2"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
@@ -3883,8 +4098,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_3 #ffd
 tests_duplicate_name_js_test_3 : id = "test_3"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_0 #ffb
 tests_duplicate_name_js_test_3_0 : id = "test_3.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_1 #ffb
-tests_duplicate_name_js_test_2_1 : id = "test_2.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_4 #ffd
 tests_duplicate_name_js_test_4 : id = "test_4"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
@@ -3903,9 +4116,7 @@ tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_4 : children
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_5 : children[5]
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
-tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_1 : invocations[1]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
@@ -4076,6 +4287,27 @@ tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
 "
 `;
 
+exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/test-skip 1`] = `
 "@startuml
 
@@ -4167,14 +4399,11 @@ object "TestEntryMetadata" as tests_duplicate_generation_js_test_1 #ffd
 tests_duplicate_generation_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_1_0 #ffb
 tests_duplicate_generation_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
-tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_0 : children[0]
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_1 : children[1]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 
 @enduml
@@ -4197,8 +4426,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_1 #ffd
 tests_duplicate_name_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
-tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_2 #ffd
 tests_duplicate_name_js_test_2 : id = "test_2"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
@@ -4207,8 +4434,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_3 #ffd
 tests_duplicate_name_js_test_3 : id = "test_3"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_0 #ffb
 tests_duplicate_name_js_test_3_0 : id = "test_3.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_1 #ffb
-tests_duplicate_name_js_test_2_1 : id = "test_2.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_4 #ffd
 tests_duplicate_name_js_test_4 : id = "test_4"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
@@ -4227,9 +4452,7 @@ tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_4 : children
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_5 : children[5]
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
-tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_1 : invocations[1]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
@@ -4400,6 +4623,27 @@ tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
 "
 `;
 
+exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/test-skip 1`] = `
 "@startuml
 
@@ -4546,12 +4790,10 @@ object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_1_0_fn #
 tests_duplicate_generation_js_test_1_0_fn : id = "test_1.0.fn"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
 tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_2 #ffb
-tests_duplicate_generation_js_test_0_2 : id = "test_0.2"
 object "HookInvocationMetadata" as tests_duplicate_generation_js_hook_0_2 #fcb
 tests_duplicate_generation_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_2_fn #fea
-tests_duplicate_generation_js_test_0_2_fn : id = "test_0.2.fn"
+object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_1_fn #fea
+tests_duplicate_generation_js_test_0_1_fn : id = "test_0.1.fn"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_hook_0 : children[0]
@@ -4562,7 +4804,6 @@ tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_1 
 tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_2 : invocations[2]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_2 : invocations[2]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_hook_0_0 : before[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_test_0_0_fn : fn
@@ -4570,9 +4811,9 @@ tests_duplicate_generation_js_test_0_0_fn --> tests_duplicate_generation_js_test
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_hook_0_1 : before[0]
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_test_1_0_fn : fn
 tests_duplicate_generation_js_test_1_0_fn --> tests_duplicate_generation_js_test_1_0 : test
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_hook_0_2 : before[0]
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_test_0_2_fn : fn
-tests_duplicate_generation_js_test_0_2_fn --> tests_duplicate_generation_js_test_0_2 : test
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_hook_0_2 : before[0]
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_test_0_1_fn : fn
+tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test_0_1 : test
 
 @enduml
 "
@@ -4644,13 +4885,11 @@ tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
 tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_2 #ffb
-tests_duplicate_name_js_test_1_2 : id = "test_1.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_2_fn #fea
-tests_duplicate_name_js_test_1_2_fn : id = "test_1.2.fn"
-tests_duplicate_name_js_test_1_2_fn : data = {"note":"Nested suite 1 > Test 2"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
+tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
+tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
 tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
@@ -4677,13 +4916,11 @@ tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
 tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_2 #ffb
-tests_duplicate_name_js_test_4_2 : id = "test_4.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_2_fn #fea
-tests_duplicate_name_js_test_4_2_fn : id = "test_4.2.fn"
-tests_duplicate_name_js_test_4_2_fn : data = {"note":"Nested suite 2 > Test 1"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
+tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
+tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
 tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
@@ -4712,7 +4949,6 @@ tests_duplicate_name_js_hook_3 --> tests_duplicate_name_js_hook_3_0 : invocation
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_2 : invocations[2]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_describe_3 --> tests_duplicate_name_js_hook_4 : children[0]
@@ -4723,7 +4959,6 @@ tests_duplicate_name_js_hook_4 --> tests_duplicate_name_js_hook_4_0 : invocation
 tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
-tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_2 : invocations[2]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
@@ -4731,18 +4966,18 @@ tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_hook_0_1 : before[0]
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_hook_0_2 : before[0]
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_test_1_2_fn : fn
-tests_duplicate_name_js_test_1_2_fn --> tests_duplicate_name_js_test_1_2 : test
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_hook_0_4 : before[0]
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_hook_0_5 : before[0]
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_test_4_2_fn : fn
-tests_duplicate_name_js_test_4_2_fn --> tests_duplicate_name_js_test_4_2 : test
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
 "
@@ -5086,6 +5321,64 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_0 #fdd
+tests_test_retry_js_hook_0 : id = "hook_0"
+tests_test_retry_js_hook_0 : hookType = "beforeEach"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_1 #fdd
+tests_test_retry_js_hook_1 : id = "hook_1"
+tests_test_retry_js_hook_1 : hookType = "beforeAll"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_2 #fdd
+tests_test_retry_js_hook_2 : id = "hook_2"
+tests_test_retry_js_hook_2 : hookType = "afterAll"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_1_0 #fcb
+tests_test_retry_js_hook_1_0 : id = "hook_1.0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_0 #fcb
+tests_test_retry_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_0_fn #fea
+tests_test_retry_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_1 #ffb
+tests_test_retry_js_test_0_1 : id = "test_0.1"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_1 #fcb
+tests_test_retry_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_1_fn #fea
+tests_test_retry_js_test_0_1_fn : id = "test_0.1.fn"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_2_0 #fcb
+tests_test_retry_js_hook_2_0 : id = "hook_2.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_0 : children[0]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_1 : children[1]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[2]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_2 : children[3]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_0 : invocations[0]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_1 : invocations[1]
+tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
+tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
+tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/test-skip 1`] = `
 "@startuml
 
@@ -5318,12 +5611,10 @@ object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_1_0_fn #
 tests_duplicate_generation_js_test_1_0_fn : id = "test_1.0.fn"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
 tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_2 #ffb
-tests_duplicate_generation_js_test_0_2 : id = "test_0.2"
 object "HookInvocationMetadata" as tests_duplicate_generation_js_hook_0_2 #fcb
 tests_duplicate_generation_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_2_fn #fea
-tests_duplicate_generation_js_test_0_2_fn : id = "test_0.2.fn"
+object "TestFnInvocationMetadata" as tests_duplicate_generation_js_test_0_1_fn #fea
+tests_duplicate_generation_js_test_0_1_fn : id = "test_0.1.fn"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_hook_0 : children[0]
@@ -5334,7 +5625,6 @@ tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_1 
 tests_duplicate_generation_js_hook_0 --> tests_duplicate_generation_js_hook_0_2 : invocations[2]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_2 : invocations[2]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_hook_0_0 : before[0]
 tests_duplicate_generation_js_test_0_0 --> tests_duplicate_generation_js_test_0_0_fn : fn
@@ -5342,9 +5632,9 @@ tests_duplicate_generation_js_test_0_0_fn --> tests_duplicate_generation_js_test
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_hook_0_1 : before[0]
 tests_duplicate_generation_js_test_1_0 --> tests_duplicate_generation_js_test_1_0_fn : fn
 tests_duplicate_generation_js_test_1_0_fn --> tests_duplicate_generation_js_test_1_0 : test
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_hook_0_2 : before[0]
-tests_duplicate_generation_js_test_0_2 --> tests_duplicate_generation_js_test_0_2_fn : fn
-tests_duplicate_generation_js_test_0_2_fn --> tests_duplicate_generation_js_test_0_2 : test
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_hook_0_2 : before[0]
+tests_duplicate_generation_js_test_0_1 --> tests_duplicate_generation_js_test_0_1_fn : fn
+tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test_0_1 : test
 
 @enduml
 "
@@ -5416,13 +5706,11 @@ tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
 tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_2 #ffb
-tests_duplicate_name_js_test_1_2 : id = "test_1.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_2_fn #fea
-tests_duplicate_name_js_test_1_2_fn : id = "test_1.2.fn"
-tests_duplicate_name_js_test_1_2_fn : data = {"note":"Nested suite 1 > Test 2"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
+tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
+tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
 tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
@@ -5449,13 +5737,11 @@ tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
 tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_2 #ffb
-tests_duplicate_name_js_test_4_2 : id = "test_4.2"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
-object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_2_fn #fea
-tests_duplicate_name_js_test_4_2_fn : id = "test_4.2.fn"
-tests_duplicate_name_js_test_4_2_fn : data = {"note":"Nested suite 2 > Test 1"}
+object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
+tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
+tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
 tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
@@ -5484,7 +5770,6 @@ tests_duplicate_name_js_hook_3 --> tests_duplicate_name_js_hook_3_0 : invocation
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_2 : invocations[2]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_describe_3 --> tests_duplicate_name_js_hook_4 : children[0]
@@ -5495,7 +5780,6 @@ tests_duplicate_name_js_hook_4 --> tests_duplicate_name_js_hook_4_0 : invocation
 tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
-tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_2 : invocations[2]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
@@ -5503,18 +5787,18 @@ tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_hook_0_1 : before[0]
 tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_hook_0_2 : before[0]
-tests_duplicate_name_js_test_1_2 --> tests_duplicate_name_js_test_1_2_fn : fn
-tests_duplicate_name_js_test_1_2_fn --> tests_duplicate_name_js_test_1_2 : test
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_hook_0_4 : before[0]
 tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_hook_0_5 : before[0]
-tests_duplicate_name_js_test_4_2 --> tests_duplicate_name_js_test_4_2_fn : fn
-tests_duplicate_name_js_test_4_2_fn --> tests_duplicate_name_js_test_4_2 : test
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
 "
@@ -5858,6 +6142,64 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_0 #fdd
+tests_test_retry_js_hook_0 : id = "hook_0"
+tests_test_retry_js_hook_0 : hookType = "beforeEach"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_1 #fdd
+tests_test_retry_js_hook_1 : id = "hook_1"
+tests_test_retry_js_hook_1 : hookType = "beforeAll"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "HookDefinitionMetadata" as tests_test_retry_js_hook_2 #fdd
+tests_test_retry_js_hook_2 : id = "hook_2"
+tests_test_retry_js_hook_2 : hookType = "afterAll"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_1_0 #fcb
+tests_test_retry_js_hook_1_0 : id = "hook_1.0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_0 #fcb
+tests_test_retry_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_0_fn #fea
+tests_test_retry_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_1 #ffb
+tests_test_retry_js_test_0_1 : id = "test_0.1"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_0_1 #fcb
+tests_test_retry_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as tests_test_retry_js_test_0_1_fn #fea
+tests_test_retry_js_test_0_1_fn : id = "test_0.1.fn"
+object "HookInvocationMetadata" as tests_test_retry_js_hook_2_0 #fcb
+tests_test_retry_js_hook_2_0 : id = "hook_2.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_0 : children[0]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_1 : children[1]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[2]
+tests_test_retry_js_describe_0 --> tests_test_retry_js_hook_2 : children[3]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_0 : invocations[0]
+tests_test_retry_js_hook_0 --> tests_test_retry_js_hook_0_1 : invocations[1]
+tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
+tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
+tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/test-skip 1`] = `
 "@startuml
 
@@ -6035,14 +6377,11 @@ object "TestEntryMetadata" as tests_duplicate_generation_js_test_1 #ffd
 tests_duplicate_generation_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_1_0 #ffb
 tests_duplicate_generation_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
-tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_0 : children[0]
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_1 : children[1]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 
 @enduml
@@ -6065,8 +6404,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_1 #ffd
 tests_duplicate_name_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
-tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_2 #ffd
 tests_duplicate_name_js_test_2 : id = "test_2"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
@@ -6079,8 +6416,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_4 #ffd
 tests_duplicate_name_js_test_4 : id = "test_4"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
 tests_duplicate_name_js_test_4_0 : id = "test_4.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_1 #ffb
-tests_duplicate_name_js_test_3_1 : id = "test_3.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_5 #ffd
 tests_duplicate_name_js_test_5 : id = "test_5"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_5_0 #ffb
@@ -6095,10 +6430,8 @@ tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_4 : children
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_5 : children[5]
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
-tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_1 : invocations[1]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
 
@@ -6268,6 +6601,27 @@ tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
 "
 `;
 
+exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/test-skip 1`] = `
 "@startuml
 
@@ -6368,14 +6722,11 @@ object "TestEntryMetadata" as tests_duplicate_generation_js_test_1 #ffd
 tests_duplicate_generation_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_generation_js_test_1_0 #ffb
 tests_duplicate_generation_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_generation_js_test_0_1 #ffb
-tests_duplicate_generation_js_test_0_1 : id = "test_0.1"
 aggregated_result --> tests_duplicate_generation_js : testResults[0]
 tests_duplicate_generation_js --> tests_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_0 : children[0]
 tests_duplicate_generation_js_describe_0 --> tests_duplicate_generation_js_test_1 : children[1]
 tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_0 : invocations[0]
-tests_duplicate_generation_js_test_0 --> tests_duplicate_generation_js_test_0_1 : invocations[1]
 tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 : invocations[0]
 
 @enduml
@@ -6398,8 +6749,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_1 #ffd
 tests_duplicate_name_js_test_1 : id = "test_1"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
-tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_2 #ffd
 tests_duplicate_name_js_test_2 : id = "test_2"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
@@ -6412,8 +6761,6 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_4 #ffd
 tests_duplicate_name_js_test_4 : id = "test_4"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
 tests_duplicate_name_js_test_4_0 : id = "test_4.0"
-object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_1 #ffb
-tests_duplicate_name_js_test_3_1 : id = "test_3.1"
 object "TestEntryMetadata" as tests_duplicate_name_js_test_5 #ffd
 tests_duplicate_name_js_test_5 : id = "test_5"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_5_0 #ffb
@@ -6428,10 +6775,8 @@ tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_4 : children
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_test_5 : children[5]
 tests_duplicate_name_js_test_0 --> tests_duplicate_name_js_test_0_0 : invocations[0]
 tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_0 : invocations[0]
-tests_duplicate_name_js_test_1 --> tests_duplicate_name_js_test_1_1 : invocations[1]
 tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocations[0]
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
-tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_1 : invocations[1]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
 
@@ -6596,6 +6941,27 @@ aggregated_result --> tests_test_pass_js : testResults[0]
 tests_test_pass_js --> tests_test_pass_js_describe_0 : rootDescribeBlock
 tests_test_pass_js_describe_0 --> tests_test_pass_js_test_0 : children[0]
 tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/test-retry 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_retry_js #def
+object "DescribeBlockMetadata" as tests_test_retry_js_describe_0 #ded
+tests_test_retry_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_retry_js_test_0 #ffd
+tests_test_retry_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_retry_js_test_0_0 #ffb
+tests_test_retry_js_test_0_0 : id = "test_0.0"
+aggregated_result --> tests_test_retry_js : testResults[0]
+tests_test_retry_js --> tests_test_retry_js_describe_0 : rootDescribeBlock
+tests_test_retry_js_describe_0 --> tests_test_retry_js_test_0 : children[0]
+tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 
 @enduml
 "
