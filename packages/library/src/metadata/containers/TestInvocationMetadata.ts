@@ -59,4 +59,9 @@ export class TestInvocationMetadata extends BaseMetadata {
     yield* this.invocations();
     yield* this.afterAll;
   }
+
+  *allAncestors(): IterableIterator<BaseMetadata> {
+    yield this.entry;
+    yield* this.entry.allAncestors();
+  }
 }

@@ -78,9 +78,9 @@ export class MetadataFactoryImpl implements MetadataFactory {
     return this._register(new HookInvocationMetadata(this.#context, hookDefinition, parent, id));
   }
 
-  createRunMetadata(testFilePath: string) {
+  createRunMetadata(testFilePath: string, aggregatedResult: AggregatedResultMetadata) {
     const runId = new AggregatedIdentifier(testFilePath, '');
-    return this._register(new RunMetadata(this.#context, runId));
+    return this._register(new RunMetadata(this.#context, runId, aggregatedResult));
   }
 
   createTestEntryMetadata(describeBlock: DescribeBlockMetadata, id: AggregatedIdentifier) {

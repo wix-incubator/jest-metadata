@@ -22,11 +22,13 @@ export class TestEntryMetadata extends BaseMetadata {
   }
 
   *ancestors(): IterableIterator<DescribeBlockMetadata> {
-    let it: DescribeBlockMetadata | undefined = this.describeBlock;
-    while (it) {
-      yield it;
-      it = it.parent;
-    }
+    yield this.describeBlock;
+    yield* this.describeBlock.ancestors();
+  }
+
+  *allAncestors(): IterableIterator<BaseMetadata> {
+    yield this.describeBlock;
+    yield* this.describeBlock.allAncestors();
   }
 
   [symbols.start](): TestInvocationMetadata {
