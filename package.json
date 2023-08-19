@@ -14,7 +14,8 @@
     "lint": "lerna run lint",
     "lint:ci": "lerna run lint:ci",
     "test": "lerna run test",
-    "setup-fixture": "node scripts/setup-fixture.mjs"
+    "setup-fixture": "node scripts/setup-fixture.mjs",
+    "update-fixtures": "scripts/update-fixtures.sh"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
