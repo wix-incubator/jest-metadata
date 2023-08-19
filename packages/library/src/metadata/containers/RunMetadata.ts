@@ -3,7 +3,10 @@ import * as symbols from '../symbols';
 
 import { BaseMetadata } from './BaseMetadata';
 import type { DescribeBlockMetadata } from './DescribeBlockMetadata';
+import type { HookInvocationMetadata } from './HookInvocationMetadata';
 import type { TestEntryMetadata } from './TestEntryMetadata';
+import type { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
+import type { TestInvocationMetadata } from './TestInvocationMetadata';
 
 export class RunMetadata extends BaseMetadata {
   [symbols.rootDescribeBlock]: DescribeBlockMetadata | undefined;
@@ -55,9 +58,15 @@ export class RunMetadata extends BaseMetadata {
     }
   }
 
-  *allInvocations() {
+  *allInvocations(): IterableIterator<HookInvocationMetadata | TestFnInvocationMetadata> {
     if (this[symbols.rootDescribeBlock]) {
       yield* this[symbols.rootDescribeBlock].allInvocations();
+    }
+  }
+
+  *allTestInvocations(): IterableIterator<TestInvocationMetadata> {
+    if (this[symbols.rootDescribeBlock]) {
+      yield* this[symbols.rootDescribeBlock].allTestInvocations();
     }
   }
 }

@@ -292,6 +292,8 @@ tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocation
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_1_0 : beforeAll[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_2_0 : beforeAll[1]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
 tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
@@ -300,7 +302,9 @@ tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_3_0 : afterAll[0]
 tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
+tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_4_0 : beforeAll[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
@@ -309,6 +313,7 @@ tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_5_0 : afterAll[0]
 tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
@@ -359,6 +364,8 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 tests_hook_after_all_fail_js_hook_2 --> tests_hook_after_all_fail_js_hook_2_0 : invocations[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_0_0 : before[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_test_0_0_fn : fn
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_2_0 : afterAll[0]
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_1_0 : afterAll[1]
 tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0_0 : test
 
 @enduml
@@ -403,6 +410,7 @@ tests_hook_before_all_fail_js_hook_1 --> tests_hook_before_all_fail_js_hook_1_0 
 tests_hook_before_all_fail_js_test_0 --> tests_hook_before_all_fail_js_test_0_0 : invocations[0]
 tests_hook_before_all_fail_js_describe_1 --> tests_hook_before_all_fail_js_test_1 : children[0]
 tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 : invocations[0]
+tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_hook_1_0 : beforeAll[0]
 tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_test_1_0_fn : fn
 tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test_1_0 : test
 
@@ -498,6 +506,7 @@ tests_hook_nesting_js_hook_3 --> tests_hook_nesting_js_hook_3_1 : invocations[1]
 tests_hook_nesting_js_hook_4 --> tests_hook_nesting_js_hook_4_0 : invocations[0]
 tests_hook_nesting_js_test_0 --> tests_hook_nesting_js_test_0_0 : invocations[0]
 tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
+tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_1_0 : beforeAll[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_0_0 : before[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_2_0 : before[1]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_test_0_0_fn : fn
@@ -507,6 +516,7 @@ tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_0_1 : before[0]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_2_1 : before[1]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_test_1_0_fn : fn
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_3_1 : after[0]
+tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_4_0 : afterAll[0]
 tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 
 @enduml
@@ -720,11 +730,13 @@ tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
 tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_1_0 : beforeAll[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
 tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_2_0 : afterAll[0]
 tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 
 @enduml
@@ -836,6 +848,10 @@ tests_test_todo_js_hook_2 --> tests_test_todo_js_hook_2_0 : invocations[0]
 tests_test_todo_js_test_0 --> tests_test_todo_js_test_0_0 : invocations[0]
 tests_test_todo_js_hook_3 --> tests_test_todo_js_hook_3_0 : invocations[0]
 tests_test_todo_js_hook_4 --> tests_test_todo_js_hook_4_0 : invocations[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_1_0 : beforeAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_2_0 : beforeAll[1]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_3_0 : afterAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 
 @enduml
 "
@@ -1133,6 +1149,8 @@ tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocation
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_1_0 : beforeAll[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_2_0 : beforeAll[1]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
 tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
@@ -1141,7 +1159,9 @@ tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_3_0 : afterAll[0]
 tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
+tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_4_0 : beforeAll[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
@@ -1150,6 +1170,7 @@ tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_5_0 : afterAll[0]
 tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
@@ -1200,6 +1221,8 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 tests_hook_after_all_fail_js_hook_2 --> tests_hook_after_all_fail_js_hook_2_0 : invocations[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_0_0 : before[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_test_0_0_fn : fn
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_2_0 : afterAll[0]
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_1_0 : afterAll[1]
 tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0_0 : test
 
 @enduml
@@ -1244,6 +1267,7 @@ tests_hook_before_all_fail_js_hook_1 --> tests_hook_before_all_fail_js_hook_1_0 
 tests_hook_before_all_fail_js_test_0 --> tests_hook_before_all_fail_js_test_0_0 : invocations[0]
 tests_hook_before_all_fail_js_describe_1 --> tests_hook_before_all_fail_js_test_1 : children[0]
 tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 : invocations[0]
+tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_hook_1_0 : beforeAll[0]
 tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_test_1_0_fn : fn
 tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test_1_0 : test
 
@@ -1339,6 +1363,7 @@ tests_hook_nesting_js_hook_3 --> tests_hook_nesting_js_hook_3_1 : invocations[1]
 tests_hook_nesting_js_hook_4 --> tests_hook_nesting_js_hook_4_0 : invocations[0]
 tests_hook_nesting_js_test_0 --> tests_hook_nesting_js_test_0_0 : invocations[0]
 tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
+tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_1_0 : beforeAll[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_0_0 : before[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_2_0 : before[1]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_test_0_0_fn : fn
@@ -1348,6 +1373,7 @@ tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_0_1 : before[0]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_2_1 : before[1]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_test_1_0_fn : fn
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_3_1 : after[0]
+tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_4_0 : afterAll[0]
 tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 
 @enduml
@@ -1561,11 +1587,13 @@ tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
 tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_1_0 : beforeAll[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
 tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_2_0 : afterAll[0]
 tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 
 @enduml
@@ -1677,6 +1705,10 @@ tests_test_todo_js_hook_2 --> tests_test_todo_js_hook_2_0 : invocations[0]
 tests_test_todo_js_test_0 --> tests_test_todo_js_test_0_0 : invocations[0]
 tests_test_todo_js_hook_3 --> tests_test_todo_js_hook_3_0 : invocations[0]
 tests_test_todo_js_hook_4 --> tests_test_todo_js_hook_4_0 : invocations[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_1_0 : beforeAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_2_0 : beforeAll[1]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_3_0 : afterAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 
 @enduml
 "
@@ -2646,6 +2678,8 @@ tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocation
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_1_0 : beforeAll[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_2_0 : beforeAll[1]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
 tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
@@ -2654,7 +2688,9 @@ tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_3_0 : afterAll[0]
 tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
+tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_4_0 : beforeAll[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
@@ -2663,6 +2699,7 @@ tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_5_0 : afterAll[0]
 tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
@@ -2713,6 +2750,8 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 tests_hook_after_all_fail_js_hook_2 --> tests_hook_after_all_fail_js_hook_2_0 : invocations[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_0_0 : before[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_test_0_0_fn : fn
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_2_0 : afterAll[0]
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_1_0 : afterAll[1]
 tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0_0 : test
 
 @enduml
@@ -2757,6 +2796,7 @@ tests_hook_before_all_fail_js_hook_1 --> tests_hook_before_all_fail_js_hook_1_0 
 tests_hook_before_all_fail_js_test_0 --> tests_hook_before_all_fail_js_test_0_0 : invocations[0]
 tests_hook_before_all_fail_js_describe_1 --> tests_hook_before_all_fail_js_test_1 : children[0]
 tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 : invocations[0]
+tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_hook_1_0 : beforeAll[0]
 tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_test_1_0_fn : fn
 tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test_1_0 : test
 
@@ -2852,6 +2892,7 @@ tests_hook_nesting_js_hook_3 --> tests_hook_nesting_js_hook_3_1 : invocations[1]
 tests_hook_nesting_js_hook_4 --> tests_hook_nesting_js_hook_4_0 : invocations[0]
 tests_hook_nesting_js_test_0 --> tests_hook_nesting_js_test_0_0 : invocations[0]
 tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
+tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_1_0 : beforeAll[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_0_0 : before[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_2_0 : before[1]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_test_0_0_fn : fn
@@ -2861,6 +2902,7 @@ tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_0_1 : before[0]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_2_1 : before[1]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_test_1_0_fn : fn
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_3_1 : after[0]
+tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_4_0 : afterAll[0]
 tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 
 @enduml
@@ -3054,11 +3096,13 @@ tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
 tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_1_0 : beforeAll[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
 tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_2_0 : afterAll[0]
 tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 
 @enduml
@@ -3170,6 +3214,10 @@ tests_test_todo_js_hook_2 --> tests_test_todo_js_hook_2_0 : invocations[0]
 tests_test_todo_js_test_0 --> tests_test_todo_js_test_0_0 : invocations[0]
 tests_test_todo_js_hook_3 --> tests_test_todo_js_hook_3_0 : invocations[0]
 tests_test_todo_js_hook_4 --> tests_test_todo_js_hook_4_0 : invocations[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_1_0 : beforeAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_2_0 : beforeAll[1]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_3_0 : afterAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 
 @enduml
 "
@@ -3467,6 +3515,8 @@ tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocation
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_1_0 : beforeAll[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_2_0 : beforeAll[1]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
 tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
@@ -3475,7 +3525,9 @@ tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_3_0 : afterAll[0]
 tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
+tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_4_0 : beforeAll[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
@@ -3484,6 +3536,7 @@ tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_5_0 : afterAll[0]
 tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
@@ -3534,6 +3587,8 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 tests_hook_after_all_fail_js_hook_2 --> tests_hook_after_all_fail_js_hook_2_0 : invocations[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_0_0 : before[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_test_0_0_fn : fn
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_2_0 : afterAll[0]
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_1_0 : afterAll[1]
 tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0_0 : test
 
 @enduml
@@ -3578,6 +3633,7 @@ tests_hook_before_all_fail_js_hook_1 --> tests_hook_before_all_fail_js_hook_1_0 
 tests_hook_before_all_fail_js_test_0 --> tests_hook_before_all_fail_js_test_0_0 : invocations[0]
 tests_hook_before_all_fail_js_describe_1 --> tests_hook_before_all_fail_js_test_1 : children[0]
 tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 : invocations[0]
+tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_hook_1_0 : beforeAll[0]
 tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_test_1_0_fn : fn
 tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test_1_0 : test
 
@@ -3673,6 +3729,7 @@ tests_hook_nesting_js_hook_3 --> tests_hook_nesting_js_hook_3_1 : invocations[1]
 tests_hook_nesting_js_hook_4 --> tests_hook_nesting_js_hook_4_0 : invocations[0]
 tests_hook_nesting_js_test_0 --> tests_hook_nesting_js_test_0_0 : invocations[0]
 tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
+tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_1_0 : beforeAll[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_0_0 : before[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_2_0 : before[1]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_test_0_0_fn : fn
@@ -3682,6 +3739,7 @@ tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_0_1 : before[0]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_2_1 : before[1]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_test_1_0_fn : fn
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_3_1 : after[0]
+tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_4_0 : afterAll[0]
 tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 
 @enduml
@@ -3875,11 +3933,13 @@ tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
 tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_1_0 : beforeAll[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
 tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_2_0 : afterAll[0]
 tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 
 @enduml
@@ -3991,6 +4051,10 @@ tests_test_todo_js_hook_2 --> tests_test_todo_js_hook_2_0 : invocations[0]
 tests_test_todo_js_test_0 --> tests_test_todo_js_test_0_0 : invocations[0]
 tests_test_todo_js_hook_3 --> tests_test_todo_js_hook_3_0 : invocations[0]
 tests_test_todo_js_hook_4 --> tests_test_todo_js_hook_4_0 : invocations[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_1_0 : beforeAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_2_0 : beforeAll[1]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_3_0 : afterAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 
 @enduml
 "
@@ -4960,6 +5024,8 @@ tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocation
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_1_0 : beforeAll[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_2_0 : beforeAll[1]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
 tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
@@ -4968,7 +5034,9 @@ tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_3_0 : afterAll[0]
 tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
+tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_4_0 : beforeAll[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
@@ -4977,6 +5045,7 @@ tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_5_0 : afterAll[0]
 tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
@@ -5027,6 +5096,8 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 tests_hook_after_all_fail_js_hook_2 --> tests_hook_after_all_fail_js_hook_2_0 : invocations[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_0_0 : before[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_test_0_0_fn : fn
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_2_0 : afterAll[0]
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_1_0 : afterAll[1]
 tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0_0 : test
 
 @enduml
@@ -5071,6 +5142,7 @@ tests_hook_before_all_fail_js_hook_1 --> tests_hook_before_all_fail_js_hook_1_0 
 tests_hook_before_all_fail_js_test_0 --> tests_hook_before_all_fail_js_test_0_0 : invocations[0]
 tests_hook_before_all_fail_js_describe_1 --> tests_hook_before_all_fail_js_test_1 : children[0]
 tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 : invocations[0]
+tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_hook_1_0 : beforeAll[0]
 tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_test_1_0_fn : fn
 tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test_1_0 : test
 
@@ -5166,6 +5238,7 @@ tests_hook_nesting_js_hook_3 --> tests_hook_nesting_js_hook_3_1 : invocations[1]
 tests_hook_nesting_js_hook_4 --> tests_hook_nesting_js_hook_4_0 : invocations[0]
 tests_hook_nesting_js_test_0 --> tests_hook_nesting_js_test_0_0 : invocations[0]
 tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
+tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_1_0 : beforeAll[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_0_0 : before[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_2_0 : before[1]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_test_0_0_fn : fn
@@ -5175,6 +5248,7 @@ tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_0_1 : before[0]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_2_1 : before[1]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_test_1_0_fn : fn
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_3_1 : after[0]
+tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_4_0 : afterAll[0]
 tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 
 @enduml
@@ -5368,11 +5442,13 @@ tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
 tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_1_0 : beforeAll[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
 tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_2_0 : afterAll[0]
 tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 
 @enduml
@@ -5484,6 +5560,10 @@ tests_test_todo_js_hook_2 --> tests_test_todo_js_hook_2_0 : invocations[0]
 tests_test_todo_js_test_0 --> tests_test_todo_js_test_0_0 : invocations[0]
 tests_test_todo_js_hook_3 --> tests_test_todo_js_hook_3_0 : invocations[0]
 tests_test_todo_js_hook_4 --> tests_test_todo_js_hook_4_0 : invocations[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_1_0 : beforeAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_2_0 : beforeAll[1]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_3_0 : afterAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 
 @enduml
 "
@@ -5781,6 +5861,8 @@ tests_duplicate_name_js_hook_5 --> tests_duplicate_name_js_hook_5_0 : invocation
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_1 : invocations[1]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_1_0 : beforeAll[0]
+tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_2_0 : beforeAll[1]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_hook_0_0 : before[0]
 tests_duplicate_name_js_test_0_0 --> tests_duplicate_name_js_test_0_0_fn : fn
 tests_duplicate_name_js_test_0_0_fn --> tests_duplicate_name_js_test_0_0 : test
@@ -5789,7 +5871,9 @@ tests_duplicate_name_js_test_1_0 --> tests_duplicate_name_js_test_1_0_fn : fn
 tests_duplicate_name_js_test_1_0_fn --> tests_duplicate_name_js_test_1_0 : test
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_0_2 : before[0]
 tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_test_1_1_fn : fn
+tests_duplicate_name_js_test_1_1 --> tests_duplicate_name_js_hook_3_0 : afterAll[0]
 tests_duplicate_name_js_test_1_1_fn --> tests_duplicate_name_js_test_1_1 : test
+tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_4_0 : beforeAll[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_hook_0_3 : before[0]
 tests_duplicate_name_js_test_4_0 --> tests_duplicate_name_js_test_4_0_fn : fn
 tests_duplicate_name_js_test_4_0_fn --> tests_duplicate_name_js_test_4_0 : test
@@ -5798,6 +5882,7 @@ tests_duplicate_name_js_test_5_0 --> tests_duplicate_name_js_test_5_0_fn : fn
 tests_duplicate_name_js_test_5_0_fn --> tests_duplicate_name_js_test_5_0 : test
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0]
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
+tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_5_0 : afterAll[0]
 tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 
 @enduml
@@ -5848,6 +5933,8 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 tests_hook_after_all_fail_js_hook_2 --> tests_hook_after_all_fail_js_hook_2_0 : invocations[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_0_0 : before[0]
 tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_test_0_0_fn : fn
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_2_0 : afterAll[0]
+tests_hook_after_all_fail_js_test_0_0 --> tests_hook_after_all_fail_js_hook_1_0 : afterAll[1]
 tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0_0 : test
 
 @enduml
@@ -5892,6 +5979,7 @@ tests_hook_before_all_fail_js_hook_1 --> tests_hook_before_all_fail_js_hook_1_0 
 tests_hook_before_all_fail_js_test_0 --> tests_hook_before_all_fail_js_test_0_0 : invocations[0]
 tests_hook_before_all_fail_js_describe_1 --> tests_hook_before_all_fail_js_test_1 : children[0]
 tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 : invocations[0]
+tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_hook_1_0 : beforeAll[0]
 tests_hook_before_all_fail_js_test_1_0 --> tests_hook_before_all_fail_js_test_1_0_fn : fn
 tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test_1_0 : test
 
@@ -5987,6 +6075,7 @@ tests_hook_nesting_js_hook_3 --> tests_hook_nesting_js_hook_3_1 : invocations[1]
 tests_hook_nesting_js_hook_4 --> tests_hook_nesting_js_hook_4_0 : invocations[0]
 tests_hook_nesting_js_test_0 --> tests_hook_nesting_js_test_0_0 : invocations[0]
 tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
+tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_1_0 : beforeAll[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_0_0 : before[0]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_hook_2_0 : before[1]
 tests_hook_nesting_js_test_0_0 --> tests_hook_nesting_js_test_0_0_fn : fn
@@ -5996,6 +6085,7 @@ tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_0_1 : before[0]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_2_1 : before[1]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_test_1_0_fn : fn
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_3_1 : after[0]
+tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_4_0 : afterAll[0]
 tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 
 @enduml
@@ -6189,11 +6279,13 @@ tests_test_retry_js_hook_1 --> tests_test_retry_js_hook_1_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_1 : invocations[1]
 tests_test_retry_js_hook_2 --> tests_test_retry_js_hook_2_0 : invocations[0]
+tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_1_0 : beforeAll[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_hook_0_0 : before[0]
 tests_test_retry_js_test_0_0 --> tests_test_retry_js_test_0_0_fn : fn
 tests_test_retry_js_test_0_0_fn --> tests_test_retry_js_test_0_0 : test
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_0_1 : before[0]
 tests_test_retry_js_test_0_1 --> tests_test_retry_js_test_0_1_fn : fn
+tests_test_retry_js_test_0_1 --> tests_test_retry_js_hook_2_0 : afterAll[0]
 tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 
 @enduml
@@ -6305,6 +6397,10 @@ tests_test_todo_js_hook_2 --> tests_test_todo_js_hook_2_0 : invocations[0]
 tests_test_todo_js_test_0 --> tests_test_todo_js_test_0_0 : invocations[0]
 tests_test_todo_js_hook_3 --> tests_test_todo_js_hook_3_0 : invocations[0]
 tests_test_todo_js_hook_4 --> tests_test_todo_js_hook_4_0 : invocations[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_1_0 : beforeAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_2_0 : beforeAll[1]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_3_0 : afterAll[0]
+tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 
 @enduml
 "

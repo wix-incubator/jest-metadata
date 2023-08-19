@@ -34,7 +34,7 @@ export class TestEntryMetadata extends BaseMetadata {
     const invocation = this[symbols.context].factory.createTestInvocationMetadata(this, id);
 
     this.invocations.push(invocation);
-    this.describeBlock.invocations.push(invocation);
+    this.describeBlock[symbols.pushExecution](invocation);
 
     const run = this.describeBlock.run;
     run[symbols.currentMetadata] = invocation;
