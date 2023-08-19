@@ -37,6 +37,12 @@
     "hookType": "beforeAll"
   },
   {
+    "type": "add_hook",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook_3",
+    "hookType": "afterAll"
+  },
+  {
     "type": "add_test",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_0"
@@ -69,8 +75,14 @@
   {
     "type": "add_hook",
     "testFilePath": "__tests__/duplicate-name.js",
-    "hookId": "hook_3",
+    "hookId": "hook_4",
     "hookType": "beforeAll"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook_5",
+    "hookType": "afterAll"
   },
   {
     "type": "add_test",
@@ -117,6 +129,14 @@
     "hookId": "hook_1"
   },
   {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "targetId": "hook_1.0",
+    "path": "note",
+    "value": "Suite",
+    "operation": "set"
+  },
+  {
     "type": "hook_success",
     "testFilePath": "__tests__/duplicate-name.js",
     "hookId": "hook_1"
@@ -130,6 +150,14 @@
     "type": "hook_start",
     "testFilePath": "__tests__/duplicate-name.js",
     "hookId": "hook_2"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "targetId": "hook_2.0",
+    "path": "note",
+    "value": "Nested suite 1 > beforeAll",
+    "operation": "set"
   },
   {
     "type": "hook_success",
@@ -155,6 +183,14 @@
     "type": "test_fn_start",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_0"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "targetId": "test_0.0.fn",
+    "path": "note",
+    "value": "Nested suite 1 > Test 1",
+    "operation": "set"
   },
   {
     "type": "test_fn_success",
@@ -185,6 +221,14 @@
     "type": "test_fn_start",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_1"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "targetId": "test_1.0.fn",
+    "path": "note",
+    "value": "Nested suite 1 > Test 2",
+    "operation": "set"
   },
   {
     "type": "test_fn_failure",
@@ -222,6 +266,14 @@
     "testId": "test_1"
   },
   {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "targetId": "test_1.2.fn",
+    "path": "note",
+    "value": "Nested suite 1 > Test 2",
+    "operation": "set"
+  },
+  {
     "type": "test_fn_success",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_1"
@@ -230,6 +282,24 @@
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_1"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook_3"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "targetId": "hook_3.0",
+    "path": "note",
+    "value": "Nested suite 1 > afterAll",
+    "operation": "set"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook_3"
   },
   {
     "type": "run_describe_finish",
@@ -264,12 +334,20 @@
   {
     "type": "hook_start",
     "testFilePath": "__tests__/duplicate-name.js",
-    "hookId": "hook_3"
+    "hookId": "hook_4"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "targetId": "hook_4.0",
+    "path": "note",
+    "value": "Nested suite 2 > beforeAll",
+    "operation": "set"
   },
   {
     "type": "hook_success",
     "testFilePath": "__tests__/duplicate-name.js",
-    "hookId": "hook_3"
+    "hookId": "hook_4"
   },
   {
     "type": "test_start",
@@ -290,6 +368,14 @@
     "type": "test_fn_start",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_4"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "targetId": "test_4.0.fn",
+    "path": "note",
+    "value": "Nested suite 2 > Test 1",
+    "operation": "set"
   },
   {
     "type": "test_fn_failure",
@@ -320,6 +406,14 @@
     "type": "test_fn_start",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_5"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "targetId": "test_5.0.fn",
+    "path": "note",
+    "value": "Nested suite 2 > Test 2",
+    "operation": "set"
   },
   {
     "type": "test_fn_success",
@@ -357,6 +451,14 @@
     "testId": "test_4"
   },
   {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "targetId": "test_4.2.fn",
+    "path": "note",
+    "value": "Nested suite 2 > Test 1",
+    "operation": "set"
+  },
+  {
     "type": "test_fn_success",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_4"
@@ -365,6 +467,24 @@
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_4"
+  },
+  {
+    "type": "hook_start",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook_5"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "targetId": "hook_5.0",
+    "path": "note",
+    "value": "Nested suite 2 > afterAll",
+    "operation": "set"
+  },
+  {
+    "type": "hook_success",
+    "testFilePath": "__tests__/duplicate-name.js",
+    "hookId": "hook_5"
   },
   {
     "type": "run_describe_finish",

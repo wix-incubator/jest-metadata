@@ -21,6 +21,11 @@
     "hookType": "beforeAll"
   },
   {
+    "type": "add_test",
+    "testFilePath": "__tests__/hook-beforeAll-fail.js",
+    "testId": "test_0"
+  },
+  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/hook-beforeAll-fail.js",
     "describeId": "describe_1"
@@ -28,7 +33,7 @@
   {
     "type": "add_test",
     "testFilePath": "__tests__/hook-beforeAll-fail.js",
-    "testId": "test_0"
+    "testId": "test_1"
   },
   {
     "type": "finish_describe_definition",
@@ -60,6 +65,16 @@
     "hookId": "hook_1"
   },
   {
+    "type": "test_start",
+    "testFilePath": "__tests__/hook-beforeAll-fail.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "test_skip",
+    "testFilePath": "__tests__/hook-beforeAll-fail.js",
+    "testId": "test_0"
+  },
+  {
     "type": "run_describe_start",
     "testFilePath": "__tests__/hook-beforeAll-fail.js",
     "describeId": "describe_1"
@@ -67,17 +82,17 @@
   {
     "type": "test_start",
     "testFilePath": "__tests__/hook-beforeAll-fail.js",
-    "testId": "test_0"
+    "testId": "test_1"
   },
   {
     "type": "test_fn_start",
     "testFilePath": "__tests__/hook-beforeAll-fail.js",
-    "testId": "test_0"
+    "testId": "test_1"
   },
   {
     "type": "test_done",
     "testFilePath": "__tests__/hook-beforeAll-fail.js",
-    "testId": "test_0"
+    "testId": "test_1"
   },
   {
     "type": "run_describe_finish",
