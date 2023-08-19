@@ -2,6 +2,18 @@ import funpermaproxy from 'funpermaproxy';
 
 import { realm } from './realms';
 
+export type {
+  Metadata,
+  AggregatedResultMetadata,
+  RunMetadata,
+  DescribeBlockMetadata,
+  HookDefinitionMetadata,
+  TestEntryMetadata,
+  HookInvocationMetadata,
+  TestInvocationMetadata,
+  TestFnInvocationMetadata,
+} from './metadata';
+
 /**
  * Aggregated metadata (global state).
  * Works as intended only in the main process.
