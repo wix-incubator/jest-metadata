@@ -481,6 +481,100 @@ tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_concurrent_js_hook_0 #fdd
+tests_test_concurrent_js_hook_0 : id = "hook_0"
+tests_test_concurrent_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_0 #fcb
+tests_test_concurrent_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
+tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
+tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_1 #fcb
+tests_test_concurrent_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
+tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
+tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_2 #fcb
+tests_test_concurrent_js_hook_0_2 : id = "hook_0.2"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
+tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
+tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_3 #fcb
+tests_test_concurrent_js_hook_0_3 : id = "hook_0.3"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
+tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
+tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_4 #fcb
+tests_test_concurrent_js_hook_0_4 : id = "hook_0.4"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
+tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
+tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[4]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[5]
+tests_test_concurrent_js_hook_0 --> tests_test_concurrent_js_hook_0_0 : invocations[0]
+tests_test_concurrent_js_hook_0 --> tests_test_concurrent_js_hook_0_1 : invocations[1]
+tests_test_concurrent_js_hook_0 --> tests_test_concurrent_js_hook_0_2 : invocations[2]
+tests_test_concurrent_js_hook_0 --> tests_test_concurrent_js_hook_0_3 : invocations[3]
+tests_test_concurrent_js_hook_0 --> tests_test_concurrent_js_hook_0_4 : invocations[4]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
+tests_test_concurrent_js_test_0_0 --> tests_test_concurrent_js_hook_0_0 : before[0]
+tests_test_concurrent_js_test_0_0 --> tests_test_concurrent_js_test_0_0_fn : fn
+tests_test_concurrent_js_test_0_0_fn --> tests_test_concurrent_js_test_0_0 : test
+tests_test_concurrent_js_test_1_0 --> tests_test_concurrent_js_hook_0_1 : before[0]
+tests_test_concurrent_js_test_1_0 --> tests_test_concurrent_js_test_1_0_fn : fn
+tests_test_concurrent_js_test_1_0_fn --> tests_test_concurrent_js_test_1_0 : test
+tests_test_concurrent_js_test_2_0 --> tests_test_concurrent_js_hook_0_2 : before[0]
+tests_test_concurrent_js_test_2_0 --> tests_test_concurrent_js_test_2_0_fn : fn
+tests_test_concurrent_js_test_2_0_fn --> tests_test_concurrent_js_test_2_0 : test
+tests_test_concurrent_js_test_3_0 --> tests_test_concurrent_js_hook_0_3 : before[0]
+tests_test_concurrent_js_test_3_0 --> tests_test_concurrent_js_test_3_0_fn : fn
+tests_test_concurrent_js_test_3_0_fn --> tests_test_concurrent_js_test_3_0 : test
+tests_test_concurrent_js_test_4_0 --> tests_test_concurrent_js_hook_0_4 : before[0]
+tests_test_concurrent_js_test_4_0 --> tests_test_concurrent_js_test_4_0_fn : fn
+tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : test
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/test-fail 1`] = `
 "@startuml
 
@@ -1078,6 +1172,100 @@ tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_concurrent_js_hook_0 #fdd
+tests_test_concurrent_js_hook_0 : id = "hook_0"
+tests_test_concurrent_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_0 #fcb
+tests_test_concurrent_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
+tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
+tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_1 #fcb
+tests_test_concurrent_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
+tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
+tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_2 #fcb
+tests_test_concurrent_js_hook_0_2 : id = "hook_0.2"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
+tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
+tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_3 #fcb
+tests_test_concurrent_js_hook_0_3 : id = "hook_0.3"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
+tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
+tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_4 #fcb
+tests_test_concurrent_js_hook_0_4 : id = "hook_0.4"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
+tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
+tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[4]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[5]
+tests_test_concurrent_js_hook_0 --> tests_test_concurrent_js_hook_0_0 : invocations[0]
+tests_test_concurrent_js_hook_0 --> tests_test_concurrent_js_hook_0_1 : invocations[1]
+tests_test_concurrent_js_hook_0 --> tests_test_concurrent_js_hook_0_2 : invocations[2]
+tests_test_concurrent_js_hook_0 --> tests_test_concurrent_js_hook_0_3 : invocations[3]
+tests_test_concurrent_js_hook_0 --> tests_test_concurrent_js_hook_0_4 : invocations[4]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
+tests_test_concurrent_js_test_0_0 --> tests_test_concurrent_js_hook_0_0 : before[0]
+tests_test_concurrent_js_test_0_0 --> tests_test_concurrent_js_test_0_0_fn : fn
+tests_test_concurrent_js_test_0_0_fn --> tests_test_concurrent_js_test_0_0 : test
+tests_test_concurrent_js_test_1_0 --> tests_test_concurrent_js_hook_0_1 : before[0]
+tests_test_concurrent_js_test_1_0 --> tests_test_concurrent_js_test_1_0_fn : fn
+tests_test_concurrent_js_test_1_0_fn --> tests_test_concurrent_js_test_1_0 : test
+tests_test_concurrent_js_test_2_0 --> tests_test_concurrent_js_hook_0_2 : before[0]
+tests_test_concurrent_js_test_2_0 --> tests_test_concurrent_js_test_2_0_fn : fn
+tests_test_concurrent_js_test_2_0_fn --> tests_test_concurrent_js_test_2_0 : test
+tests_test_concurrent_js_test_3_0 --> tests_test_concurrent_js_hook_0_3 : before[0]
+tests_test_concurrent_js_test_3_0 --> tests_test_concurrent_js_test_3_0_fn : fn
+tests_test_concurrent_js_test_3_0_fn --> tests_test_concurrent_js_test_3_0 : test
+tests_test_concurrent_js_test_4_0 --> tests_test_concurrent_js_hook_0_4 : before[0]
+tests_test_concurrent_js_test_4_0 --> tests_test_concurrent_js_test_4_0_fn : fn
+tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : test
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/test-fail 1`] = `
 "@startuml
 
@@ -1401,6 +1589,51 @@ tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
 "
 `;
 
+exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[4]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/test-fail 1`] = `
 "@startuml
 
@@ -1669,6 +1902,51 @@ tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_test_0 : children[0]
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_test_1 : children[1]
 tests_hook_nesting_js_test_0 --> tests_hook_nesting_js_test_0_0 : invocations[0]
 tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[4]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
 
 @enduml
 "
@@ -2216,6 +2494,80 @@ tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_2_1 : before[1]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_test_1_0_fn : fn
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_3_1 : after[0]
 tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_concurrent_js_hook_0 #fdd
+tests_test_concurrent_js_hook_0 : id = "hook_0"
+tests_test_concurrent_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
+tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
+tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
+tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
+tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
+tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
+tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
+tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
+tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
+tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
+tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[4]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[5]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
+tests_test_concurrent_js_test_0_0 --> tests_test_concurrent_js_test_0_0_fn : fn
+tests_test_concurrent_js_test_0_0_fn --> tests_test_concurrent_js_test_0_0 : test
+tests_test_concurrent_js_test_1_0 --> tests_test_concurrent_js_test_1_0_fn : fn
+tests_test_concurrent_js_test_1_0_fn --> tests_test_concurrent_js_test_1_0 : test
+tests_test_concurrent_js_test_2_0 --> tests_test_concurrent_js_test_2_0_fn : fn
+tests_test_concurrent_js_test_2_0_fn --> tests_test_concurrent_js_test_2_0 : test
+tests_test_concurrent_js_test_3_0 --> tests_test_concurrent_js_test_3_0_fn : fn
+tests_test_concurrent_js_test_3_0_fn --> tests_test_concurrent_js_test_3_0 : test
+tests_test_concurrent_js_test_4_0 --> tests_test_concurrent_js_test_4_0_fn : fn
+tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : test
 
 @enduml
 "
@@ -2818,6 +3170,80 @@ tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_concurrent_js_hook_0 #fdd
+tests_test_concurrent_js_hook_0 : id = "hook_0"
+tests_test_concurrent_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
+tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
+tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
+tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
+tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
+tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
+tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
+tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
+tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
+tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
+tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[4]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[5]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
+tests_test_concurrent_js_test_0_0 --> tests_test_concurrent_js_test_0_0_fn : fn
+tests_test_concurrent_js_test_0_0_fn --> tests_test_concurrent_js_test_0_0 : test
+tests_test_concurrent_js_test_1_0 --> tests_test_concurrent_js_test_1_0_fn : fn
+tests_test_concurrent_js_test_1_0_fn --> tests_test_concurrent_js_test_1_0 : test
+tests_test_concurrent_js_test_2_0 --> tests_test_concurrent_js_test_2_0_fn : fn
+tests_test_concurrent_js_test_2_0_fn --> tests_test_concurrent_js_test_2_0 : test
+tests_test_concurrent_js_test_3_0 --> tests_test_concurrent_js_test_3_0_fn : fn
+tests_test_concurrent_js_test_3_0_fn --> tests_test_concurrent_js_test_3_0 : test
+tests_test_concurrent_js_test_4_0 --> tests_test_concurrent_js_test_4_0_fn : fn
+tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : test
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/test-fail 1`] = `
 "@startuml
 
@@ -3141,6 +3567,51 @@ tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
 "
 `;
 
+exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[4]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/test-fail 1`] = `
 "@startuml
 
@@ -3409,6 +3880,51 @@ tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_test_0 : children[0]
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_test_1 : children[1]
 tests_hook_nesting_js_test_0 --> tests_hook_nesting_js_test_0_0 : invocations[0]
 tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[4]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
 
 @enduml
 "
@@ -3956,6 +4472,80 @@ tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_2_1 : before[1]
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_test_1_0_fn : fn
 tests_hook_nesting_js_test_1_0 --> tests_hook_nesting_js_hook_3_1 : after[0]
 tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_concurrent_js_hook_0 #fdd
+tests_test_concurrent_js_hook_0 : id = "hook_0"
+tests_test_concurrent_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
+tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
+tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
+tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
+tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
+tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
+tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
+tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
+tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
+tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
+tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[4]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[5]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
+tests_test_concurrent_js_test_0_0 --> tests_test_concurrent_js_test_0_0_fn : fn
+tests_test_concurrent_js_test_0_0_fn --> tests_test_concurrent_js_test_0_0 : test
+tests_test_concurrent_js_test_1_0 --> tests_test_concurrent_js_test_1_0_fn : fn
+tests_test_concurrent_js_test_1_0_fn --> tests_test_concurrent_js_test_1_0 : test
+tests_test_concurrent_js_test_2_0 --> tests_test_concurrent_js_test_2_0_fn : fn
+tests_test_concurrent_js_test_2_0_fn --> tests_test_concurrent_js_test_2_0 : test
+tests_test_concurrent_js_test_3_0 --> tests_test_concurrent_js_test_3_0_fn : fn
+tests_test_concurrent_js_test_3_0_fn --> tests_test_concurrent_js_test_3_0 : test
+tests_test_concurrent_js_test_4_0 --> tests_test_concurrent_js_test_4_0_fn : fn
+tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : test
 
 @enduml
 "
@@ -4558,6 +5148,80 @@ tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_test_concurrent_js_hook_0 #fdd
+tests_test_concurrent_js_hook_0 : id = "hook_0"
+tests_test_concurrent_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
+tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
+tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
+tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
+tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
+tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
+tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
+tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
+tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
+tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
+tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[4]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[5]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
+tests_test_concurrent_js_test_0_0 --> tests_test_concurrent_js_test_0_0_fn : fn
+tests_test_concurrent_js_test_0_0_fn --> tests_test_concurrent_js_test_0_0 : test
+tests_test_concurrent_js_test_1_0 --> tests_test_concurrent_js_test_1_0_fn : fn
+tests_test_concurrent_js_test_1_0_fn --> tests_test_concurrent_js_test_1_0 : test
+tests_test_concurrent_js_test_2_0 --> tests_test_concurrent_js_test_2_0_fn : fn
+tests_test_concurrent_js_test_2_0_fn --> tests_test_concurrent_js_test_2_0 : test
+tests_test_concurrent_js_test_3_0 --> tests_test_concurrent_js_test_3_0_fn : fn
+tests_test_concurrent_js_test_3_0_fn --> tests_test_concurrent_js_test_3_0 : test
+tests_test_concurrent_js_test_4_0 --> tests_test_concurrent_js_test_4_0_fn : fn
+tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : test
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/test-fail 1`] = `
 "@startuml
 
@@ -4881,6 +5545,51 @@ tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
 "
 `;
 
+exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[4]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/test-fail 1`] = `
 "@startuml
 
@@ -5158,6 +5867,51 @@ tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_test_0 : children[0]
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_test_1 : children[1]
 tests_hook_nesting_js_test_0 --> tests_hook_nesting_js_test_0_0 : invocations[0]
 tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/test-concurrent 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_test_concurrent_js #def
+object "DescribeBlockMetadata" as tests_test_concurrent_js_describe_0 #ded
+tests_test_concurrent_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_0 #ffd
+tests_test_concurrent_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
+tests_test_concurrent_js_test_0_0 : id = "test_0.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_1 #ffd
+tests_test_concurrent_js_test_1 : id = "test_1"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
+tests_test_concurrent_js_test_1_0 : id = "test_1.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_2 #ffd
+tests_test_concurrent_js_test_2 : id = "test_2"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
+tests_test_concurrent_js_test_2_0 : id = "test_2.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_3 #ffd
+tests_test_concurrent_js_test_3 : id = "test_3"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
+tests_test_concurrent_js_test_3_0 : id = "test_3.0"
+object "TestEntryMetadata" as tests_test_concurrent_js_test_4 #ffd
+tests_test_concurrent_js_test_4 : id = "test_4"
+object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
+tests_test_concurrent_js_test_4_0 : id = "test_4.0"
+aggregated_result --> tests_test_concurrent_js : testResults[0]
+tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_0 : children[0]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_1 : children[1]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_2 : children[2]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_3 : children[3]
+tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_test_4 : children[4]
+tests_test_concurrent_js_test_0 --> tests_test_concurrent_js_test_0_0 : invocations[0]
+tests_test_concurrent_js_test_1 --> tests_test_concurrent_js_test_1_0 : invocations[0]
+tests_test_concurrent_js_test_2 --> tests_test_concurrent_js_test_2_0 : invocations[0]
+tests_test_concurrent_js_test_3 --> tests_test_concurrent_js_test_3_0 : invocations[0]
+tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocations[0]
 
 @enduml
 "

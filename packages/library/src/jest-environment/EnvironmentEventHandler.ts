@@ -50,7 +50,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'add_hook',
         testFilePath: this._testFilePath,
-        hookId: this._instanceCache.getHookId(event.fn),
+        hookId: this._instanceCache.getHookId(event.asyncError),
         hookType: event.hookType,
       });
     },
@@ -59,7 +59,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'add_test',
         testFilePath: this._testFilePath,
-        testId: this._instanceCache.getTestId(event.fn),
+        testId: this._instanceCache.getTestId(event.asyncError),
       });
     },
 
@@ -81,7 +81,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'hook_start',
         testFilePath: this._testFilePath,
-        hookId: this._instanceCache.getHookId(event.hook.fn),
+        hookId: this._instanceCache.getHookId(event.hook.asyncError),
       });
     },
 
@@ -89,7 +89,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'hook_success',
         testFilePath: this._testFilePath,
-        hookId: this._instanceCache.getHookId(event.hook.fn),
+        hookId: this._instanceCache.getHookId(event.hook.asyncError),
       });
     },
 
@@ -97,7 +97,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'hook_failure',
         testFilePath: this._testFilePath,
-        hookId: this._instanceCache.getHookId(event.hook.fn),
+        hookId: this._instanceCache.getHookId(event.hook.asyncError),
       });
     },
 
@@ -105,7 +105,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'test_fn_start',
         testFilePath: this._testFilePath,
-        testId: this._instanceCache.getTestId(event.test.fn),
+        testId: this._instanceCache.getTestId(event.test.asyncError),
       });
     },
 
@@ -113,7 +113,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'test_fn_success',
         testFilePath: this._testFilePath,
-        testId: this._instanceCache.getTestId(event.test.fn),
+        testId: this._instanceCache.getTestId(event.test.asyncError),
       });
     },
 
@@ -121,7 +121,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'test_fn_failure',
         testFilePath: this._testFilePath,
-        testId: this._instanceCache.getTestId(event.test.fn),
+        testId: this._instanceCache.getTestId(event.test.asyncError),
       });
     },
 
@@ -129,7 +129,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'test_retry',
         testFilePath: this._testFilePath,
-        testId: this._instanceCache.getTestId(event.test.fn),
+        testId: this._instanceCache.getTestId(event.test.asyncError),
       });
     },
 
@@ -137,7 +137,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'test_start',
         testFilePath: this._testFilePath,
-        testId: this._instanceCache.getTestId(event.test.fn),
+        testId: this._instanceCache.getTestId(event.test.asyncError),
       });
     },
 
@@ -145,7 +145,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'test_started',
         testFilePath: this._testFilePath,
-        testId: this._instanceCache.getTestId(event.test.fn),
+        testId: this._instanceCache.getTestId(event.test.asyncError),
       });
     },
 
@@ -153,7 +153,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'test_skip',
         testFilePath: this._testFilePath,
-        testId: this._instanceCache.getTestId(event.test.fn),
+        testId: this._instanceCache.getTestId(event.test.asyncError),
       });
     },
 
@@ -161,7 +161,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'test_todo',
         testFilePath: this._testFilePath,
-        testId: this._instanceCache.getTestId(event.test.fn),
+        testId: this._instanceCache.getTestId(event.test.asyncError),
       });
     },
 
@@ -169,7 +169,7 @@ export class EnvironmentEventHandler {
       this._emitter.emit({
         type: 'test_done',
         testFilePath: this._testFilePath,
-        testId: this._instanceCache.getTestId(event.test.fn),
+        testId: this._instanceCache.getTestId(event.test.asyncError),
       });
     },
 

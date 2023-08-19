@@ -8,13 +8,13 @@ export class CircusInstanceCache {
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-types
-  getHookId(fn: Function): string {
-    return `hook_${this.hookInstances.getInstanceId(fn)}`;
+  getHookId(asyncError: Error): string {
+    return `hook_${this.hookInstances.getInstanceId(asyncError)}`;
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-types
-  getTestId(fn: Function): string {
-    return `test_${this.testInstances.getInstanceId(fn)}`;
+  getTestId(asyncError: Error): string {
+    return `test_${this.testInstances.getInstanceId(asyncError)}`;
   }
 }
 
