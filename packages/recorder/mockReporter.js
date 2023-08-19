@@ -57,7 +57,7 @@ class MockReporter extends JestMetadataReporter {
       fs.writeFileSync(fixturePath, contents + '\n');
     }
 
-    if (debugUtils.isEnabled() && process.env.JEST_WORKER_ID !== '1') {
+    if (debugUtils.isEnabled()) {
       await sleep(1000);
       await debugUtils.aggregateLogs();
     }
