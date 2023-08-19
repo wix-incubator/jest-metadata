@@ -128,7 +128,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: coverage
-          path: artifacts/coverage.lcov
+          path: artifacts/lcov.info
 
       - name: Generate coverage badge
         run: lcov-badge2 -o docs/images/coverage.svg artifacts/lcov.info
