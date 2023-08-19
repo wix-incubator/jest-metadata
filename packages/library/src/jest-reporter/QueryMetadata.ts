@@ -24,44 +24,44 @@ export class QueryMetadata {
     this[_checker] = checker;
   }
 
-  filePath(filePath: string): RunMetadata | undefined {
+  filePath(filePath: string): RunMetadata {
     if (!filePath) {
       throw new JestMetadataError('Cannot query metadata for an empty file path');
     }
 
     const metadata = this[_associate].get(filePath);
-    return this[_checker].asRunMetadata(metadata);
+    return this[_checker].asRunMetadata(metadata)!;
   }
 
-  test(test: Test): RunMetadata | undefined {
+  test(test: Test): RunMetadata {
     if (!test) {
       throw new JestMetadataError('Cannot query metadata for an undefined test');
     }
 
     const metadata = this[_associate].get(test.path);
-    return this[_checker].asRunMetadata(metadata);
+    return this[_checker].asRunMetadata(metadata)!;
   }
 
-  testCaseResult(testCaseResult: TestCaseResult): TestEntryMetadata | undefined {
+  testCaseResult(testCaseResult: TestCaseResult): TestEntryMetadata {
     if (!testCaseResult) {
       throw new JestMetadataError('Cannot query metadata for an undefined test case result');
     }
 
     const metadata = this[_associate].get(testCaseResult);
-    return this[_checker].asTestEntryMetadata(metadata);
+    return this[_checker].asTestEntryMetadata(metadata)!;
   }
 
-  testResult(testResult: TestResult): RunMetadata | undefined {
+  testResult(testResult: TestResult): RunMetadata {
     if (!testResult) {
       throw new JestMetadataError('Cannot query metadata for an undefined test result');
     }
 
     const metadata = this[_associate].get(testResult.testFilePath);
-    return this[_checker].asRunMetadata(metadata);
+    return this[_checker].asRunMetadata(metadata)!;
   }
 
-  aggregatedResult(): AggregatedResultMetadata | undefined {
+  aggregatedResult(): AggregatedResultMetadata {
     const metadata = this[_associate].get();
-    return this[_checker].asAggregatedResultMetadata(metadata);
+    return this[_checker].asAggregatedResultMetadata(metadata)!;
   }
 }
