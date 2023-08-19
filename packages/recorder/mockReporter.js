@@ -34,7 +34,6 @@ class MockReporter extends JestMetadataReporter {
     };
 
     events.on('*', onEvent);
-    debugUtils.setEmitter.on('*', onEvent);
   }
 
   async onRunStart(results, options) {

@@ -82,14 +82,6 @@
     "operation": "set"
   },
   {
-    "type": "set_metadata",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "targetId": "test_0.0.fn",
-    "path": "test.slept",
-    "value": 100,
-    "operation": "set"
-  },
-  {
     "type": "test_fn_success",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_0"
@@ -118,14 +110,6 @@
     "type": "test_fn_start",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_1"
-  },
-  {
-    "type": "set_metadata",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "targetId": "test_1.0.fn",
-    "path": "test.slept",
-    "value": 200,
-    "operation": "set"
   },
   {
     "type": "set_metadata",
@@ -174,14 +158,6 @@
     "operation": "set"
   },
   {
-    "type": "set_metadata",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "targetId": "test_2.0.fn",
-    "path": "test.slept",
-    "value": 300,
-    "operation": "set"
-  },
-  {
     "type": "test_fn_success",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_2"
@@ -220,14 +196,6 @@
     "operation": "set"
   },
   {
-    "type": "set_metadata",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "targetId": "test_3.0.fn",
-    "path": "test.slept",
-    "value": 400,
-    "operation": "set"
-  },
-  {
     "type": "test_fn_success",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_3"
@@ -256,14 +224,6 @@
     "type": "test_fn_start",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_4"
-  },
-  {
-    "type": "set_metadata",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "targetId": "test_4.0.fn",
-    "path": "test.slept",
-    "value": 500,
-    "operation": "set"
   },
   {
     "type": "set_metadata",
