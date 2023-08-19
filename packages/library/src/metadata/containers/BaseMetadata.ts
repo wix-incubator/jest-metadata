@@ -76,6 +76,7 @@ export abstract class BaseMetadata implements Metadata {
     }
 
     array.push(...values);
+    lodashSet(this[symbols.data], path, array);
 
     this[symbols.context].emitter.emit({
       type: 'set_metadata',

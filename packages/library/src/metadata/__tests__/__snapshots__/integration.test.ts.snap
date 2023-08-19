@@ -420,32 +420,42 @@ tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the en
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
+tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
+tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
+tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
+tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
+tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
+tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
+tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
+tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
+tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
+tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
 aggregated_result --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
@@ -1111,32 +1121,42 @@ tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the en
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
+tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
+tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
+tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
+tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
+tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
+tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
+tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
+tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
+tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
+tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
 aggregated_result --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
@@ -2438,32 +2458,42 @@ tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the en
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
+tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
+tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
+tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
+tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
+tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
+tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
+tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
+tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
+tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
+tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
 aggregated_result --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
@@ -3109,32 +3139,42 @@ tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the en
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
+tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
+tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
+tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
+tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
+tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
+tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
+tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
+tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
+tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
+tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
 aggregated_result --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
@@ -4416,32 +4456,42 @@ tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the en
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
+tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
+tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
+tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
+tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
+tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
+tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
+tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
+tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
+tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
+tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
 aggregated_result --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
@@ -5087,32 +5137,42 @@ tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the en
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
+tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
+tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
+tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
+tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
+tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
+tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
+tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
+tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
+tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
+tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
 aggregated_result --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
