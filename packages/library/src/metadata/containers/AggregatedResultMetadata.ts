@@ -45,7 +45,7 @@ export class AggregatedResultMetadata extends BaseMetadata {
       return existingRunMetadata;
     }
 
-    const runMetadata = this[symbols.context].factory.createRunMetadata(testFilePath);
+    const runMetadata = this[symbols.context].factory.createRunMetadata(testFilePath, this);
 
     this.testResults.push(runMetadata);
     this[$byTestFilePath].set(testFilePath, runMetadata);

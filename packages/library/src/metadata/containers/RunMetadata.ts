@@ -1,9 +1,11 @@
 import type { AggregatedIdentifier } from '../ids';
 import * as symbols from '../symbols';
 
+import type { AggregatedResultMetadata } from './AggregatedResultMetadata';
 import { BaseMetadata } from './BaseMetadata';
 import type { DescribeBlockMetadata } from './DescribeBlockMetadata';
 import type { HookInvocationMetadata } from './HookInvocationMetadata';
+import type { MetadataContext } from './MetadataContext';
 import type { TestEntryMetadata } from './TestEntryMetadata';
 import type { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
 import type { TestInvocationMetadata } from './TestInvocationMetadata';
@@ -16,6 +18,14 @@ export class RunMetadata extends BaseMetadata {
   readonly current = this[symbols.context].createMetadataSelector(
     () => this[symbols.currentMetadata],
   );
+
+  constructor(
+    context: MetadataContext,
+    id: AggregatedIdentifier,
+    public readonly aggregatedResult: AggregatedResultMetadata,
+  ) {
+    super(context, id);
+  }
 
   get rootDescribeBlock(): DescribeBlockMetadata | undefined {
     return this[symbols.rootDescribeBlock];

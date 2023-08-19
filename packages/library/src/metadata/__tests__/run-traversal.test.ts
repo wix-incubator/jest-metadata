@@ -39,11 +39,25 @@ describe('run metadata traversal:', () => {
       return b || a;
     };
 
-    const toChain = (x: Metadata[]) => x.map(toId).join(' → ');
+    const toChain = (x: Iterable<Metadata>) => [...x].map(toId).join(' → ');
 
     expect(toChain([...lastRun.allDescribeBlocks()])).toMatchSnapshot('allDescribeBlocks');
     expect(toChain([...lastRun.allTestEntries()])).toMatchSnapshot('allTestEntries');
     expect(toChain([...lastRun.allTestInvocations()])).toMatchSnapshot('allTestInvocations');
     expect(toChain([...lastRun.allInvocations()])).toMatchSnapshot('allInvocations');
+
+    for (const test of lastRun.allTestEntries()) {
+      expect(toChain(test.allAncestors())).toMatchSnapshot(`allAncestors ${toId(test)}`);
+    }
+
+    for (const invocation of lastRun.allTestInvocations()) {
+      expect(toChain(invocation.allAncestors())).toMatchSnapshot(
+        `allAncestors ${toId(invocation)}`,
+      );
+      expect(toChain(invocation.invocations())).toMatchSnapshot(`invocations ${toId(invocation)}`);
+      expect(toChain(invocation.allInvocations())).toMatchSnapshot(
+        `allInvocations ${toId(invocation)}`,
+      );
+    }
   });
 });

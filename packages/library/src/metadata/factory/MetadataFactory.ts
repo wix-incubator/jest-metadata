@@ -31,7 +31,7 @@ export interface MetadataFactory {
     id: AggregatedIdentifier,
   ): HookInvocationMetadata;
 
-  createRunMetadata(testFilePath: string): RunMetadata;
+  createRunMetadata(testFilePath: string, aggregatedResult: AggregatedResultMetadata): RunMetadata;
 
   createTestEntryMetadata(
     describeBlock: DescribeBlockMetadata,

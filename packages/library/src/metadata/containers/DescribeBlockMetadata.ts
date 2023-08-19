@@ -136,6 +136,12 @@ export class DescribeBlockMetadata extends BaseMetadata {
     }
   }
 
+  *allAncestors(): IterableIterator<BaseMetadata> {
+    yield* this.ancestors();
+    yield this.run;
+    yield this.run.aggregatedResult;
+  }
+
   *describeBlocks(): IterableIterator<DescribeBlockMetadata> {
     const checker = this[symbols.context].checker;
 
