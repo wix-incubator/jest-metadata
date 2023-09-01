@@ -23,6 +23,5 @@ jobs:
       - name: Lerna Publish
         run: |
           git tag -d ${{ github.event.release.tag_name }}
-          git push origin :refs/tags/${{ github.event.release.tag_name }}
           lerna version ${{github.event.release.tag_name}} --no-push --yes
           lerna publish from-git --yes
