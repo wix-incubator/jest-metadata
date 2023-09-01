@@ -10,3 +10,7 @@ export interface Metadata {
   assign(path: undefined | string | readonly string[], value: Data): this;
   merge(path: undefined | string | readonly string[], value: Data): this;
 }
+
+export interface InvocationMetadata {
+  readonly definition: Metadata;
+}
