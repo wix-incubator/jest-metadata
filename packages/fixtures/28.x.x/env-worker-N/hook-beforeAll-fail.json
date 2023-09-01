@@ -1,5 +1,8 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/hook-beforeAll-fail.js"
   },
@@ -95,6 +98,9 @@
     "testId": "test_1"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "run_describe_finish",
     "testFilePath": "__tests__/hook-beforeAll-fail.js",
     "describeId": "describe_1"
@@ -107,5 +113,8 @@
   {
     "type": "run_finish",
     "testFilePath": "__tests__/hook-beforeAll-fail.js"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   }
 ]

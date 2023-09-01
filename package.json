@@ -27,5 +27,8 @@
   "workspaces": [
     "packages/*",
     "packages/examples/*"
-  ]
+  ],
+  "jest": {
+    "testPathIgnorePatterns": [".*"]
+  }
 }

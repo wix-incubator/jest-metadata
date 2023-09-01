@@ -1,7 +1,13 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/test-todo.js"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
   },
   {
     "type": "start_describe_definition",
@@ -22,5 +28,8 @@
     "type": "test_todo",
     "testFilePath": "__tests__/test-todo.js",
     "testId": "test_0"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   }
 ]

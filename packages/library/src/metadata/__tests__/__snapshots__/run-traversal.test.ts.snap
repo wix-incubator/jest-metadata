@@ -138,6 +138,14 @@ exports[`run metadata traversal: fixtures/29.x.x/env-worker-N/duplicate-name: in
 
 exports[`run metadata traversal: fixtures/29.x.x/env-worker-N/duplicate-name: invocations test_5.0 1`] = `"hook_0.4 → test_5.0.fn"`;
 
+exports[`run metadata traversal: fixtures/29.x.x/env-worker-N/early-broken: allDescribeBlocks 1`] = `"describe_0"`;
+
+exports[`run metadata traversal: fixtures/29.x.x/env-worker-N/early-broken: allInvocations 1`] = `""`;
+
+exports[`run metadata traversal: fixtures/29.x.x/env-worker-N/early-broken: allTestEntries 1`] = `""`;
+
+exports[`run metadata traversal: fixtures/29.x.x/env-worker-N/early-broken: allTestInvocations 1`] = `""`;
+
 exports[`run metadata traversal: fixtures/29.x.x/env-worker-N/hook-afterAll-fail: allAncestors test_0 1`] = `"describe_1 → describe_0 → __tests__/hook-afterAll-fail.js → aggregatedResult"`;
 
 exports[`run metadata traversal: fixtures/29.x.x/env-worker-N/hook-afterAll-fail: allAncestors test_0.0 1`] = `"test_0 → describe_1 → describe_0 → __tests__/hook-afterAll-fail.js → aggregatedResult"`;
@@ -455,6 +463,14 @@ exports[`run metadata traversal: fixtures/29.x.x/no-env-worker-N/duplicate-name:
 exports[`run metadata traversal: fixtures/29.x.x/no-env-worker-N/duplicate-name: invocations test_4.0 1`] = `""`;
 
 exports[`run metadata traversal: fixtures/29.x.x/no-env-worker-N/duplicate-name: invocations test_5.0 1`] = `""`;
+
+exports[`run metadata traversal: fixtures/29.x.x/no-env-worker-N/early-broken: allDescribeBlocks 1`] = `""`;
+
+exports[`run metadata traversal: fixtures/29.x.x/no-env-worker-N/early-broken: allInvocations 1`] = `""`;
+
+exports[`run metadata traversal: fixtures/29.x.x/no-env-worker-N/early-broken: allTestEntries 1`] = `""`;
+
+exports[`run metadata traversal: fixtures/29.x.x/no-env-worker-N/early-broken: allTestInvocations 1`] = `""`;
 
 exports[`run metadata traversal: fixtures/29.x.x/no-env-worker-N/hook-afterAll-fail: allAncestors test_0 1`] = `"describe_0 → __tests__/hook-afterAll-fail.js → aggregatedResult"`;
 

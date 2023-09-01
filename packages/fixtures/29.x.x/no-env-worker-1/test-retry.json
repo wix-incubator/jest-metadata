@@ -1,7 +1,16 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/test-retry.js"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
   },
   {
     "type": "start_describe_definition",
@@ -24,6 +33,12 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseStart"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "test_retry",
     "testFilePath": "__tests__/test-retry.js",
     "testId": "test_0"
@@ -32,5 +47,8 @@
     "type": "test_done",
     "testFilePath": "__tests__/test-retry.js",
     "testId": "test_0"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   }
 ]

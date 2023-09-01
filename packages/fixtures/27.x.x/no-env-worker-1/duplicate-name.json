@@ -1,7 +1,13 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/duplicate-name.js"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
   },
   {
     "type": "start_describe_definition",
@@ -24,6 +30,9 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "add_test",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_1"
@@ -37,6 +46,9 @@
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_1"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
   },
   {
     "type": "test_retry",
@@ -49,6 +61,9 @@
     "testId": "test_1"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "add_test",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_2"
@@ -64,6 +79,9 @@
     "testId": "test_2"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "add_test",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_3"
@@ -77,6 +95,9 @@
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_3"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
   },
   {
     "type": "test_retry",
@@ -87,6 +108,9 @@
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-name.js",
     "testId": "test_2"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   },
   {
     "type": "add_test",
