@@ -431,7 +431,7 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
 tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
@@ -1288,7 +1288,7 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
 tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
@@ -2817,7 +2817,7 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
 tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
@@ -3654,7 +3654,7 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
 tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
@@ -5163,7 +5163,7 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
 tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
@@ -6000,7 +6000,7 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
 tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
