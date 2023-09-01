@@ -22,6 +22,5 @@ jobs:
 
       - name: Lerna Publish
         run: |
-          git tag -d ${{ github.event.release.tag_name }}
-          lerna version ${{github.event.release.tag_name}} --no-push --yes --no-git-tag-version
-          lerna publish from-package --yes
+          npx lerna version ${{github.event.release.tag_name}} --no-push --yes --no-git-tag-version
+          npx lerna publish from-package --yes
