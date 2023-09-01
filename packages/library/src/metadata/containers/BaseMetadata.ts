@@ -33,9 +33,7 @@ export abstract class BaseMetadata implements Metadata {
   get(): Readonly<Data>;
   get(path: string | readonly string[], fallbackValue?: unknown): unknown;
   get(path?: string | readonly string[], fallbackValue?: unknown): Data | unknown {
-    return Object.freeze(
-      path ? lodashGet(this[symbols.data], path, fallbackValue) : this[symbols.data],
-    );
+    return Object.freeze(this.#get(path, fallbackValue));
   }
 
   set(path: string | readonly string[], value: unknown): this {
@@ -43,7 +41,7 @@ export abstract class BaseMetadata implements Metadata {
       throw new TypeError('Path is required for set operation');
     }
 
-    lodashSet(this[symbols.data], path, value);
+    this.#set(path, value);
 
     this[symbols.context].emitter.emit({
       type: 'set_metadata',
@@ -59,7 +57,7 @@ export abstract class BaseMetadata implements Metadata {
 
   push(path: string | readonly string[], values: unknown[]): this {
     if (path == null) {
-      throw new TypeError('Path is required for set operation');
+      throw new TypeError('Path is required for push operation');
     }
 
     if (!Array.isArray(values)) {
@@ -76,7 +74,7 @@ export abstract class BaseMetadata implements Metadata {
     }
 
     array.push(...values);
-    lodashSet(this[symbols.data], path, array);
+    this.#set(path, array);
 
     this[symbols.context].emitter.emit({
       type: 'set_metadata',
@@ -90,10 +88,13 @@ export abstract class BaseMetadata implements Metadata {
     return this;
   }
 
-  assign(path: undefined | string | readonly string[], value: Data): this {
-    const oldValue = path === undefined ? this.get() : this.get(path, {});
+  assign(path: undefined | string | readonly string[], value: object): this {
+    const oldValue = this.#get(path, {});
     const source = oldValue && typeof oldValue === 'object' ? oldValue : {};
     Object.assign(source, value);
+    if (path != null) {
+      this.#set(path, source);
+    }
 
     this[symbols.context].emitter.emit({
       type: 'set_metadata',
@@ -107,10 +108,13 @@ export abstract class BaseMetadata implements Metadata {
     return this;
   }
 
-  merge(path: undefined | string | readonly string[], value: Data): this {
-    const oldValue = path === undefined ? this.get() : this.get(path, {});
+  merge(path: undefined | string | readonly string[], value: object): this {
+    const oldValue = this.#get(path, {});
     const source = oldValue && typeof oldValue === 'object' ? oldValue : {};
     lodashMerge(source, value);
+    if (path != null) {
+      this.#set(path, source);
+    }
 
     this[symbols.context].emitter.emit({
       type: 'set_metadata',
@@ -122,5 +126,13 @@ export abstract class BaseMetadata implements Metadata {
     });
 
     return this;
+  }
+
+  #get(path?: string | readonly string[], fallbackValue?: unknown): Data | unknown {
+    return path == null ? this[symbols.data] : lodashGet(this[symbols.data], path, fallbackValue);
+  }
+
+  #set(path: string | readonly string[], value: unknown): void {
+    lodashSet(this[symbols.data], path, value);
   }
 }

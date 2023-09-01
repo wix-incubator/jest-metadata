@@ -28,7 +28,18 @@
       "name": "Jane Smith",
       "email": "jane.smith@example.com"
     },
-    "operation": "set"
+    "operation": "assign"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "__tests__/hook-nesting.js",
+    "targetId": "describe_1",
+    "path": "vendor.lead",
+    "value": {
+      "name": "Samantha Jones",
+      "email": "samantha.jones@example.com"
+    },
+    "operation": "merge"
   },
   {
     "type": "set_metadata",
