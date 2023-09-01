@@ -236,6 +236,6 @@ export class MetadataEventHandler {
 
   handle = (event: MetadataEvent): void => {
     const handler = this._handlers[event.type] as (event: MetadataEvent) => void;
-    handler(event);
+    handler?.(event);
   };
 }

@@ -3,8 +3,290 @@
     "type": "set_metadata",
     "testFilePath": "",
     "targetId": "aggregatedResult",
-    "path": "vendor.runStartedAt",
-    "value": "2023-01-01T00:00:00.000Z",
+    "path": "test.slept",
+    "value": 100,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "test.slept",
+    "value": 200,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "test.slept",
+    "value": 300,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "test.slept",
+    "value": 400,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "test.slept",
+    "value": 500,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "Suite",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "Nested suite 1 > beforeAll",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "Nested suite 1 > Test 1",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "Nested suite 1 > Test 2",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "Nested suite 1 > Test 2",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "Nested suite 1 > afterAll",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "Nested suite 2 > beforeAll",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "Nested suite 2 > Test 1",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "Nested suite 2 > Test 2",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "Nested suite 2 > Test 1",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "Nested suite 2 > afterAll",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "vendor.steps",
+    "value": [
+      {
+        "text": "Open the browser",
+        "startedAt": 1672524000000
+      }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "vendor.steps",
+    "value": [
+      {
+        "text": "Goto the URL: https://example.com",
+        "startedAt": 1672524001000
+      }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "vendor.steps",
+    "value": [
+      {
+        "text": "Enter invalid credentials",
+        "startedAt": 1672524001100
+      }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "vendor.steps",
+    "value": [
+      {
+        "text": "Assert that the login failed",
+        "startedAt": 1672524001200
+      }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "vendor.steps",
+    "value": [
+      {
+        "text": "Clear cookies",
+        "startedAt": 1672524001200
+      }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "vendor.steps",
+    "value": [
+      {
+        "text": "Goto the URL: https://example.com",
+        "startedAt": 1672524001250
+      }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "vendor.steps",
+    "value": [
+      {
+        "text": "Enter valid credentials",
+        "startedAt": 1672524001350
+      }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "vendor.steps",
+    "value": [
+      {
+        "text": "Assert that the login succeeded",
+        "startedAt": 1672524001450
+      }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "vendor.steps",
+    "value": [
+      {
+        "text": "Clear cookies",
+        "startedAt": 1672524001450
+      }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "vendor.steps",
+    "value": [
+      {
+        "text": "Close the browser",
+        "startedAt": 1672524001500
+      }
+    ],
+    "operation": "push"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "beforeAll",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "beforeAll inner",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "afterAll inner",
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "aggregatedResult",
+    "path": "note",
+    "value": "afterAll",
     "operation": "set"
   }
 ]

@@ -320,6 +320,25 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+object "DescribeBlockMetadata" as tests_early_broken_js_describe_0 #ded
+tests_early_broken_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_early_broken_js_hook_0 #fdd
+tests_early_broken_js_hook_0 : id = "hook_0"
+tests_early_broken_js_hook_0 : hookType = "beforeEach"
+aggregated_result --> tests_early_broken_js : testResults[0]
+tests_early_broken_js --> tests_early_broken_js_describe_0 : rootDescribeBlock
+tests_early_broken_js_describe_0 --> tests_early_broken_js_hook_0 : children[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/hook-afterAll-fail 1`] = `
 "@startuml
 
@@ -1177,6 +1196,25 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+object "DescribeBlockMetadata" as tests_early_broken_js_describe_0 #ded
+tests_early_broken_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_early_broken_js_hook_0 #fdd
+tests_early_broken_js_hook_0 : id = "hook_0"
+tests_early_broken_js_hook_0 : hookType = "beforeEach"
+aggregated_result --> tests_early_broken_js : testResults[0]
+tests_early_broken_js --> tests_early_broken_js_describe_0 : rootDescribeBlock
+tests_early_broken_js_describe_0 --> tests_early_broken_js_hook_0 : children[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/hook-afterAll-fail 1`] = `
 "@startuml
 
@@ -1843,6 +1881,18 @@ tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocation
 "
 `;
 
+exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+aggregated_result --> tests_early_broken_js : testResults[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/hook-afterAll-fail 1`] = `
 "@startuml
 
@@ -2174,6 +2224,18 @@ tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocation
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+aggregated_result --> tests_early_broken_js : testResults[0]
 
 @enduml
 "
@@ -2701,6 +2763,25 @@ tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_5_0 : afterAll[0]
 tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+object "DescribeBlockMetadata" as tests_early_broken_js_describe_0 #ded
+tests_early_broken_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_early_broken_js_hook_0 #fdd
+tests_early_broken_js_hook_0 : id = "hook_0"
+tests_early_broken_js_hook_0 : hookType = "beforeEach"
+aggregated_result --> tests_early_broken_js : testResults[0]
+tests_early_broken_js --> tests_early_broken_js_describe_0 : rootDescribeBlock
+tests_early_broken_js_describe_0 --> tests_early_broken_js_hook_0 : children[0]
 
 @enduml
 "
@@ -3543,6 +3624,25 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+object "DescribeBlockMetadata" as tests_early_broken_js_describe_0 #ded
+tests_early_broken_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_early_broken_js_hook_0 #fdd
+tests_early_broken_js_hook_0 : id = "hook_0"
+tests_early_broken_js_hook_0 : hookType = "beforeEach"
+aggregated_result --> tests_early_broken_js : testResults[0]
+tests_early_broken_js --> tests_early_broken_js_describe_0 : rootDescribeBlock
+tests_early_broken_js_describe_0 --> tests_early_broken_js_hook_0 : children[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/hook-afterAll-fail 1`] = `
 "@startuml
 
@@ -4189,6 +4289,18 @@ tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocation
 "
 `;
 
+exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+aggregated_result --> tests_early_broken_js : testResults[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/hook-afterAll-fail 1`] = `
 "@startuml
 
@@ -4520,6 +4632,18 @@ tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocation
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+aggregated_result --> tests_early_broken_js : testResults[0]
 
 @enduml
 "
@@ -5047,6 +5171,25 @@ tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : before[0
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_5_0 : afterAll[0]
 tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+object "DescribeBlockMetadata" as tests_early_broken_js_describe_0 #ded
+tests_early_broken_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_early_broken_js_hook_0 #fdd
+tests_early_broken_js_hook_0 : id = "hook_0"
+tests_early_broken_js_hook_0 : hookType = "beforeEach"
+aggregated_result --> tests_early_broken_js : testResults[0]
+tests_early_broken_js --> tests_early_broken_js_describe_0 : rootDescribeBlock
+tests_early_broken_js_describe_0 --> tests_early_broken_js_hook_0 : children[0]
 
 @enduml
 "
@@ -5889,6 +6032,25 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+object "DescribeBlockMetadata" as tests_early_broken_js_describe_0 #ded
+tests_early_broken_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as tests_early_broken_js_hook_0 #fdd
+tests_early_broken_js_hook_0 : id = "hook_0"
+tests_early_broken_js_hook_0 : hookType = "beforeEach"
+aggregated_result --> tests_early_broken_js : testResults[0]
+tests_early_broken_js --> tests_early_broken_js_describe_0 : rootDescribeBlock
+tests_early_broken_js_describe_0 --> tests_early_broken_js_hook_0 : children[0]
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/hook-afterAll-fail 1`] = `
 "@startuml
 
@@ -6411,7 +6573,7 @@ exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/aggregated
 
 object "AggregatedResultMetadata" as aggregated_result #dff
 aggregated_result : id = "aggregatedResult"
-aggregated_result : data = {"vendor":{"runStartedAt":"2023-01-01T00:00:00.000Z"}}
+aggregated_result : data = {"test":{"slept":500},"note":"afterAll","vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000},{"text":"Goto the URL: https://example.com","startedAt":1672524001000},{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200},{"text":"Clear cookies","startedAt":1672524001200},{"text":"Goto the URL: https://example.com","startedAt":1672524001250},{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450},{"text":"Clear cookies","startedAt":1672524001450},{"text":"Close the browser","startedAt":1672524001500}]}}
 
 
 @enduml
@@ -6530,6 +6692,18 @@ tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocation
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+aggregated_result --> tests_early_broken_js : testResults[0]
 
 @enduml
 "
@@ -6875,6 +7049,18 @@ tests_duplicate_name_js_test_2 --> tests_duplicate_name_js_test_2_0 : invocation
 tests_duplicate_name_js_test_3 --> tests_duplicate_name_js_test_3_0 : invocations[0]
 tests_duplicate_name_js_test_4 --> tests_duplicate_name_js_test_4_0 : invocations[0]
 tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/early-broken 1`] = `
+"@startuml
+
+object "AggregatedResultMetadata" as aggregated_result #dff
+aggregated_result : id = "aggregatedResult"
+object "RunMetadata" as tests_early_broken_js #def
+aggregated_result --> tests_early_broken_js : testResults[0]
 
 @enduml
 "

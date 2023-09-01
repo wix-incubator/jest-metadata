@@ -1,7 +1,13 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/duplicate-generation.js"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
   },
   {
     "type": "start_describe_definition",
@@ -24,6 +30,9 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "add_test",
     "testFilePath": "__tests__/duplicate-generation.js",
     "testId": "test_1"
@@ -39,6 +48,9 @@
     "testId": "test_1"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "test_retry",
     "testFilePath": "__tests__/duplicate-generation.js",
     "testId": "test_0"
@@ -47,5 +59,8 @@
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-generation.js",
     "testId": "test_0"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   }
 ]

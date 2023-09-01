@@ -1,7 +1,13 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/test-concurrent.js"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
   },
   {
     "type": "start_describe_definition",
@@ -24,6 +30,9 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "add_test",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_1"
@@ -37,6 +46,9 @@
     "type": "test_done",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_1"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
   },
   {
     "type": "add_test",
@@ -54,6 +66,9 @@
     "testId": "test_2"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "add_test",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_3"
@@ -69,6 +84,9 @@
     "testId": "test_3"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "add_test",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_4"
@@ -82,5 +100,8 @@
     "type": "test_done",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_4"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   }
 ]

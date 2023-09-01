@@ -1,0 +1,23 @@
+[
+  {
+    "type": "reporter:onTestFileStart"
+  },
+  {
+    "type": "add_test_file",
+    "testFilePath": "__tests__/early-broken.js"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/early-broken.js",
+    "describeId": "describe_0"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/early-broken.js",
+    "hookId": "hook_0",
+    "hookType": "beforeEach"
+  },
+  {
+    "type": "reporter:onTestFileResult"
+  }
+]

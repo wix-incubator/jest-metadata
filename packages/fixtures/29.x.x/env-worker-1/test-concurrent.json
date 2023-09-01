@@ -1,5 +1,8 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/test-concurrent.js"
   },
@@ -64,6 +67,9 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseStart"
+  },
+  {
     "type": "test_fn_start",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_0"
@@ -87,6 +93,9 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "test_start",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_1"
@@ -95,6 +104,9 @@
     "type": "test_started",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_1"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
   },
   {
     "type": "test_fn_start",
@@ -120,6 +132,9 @@
     "testId": "test_1"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "test_start",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_2"
@@ -128,6 +143,9 @@
     "type": "test_started",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_2"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
   },
   {
     "type": "test_fn_start",
@@ -153,6 +171,9 @@
     "testId": "test_2"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "test_start",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_3"
@@ -161,6 +182,9 @@
     "type": "test_started",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_3"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
   },
   {
     "type": "test_fn_start",
@@ -186,6 +210,9 @@
     "testId": "test_3"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "test_start",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_4"
@@ -194,6 +221,9 @@
     "type": "test_started",
     "testFilePath": "__tests__/test-concurrent.js",
     "testId": "test_4"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
   },
   {
     "type": "test_fn_start",
@@ -219,6 +249,9 @@
     "testId": "test_4"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "run_describe_finish",
     "testFilePath": "__tests__/test-concurrent.js",
     "describeId": "describe_0"
@@ -226,5 +259,8 @@
   {
     "type": "run_finish",
     "testFilePath": "__tests__/test-concurrent.js"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   }
 ]

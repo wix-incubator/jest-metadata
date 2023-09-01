@@ -1,7 +1,19 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/duplicate-cases.js"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
   },
   {
     "type": "start_describe_definition",
@@ -24,6 +36,9 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "add_test",
     "testFilePath": "__tests__/duplicate-cases.js",
     "testId": "test_1"
@@ -37,6 +52,15 @@
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-cases.js",
     "testId": "test_1"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
   },
   {
     "type": "add_test",
@@ -54,6 +78,9 @@
     "testId": "test_2"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "add_test",
     "testFilePath": "__tests__/duplicate-cases.js",
     "testId": "test_3"
@@ -67,5 +94,8 @@
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-cases.js",
     "testId": "test_3"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   }
 ]

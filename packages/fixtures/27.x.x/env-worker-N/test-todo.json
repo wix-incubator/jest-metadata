@@ -1,5 +1,8 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/test-todo.js"
   },
@@ -187,5 +190,8 @@
   {
     "type": "run_finish",
     "testFilePath": "__tests__/test-todo.js"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   }
 ]

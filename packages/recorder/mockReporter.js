@@ -42,6 +42,32 @@ class MockReporter extends JestMetadataReporter {
     state.set('vendor.runStartedAt', '2023-01-01T00:00:00.000Z');
   }
 
+  onTestFileStart(test) {
+    this.#addReporterEvent('onTestFileStart', test);
+    super.onTestFileStart(...arguments);
+  }
+
+  onTestCaseStart(test) {
+    this.#addReporterEvent('onTestCaseStart', test);
+    super.onTestCaseStart(...arguments);
+  }
+
+  onTestCaseResult(test) {
+    this.#addReporterEvent('onTestCaseResult', test);
+    super.onTestCaseResult(...arguments);
+  }
+
+  onTestFileResult(test) {
+    this.#addReporterEvent('onTestFileResult', test);
+    super.onTestFileResult(...arguments);
+  }
+
+  #addReporterEvent(eventType, test) {
+    const id = path.basename(test.path, '.js') + '.json';
+    this._events[id] = this._events[id] || [];
+    this._events[id].push({ type: `reporter:${eventType}` });
+  }
+
   async onRunComplete(testContexts, results) {
     await super.onRunComplete(testContexts, results);
 

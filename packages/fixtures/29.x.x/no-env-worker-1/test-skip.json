@@ -1,6 +1,12 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/test-skip.js"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   }
 ]

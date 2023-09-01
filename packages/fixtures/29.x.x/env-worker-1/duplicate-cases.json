@@ -1,5 +1,8 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/duplicate-cases.js"
   },
@@ -84,6 +87,9 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseStart"
+  },
+  {
     "type": "hook_start",
     "testFilePath": "__tests__/duplicate-cases.js",
     "hookId": "hook_0"
@@ -109,6 +115,9 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "test_start",
     "testFilePath": "__tests__/duplicate-cases.js",
     "testId": "test_1"
@@ -117,6 +126,9 @@
     "type": "test_started",
     "testFilePath": "__tests__/duplicate-cases.js",
     "testId": "test_1"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
   },
   {
     "type": "hook_start",
@@ -142,6 +154,9 @@
     "type": "test_done",
     "testFilePath": "__tests__/duplicate-cases.js",
     "testId": "test_1"
+  },
+  {
+    "type": "reporter:onTestCaseResult"
   },
   {
     "type": "run_describe_finish",
@@ -164,6 +179,9 @@
     "testId": "test_2"
   },
   {
+    "type": "reporter:onTestCaseStart"
+  },
+  {
     "type": "hook_start",
     "testFilePath": "__tests__/duplicate-cases.js",
     "hookId": "hook_0"
@@ -189,6 +207,9 @@
     "testId": "test_2"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "test_start",
     "testFilePath": "__tests__/duplicate-cases.js",
     "testId": "test_3"
@@ -197,6 +218,9 @@
     "type": "test_started",
     "testFilePath": "__tests__/duplicate-cases.js",
     "testId": "test_3"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
   },
   {
     "type": "hook_start",
@@ -224,6 +248,9 @@
     "testId": "test_3"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "run_describe_finish",
     "testFilePath": "__tests__/duplicate-cases.js",
     "describeId": "describe_2"
@@ -236,5 +263,8 @@
   {
     "type": "run_finish",
     "testFilePath": "__tests__/duplicate-cases.js"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   }
 ]

@@ -1,5 +1,8 @@
 [
   {
+    "type": "reporter:onTestFileStart"
+  },
+  {
     "type": "add_test_file",
     "testFilePath": "__tests__/test-retry.js"
   },
@@ -66,6 +69,9 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseStart"
+  },
+  {
     "type": "hook_start",
     "testFilePath": "__tests__/test-retry.js",
     "hookId": "hook_0"
@@ -91,6 +97,9 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "test_retry",
     "testFilePath": "__tests__/test-retry.js",
     "testId": "test_0"
@@ -104,6 +113,9 @@
     "type": "test_started",
     "testFilePath": "__tests__/test-retry.js",
     "testId": "test_0"
+  },
+  {
+    "type": "reporter:onTestCaseStart"
   },
   {
     "type": "hook_start",
@@ -131,6 +143,9 @@
     "testId": "test_0"
   },
   {
+    "type": "reporter:onTestCaseResult"
+  },
+  {
     "type": "hook_start",
     "testFilePath": "__tests__/test-retry.js",
     "hookId": "hook_2"
@@ -148,5 +163,8 @@
   {
     "type": "run_finish",
     "testFilePath": "__tests__/test-retry.js"
+  },
+  {
+    "type": "reporter:onTestFileResult"
   }
 ]
