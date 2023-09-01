@@ -20,7 +20,15 @@ jobs:
         with:
           useLockFile: false
 
+      - name: Lerna Version
+        run: npx lerna version ${{github.event.release.tag_name}} --no-push --yes --no-git-tag-version
+
+      - name: Create a commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "chore: release ${{github.event.release.tag_name}}"
+          new_branch: master
+        continue-on-error: true
+
       - name: Lerna Publish
-        run: |
-          npx lerna version ${{github.event.release.tag_name}} --no-push --yes --no-git-tag-version
-          npx lerna publish from-package --yes
+        run: npx lerna publish from-package --yes
