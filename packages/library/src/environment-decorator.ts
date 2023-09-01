@@ -134,7 +134,34 @@ export function WithMetadata<E extends JestEnvironmentLike>(
       constructor(...args: any[]) {
         super(...args);
         onTestEnvironmentCreate(this, args[0], args[1]);
-        this.testEvents.on('*', ({ event, state }) => onHandleTestEvent(event, state));
+
+        const handler = ({ event, state }: ForwardedCircusEvent) => onHandleTestEvent(event, state);
+
+        this.testEvents
+          .on('setup', handler, -1)
+          .on('include_test_location_in_result', handler, -1)
+          .on('start_describe_definition', handler, -1)
+          .on('finish_describe_definition', handler, Number.MAX_SAFE_INTEGER)
+          .on('add_hook', handler, -1)
+          .on('add_test', handler, -1)
+          .on('run_start', handler, -1)
+          .on('run_describe_start', handler, -1)
+          .on('hook_failure', handler, Number.MAX_SAFE_INTEGER)
+          .on('hook_start', handler, -1)
+          .on('hook_success', handler, Number.MAX_SAFE_INTEGER)
+          .on('test_start', handler, -1)
+          .on('test_started', handler, -1)
+          .on('test_retry', handler, -1)
+          .on('test_skip', handler, -1)
+          .on('test_todo', handler, -1)
+          .on('test_fn_start', handler, -1)
+          .on('test_fn_failure', handler, Number.MAX_SAFE_INTEGER)
+          .on('test_fn_success', handler, Number.MAX_SAFE_INTEGER)
+          .on('test_done', handler, Number.MAX_SAFE_INTEGER)
+          .on('run_describe_finish', handler, Number.MAX_SAFE_INTEGER)
+          .on('run_finish', handler, Number.MAX_SAFE_INTEGER)
+          .on('teardown', handler, Number.MAX_SAFE_INTEGER)
+          .on('error', handler, -1);
       }
 
       protected get testEvents(): ReadonlyAsyncEmitter<ForwardedCircusEvent> {
