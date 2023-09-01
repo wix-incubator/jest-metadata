@@ -11,7 +11,7 @@
     "semver": "^7.5.4"
   },
   "scripts": {
-    "build:dev": "cd ../library && npm run build && npm run instrument && cd - && npm run build",
+    "build:dev": "npm run build --workspace=jest-metadata && npm run instrument --workspace=jest-metadata && npm run build",
     "build": "npm run build:env-1 ; npm run build:env-N ; npm run build:no-env-1 ; npm run build:no-env-N ; true",
     "build:env-1": "cross-env PRESET=env-1 jest",
     "build:env-N": "cross-env PRESET=env-N jest",
