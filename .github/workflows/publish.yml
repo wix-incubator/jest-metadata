@@ -1,0 +1,28 @@
+name: Publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+
+  npm_release:
+    name: NPM Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+
+      - name: Lerna version
+        run: |
+          git tag -d ${{ github.event.release.tag_name }}
+          git push origin :refs/tags/${{ github.event.release.tag_name }}
+          lerna version ${{github.event.release.tag_name}} --yes
+          lerna publish from-git --yes
