@@ -47,11 +47,6 @@
       "require": "./dist/reporter.js",
       "types": "./dist/reporter.d.ts"
     },
-    "./server": {
-      "import": "./dist/server.js",
-      "require": "./dist/server.js",
-      "types": "./dist/server.d.ts"
-    },
     "./package.json": "./package.json"
   },
   "engines": {
