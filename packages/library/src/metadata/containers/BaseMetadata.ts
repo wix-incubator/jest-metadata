@@ -33,7 +33,7 @@ export abstract class BaseMetadata implements Metadata {
   get(): Readonly<Data>;
   get(path: string | readonly string[], fallbackValue?: unknown): unknown;
   get(path?: string | readonly string[], fallbackValue?: unknown): Data | unknown {
-    return Object.freeze(this.#get(path, fallbackValue));
+    return this.#get(path, fallbackValue);
   }
 
   set(path: string | readonly string[], value: unknown): this {
