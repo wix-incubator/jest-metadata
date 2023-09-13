@@ -2,12 +2,12 @@
   "name": "@jest-metadata/recorder",
   "description": "Fixture recorder for testing jest-metadata with a wide range of Jest versions",
   "private": true,
-  "version": "1.0.0-beta.16",
+  "version": "1.0.0-beta.17",
   "devDependencies": {
     "cross-env": "^7.0.3",
     "is-ci": "^3.0.1",
     "jest": "latest",
-    "jest-metadata": "^1.0.0-beta.16",
+    "jest-metadata": "^1.0.0-beta.17",
     "semver": "^7.5.4"
   },
   "scripts": {
