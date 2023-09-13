@@ -9,6 +9,7 @@ import type {
 
 import type {
   MetadataEvent,
+  SetupEvent,
   AddHookEvent,
   AddTestEvent,
   FinishDescribeDefinitionEvent,
@@ -57,6 +58,10 @@ export class MetadataEventHandler {
   private readonly _metadata: AggregatedResultMetadata;
   private readonly _metadataRegistry: MetadataRegistry<AggregatedIdentifier>;
   private readonly _handlers: MetadataEventHandlerMap = {
+    setup: (_event: SetupEvent) => {
+      /* no-op */
+    },
+
     add_test_file: (event: AddTestFileEvent) => {
       this._metadata.registerTestFile(event.testFilePath);
     },

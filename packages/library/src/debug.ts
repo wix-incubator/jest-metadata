@@ -11,3 +11,5 @@ export function isFallback() {
 }
 
 export const setEmitter = realm.setEmitter;
+
+export const events = realm.events;

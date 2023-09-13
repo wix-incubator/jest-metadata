@@ -2,6 +2,7 @@
 export { MetadataEvent, MetadataEventType } from './MetadataEvent';
 
 // Specific events:
+export { SetupEvent } from './SetupEvent';
 export { AddHookEvent } from './AddHookEvent';
 export { AddTestEvent } from './AddTestEvent';
 export { AddTestFileEvent } from './AddTestFileEvent';

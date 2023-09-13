@@ -4,6 +4,10 @@
     "testFilePath": "__tests__/test-pass.js"
   },
   {
+    "type": "setup",
+    "testFilePath": "__tests__/test-pass.js"
+  },
+  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/test-pass.js",
     "describeId": "describe_0"
