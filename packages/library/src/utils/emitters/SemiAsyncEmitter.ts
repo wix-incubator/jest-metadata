@@ -17,12 +17,12 @@ export class SemiAsyncEmitter<
     this.#syncEvents = new Set(syncEvents);
   }
 
-  on(type: EventType, listener: (event: Event) => unknown): this {
-    return this.#invoke('on', type, listener);
+  on(type: EventType, listener: (event: Event) => unknown, order?: number): this {
+    return this.#invoke('on', type, listener, order);
   }
 
-  once(type: EventType, listener: (event: Event) => unknown): this {
-    return this.#invoke('once', type, listener);
+  once(type: EventType, listener: (event: Event) => unknown, order?: number): this {
+    return this.#invoke('once', type, listener, order);
   }
 
   off(type: EventType, listener: (event: Event) => unknown): this {
@@ -39,15 +39,16 @@ export class SemiAsyncEmitter<
     methodName: 'on' | 'once' | 'off',
     type: EventType,
     listener: (event: Event) => unknown,
+    order?: number,
   ): this {
     const isSync = this.#syncEvents.has(type);
 
     if (type === '*' || isSync) {
-      this.#syncEmitter[methodName](type, listener);
+      this.#syncEmitter[methodName](type, listener, order);
     }
 
     if (type === '*' || !isSync) {
-      this.#asyncEmitter[methodName](type, listener as (event: Event) => Promise<void>);
+      this.#asyncEmitter[methodName](type, listener as (event: Event) => Promise<void>, order);
     }
 
     return this;

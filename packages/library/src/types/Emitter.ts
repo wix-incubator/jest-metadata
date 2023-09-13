@@ -8,8 +8,8 @@ export interface ReadonlyAsyncEmitter<
   Event extends { type: string },
   EventType = Event['type'] | '*',
 > {
-  on(type: EventType, listener: (event: Event) => void | Promise<void>): this;
-  once(type: EventType, listener: (event: Event) => void | Promise<void>): this;
+  on(type: EventType, listener: (event: Event) => void | Promise<void>, weight?: number): this;
+  once(type: EventType, listener: (event: Event) => void | Promise<void>, weight?: number): this;
   off(type: EventType, listener: (event: Event) => void | Promise<void>): this;
 }
 

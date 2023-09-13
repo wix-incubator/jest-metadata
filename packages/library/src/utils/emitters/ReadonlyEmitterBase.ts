@@ -21,17 +21,16 @@ export abstract class ReadonlyEmitterBase<
 > implements ReadonlyEmitter<Event, EventType | '*'>
 {
   protected readonly _log: typeof logger;
-  protected readonly _listeners: Map<EventType | '*', EventListener[]> = new Map();
+  protected readonly _listeners: Map<EventType | '*', [EventListener, number][]> = new Map();
 
   #listenersCounter = 0;
-  readonly #listenersOrder = new WeakMap<EventListener, number>();
 
   constructor(name?: string, shouldLog = true) {
     this._log = (shouldLog ? logger : nologger).child({ cat: `emitter`, tid: `emitter-${name}` });
     this._listeners.set('*', []);
   }
 
-  on(type: EventType, listener: EventListener & { [ONCE]?: true }): this {
+  on(type: EventType, listener: EventListener & { [ONCE]?: true }, order?: number): this {
     if (!listener[ONCE]) {
       this._log.trace(__LISTENERS(listener), `on(${type})`);
     }
@@ -39,13 +38,17 @@ export abstract class ReadonlyEmitterBase<
     if (!this._listeners.has(type)) {
       this._listeners.set(type, []);
     }
-    this._listeners.get(type)!.push(this.#rememberListener(listener));
+
+    const listeners = this._listeners.get(type)!;
+    listeners.push([listener, order ?? this.#listenersCounter++]);
+    listeners.sort((a, b) => getOrder(a) - getOrder(b));
+
     return this;
   }
 
-  once(type: EventType, listener: EventListener): this {
+  once(type: EventType, listener: EventListener, order?: number): this {
     this._log.trace(__LISTENERS(listener), `once(${type})`);
-    return this.on(type, this.#createOnceListener(type, listener));
+    return this.on(type, this.#createOnceListener(type, listener), order);
   }
 
   off(type: EventType, listener: EventListener & { [ONCE]?: true }): this {
@@ -54,22 +57,19 @@ export abstract class ReadonlyEmitterBase<
     }
 
     const listeners = this._listeners.get(type) || [];
-    const index = listeners.indexOf(listener);
+    const index = listeners.findIndex(([l]) => l === listener);
     if (index !== -1) {
       listeners.splice(index, 1);
     }
     return this;
   }
 
-  protected _getListeners(type: EventType): Iterable<EventListener> {
-    const wildcard = this._listeners.get('*')!;
-    const named = this._listeners.get(type);
-    return named ? iterateSorted(this.#getListenerOrder, wildcard, named) : wildcard;
-  }
-
-  #rememberListener<T extends EventListener>(listener: T): T {
-    this.#listenersOrder.set(listener, this.#listenersCounter++);
-    return listener;
+  protected *_getListeners(type: EventType): Iterable<EventListener> {
+    const wildcard: [EventListener, number][] = this._listeners.get('*') ?? [];
+    const named: [EventListener, number][] = this._listeners.get(type) ?? [];
+    for (const [listener] of iterateSorted<[EventListener, number]>(getOrder, wildcard, named)) {
+      yield listener;
+    }
   }
 
   #createOnceListener(type: EventType, listener: EventListener) {
@@ -81,7 +81,8 @@ export abstract class ReadonlyEmitterBase<
     onceListener[ONCE] = true as const;
     return onceListener;
   }
+}
 
-  #getListenerOrder = (listener: EventListener): number =>
-    this.#listenersOrder.get(listener) ?? Number.NaN;
+function getOrder<T>([_a, b]: [T, number]): number {
+  return b;
 }
