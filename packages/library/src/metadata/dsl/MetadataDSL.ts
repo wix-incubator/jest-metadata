@@ -5,7 +5,7 @@ export class MetadataDSL {
   readonly #metadata: () => Metadata;
   readonly #emitter: ReadonlyMetadataEventEmitter;
   readonly #scheduled = new Set<() => void>();
-  #initialized = false;
+  #configured = false;
   #running = false;
 
   constructor(emitter: ReadonlyMetadataEventEmitter, metadata: () => Metadata) {
@@ -23,10 +23,11 @@ export class MetadataDSL {
         }
         this.#scheduled.clear();
       })
+      .on('setup', () => {
+        // Assert that the metadata gets Circus events from TestEnvironment.handleTestEvent.
+        this.#configured = true;
+      })
       .on('add_test_file', () => {
-        // Assert that the metadata is not disconnected from the emitter.
-        // TODO: move to 'setup' Circus event
-        this.#initialized = true;
         // When running `jest --runInBand`, the MetadataDSL instance is shared between
         // multiple test files. We need to reset the running mode, when a new test file
         // is added.
@@ -71,7 +72,9 @@ export class MetadataDSL {
   };
 
   protected schedule(callback: () => void): void {
-    this.#assertInitialized();
+    if (!this.#assertConfigured()) {
+      return;
+    }
     this.#assertNotRunning();
 
     const callbackAutoDelete = () => {
@@ -83,10 +86,18 @@ export class MetadataDSL {
     this.#emitter.once('*', callbackAutoDelete);
   }
 
-  #assertInitialized(): void {
-    if (!this.#initialized) {
-      console.warn('TODO: come up with a better error message');
+  #assertConfigured(): boolean {
+    if (!this.#configured) {
+      console.warn(
+        `Cannot use "jest-metadata" annotations because the test environment is not properly configured.
+There are two possible reasons for this:
+1. You are using a stanard Jest environment (e.g. "jest-environment-node") and not using "jest-metadata/environment-***" packages.
+2. You are a non-supported test runner (e.g. "jest-jasmine2") instead of "jest-circus".
+  If this is not the case, then something is broken between your Jest configuration and jest-metadata environment.`,
+      );
     }
+
+    return this.#configured;
   }
 
   #assertNotRunning(): void {

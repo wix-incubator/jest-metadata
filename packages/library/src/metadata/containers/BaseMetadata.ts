@@ -37,10 +37,7 @@ export abstract class BaseMetadata implements Metadata {
   }
 
   set(path: string | readonly string[], value: unknown): this {
-    if (path == null) {
-      throw new TypeError('Path is required for set operation');
-    }
-
+    this.#assertPath(path, 'set');
     this.#set(path, value);
 
     this[symbols.context].emitter.emit({
@@ -56,20 +53,15 @@ export abstract class BaseMetadata implements Metadata {
   }
 
   push(path: string | readonly string[], values: unknown[]): this {
-    if (path == null) {
-      throw new TypeError('Path is required for push operation');
-    }
-
+    this.#assertPath(path, 'push to');
     if (!Array.isArray(values)) {
-      throw new TypeError(
-        `Cannot push a non-array value to the array at path "${path}". Value: ${values}`,
-      );
+      throw new TypeError(`Cannot push a non-array value to path "${path}". Received: ${values}`);
     }
 
     const array = lodashGet(this[symbols.data], path, []);
     if (!Array.isArray(array)) {
       throw new TypeError(
-        `Cannot push value to non-array at path "${path}". Existing value: ${array}`,
+        `Cannot push to path "${path}", because it is not an array, but: ${array}`,
       );
     }
 
@@ -134,5 +126,11 @@ export abstract class BaseMetadata implements Metadata {
 
   #set(path: string | readonly string[], value: unknown): void {
     lodashSet(this[symbols.data], path, value);
+  }
+
+  #assertPath(path: string | readonly string[], operationName: string): void {
+    if (path == null) {
+      throw new TypeError(`Cannot ${operationName} metadata without a path`);
+    }
   }
 }

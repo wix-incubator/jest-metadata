@@ -4,6 +4,10 @@
     "testFilePath": "__tests__/hook-afterAll-fail.js"
   },
   {
+    "type": "setup",
+    "testFilePath": "__tests__/hook-afterAll-fail.js"
+  },
+  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/hook-afterAll-fail.js",
     "describeId": "describe_0"

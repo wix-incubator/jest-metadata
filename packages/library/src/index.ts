@@ -22,12 +22,6 @@ export type {
 export const state = realm.aggregatedResultMetadata;
 
 /**
- * Jest Metadata event emitter for advanced use cases.
- * Allows to listen to events emitted by Jest Metadata.
- */
-export const events = realm.events;
-
-/**
  * Current metadata of a test block that is being added or executed.
  */
 export const metadata = funpermaproxy(() => realm.aggregatedResultMetadata.currentMetadata);

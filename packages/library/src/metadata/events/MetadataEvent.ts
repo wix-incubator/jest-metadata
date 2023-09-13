@@ -10,6 +10,7 @@ import type { RunDescribeStartEvent } from './RunDescribeStartEvent';
 import type { RunFinishEvent } from './RunFinishEvent';
 import type { RunStartEvent } from './RunStartEvent';
 import type { SetMetadataEvent } from './SetMetadataEvent';
+import type { SetupEvent } from './SetupEvent';
 import type { StartDescribeDefinitionEvent } from './StartDescribeDefinitionEvent';
 import type { TestDoneEvent } from './TestDoneEvent';
 import type { TestFnFailureEvent } from './TestFnFailureEvent';
@@ -22,6 +23,7 @@ import type { TestStartEvent } from './TestStartEvent';
 import type { TestTodoEvent } from './TestTodoEvent';
 
 export type MetadataEvent =
+  | SetupEvent
   | AddHookEvent
   | AddTestEvent
   | FinishDescribeDefinitionEvent

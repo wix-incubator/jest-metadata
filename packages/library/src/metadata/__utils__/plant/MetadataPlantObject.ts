@@ -1,6 +1,6 @@
 import { isEmpty, omitBy } from 'lodash';
 
-import type { Metadata } from '../../metadata';
+import type { Metadata } from '../../index';
 import { PlantObject } from './PlantObject';
 
 const COLORS: Record<string, string> = {

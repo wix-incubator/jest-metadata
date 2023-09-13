@@ -4,6 +4,10 @@
     "testFilePath": "__tests__/test-concurrent.js"
   },
   {
+    "type": "setup",
+    "testFilePath": "__tests__/test-concurrent.js"
+  },
+  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/test-concurrent.js",
     "describeId": "describe_0"

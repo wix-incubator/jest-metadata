@@ -4,6 +4,10 @@
     "testFilePath": "__tests__/hook-nesting.js"
   },
   {
+    "type": "setup",
+    "testFilePath": "__tests__/hook-nesting.js"
+  },
+  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/hook-nesting.js",
     "describeId": "describe_0"

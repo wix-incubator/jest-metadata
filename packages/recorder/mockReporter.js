@@ -3,7 +3,7 @@ const path = require('path');
 
 const { satisfies: semverSatisfies } = require('semver');
 const { version: jestVersion } = require('jest/package.json');
-const { state, events } = require('jest-metadata');
+const { state } = require('jest-metadata');
 const debugUtils = require('jest-metadata/debug');
 const { JestMetadataReporter } = require('jest-metadata/reporter');
 
@@ -33,7 +33,7 @@ class MockReporter extends JestMetadataReporter {
       });
     };
 
-    events.on('*', onEvent);
+    debugUtils.events.on('*', onEvent);
   }
 
   async onRunStart(results, options) {

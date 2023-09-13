@@ -9,7 +9,7 @@ import type {
   TestEntryMetadata,
   TestFnInvocationMetadata,
   TestInvocationMetadata,
-} from '../metadata';
+} from '../index';
 
 export abstract class MetadataVisitor {
   constructor(protected readonly checker: MetadataChecker) {}

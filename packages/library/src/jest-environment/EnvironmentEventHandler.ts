@@ -18,6 +18,12 @@ export class EnvironmentEventHandler {
 
   private readonly _circusEventHandlers: Record<Circus.Event['name'], CircusSyncEventHandler> = {
     setup: (_event: Circus.Event & { name: 'setup' }, state: Circus.State) => {
+      // Auxiliary event for ensuring that the test environment is Jest Circus, not Jest Jasmine.
+      this._emitter.emit({
+        type: 'setup',
+        testFilePath: this._testFilePath,
+      });
+
       // The root describe block is not emitted by Circus, so we emit it here.
       this._emitter.emit({
         type: 'start_describe_definition',

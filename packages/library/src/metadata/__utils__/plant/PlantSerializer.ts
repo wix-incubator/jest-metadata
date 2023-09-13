@@ -1,4 +1,4 @@
-import type { AggregatedMetadataRegistry, MetadataChecker } from '../../metadata';
+import type { AggregatedMetadataRegistry, MetadataChecker } from '../../index';
 import { PlantMetadataVisitor } from './PlantMetadataVisitor';
 
 export const PlantSerializer = {

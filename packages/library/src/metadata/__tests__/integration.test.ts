@@ -7,8 +7,8 @@ import {
   SetMetadataEventEmitter,
 } from '..';
 
-import { PlantSerializer } from '../../__utils__';
 import { SerialSyncEmitter } from '../../utils';
+import { PlantSerializer } from '../__utils__';
 
 describe('metadata - integration test:', () => {
   test.each(Object.values(fixtures))(`fixtures/%s`, (_name: string, fixture: any[]) => {
