@@ -9,6 +9,9 @@ const recorderManifestPath = path.join(recorderRootDir, 'package.json');
 const recorderManifest = JSON.parse(fs.readFileSync(recorderManifestPath, 'utf8'));
 const jestVersion = process.env.JEST_VERSION || 'latest';
 recorderManifest.devDependencies.jest = jestVersion;
-fs.writeFileSync(recorderManifestPath, JSON.stringify(recorderManifest, null, 2) + '\n');
+Object.assign({
+  "jest": jestVersion,
+  "jest-environment-jsdom": jestVersion,
+});
 
 console.log(`Setting jest@${jestVersion}\n`);
