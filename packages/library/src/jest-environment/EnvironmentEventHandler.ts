@@ -1,4 +1,3 @@
-// eslint-disable-next-line node/no-unpublished-import
 import type { Circus } from '@jest/types';
 
 import type { MetadataEventEmitter } from '../metadata';

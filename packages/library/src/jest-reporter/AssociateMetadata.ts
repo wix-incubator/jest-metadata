@@ -1,6 +1,5 @@
 import path from 'path';
 
-// eslint-disable-next-line node/no-unpublished-import
 import type { TestCaseResult } from '@jest/reporters';
 
 import { JestMetadataError } from '../errors';

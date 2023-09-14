@@ -1,6 +1,4 @@
-// eslint-disable-next-line node/no-unpublished-import, @typescript-eslint/no-unused-vars
-import type { EnvironmentContext, JestEnvironment } from '@jest/environment';
-// eslint-disable-next-line node/no-unpublished-import
+import type { EnvironmentContext, JestEnvironment, JestEnvironmentConfig } from '@jest/environment';
 import type { Circus } from '@jest/types';
 import { realm, injectRealmIntoSandbox } from './realms';
 
@@ -10,12 +8,12 @@ import { realm, injectRealmIntoSandbox } from './realms';
  * @param environmentContext {@link EnvironmentContext}
  */
 export function onTestEnvironmentCreate(
-  jestEnvironment: unknown,
-  _jestEnvironmentConfig: unknown,
-  environmentContext: unknown,
+  jestEnvironment: JestEnvironment,
+  _jestEnvironmentConfig: JestEnvironmentConfig,
+  environmentContext: EnvironmentContext,
 ): void {
-  injectRealmIntoSandbox((jestEnvironment as JestEnvironment).global, realm);
-  const testFilePath = (environmentContext as EnvironmentContext).testPath;
+  injectRealmIntoSandbox(jestEnvironment.global, realm);
+  const testFilePath = environmentContext.testPath;
   realm.environmentHandler.handleEnvironmentCreated(testFilePath);
   realm.events.add(realm.setEmitter);
 

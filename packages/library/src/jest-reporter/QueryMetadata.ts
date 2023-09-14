@@ -1,4 +1,3 @@
-// eslint-disable-next-line node/no-unpublished-import
 import type { Test, TestCaseResult, TestResult } from '@jest/reporters';
 
 import { JestMetadataError } from '../errors';
