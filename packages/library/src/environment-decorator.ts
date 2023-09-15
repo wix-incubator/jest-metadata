@@ -11,10 +11,11 @@ import {
 } from './environment-hooks';
 import type { ReadonlyAsyncEmitter } from './types';
 
-export interface WithTestEventHandler {
+export { ForwardedCircusEvent } from './environment-hooks';
+
+export type WithEmitter<E extends JestEnvironment = JestEnvironment> = E & {
   readonly testEvents: ReadonlyAsyncEmitter<ForwardedCircusEvent>;
-  handleTestEvent(event: unknown, state: unknown): void | Promise<void>;
-}
+};
 
 /**
  * Decorator for a given JestEnvironment subclass that extends
@@ -77,7 +78,7 @@ export interface WithTestEventHandler {
  */
 export function WithMetadata<E extends JestEnvironment>(
   JestEnvironmentClass: new (...args: any[]) => E,
-): new (...args: any[]) => E & WithTestEventHandler {
+): new (...args: any[]) => WithEmitter<E> {
   const compositeName = `WithMetadata(${JestEnvironmentClass.name})`;
 
   return {
@@ -114,7 +115,7 @@ export function WithMetadata<E extends JestEnvironment>(
         await onTestEnvironmentTeardown();
       }
     },
-  }[compositeName] as unknown as new (...args: any[]) => E & WithTestEventHandler;
+  }[compositeName] as unknown as new (...args: any[]) => WithEmitter<E>;
 }
 
 /**
