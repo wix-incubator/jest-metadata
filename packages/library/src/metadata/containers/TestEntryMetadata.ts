@@ -4,6 +4,7 @@ import * as symbols from '../symbols';
 import { BaseMetadata } from './BaseMetadata';
 import type { DescribeBlockMetadata } from './DescribeBlockMetadata';
 import type { MetadataContext } from './MetadataContext';
+import type { RunMetadata } from './RunMetadata';
 import type { TestInvocationMetadata } from './TestInvocationMetadata';
 
 export class TestEntryMetadata extends BaseMetadata {
@@ -19,6 +20,10 @@ export class TestEntryMetadata extends BaseMetadata {
 
   get lastInvocation(): TestInvocationMetadata | undefined {
     return this.invocations[this.invocations.length - 1];
+  }
+
+  get run(): RunMetadata {
+    return this.describeBlock.run;
   }
 
   *ancestors(): IterableIterator<DescribeBlockMetadata> {
