@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import type { ReadonlyEmitter } from '../../types';
 import { iterateSorted } from '../iterateSorted';
 import { logger, nologger, optimizeForLogger } from '../logger';
@@ -14,14 +15,11 @@ const __LISTENERS = optimizeForLogger((listener: unknown) => ({
 
 const ONCE: unique symbol = Symbol('ONCE');
 
-export abstract class ReadonlyEmitterBase<
-  Event extends { type: string },
-  EventType extends string,
-  EventListener extends (event: Event) => unknown,
-> implements ReadonlyEmitter<Event, EventType | '*'>
+export abstract class ReadonlyEmitterBase<Event extends { type: string }>
+  implements ReadonlyEmitter<Event>
 {
   protected readonly _log: typeof logger;
-  protected readonly _listeners: Map<EventType | '*', [EventListener, number][]> = new Map();
+  protected readonly _listeners: Map<Event['type'] | '*', [Function, number][]> = new Map();
 
   #listenersCounter = 0;
 
@@ -30,7 +28,11 @@ export abstract class ReadonlyEmitterBase<
     this._listeners.set('*', []);
   }
 
-  on(type: EventType, listener: EventListener & { [ONCE]?: true }, order?: number): this {
+  on<E extends Event>(
+    type: E['type'] | '*',
+    listener: Function & { [ONCE]?: true },
+    order?: number,
+  ): this {
     if (!listener[ONCE]) {
       this._log.trace(__LISTENERS(listener), `on(${type})`);
     }
@@ -46,12 +48,16 @@ export abstract class ReadonlyEmitterBase<
     return this;
   }
 
-  once(type: EventType, listener: EventListener, order?: number): this {
+  once<E extends Event>(type: E['type'] | '*', listener: Function, order?: number): this {
     this._log.trace(__LISTENERS(listener), `once(${type})`);
     return this.on(type, this.#createOnceListener(type, listener), order);
   }
 
-  off(type: EventType, listener: EventListener & { [ONCE]?: true }): this {
+  off<E extends Event>(
+    type: E['type'] | '*',
+    listener: Function & { [ONCE]?: true },
+    _order?: number,
+  ): this {
     if (!listener[ONCE]) {
       this._log.trace(__LISTENERS(listener), `off(${type})`);
     }
@@ -64,19 +70,19 @@ export abstract class ReadonlyEmitterBase<
     return this;
   }
 
-  protected *_getListeners(type: EventType): Iterable<EventListener> {
-    const wildcard: [EventListener, number][] = this._listeners.get('*') ?? [];
-    const named: [EventListener, number][] = this._listeners.get(type) ?? [];
-    for (const [listener] of iterateSorted<[EventListener, number]>(getOrder, wildcard, named)) {
+  protected *_getListeners(type: Event['type']): Iterable<Function> {
+    const wildcard: [Function, number][] = this._listeners.get('*') ?? [];
+    const named: [Function, number][] = this._listeners.get(type) ?? [];
+    for (const [listener] of iterateSorted<[Function, number]>(getOrder, wildcard, named)) {
       yield listener;
     }
   }
 
-  #createOnceListener(type: EventType, listener: EventListener) {
+  #createOnceListener(type: Event['type'], listener: Function) {
     const onceListener = ((event: Event) => {
       this.off(type, onceListener);
       listener(event);
-    }) as EventListener & { [ONCE]?: true };
+    }) as Function & { [ONCE]?: true };
 
     onceListener[ONCE] = true as const;
     return onceListener;

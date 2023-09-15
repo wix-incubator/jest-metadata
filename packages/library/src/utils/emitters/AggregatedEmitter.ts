@@ -1,9 +1,7 @@
 import type { Emitter, ReadonlyEmitter } from '../../types';
 import { SerialSyncEmitter } from './SerialSyncEmitter';
 
-export class AggregatedEmitter<Event extends { type: string }>
-  implements ReadonlyEmitter<Event, Event['type']>
-{
+export class AggregatedEmitter<Event extends { type: string }> implements ReadonlyEmitter<Event> {
   readonly #emitters = new WeakSet<Emitter<Event>>();
   readonly #rootEmitter: SerialSyncEmitter<Event>;
 
