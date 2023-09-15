@@ -1,59 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// eslint-disable-next-line node/no-unpublished-import, @typescript-eslint/no-unused-vars
 import type { JestEnvironment } from '@jest/environment';
-// eslint-disable-next-line node/no-unpublished-import
 import type { Circus } from '@jest/types';
 
 import {
+  ForwardedCircusEvent,
+  getEmitter,
   onHandleTestEvent,
   onTestEnvironmentCreate,
   onTestEnvironmentSetup,
   onTestEnvironmentTeardown,
 } from './environment-hooks';
 import type { ReadonlyAsyncEmitter } from './types';
-import { SemiAsyncEmitter } from './utils';
 
-export interface JestEnvironmentLike {
-  setup(): Promise<unknown>;
-  handleTestEvent?(event: unknown, state: unknown): void | Promise<void>;
-  teardown(): Promise<unknown>;
-}
+export { ForwardedCircusEvent } from './environment-hooks';
 
-export interface WithTestEventHandler {
+export type WithEmitter<E extends JestEnvironment = JestEnvironment> = E & {
   readonly testEvents: ReadonlyAsyncEmitter<ForwardedCircusEvent>;
-  handleTestEvent(event: unknown, state: unknown): void | Promise<void>;
-}
-
-export type ForwardedCircusEventType =
-  | 'start_describe_definition'
-  | 'finish_describe_definition'
-  | 'add_hook'
-  | 'add_test'
-  | 'error'
-  | 'hook_failure'
-  | 'hook_start'
-  | 'hook_success'
-  | 'include_test_location_in_result'
-  | 'run_describe_finish'
-  | 'run_describe_start'
-  | 'run_finish'
-  | 'run_start'
-  | 'setup'
-  | 'teardown'
-  | 'test_done'
-  | 'test_fn_failure'
-  | 'test_fn_start'
-  | 'test_fn_success'
-  | 'test_retry'
-  | 'test_skip'
-  | 'test_start'
-  | 'test_started'
-  | 'test_todo';
-
-export type ForwardedCircusEvent = {
-  type: ForwardedCircusEventType;
-  event: any;
-  state: any;
 };
 
 /**
@@ -66,7 +27,7 @@ export type ForwardedCircusEvent = {
  * You can use this decorator to extend a base JestEnvironment class inside
  * your own environment class in a declarative way. If you prefer to control
  * the integration with {@link module:jest-metadata} yourself, you can use
- * low-level hooks from {@link module:jest-metadata/environment/hooks}.
+ * low-level hooks from {@link module:jest-metadata/environment-hooks}.
  * @param JestEnvironmentClass - Jest environment subclass to decorate
  * @returns a decorated Jest environment subclass, e.g. `WithMetadata(JestEnvironmentNode)`
  * @example
@@ -115,57 +76,21 @@ export type ForwardedCircusEvent = {
  * }
  * ```
  */
-export function WithMetadata<E extends JestEnvironmentLike>(
+export function WithMetadata<E extends JestEnvironment>(
   JestEnvironmentClass: new (...args: any[]) => E,
-): new (...args: any[]) => E & WithTestEventHandler {
+): new (...args: any[]) => WithEmitter<E> {
   const compositeName = `WithMetadata(${JestEnvironmentClass.name})`;
 
   return {
     // @ts-expect-error TS2415: Class '[`${compositeName}`]' incorrectly extends base class 'E'.
     [`${compositeName}`]: class extends JestEnvironmentClass {
-      readonly #testEventEmitter = new SemiAsyncEmitter<ForwardedCircusEvent>('environment', [
-        'start_describe_definition',
-        'finish_describe_definition',
-        'add_hook',
-        'add_test',
-        'error',
-      ]);
-
       constructor(...args: any[]) {
         super(...args);
         onTestEnvironmentCreate(this, args[0], args[1]);
-
-        const handler = ({ event, state }: ForwardedCircusEvent) => onHandleTestEvent(event, state);
-
-        this.testEvents
-          .on('setup', handler, -1)
-          .on('include_test_location_in_result', handler, -1)
-          .on('start_describe_definition', handler, -1)
-          .on('finish_describe_definition', handler, Number.MAX_SAFE_INTEGER)
-          .on('add_hook', handler, -1)
-          .on('add_test', handler, -1)
-          .on('run_start', handler, -1)
-          .on('run_describe_start', handler, -1)
-          .on('hook_failure', handler, Number.MAX_SAFE_INTEGER)
-          .on('hook_start', handler, -1)
-          .on('hook_success', handler, Number.MAX_SAFE_INTEGER)
-          .on('test_start', handler, -1)
-          .on('test_started', handler, -1)
-          .on('test_retry', handler, -1)
-          .on('test_skip', handler, -1)
-          .on('test_todo', handler, -1)
-          .on('test_fn_start', handler, -1)
-          .on('test_fn_failure', handler, Number.MAX_SAFE_INTEGER)
-          .on('test_fn_success', handler, Number.MAX_SAFE_INTEGER)
-          .on('test_done', handler, Number.MAX_SAFE_INTEGER)
-          .on('run_describe_finish', handler, Number.MAX_SAFE_INTEGER)
-          .on('run_finish', handler, Number.MAX_SAFE_INTEGER)
-          .on('teardown', handler, Number.MAX_SAFE_INTEGER)
-          .on('error', handler, -1);
       }
 
       protected get testEvents(): ReadonlyAsyncEmitter<ForwardedCircusEvent> {
-        return this.#testEventEmitter;
+        return getEmitter(this);
       }
 
       async setup() {
@@ -173,20 +98,16 @@ export function WithMetadata<E extends JestEnvironmentLike>(
         await onTestEnvironmentSetup();
       }
 
-      handleTestEvent(event: unknown, state: unknown): void | Promise<void> {
-        const circusEvent = event as Circus.Event;
-        const circusState = state as Circus.State;
-        const forwardedEvent: ForwardedCircusEvent = {
-          type: circusEvent.name,
-          event: circusEvent,
-          state: circusState,
-        };
-
-        const maybePromise = super.handleTestEvent?.(circusEvent, circusState);
+      // @ts-expect-error TS2415: The base class has an arrow function, but this can be a method
+      handleTestEvent(event: Circus.Event, state: Circus.State): void | Promise<void> {
+        const maybePromise = (super.handleTestEvent as JestEnvironment['handleTestEvent'])?.(
+          event as any,
+          state,
+        );
 
         return typeof maybePromise?.then === 'function'
-          ? maybePromise.then(() => this.#testEventEmitter.emit(forwardedEvent))
-          : this.#testEventEmitter.emit(forwardedEvent);
+          ? maybePromise.then(() => onHandleTestEvent(this, event, state))
+          : onHandleTestEvent(this, event, state);
       }
 
       async teardown() {
@@ -194,7 +115,7 @@ export function WithMetadata<E extends JestEnvironmentLike>(
         await onTestEnvironmentTeardown();
       }
     },
-  }[compositeName] as unknown as new (...args: any[]) => E & WithTestEventHandler;
+  }[compositeName] as unknown as new (...args: any[]) => WithEmitter<E>;
 }
 
 /**

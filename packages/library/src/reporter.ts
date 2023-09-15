@@ -1,5 +1,13 @@
-/* eslint-disable node/no-unpublished-import, @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function,unicorn/no-for-loop */
-import type { Test, TestCaseResult, TestResult } from '@jest/reporters';
+/* eslint-disable @typescript-eslint/no-empty-function,unicorn/no-for-loop */
+import type {
+  AggregatedResult,
+  Reporter,
+  ReporterOnStartOptions,
+  Test,
+  TestCaseResult,
+  TestContext,
+  TestResult,
+} from '@jest/reporters';
 import { realm } from './realms';
 import { logger } from './utils';
 
@@ -12,7 +20,7 @@ export const query = realm.query;
 /**
  * @implements {import('@jest/reporters').Reporter}
  */
-export class JestMetadataReporter {
+export class JestMetadataReporter implements Reporter {
   #log = logger.child({ cat: 'reporter', tid: 'reporter' });
 
   constructor(_globalConfig: unknown, _options: JestMetadataServerReporterConfig) {}
@@ -21,27 +29,18 @@ export class JestMetadataReporter {
     return undefined;
   }
 
-  /**
-   * @see {import('@jest/reporters').AggregatedResult}
-   * @see {import('@jest/reporters').ReporterOnStartOptions}
-   */
-  async onRunStart(_results: unknown, _options: unknown): Promise<void> {
+  async onRunStart(_results: AggregatedResult, _options: ReporterOnStartOptions): Promise<void> {
     await realm.ipc.start();
   }
 
   /**
    * @deprecated
-   * @see {import('@jest/reporters').Test}
    */
-  onTestStart(_test: unknown): void {
+  onTestStart(_test: Test): void {
     // Jest's ReporterDispatcher won't call this method due to existence of `onTestFileStart`.
   }
 
-  /**
-   * @see {import('@jest/reporters').Test}
-   */
-  onTestFileStart(_test: unknown): void {
-    const test = _test as Test;
+  onTestFileStart(test: Test): void {
     this.#log.debug.begin({ tid: ['reporter', test.path] }, test.path);
     realm.fallbackAPI.reportTestFile(test.path);
     const runMetadata = realm.aggregatedResultMetadata.getRunMetadata(test.path);
@@ -50,12 +49,9 @@ export class JestMetadataReporter {
 
   /**
    * NEW! Supported only since Jest 29.6.0
-   * @see {import('@jest/reporters').Test}
    * @see {import('@jest/types').Circus.TestCaseStartInfo}
    */
-  onTestCaseStart(_test: unknown, _testCaseStartInfo: unknown): void {
-    const test = _test as Test;
-
+  onTestCaseStart(test: Test, _testCaseStartInfo: unknown): void {
     this.#log.debug({ tid: ['reporter', test.path] }, 'onTestCaseStart');
     // We cannot use the fallback API here because `testCaseStartInfo`
     // does not contain information, whether this is a retry or not.
@@ -63,40 +59,22 @@ export class JestMetadataReporter {
     // so better to ignore this event, rather than distort the data.
   }
 
-  /**
-   * @see {import('@jest/reporters').Test}
-   * @see {import('@jest/reporters').TestCaseResult}
-   */
-  onTestCaseResult(_test: unknown, _testCaseResult: unknown): void {
-    const test = _test as Test;
-    const testCaseResult = _testCaseResult as TestCaseResult;
-
+  onTestCaseResult(test: Test, testCaseResult: TestCaseResult): void {
     this.#log.debug({ tid: ['reporter', test.path] }, 'onTestCaseResult');
 
     realm.fallbackAPI.reportTestCase(test.path, testCaseResult);
     const lastTestEntry = realm.query.test(test)!.lastTestEntry!;
-    realm.associate.testCaseResult(_testCaseResult as TestCaseResult, lastTestEntry);
+    realm.associate.testCaseResult(testCaseResult, lastTestEntry);
   }
 
   /**
    * @deprecated
-   * @see {import('@jest/reporters').Test}
-   * @see {import('@jest/reporters').TestResult}
-   * @see {import('@jest/reporters').AggregatedResult}
    */
-  onTestResult(_test: unknown, _testResult: unknown, _aggregatedResult: unknown): void {
+  onTestResult(_test: Test, _testResult: TestResult, _aggregatedResult: AggregatedResult): void {
     // Jest's ReporterDispatcher won't call this method due to existence of `onTestFileResult`.
   }
 
-  /**
-   * @see {import('@jest/reporters').Test}
-   * @see {import('@jest/reporters').TestResult}
-   * @see {import('@jest/reporters').AggregatedResult}
-   */
-  onTestFileResult(_test: unknown, _testResult: unknown, _aggregatedResult: unknown): void {
-    const test = _test as Test;
-    const testResult = _testResult as TestResult;
-
+  onTestFileResult(test: Test, testResult: TestResult, _aggregatedResult: AggregatedResult): void {
     const allTestEntries = realm.fallbackAPI.reportTestFileResult(testResult);
     const testResults = testResult.testResults;
     for (let i = 0; i < testResults.length; i++) {
@@ -106,11 +84,7 @@ export class JestMetadataReporter {
     this.#log.debug.end({ tid: ['reporter', test.path] });
   }
 
-  /**
-   * @see {import('@jest/reporters').TestContext}
-   * @see {import('@jest/reporters').AggregatedResult}
-   */
-  async onRunComplete(_testContexts: Set<unknown>, _results: unknown): Promise<void> {
+  async onRunComplete(_testContexts: Set<TestContext>, _results: AggregatedResult): Promise<void> {
     await realm.ipc.stop();
   }
 }

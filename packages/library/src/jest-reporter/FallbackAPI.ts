@@ -1,4 +1,3 @@
-/* eslint-disable node/no-unpublished-import */
 import type { TestCaseResult, TestResult } from '@jest/reporters';
 import { JestMetadataError } from '../errors';
 import type {
@@ -31,7 +30,7 @@ export class FallbackAPI {
     });
   }
 
-  reportTestCase(testFilePath: string, _testCaseResult: unknown) {
+  reportTestCase(testFilePath: string, testCaseResult: TestCaseResult) {
     const run = this.aggregatedMetadata.getRunMetadata(testFilePath);
     if (this._fallbackMode === undefined) {
       this._fallbackMode = !run.rootDescribeBlock;
@@ -50,7 +49,6 @@ export class FallbackAPI {
     }
 
     const rootDescribeBlock = run.rootDescribeBlock!;
-    const testCaseResult = _testCaseResult as TestCaseResult;
     const invocations = testCaseResult.invocations ?? 0;
     const nameIdentifier = [
       testFilePath,

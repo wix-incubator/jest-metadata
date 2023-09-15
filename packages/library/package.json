@@ -109,6 +109,8 @@
     "http-server": "^14.1.1",
     "is-ci": "^3.0.1",
     "jest": "^29.6.2",
+    "jest-environment-node": "^29.6.2",
+    "jest-environment-jsdom": "^29.6.2",
     "lint-staged": "^13.1.0",
     "lodash": "^4.17.21",
     "nyc": "^15.1.0",
@@ -119,10 +121,30 @@
     "typescript": "~5.1.0"
   },
   "peerDependencies": {
-    "jest": ">=27.2.5"
+    "@jest/environment": ">=27.2.5",
+    "@jest/reporters": ">=27.2.5",
+    "@jest/types": ">=27.2.5",
+    "jest": ">=27.2.5",
+    "jest-environment-jsdom": ">=27.2.5",
+    "jest-environment-node": ">=27.2.5"
   },
   "peerDependenciesMeta": {
+    "@jest/types": {
+      "optional": true
+    },
+    "@jest/environment": {
+      "optional": true
+    },
+    "@jest/reporters": {
+      "optional": true
+    },
     "jest": {
+      "optional": true
+    },
+    "jest-environment-jsdom": {
+      "optional": true
+    },
+    "jest-environment-node": {
       "optional": true
     }
   },

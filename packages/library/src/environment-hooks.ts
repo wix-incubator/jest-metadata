@@ -1,8 +1,10 @@
-// eslint-disable-next-line node/no-unpublished-import, @typescript-eslint/no-unused-vars
-import type { EnvironmentContext, JestEnvironment } from '@jest/environment';
-// eslint-disable-next-line node/no-unpublished-import
+import type { EnvironmentContext, JestEnvironment, JestEnvironmentConfig } from '@jest/environment';
 import type { Circus } from '@jest/types';
+import { JestMetadataError } from './errors';
 import { realm, injectRealmIntoSandbox } from './realms';
+import { SemiAsyncEmitter } from './utils';
+
+const emitterMap: WeakMap<object, SemiAsyncEmitter<ForwardedCircusEvent>> = new WeakMap();
 
 /**
  * @param jestEnvironment {@link JestEnvironment}
@@ -10,12 +12,12 @@ import { realm, injectRealmIntoSandbox } from './realms';
  * @param environmentContext {@link EnvironmentContext}
  */
 export function onTestEnvironmentCreate(
-  jestEnvironment: unknown,
-  _jestEnvironmentConfig: unknown,
-  environmentContext: unknown,
+  jestEnvironment: JestEnvironment,
+  _jestEnvironmentConfig: JestEnvironmentConfig,
+  environmentContext: EnvironmentContext,
 ): void {
-  injectRealmIntoSandbox((jestEnvironment as JestEnvironment).global, realm);
-  const testFilePath = (environmentContext as EnvironmentContext).testPath;
+  injectRealmIntoSandbox(jestEnvironment.global, realm);
+  const testFilePath = environmentContext.testPath;
   realm.environmentHandler.handleEnvironmentCreated(testFilePath);
   realm.events.add(realm.setEmitter);
 
@@ -25,7 +27,63 @@ export function onTestEnvironmentCreate(
       testFilePath,
     });
   }
+
+  const testEventHandler = ({ event, state }: ForwardedCircusEvent) => {
+    realm.environmentHandler.handleTestEvent(event, state);
+
+    if (realm.type === 'child_process') {
+      switch (event.name) {
+        case 'run_start':
+        case 'test_start':
+        case 'test_done':
+        case 'run_finish': {
+          return realm.ipc.flush();
+        }
+      }
+    }
+
+    return;
+  };
+
+  const emitter = new SemiAsyncEmitter<ForwardedCircusEvent>('environment', [
+    'start_describe_definition',
+    'finish_describe_definition',
+    'add_hook',
+    'add_test',
+    'error',
+  ])
+    .on('setup', testEventHandler, -1)
+    .on('include_test_location_in_result', testEventHandler, -1)
+    .on('start_describe_definition', testEventHandler, -1)
+    .on('finish_describe_definition', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('add_hook', testEventHandler, -1)
+    .on('add_test', testEventHandler, -1)
+    .on('run_start', testEventHandler, -1)
+    .on('run_describe_start', testEventHandler, -1)
+    .on('hook_failure', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('hook_start', testEventHandler, -1)
+    .on('hook_success', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('test_start', testEventHandler, -1)
+    .on('test_started', testEventHandler, -1)
+    .on('test_retry', testEventHandler, -1)
+    .on('test_skip', testEventHandler, -1)
+    .on('test_todo', testEventHandler, -1)
+    .on('test_fn_start', testEventHandler, -1)
+    .on('test_fn_failure', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('test_fn_success', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('test_done', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('run_describe_finish', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('run_finish', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('teardown', testEventHandler, Number.MAX_SAFE_INTEGER);
+
+  emitterMap.set(jestEnvironment, emitter);
 }
+
+export type ForwardedCircusEvent<E extends Circus.Event = Circus.Event> = {
+  type: E['name'];
+  event: E;
+  state: Circus.State;
+};
 
 export async function onTestEnvironmentSetup(): Promise<void> {
   if (realm.type === 'child_process') {
@@ -42,24 +100,20 @@ export async function onTestEnvironmentTeardown(): Promise<void> {
 /**
  * Pass Jest Circus event and state to the handler.
  * After recalculating the state, this method synchronizes with the metadata server.
- * @param circusEvent
- * @param circusState
  */
 export const onHandleTestEvent = (
-  circusEvent: unknown,
-  circusState: unknown,
-): void | Promise<void> => {
-  const event = circusEvent as Circus.Event;
-  const state = circusState as Circus.State;
+  env: JestEnvironment,
+  event: Circus.Event,
+  state: Circus.State,
+): void | Promise<void> => getEmitter(env).emit({ type: event.name, event, state });
 
-  realm.environmentHandler.handleTestEvent(event, state);
-
-  switch (event.name) {
-    case 'run_start':
-    case 'test_start':
-    case 'test_done':
-    case 'run_finish': {
-      return realm.ipc.flush?.();
-    }
+export const getEmitter = (env: JestEnvironment) => {
+  const emitter = emitterMap.get(env);
+  if (!emitter) {
+    throw new JestMetadataError(
+      'Emitter is not found. Most likely, you are using a non-valid environment reference.',
+    );
   }
+
+  return emitter;
 };

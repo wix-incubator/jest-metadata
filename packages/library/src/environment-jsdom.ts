@@ -1,10 +1,6 @@
-import importCwd from 'import-cwd';
+import JestEnvironmentJsdom from 'jest-environment-jsdom';
+import { WithMetadata } from './environment-decorator';
 
-// eslint-disable-next-line import/no-named-as-default
-import WithMetadata from './environment-decorator';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const JestEnvironmentJsdom: any = importCwd('jest-environment-jsdom');
-
-export const TestEnvironment = WithMetadata(JestEnvironmentJsdom.default ?? JestEnvironmentJsdom);
+export { ForwardedCircusEvent } from './environment-hooks';
+export const TestEnvironment = WithMetadata(JestEnvironmentJsdom);
 export default TestEnvironment;
