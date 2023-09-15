@@ -2,24 +2,19 @@ import type { JestEnvironment } from '@jest/environment';
 import type { Circus } from '@jest/types';
 
 import {
+  ForwardedCircusEvent,
+  getEmitter,
   onHandleTestEvent,
   onTestEnvironmentCreate,
   onTestEnvironmentSetup,
   onTestEnvironmentTeardown,
 } from './environment-hooks';
 import type { ReadonlyAsyncEmitter } from './types';
-import { SemiAsyncEmitter } from './utils';
 
 export interface WithTestEventHandler {
   readonly testEvents: ReadonlyAsyncEmitter<ForwardedCircusEvent>;
   handleTestEvent(event: unknown, state: unknown): void | Promise<void>;
 }
-
-export type ForwardedCircusEvent = {
-  type: Circus.Event['name'];
-  event: Circus.Event;
-  state: Circus.State;
-};
 
 /**
  * Decorator for a given JestEnvironment subclass that extends
@@ -84,63 +79,17 @@ export function WithMetadata<E extends JestEnvironment>(
   JestEnvironmentClass: new (...args: any[]) => E,
 ): new (...args: any[]) => E & WithTestEventHandler {
   const compositeName = `WithMetadata(${JestEnvironmentClass.name})`;
-  const emitterCallbacks: ((emitter: ReadonlyAsyncEmitter<ForwardedCircusEvent>) => void)[] = [];
 
   return {
     // @ts-expect-error TS2415: Class '[`${compositeName}`]' incorrectly extends base class 'E'.
     [`${compositeName}`]: class extends JestEnvironmentClass {
-      readonly #testEventEmitter = new SemiAsyncEmitter<ForwardedCircusEvent>('environment', [
-        'start_describe_definition',
-        'finish_describe_definition',
-        'add_hook',
-        'add_test',
-        'error',
-      ]);
-
       constructor(...args: any[]) {
         super(...args);
         onTestEnvironmentCreate(this, args[0], args[1]);
-
-        const handler = ({ event, state }: ForwardedCircusEvent) => onHandleTestEvent(event, state);
-
-        this.testEvents
-          .on('setup', handler, -1)
-          .on('include_test_location_in_result', handler, -1)
-          .on('start_describe_definition', handler, -1)
-          .on('finish_describe_definition', handler, Number.MAX_SAFE_INTEGER)
-          .on('add_hook', handler, -1)
-          .on('add_test', handler, -1)
-          .on('run_start', handler, -1)
-          .on('run_describe_start', handler, -1)
-          .on('hook_failure', handler, Number.MAX_SAFE_INTEGER)
-          .on('hook_start', handler, -1)
-          .on('hook_success', handler, Number.MAX_SAFE_INTEGER)
-          .on('test_start', handler, -1)
-          .on('test_started', handler, -1)
-          .on('test_retry', handler, -1)
-          .on('test_skip', handler, -1)
-          .on('test_todo', handler, -1)
-          .on('test_fn_start', handler, -1)
-          .on('test_fn_failure', handler, Number.MAX_SAFE_INTEGER)
-          .on('test_fn_success', handler, Number.MAX_SAFE_INTEGER)
-          .on('test_done', handler, Number.MAX_SAFE_INTEGER)
-          .on('run_describe_finish', handler, Number.MAX_SAFE_INTEGER)
-          .on('run_finish', handler, Number.MAX_SAFE_INTEGER)
-          .on('teardown', handler, Number.MAX_SAFE_INTEGER)
-          .on('error', handler, -1);
-
-        for (const callback of emitterCallbacks) {
-          callback(this.#testEventEmitter);
-        }
       }
 
       protected get testEvents(): ReadonlyAsyncEmitter<ForwardedCircusEvent> {
-        return this.#testEventEmitter;
-      }
-
-      static subscribe(callback: (emitter: ReadonlyAsyncEmitter<ForwardedCircusEvent>) => void) {
-        callback((JestEnvironmentClass as any).prototype.testEvents);
-        return this;
+        return getEmitter(this);
       }
 
       async setup() {
@@ -150,20 +99,14 @@ export function WithMetadata<E extends JestEnvironment>(
 
       // @ts-expect-error TS2415: The base class has an arrow function, but this can be a method
       handleTestEvent(event: Circus.Event, state: Circus.State): void | Promise<void> {
-        const forwardedEvent: ForwardedCircusEvent = {
-          type: event.name,
-          event: event,
-          state: state,
-        };
-
         const maybePromise = (super.handleTestEvent as JestEnvironment['handleTestEvent'])?.(
           event as any,
           state,
         );
 
         return typeof maybePromise?.then === 'function'
-          ? maybePromise.then(() => this.#testEventEmitter.emit(forwardedEvent))
-          : this.#testEventEmitter.emit(forwardedEvent);
+          ? maybePromise.then(() => onHandleTestEvent(this, event, state))
+          : onHandleTestEvent(this, event, state);
       }
 
       async teardown() {
