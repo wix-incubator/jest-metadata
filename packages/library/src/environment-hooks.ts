@@ -30,20 +30,9 @@ export function onTestEnvironmentCreate(
 
   const testEventHandler = ({ event, state }: ForwardedCircusEvent) => {
     realm.environmentHandler.handleTestEvent(event, state);
-
-    if (realm.type === 'child_process') {
-      switch (event.name) {
-        case 'run_start':
-        case 'test_start':
-        case 'test_done':
-        case 'run_finish': {
-          return realm.ipc.flush();
-        }
-      }
-    }
-
-    return;
   };
+
+  const flushHandler = () => realm.ipc.flush();
 
   const emitter = new SemiAsyncEmitter<ForwardedCircusEvent>('environment', [
     'start_describe_definition',
@@ -59,11 +48,13 @@ export function onTestEnvironmentCreate(
     .on('add_hook', testEventHandler, -1)
     .on('add_test', testEventHandler, -1)
     .on('run_start', testEventHandler, -1)
+    .on('run_start', flushHandler, Number.MAX_SAFE_INTEGER)
     .on('run_describe_start', testEventHandler, -1)
     .on('hook_failure', testEventHandler, Number.MAX_SAFE_INTEGER)
     .on('hook_start', testEventHandler, -1)
     .on('hook_success', testEventHandler, Number.MAX_SAFE_INTEGER)
     .on('test_start', testEventHandler, -1)
+    .on('test_start', flushHandler, Number.MAX_SAFE_INTEGER)
     .on('test_started', testEventHandler, -1)
     .on('test_retry', testEventHandler, -1)
     .on('test_skip', testEventHandler, -1)
@@ -71,9 +62,11 @@ export function onTestEnvironmentCreate(
     .on('test_fn_start', testEventHandler, -1)
     .on('test_fn_failure', testEventHandler, Number.MAX_SAFE_INTEGER)
     .on('test_fn_success', testEventHandler, Number.MAX_SAFE_INTEGER)
-    .on('test_done', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('test_done', testEventHandler, Number.MAX_SAFE_INTEGER - 1)
+    .on('test_done', flushHandler, Number.MAX_SAFE_INTEGER)
     .on('run_describe_finish', testEventHandler, Number.MAX_SAFE_INTEGER)
-    .on('run_finish', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('run_finish', testEventHandler, Number.MAX_SAFE_INTEGER - 1)
+    .on('run_finish', flushHandler, Number.MAX_SAFE_INTEGER)
     .on('teardown', testEventHandler, Number.MAX_SAFE_INTEGER);
 
   emitterMap.set(jestEnvironment, emitter);
