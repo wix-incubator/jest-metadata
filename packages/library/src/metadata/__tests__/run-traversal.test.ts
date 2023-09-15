@@ -59,5 +59,15 @@ describe('run metadata traversal:', () => {
         `allInvocations ${toId(invocation)}`,
       );
     }
+
+    const haveRun = [
+      ...lastRun.allTestEntries(),
+      ...lastRun.allTestInvocations(),
+      ...lastRun.allDescribeBlocks(),
+    ];
+
+    for (const meta of haveRun) {
+      expect(meta.run).toBe(lastRun);
+    }
   });
 });
