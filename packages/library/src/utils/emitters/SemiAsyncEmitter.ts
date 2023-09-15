@@ -2,43 +2,41 @@ import type { ReadonlyAsyncEmitter } from '../../types';
 import { SerialAsyncEmitter } from './SerialAsyncEmitter';
 import { SerialSyncEmitter } from './SerialSyncEmitter';
 
-export class SemiAsyncEmitter<
-  Event extends { type: string },
-  EventType extends string = Event['type'] | '*',
-> implements ReadonlyAsyncEmitter<Event, EventType>
+export class SemiAsyncEmitter<Event extends { type: string }>
+  implements ReadonlyAsyncEmitter<Event>
 {
   readonly #asyncEmitter: SerialAsyncEmitter<Event>;
   readonly #syncEmitter: SerialSyncEmitter<Event>;
-  readonly #syncEvents: Set<EventType>;
+  readonly #syncEvents: Set<Event['type']>;
 
-  constructor(name: string, syncEvents: EventType[]) {
+  constructor(name: string, syncEvents: Event['type'][]) {
     this.#asyncEmitter = new SerialAsyncEmitter<Event>(name, false);
     this.#syncEmitter = new SerialSyncEmitter<Event>(name, false);
     this.#syncEvents = new Set(syncEvents);
   }
 
-  on(type: EventType, listener: (event: Event) => unknown, order?: number): this {
+  on<E extends Event>(type: E['type'], listener: (event: E) => unknown, order?: number): this {
     return this.#invoke('on', type, listener, order);
   }
 
-  once(type: EventType, listener: (event: Event) => unknown, order?: number): this {
+  once<E extends Event>(type: E['type'], listener: (event: E) => unknown, order?: number): this {
     return this.#invoke('once', type, listener, order);
   }
 
-  off(type: EventType, listener: (event: Event) => unknown): this {
+  off<E extends Event>(type: E['type'], listener: (event: E) => unknown): this {
     return this.#invoke('off', type, listener);
   }
 
   emit(event: Event): void | Promise<void> {
-    return this.#syncEvents.has(event.type as EventType)
+    return this.#syncEvents.has(event.type as Event['type'])
       ? this.#syncEmitter.emit(event)
       : this.#asyncEmitter.emit(event);
   }
 
-  #invoke(
+  #invoke<E extends Event>(
     methodName: 'on' | 'once' | 'off',
-    type: EventType,
-    listener: (event: Event) => unknown,
+    type: E['type'],
+    listener: (event: E) => unknown,
     order?: number,
   ): this {
     const isSync = this.#syncEvents.has(type);

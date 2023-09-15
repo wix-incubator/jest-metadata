@@ -2,15 +2,9 @@ import type { AsyncEmitter } from '../../types';
 import { ReadonlyEmitterBase } from './ReadonlyEmitterBase';
 import { __EMIT, __INVOKE } from './syncEmitterCommons';
 
-export class SerialAsyncEmitter<
-    Event extends { type: string } = any,
-    EventType extends string = Event['type'] | '*',
-    EventListener extends (event: Event) => void | Promise<void> = (
-      event: Event,
-    ) => void | Promise<void>,
-  >
-  extends ReadonlyEmitterBase<Event, EventType, EventListener>
-  implements AsyncEmitter<Event, EventType>
+export class SerialAsyncEmitter<Event extends { type: string }>
+  extends ReadonlyEmitterBase<Event>
+  implements AsyncEmitter<Event>
 {
   #promise = Promise.resolve();
 
@@ -23,7 +17,7 @@ export class SerialAsyncEmitter<
   }
 
   async #doEmit(event: Event) {
-    const eventType = event.type as EventType;
+    const eventType = event.type;
     const listeners = [...this._getListeners(eventType)];
 
     await this._log.trace.complete(__EMIT(event), event.type, async () => {

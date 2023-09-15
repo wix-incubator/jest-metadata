@@ -7,13 +7,9 @@ import { __EMIT, __ENQUEUE, __INVOKE } from './syncEmitterCommons';
  * If an event is emitted while another event is being emitted, the new event
  * will be queued and emitted after the current event is finished.
  */
-export class SerialSyncEmitter<
-    Event extends { type: string },
-    EventType extends string = Event['type'] | '*',
-    EventListener extends (event: Event) => unknown = (event: Event) => unknown,
-  >
-  extends ReadonlyEmitterBase<Event, EventType, EventListener>
-  implements Emitter<Event, EventType>
+export class SerialSyncEmitter<Event extends { type: string }>
+  extends ReadonlyEmitterBase<Event>
+  implements Emitter<Event>
 {
   #queue: Event[] = [];
 
@@ -27,7 +23,7 @@ export class SerialSyncEmitter<
 
     while (this.#queue.length > 0) {
       const event = this.#queue[0];
-      const eventType = event.type as EventType;
+      const eventType = event.type;
       const listeners = [...this._getListeners(eventType)];
 
       this._log.trace.complete(__EMIT(event), event.type, () => {
