@@ -112,7 +112,6 @@ dist
 
 /__fixtures__/events/
 package-lock.json
-yarn.lock
 .DS_Store
 
 # Yarn
