@@ -2675,7 +2675,7 @@ exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/globalMetadat
 
 object "GlobalMetadata" as global_metadata #dff
 global_metadata : id = "globalMetadata"
-global_metadata : data = {"vendor":{"tests":12}}
+global_metadata : data = {"vendor":{"tests":["+","+","+","+","+","+","+","+","+","+","+","+"]}}
 
 
 @enduml
@@ -3512,7 +3512,7 @@ exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/globalMetadat
 
 object "GlobalMetadata" as global_metadata #dff
 global_metadata : id = "globalMetadata"
-global_metadata : data = {"vendor":{"tests":8}}
+global_metadata : data = {"vendor":{"tests":["+","+","+","+","+","+","+","+","+","+","+","+"]}}
 
 
 @enduml
@@ -4997,7 +4997,7 @@ exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/globalMetadat
 
 object "GlobalMetadata" as global_metadata #dff
 global_metadata : id = "globalMetadata"
-global_metadata : data = {"vendor":{"tests":12}}
+global_metadata : data = {"vendor":{"tests":["+","+","+","+","+","+","+","+","+","+","+","+"]}}
 
 
 @enduml
@@ -5834,7 +5834,7 @@ exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/globalMetadat
 
 object "GlobalMetadata" as global_metadata #dff
 global_metadata : id = "globalMetadata"
-global_metadata : data = {"vendor":{"tests":8}}
+global_metadata : data = {"vendor":{"tests":["+","+","+","+","+","+","+","+","+","+","+","+"]}}
 
 
 @enduml

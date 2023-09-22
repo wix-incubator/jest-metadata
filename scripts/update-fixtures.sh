@@ -34,6 +34,10 @@ if [ -z "$JEST_VERSION" ]; then
     export JEST_VERSION="$version"
     build_fixtures
   done
+
+  git clean -xdf '**/node_modules' node_modules
+  yarn
+  yarn workspace jest-metadata test -u
 else
   # If JEST_VERSION is set, run build_fixtures once
   build_fixtures
