@@ -1,7 +1,7 @@
 import fixtures from '@jest-metadata/fixtures';
 
 import {
-  AggregatedMetadataRegistry,
+  GlobalMetadataRegistry,
   Metadata,
   MetadataEventHandler,
   MetadataFactoryImpl,
@@ -10,18 +10,18 @@ import {
 
 import { SerialSyncEmitter } from '../../utils';
 
-describe('run metadata traversal:', () => {
+describe('file metadata traversal:', () => {
   const lastFixtures = Object.values(fixtures).filter(([name]) => {
     return name.startsWith('29.x.x') && name.includes('-worker-N');
   });
 
   test.each(lastFixtures)(`fixtures/%s`, (_name: string, fixture: any[]) => {
     const emitter: SetMetadataEventEmitter = new SerialSyncEmitter('set');
-    const metadataRegistry = new AggregatedMetadataRegistry();
+    const metadataRegistry = new GlobalMetadataRegistry();
     const metadataFactory = new MetadataFactoryImpl(metadataRegistry, emitter);
-    const aggregatedResultMetadata = metadataFactory.createAggregatedResultMetadata();
+    const globalMetadata = metadataFactory.createGlobalMetadata();
     const eventHandler = new MetadataEventHandler({
-      aggregatedResultMetadata,
+      globalMetadata,
       metadataRegistry,
     });
 
@@ -29,7 +29,7 @@ describe('run metadata traversal:', () => {
       eventHandler.handle(event);
     }
 
-    const lastRun = aggregatedResultMetadata.lastTestResult!;
+    const lastRun = globalMetadata.lastTestFile!;
     if (!lastRun) {
       return;
     }
@@ -67,7 +67,7 @@ describe('run metadata traversal:', () => {
     ];
 
     for (const meta of haveRun) {
-      expect(meta.run).toBe(lastRun);
+      expect(meta.file).toBe(lastRun);
     }
   });
 });

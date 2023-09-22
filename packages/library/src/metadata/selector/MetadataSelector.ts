@@ -3,7 +3,7 @@ import type {
   DescribeBlockMetadata,
   HookDefinitionMetadata,
   HookInvocationMetadata,
-  RunMetadata,
+  TestFileMetadata,
   TestEntryMetadata,
   TestFnInvocationMetadata,
   TestInvocationMetadata,
@@ -11,7 +11,7 @@ import type {
 
 export interface MetadataSelector {
   readonly value: () => BaseMetadata | undefined;
-  readonly run: RunMetadata | undefined;
+  readonly file: TestFileMetadata | undefined;
   readonly describeBlock: DescribeBlockMetadata | undefined;
   readonly testEntry: TestEntryMetadata | undefined;
   readonly hookDefinition: HookDefinitionMetadata | undefined;
@@ -25,7 +25,7 @@ export interface MetadataSelector {
   readonly testInvocation: TestInvocationMetadata | undefined;
   readonly invocationParent: TestInvocationMetadata | DescribeBlockMetadata | undefined;
   readonly invocation:
-    | RunMetadata
+    | TestFileMetadata
     | DescribeBlockMetadata
     | HookInvocationMetadata
     | TestInvocationMetadata

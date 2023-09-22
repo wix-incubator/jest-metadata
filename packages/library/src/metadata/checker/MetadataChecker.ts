@@ -1,9 +1,9 @@
 import type {
-  AggregatedResultMetadata,
+  GlobalMetadata,
   DescribeBlockMetadata,
   HookDefinitionMetadata,
   HookInvocationMetadata,
-  RunMetadata,
+  TestFileMetadata,
   TestEntryMetadata,
   TestFnInvocationMetadata,
   TestInvocationMetadata,
@@ -12,9 +12,9 @@ import type {
 import type { Metadata } from '../types';
 
 export interface MetadataChecker {
-  isAggregatedResultMetadata(metadata: Metadata | undefined): metadata is AggregatedResultMetadata;
+  isGlobalMetadata(metadata: Metadata | undefined): metadata is GlobalMetadata;
 
-  isRunMetadata(metadata: Metadata | undefined): metadata is RunMetadata;
+  isTestFileMetadata(metadata: Metadata | undefined): metadata is TestFileMetadata;
 
   isDescribeBlockMetadata(metadata: Metadata | undefined): metadata is DescribeBlockMetadata;
 
@@ -32,9 +32,9 @@ export interface MetadataChecker {
 
   asDescribeBlockMetadata(metadata: Metadata | undefined): DescribeBlockMetadata | undefined;
 
-  asRunMetadata(metadata: Metadata | undefined): RunMetadata | undefined;
+  asTestFileMetadata(metadata: Metadata | undefined): TestFileMetadata | undefined;
 
   asTestEntryMetadata(metadata: Metadata | undefined): TestEntryMetadata | undefined;
 
-  asAggregatedResultMetadata(metadata: Metadata | undefined): AggregatedResultMetadata | undefined;
+  asGlobalMetadata(metadata: Metadata | undefined): GlobalMetadata | undefined;
 }

@@ -1,11 +1,11 @@
 import type {
-  AggregatedResultMetadata,
+  GlobalMetadata,
   DescribeBlockMetadata,
   HookDefinitionMetadata,
   HookInvocationMetadata,
   Metadata,
   MetadataChecker,
-  RunMetadata,
+  TestFileMetadata,
   TestEntryMetadata,
   TestFnInvocationMetadata,
   TestInvocationMetadata,
@@ -15,9 +15,9 @@ export abstract class MetadataVisitor {
   constructor(protected readonly checker: MetadataChecker) {}
 
   visit(metadata: Metadata): void {
-    if (this.checker.isAggregatedResultMetadata(metadata)) {
-      this.visitAggregatedResult(metadata);
-    } else if (this.checker.isRunMetadata(metadata)) {
+    if (this.checker.isGlobalMetadata(metadata)) {
+      this.visitGlobal(metadata);
+    } else if (this.checker.isTestFileMetadata(metadata)) {
       this.visitRun(metadata);
     } else if (this.checker.isDescribeBlockMetadata(metadata)) {
       this.visitDescribeBlock(metadata);
@@ -36,8 +36,8 @@ export abstract class MetadataVisitor {
     }
   }
 
-  protected abstract visitAggregatedResult(metadata: AggregatedResultMetadata): void;
-  protected abstract visitRun(metadata: RunMetadata): void;
+  protected abstract visitGlobal(metadata: GlobalMetadata): void;
+  protected abstract visitRun(metadata: TestFileMetadata): void;
   protected abstract visitDescribeBlock(metadata: DescribeBlockMetadata): void;
   protected abstract visitHookDefinition(metadata: HookDefinitionMetadata): void;
   protected abstract visitTestEntry(metadata: TestEntryMetadata): void;

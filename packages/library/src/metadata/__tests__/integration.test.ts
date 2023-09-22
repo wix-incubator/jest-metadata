@@ -1,7 +1,7 @@
 import fixtures from '@jest-metadata/fixtures';
 
 import {
-  AggregatedMetadataRegistry,
+  GlobalMetadataRegistry,
   MetadataEventHandler,
   MetadataFactoryImpl,
   SetMetadataEventEmitter,
@@ -13,11 +13,11 @@ import { PlantSerializer } from '../__utils__';
 describe('metadata - integration test:', () => {
   test.each(Object.values(fixtures))(`fixtures/%s`, (_name: string, fixture: any[]) => {
     const emitter: SetMetadataEventEmitter = new SerialSyncEmitter('set');
-    const metadataRegistry = new AggregatedMetadataRegistry();
+    const metadataRegistry = new GlobalMetadataRegistry();
     const metadataFactory = new MetadataFactoryImpl(metadataRegistry, emitter);
-    const aggregatedResultMetadata = metadataFactory.createAggregatedResultMetadata();
+    const globalMetadata = metadataFactory.createGlobalMetadata();
     const eventHandler = new MetadataEventHandler({
-      aggregatedResultMetadata,
+      globalMetadata,
       metadataRegistry,
     });
 

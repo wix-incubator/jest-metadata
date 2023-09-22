@@ -17,6 +17,6 @@ export class ParentProcessRealm extends BaseRealm {
     super();
 
     registerServerId(this.ipc.id);
-    this.associate.aggregatedResult(this.aggregatedResultMetadata);
+    this.associate.globalMetadata(this.globalMetadata);
   }
 }

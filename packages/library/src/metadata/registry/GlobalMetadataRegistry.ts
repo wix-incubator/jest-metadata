@@ -1,12 +1,12 @@
 import type { AggregatedIdentifier } from '../ids';
 import type { Metadata } from '../types';
 
-import type { MetadataRegistry } from './MetadataRegistry';
+import type { FileMetadataRegistry } from './FileMetadataRegistry';
 import { ScopedMetadataRegistry } from './ScopedMetadataRegistry';
 
-export class AggregatedMetadataRegistry implements MetadataRegistry<AggregatedIdentifier> {
+export class GlobalMetadataRegistry implements FileMetadataRegistry<AggregatedIdentifier> {
   private readonly scopes: Record<string, ScopedMetadataRegistry> = {};
-  private readonly root = new ScopedMetadataRegistry('aggregatedResult');
+  private readonly root = new ScopedMetadataRegistry('globalMetadata');
 
   public get(scopedId: AggregatedIdentifier): Metadata {
     const { testFilePath, identifier } = scopedId;

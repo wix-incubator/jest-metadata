@@ -1,3 +1,3 @@
+export * from './FileMetadataRegistry';
+export * from './GlobalMetadataRegistry';
 export * from './ScopedMetadataRegistry';
-export * from './MetadataRegistry';
-export * from './AggregatedMetadataRegistry';

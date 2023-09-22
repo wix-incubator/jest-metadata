@@ -4,7 +4,7 @@ import * as symbols from '../symbols';
 import { BaseMetadata } from './BaseMetadata';
 import type { DescribeBlockMetadata } from './DescribeBlockMetadata';
 import type { MetadataContext } from './MetadataContext';
-import type { RunMetadata } from './RunMetadata';
+import type { TestFileMetadata } from './TestFileMetadata';
 import type { TestInvocationMetadata } from './TestInvocationMetadata';
 
 export class TestEntryMetadata extends BaseMetadata {
@@ -22,8 +22,8 @@ export class TestEntryMetadata extends BaseMetadata {
     return this.invocations[this.invocations.length - 1];
   }
 
-  get run(): RunMetadata {
-    return this.describeBlock.run;
+  get file(): TestFileMetadata {
+    return this.describeBlock.file;
   }
 
   *ancestors(): IterableIterator<DescribeBlockMetadata> {
@@ -43,20 +43,20 @@ export class TestEntryMetadata extends BaseMetadata {
     this.invocations.push(invocation);
     this.describeBlock[symbols.pushExecution](invocation);
 
-    const run = this.describeBlock.run;
-    run[symbols.currentMetadata] = invocation;
-    run[symbols.lastTestEntry] = this;
+    const file = this.describeBlock.file;
+    file[symbols.currentMetadata] = invocation;
+    file[symbols.lastTestEntry] = this;
 
     return invocation;
   }
 
   [symbols.finish](): void {
-    const run = this.describeBlock.run;
+    const file = this.describeBlock.file;
     const lastInvocation = this.invocations[this.invocations.length - 1];
     if (!lastInvocation) {
       throw new Error('Cannot finish test entry without any invocations');
     }
 
-    run[symbols.currentMetadata] = this.describeBlock;
+    file[symbols.currentMetadata] = this.describeBlock;
   }
 }

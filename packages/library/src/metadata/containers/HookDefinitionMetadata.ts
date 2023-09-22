@@ -13,7 +13,7 @@ export class HookDefinitionMetadata extends BaseMetadata {
 
   constructor(
     context: MetadataContext,
-    public readonly owner: DescribeBlockMetadata,
+    public readonly describeBlock: DescribeBlockMetadata,
     id: AggregatedIdentifier,
     public readonly hookType: HookType,
   ) {
@@ -30,8 +30,8 @@ export class HookDefinitionMetadata extends BaseMetadata {
   }
 
   [symbols.start](): HookInvocationMetadata {
-    const run = this.owner.run;
-    const parent = run.current.invocationParent;
+    const file = this.describeBlock.file;
+    const parent = file.current.invocationParent;
     if (!parent) {
       throw new Error('Cannot start hook invocation outside of test or describe block');
     }
@@ -40,20 +40,20 @@ export class HookDefinitionMetadata extends BaseMetadata {
     const invocation = this[symbols.context].factory.createHookInvocationMetadata(this, parent, id);
 
     this.invocations.push(invocation);
-    run[symbols.currentMetadata] = invocation;
+    file[symbols.currentMetadata] = invocation;
 
     const checker = this[symbols.context].checker;
     switch (this.hookType) {
       case 'beforeEach': {
         checker
           .asTestInvocationMetadata(parent)!
-          .before.push(invocation as HookInvocationMetadata<TestInvocationMetadata>);
+          .beforeEach.push(invocation as HookInvocationMetadata<TestInvocationMetadata>);
         break;
       }
       case 'afterEach': {
         checker
           .asTestInvocationMetadata(parent)!
-          .after.push(invocation as HookInvocationMetadata<TestInvocationMetadata>);
+          .afterEach.push(invocation as HookInvocationMetadata<TestInvocationMetadata>);
         break;
       }
       case 'beforeAll':
@@ -69,12 +69,12 @@ export class HookDefinitionMetadata extends BaseMetadata {
   }
 
   [symbols.finish](): void {
-    const run = this.owner.run;
+    const file = this.describeBlock.file;
     const lastInvocation = this.invocations[this.invocations.length - 1];
     if (!lastInvocation) {
       throw new Error('Cannot finish hook invocation without starting it');
     }
 
-    run[symbols.currentMetadata] = lastInvocation.parent;
+    file[symbols.currentMetadata] = lastInvocation.parent;
   }
 }

@@ -1,9 +1,9 @@
 import type {
-  AggregatedResultMetadata,
+  GlobalMetadata,
   DescribeBlockMetadata,
   HookDefinitionMetadata,
   HookInvocationMetadata,
-  RunMetadata,
+  TestFileMetadata,
   TestEntryMetadata,
   TestFnInvocationMetadata,
   TestInvocationMetadata,
@@ -14,25 +14,25 @@ import type { MetadataChecker } from './MetadataChecker';
 type Constructor<T> = new (...args: any[]) => T;
 
 export type InstanceOfMetadataCheckerConfig = {
-  AggregatedResultMetadata: Constructor<AggregatedResultMetadata>;
+  GlobalMetadata: Constructor<GlobalMetadata>;
   DescribeBlockMetadata: Constructor<DescribeBlockMetadata>;
   HookDefinitionMetadata: Constructor<HookDefinitionMetadata>;
   TestEntryMetadata: Constructor<TestEntryMetadata>;
   HookInvocationMetadata: Constructor<HookInvocationMetadata>;
   TestInvocationMetadata: Constructor<TestInvocationMetadata>;
   TestFnInvocationMetadata: Constructor<TestFnInvocationMetadata>;
-  RunMetadata: Constructor<RunMetadata>;
+  TestFileMetadata: Constructor<TestFileMetadata>;
 };
 
 export class InstanceOfMetadataChecker implements MetadataChecker {
   constructor(private readonly config: InstanceOfMetadataCheckerConfig) {}
 
-  isAggregatedResultMetadata(metadata: Metadata | undefined): metadata is AggregatedResultMetadata {
-    return metadata instanceof this.config.AggregatedResultMetadata;
+  isGlobalMetadata(metadata: Metadata | undefined): metadata is GlobalMetadata {
+    return metadata instanceof this.config.GlobalMetadata;
   }
 
-  isRunMetadata(metadata: Metadata | undefined): metadata is RunMetadata {
-    return metadata instanceof this.config.RunMetadata;
+  isTestFileMetadata(metadata: Metadata | undefined): metadata is TestFileMetadata {
+    return metadata instanceof this.config.TestFileMetadata;
   }
 
   isDescribeBlockMetadata(metadata: Metadata | undefined): metadata is DescribeBlockMetadata {
@@ -69,9 +69,9 @@ export class InstanceOfMetadataChecker implements MetadataChecker {
     return metadata as DescribeBlockMetadata;
   }
 
-  asRunMetadata(metadata: Metadata | undefined): RunMetadata {
-    this._assert(metadata, 'RunMetadata');
-    return metadata as RunMetadata;
+  asTestFileMetadata(metadata: Metadata | undefined): TestFileMetadata {
+    this._assert(metadata, 'TestFileMetadata');
+    return metadata as TestFileMetadata;
   }
 
   asTestEntryMetadata(metadata: Metadata | undefined): TestEntryMetadata {
@@ -79,9 +79,9 @@ export class InstanceOfMetadataChecker implements MetadataChecker {
     return metadata as TestEntryMetadata;
   }
 
-  asAggregatedResultMetadata(metadata: Metadata | undefined): AggregatedResultMetadata {
-    this._assert(metadata, 'AggregatedResultMetadata');
-    return metadata as AggregatedResultMetadata;
+  asGlobalMetadata(metadata: Metadata | undefined): GlobalMetadata {
+    this._assert(metadata, 'GlobalMetadata');
+    return metadata as GlobalMetadata;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,16 +1,16 @@
 import type { AggregatedIdentifier } from '../ids';
 import * as symbols from '../symbols';
 
-import type { AggregatedResultMetadata } from './AggregatedResultMetadata';
 import { BaseMetadata } from './BaseMetadata';
 import type { DescribeBlockMetadata } from './DescribeBlockMetadata';
+import type { GlobalMetadata } from './GlobalMetadata';
 import type { HookInvocationMetadata } from './HookInvocationMetadata';
 import type { MetadataContext } from './MetadataContext';
 import type { TestEntryMetadata } from './TestEntryMetadata';
 import type { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
 import type { TestInvocationMetadata } from './TestInvocationMetadata';
 
-export class RunMetadata extends BaseMetadata {
+export class TestFileMetadata extends BaseMetadata {
   [symbols.rootDescribeBlock]: DescribeBlockMetadata | undefined;
   [symbols.lastTestEntry]: TestEntryMetadata | undefined;
   [symbols.currentMetadata]: BaseMetadata = this;
@@ -22,7 +22,7 @@ export class RunMetadata extends BaseMetadata {
   constructor(
     context: MetadataContext,
     id: AggregatedIdentifier,
-    public readonly aggregatedResult: AggregatedResultMetadata,
+    public readonly globalMetadata: GlobalMetadata,
   ) {
     super(context, id);
   }

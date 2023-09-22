@@ -1,10 +1,6 @@
 import type { TestCaseResult, TestResult } from '@jest/reporters';
 import { JestMetadataError } from '../errors';
-import type {
-  AggregatedResultMetadata,
-  MetadataEventEmitter,
-  TestEntryMetadata,
-} from '../metadata';
+import type { GlobalMetadata, MetadataEventEmitter, TestEntryMetadata } from '../metadata';
 import { memoizeLast, Rotator } from '../utils';
 
 export class FallbackAPI {
@@ -12,7 +8,7 @@ export class FallbackAPI {
   private _cache = new Map<string, Rotator<TestEntryInfo>>();
 
   constructor(
-    private readonly aggregatedMetadata: AggregatedResultMetadata,
+    private readonly globalMetadata: GlobalMetadata,
     private readonly eventEmitter: MetadataEventEmitter,
   ) {
     this.reportTestFile = memoizeLast(this.reportTestFile.bind(this));
@@ -31,16 +27,16 @@ export class FallbackAPI {
   }
 
   reportTestCase(testFilePath: string, testCaseResult: TestCaseResult) {
-    const run = this.aggregatedMetadata.getRunMetadata(testFilePath);
+    const file = this.globalMetadata.getTestFileMetadata(testFilePath);
     if (this._fallbackMode === undefined) {
-      this._fallbackMode = !run.rootDescribeBlock;
+      this._fallbackMode = !file.rootDescribeBlock;
     }
 
     if (!this._fallbackMode) {
       return;
     }
 
-    if (!run.rootDescribeBlock) {
+    if (!file.rootDescribeBlock) {
       this.eventEmitter.emit({
         type: 'start_describe_definition',
         testFilePath,
@@ -48,7 +44,7 @@ export class FallbackAPI {
       });
     }
 
-    const rootDescribeBlock = run.rootDescribeBlock!;
+    const rootDescribeBlock = file.rootDescribeBlock!;
     const invocations = testCaseResult.invocations ?? 0;
     const nameIdentifier = [
       testFilePath,
@@ -65,7 +61,7 @@ export class FallbackAPI {
         testId,
       });
 
-      const lastChild = run.lastTestEntry!;
+      const lastChild = file.lastTestEntry!;
 
       let rotator: Rotator<TestEntryInfo>;
       if (this._cache.has(nameIdentifier)) {
@@ -115,8 +111,8 @@ export class FallbackAPI {
   reportTestFileResult(testFileResult: TestResult): TestEntryMetadata[] {
     const result: TestEntryMetadata[] = [];
     const { testFilePath, testResults } = testFileResult;
-    const run = this.aggregatedMetadata.getRunMetadata(testFilePath);
-    const rootDescribeBlock = run.rootDescribeBlock;
+    const file = this.globalMetadata.getTestFileMetadata(testFilePath);
+    const rootDescribeBlock = file.rootDescribeBlock;
 
     if (!rootDescribeBlock) {
       return result;
@@ -155,7 +151,7 @@ export class FallbackAPI {
         });
       }
 
-      result.push(info ? info.testEntryMetadata : run.lastTestEntry!);
+      result.push(info ? info.testEntryMetadata : file.lastTestEntry!);
     }
 
     return result;

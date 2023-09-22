@@ -43,15 +43,15 @@ export class JestMetadataReporter implements Reporter {
   onTestFileStart(test: Test): void {
     this.#log.debug.begin({ tid: ['reporter', test.path] }, test.path);
     realm.fallbackAPI.reportTestFile(test.path);
-    const runMetadata = realm.aggregatedResultMetadata.getRunMetadata(test.path);
-    realm.associate.filePath(test.path, runMetadata);
+    const testFileMetadata = realm.globalMetadata.getTestFileMetadata(test.path);
+    realm.associate.filePath(test.path, testFileMetadata);
   }
 
   /**
    * NEW! Supported only since Jest 29.6.0
    * @see {import('@jest/types').Circus.TestCaseStartInfo}
    */
-  onTestCaseStart(test: Test, _testCaseStartInfo: unknown): void {
+  onTestCaseStart(test: Test, _testCaseStartInfo: /* for type safety */ unknown): void {
     this.#log.debug({ tid: ['reporter', test.path] }, 'onTestCaseStart');
     // We cannot use the fallback API here because `testCaseStartInfo`
     // does not contain information, whether this is a retry or not.

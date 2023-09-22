@@ -24,7 +24,7 @@ class MockReporter extends JestMetadataReporter {
     const onEvent = (event) => {
       const id = event.testFilePath
         ? path.basename(event.testFilePath, '.js') + '.json'
-        : 'aggregatedResult.json';
+        : 'globalMetadata.json';
 
       this._events[id] = this._events[id] || [];
       this._events[id].push({

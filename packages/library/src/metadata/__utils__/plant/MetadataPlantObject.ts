@@ -4,8 +4,8 @@ import type { Metadata } from '../../index';
 import { PlantObject } from './PlantObject';
 
 const COLORS: Record<string, string> = {
-  AggregatedResultMetadata: '#dff',
-  RunMetadata: '#def',
+  GlobalMetadata: '#dff',
+  TestFileMetadata: '#def',
   DescribeBlockMetadata: '#ded',
   HookDefinitionMetadata: '#fdd',
   HookInvocationMetadata: '#fcb',
