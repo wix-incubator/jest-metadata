@@ -53,7 +53,7 @@ export class PlantMetadataVisitor extends MetadataVisitor {
     // this._registerLink(metadata, 'parent');
   }
 
-  protected visitRun(metadata: TestFileMetadata): void {
+  protected visitTestFile(metadata: TestFileMetadata): void {
     this._registerLink(metadata, 'rootDescribeBlock');
   }
 

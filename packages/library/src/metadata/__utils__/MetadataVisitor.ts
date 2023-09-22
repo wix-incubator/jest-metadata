@@ -18,7 +18,7 @@ export abstract class MetadataVisitor {
     if (this.checker.isGlobalMetadata(metadata)) {
       this.visitGlobal(metadata);
     } else if (this.checker.isTestFileMetadata(metadata)) {
-      this.visitRun(metadata);
+      this.visitTestFile(metadata);
     } else if (this.checker.isDescribeBlockMetadata(metadata)) {
       this.visitDescribeBlock(metadata);
     } else if (this.checker.isHookDefinitionMetadata(metadata)) {
@@ -37,7 +37,7 @@ export abstract class MetadataVisitor {
   }
 
   protected abstract visitGlobal(metadata: GlobalMetadata): void;
-  protected abstract visitRun(metadata: TestFileMetadata): void;
+  protected abstract visitTestFile(metadata: TestFileMetadata): void;
   protected abstract visitDescribeBlock(metadata: DescribeBlockMetadata): void;
   protected abstract visitHookDefinition(metadata: HookDefinitionMetadata): void;
   protected abstract visitTestEntry(metadata: TestEntryMetadata): void;

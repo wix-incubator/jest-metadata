@@ -129,13 +129,13 @@
     "jest-environment-node": ">=27.2.5"
   },
   "peerDependenciesMeta": {
-    "@jest/types": {
-      "optional": true
-    },
     "@jest/environment": {
       "optional": true
     },
     "@jest/reporters": {
+      "optional": true
+    },
+    "@jest/types": {
       "optional": true
     },
     "jest": {

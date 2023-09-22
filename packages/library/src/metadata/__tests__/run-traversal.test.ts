@@ -29,8 +29,8 @@ describe('file metadata traversal:', () => {
       eventHandler.handle(event);
     }
 
-    const lastRun = globalMetadata.lastTestFile!;
-    if (!lastRun) {
+    const lastFile = globalMetadata.lastTestFile!;
+    if (!lastFile) {
       return;
     }
 
@@ -41,16 +41,16 @@ describe('file metadata traversal:', () => {
 
     const toChain = (x: Iterable<Metadata>) => [...x].map(toId).join(' → ');
 
-    expect(toChain([...lastRun.allDescribeBlocks()])).toMatchSnapshot('allDescribeBlocks');
-    expect(toChain([...lastRun.allTestEntries()])).toMatchSnapshot('allTestEntries');
-    expect(toChain([...lastRun.allTestInvocations()])).toMatchSnapshot('allTestInvocations');
-    expect(toChain([...lastRun.allInvocations()])).toMatchSnapshot('allInvocations');
+    expect(toChain([...lastFile.allDescribeBlocks()])).toMatchSnapshot('allDescribeBlocks');
+    expect(toChain([...lastFile.allTestEntries()])).toMatchSnapshot('allTestEntries');
+    expect(toChain([...lastFile.allTestInvocations()])).toMatchSnapshot('allTestInvocations');
+    expect(toChain([...lastFile.allInvocations()])).toMatchSnapshot('allInvocations');
 
-    for (const test of lastRun.allTestEntries()) {
+    for (const test of lastFile.allTestEntries()) {
       expect(toChain(test.allAncestors())).toMatchSnapshot(`allAncestors ${toId(test)}`);
     }
 
-    for (const invocation of lastRun.allTestInvocations()) {
+    for (const invocation of lastFile.allTestInvocations()) {
       expect(toChain(invocation.allAncestors())).toMatchSnapshot(
         `allAncestors ${toId(invocation)}`,
       );
@@ -61,13 +61,13 @@ describe('file metadata traversal:', () => {
     }
 
     const haveRun = [
-      ...lastRun.allTestEntries(),
-      ...lastRun.allTestInvocations(),
-      ...lastRun.allDescribeBlocks(),
+      ...lastFile.allTestEntries(),
+      ...lastFile.allTestInvocations(),
+      ...lastFile.allDescribeBlocks(),
     ];
 
     for (const meta of haveRun) {
-      expect(meta.file).toBe(lastRun);
+      expect(meta.file).toBe(lastFile);
     }
   });
 });

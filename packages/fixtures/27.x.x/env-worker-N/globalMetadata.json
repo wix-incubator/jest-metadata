@@ -1,0 +1,98 @@
+[
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 1,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 1,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 2,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 2,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 3,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 4,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 5,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 6,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 7,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 3,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 8,
+    "operation": "set"
+  },
+  {
+    "type": "set_metadata",
+    "testFilePath": "",
+    "targetId": "globalMetadata",
+    "path": "vendor.tests",
+    "value": 4,
+    "operation": "set"
+  }
+]

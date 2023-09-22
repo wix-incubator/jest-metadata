@@ -36,12 +36,6 @@ class MockReporter extends JestMetadataReporter {
     debugUtils.events.on('*', onEvent);
   }
 
-  async onRunStart(results, options) {
-    await super.onRunStart(results, options);
-
-    state.set('vendor.runStartedAt', '2023-01-01T00:00:00.000Z');
-  }
-
   async onRunComplete(testContexts, results) {
     await super.onRunComplete(testContexts, results);
 

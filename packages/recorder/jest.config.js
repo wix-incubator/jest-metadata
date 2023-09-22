@@ -50,12 +50,11 @@ module.exports = {
     'default',
     '<rootDir>/mockReporter'
   ],
-
+  setupFiles: [
+    '<rootDir>/setup.js',
+  ],
   testMatch: [
     '<rootDir>/__tests__/*.js',
-    PRESET.startsWith('no-env')
-      ? '<rootDir>/__tests__/no-env/*.js'
-      : '<rootDir>/__tests__/env-only/*.js',
   ],
 
   ...presets[PRESET],

@@ -6,7 +6,7 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "jest": "latest",
-    "jest-metadata": "^1.0.0-beta.18"
+    "jest-metadata": "workspace:*"
   },
   "scripts": {
     "bench:dev": "npm run build --workspace=jest-metadata && npm run bench",

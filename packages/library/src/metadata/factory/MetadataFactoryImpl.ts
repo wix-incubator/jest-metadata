@@ -79,8 +79,8 @@ export class MetadataFactoryImpl implements MetadataFactory {
   }
 
   createTestFileMetadata(testFilePath: string, globalMetadata: GlobalMetadata) {
-    const runId = new AggregatedIdentifier(testFilePath, '');
-    return this._register(new TestFileMetadata(this.#context, runId, globalMetadata));
+    const testFileId = new AggregatedIdentifier(testFilePath, '');
+    return this._register(new TestFileMetadata(this.#context, testFileId, globalMetadata));
   }
 
   createTestEntryMetadata(describeBlock: DescribeBlockMetadata, id: AggregatedIdentifier) {
