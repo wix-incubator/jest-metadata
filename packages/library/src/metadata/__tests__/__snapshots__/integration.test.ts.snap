@@ -308,6 +308,18 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {"vendor":{"tests":12}}
+
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/hook-afterAll-fail 1`] = `
 "@startuml
 
@@ -1148,6 +1160,18 @@ tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : beforeEa
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_5_0 : afterAll[0]
 tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {"vendor":{"tests":4}}
+
 
 @enduml
 "
@@ -2646,6 +2670,18 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {"vendor":{"tests":12}}
+
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/hook-afterAll-fail 1`] = `
 "@startuml
 
@@ -3466,6 +3502,18 @@ tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : beforeEa
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_5_0 : afterAll[0]
 tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {"vendor":{"tests":8}}
+
 
 @enduml
 "
@@ -4944,6 +4992,18 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
+exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {"vendor":{"tests":12}}
+
+
+@enduml
+"
+`;
+
 exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/hook-afterAll-fail 1`] = `
 "@startuml
 
@@ -5764,6 +5824,18 @@ tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_0_5 : beforeEa
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_test_4_1_fn : fn
 tests_duplicate_name_js_test_4_1 --> tests_duplicate_name_js_hook_5_0 : afterAll[0]
 tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {"vendor":{"tests":8}}
+
 
 @enduml
 "

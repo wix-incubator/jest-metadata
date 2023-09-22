@@ -27,10 +27,8 @@ jobs:
 
       - run: npm -g install yarn
 
-      - run: yarn
-
-      - name: Test library
-        run: npm test --workspace=jest-metadata
+      - name: Install dependencies
+        run: yarn
 
       - name: Update fixtures
         run: npm run update-fixtures
@@ -60,7 +58,8 @@ jobs:
 
       - run: npm -g install yarn
 
-      - run: yarn
+      - name: Install dependencies
+        run: yarn
 
       - name: Lint
         run: npm run lint:ci
