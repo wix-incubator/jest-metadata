@@ -32,6 +32,8 @@ jobs:
 
       - name: Update fixtures
         run: npm run update-fixtures
+        env:
+          JEST_VERSION: ${{ matrix.jest }}
 
       - name: Assert no Git changes
         run: git diff --exit-code packages/fixtures
