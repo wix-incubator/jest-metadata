@@ -16,9 +16,9 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - uses: bahmutov/npm-install@v1
-        with:
-          useLockFile: false
+      - run: npm -g install yarn
+
+      - run: yarn
 
       - name: Publish Package
         run: |
