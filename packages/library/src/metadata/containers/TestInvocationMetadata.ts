@@ -6,6 +6,7 @@ import { BaseMetadata } from './BaseMetadata';
 import type { DescribeBlockMetadata } from './DescribeBlockMetadata';
 import type { HookInvocationMetadata } from './HookInvocationMetadata';
 import type { MetadataContext } from './MetadataContext';
+import type { RunMetadata } from './RunMetadata';
 import type { TestEntryMetadata } from './TestEntryMetadata';
 import type { TestFileMetadata } from './TestFileMetadata';
 import type { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
