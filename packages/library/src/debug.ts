@@ -10,6 +10,4 @@ export function isFallback() {
   return realm.fallbackAPI.enabled;
 }
 
-export const setEmitter = realm.setEmitter;
-
 export const events = realm.events;

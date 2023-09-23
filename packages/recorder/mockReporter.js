@@ -24,7 +24,7 @@ class MockReporter extends JestMetadataReporter {
     const onEvent = (event) => {
       const id = event.testFilePath
         ? path.basename(event.testFilePath, '.js') + '.json'
-        : 'aggregatedResult.json';
+        : 'globalMetadata.json';
 
       this._events[id] = this._events[id] || [];
       this._events[id].push({
@@ -34,12 +34,6 @@ class MockReporter extends JestMetadataReporter {
     };
 
     debugUtils.events.on('*', onEvent);
-  }
-
-  async onRunStart(results, options) {
-    await super.onRunStart(results, options);
-
-    state.set('vendor.runStartedAt', '2023-01-01T00:00:00.000Z');
   }
 
   async onRunComplete(testContexts, results) {

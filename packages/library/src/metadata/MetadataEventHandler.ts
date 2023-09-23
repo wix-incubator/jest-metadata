@@ -1,7 +1,7 @@
 import { JestMetadataError } from '../errors';
 
 import type {
-  AggregatedResultMetadata,
+  GlobalMetadata,
   DescribeBlockMetadata,
   HookDefinitionMetadata,
   TestEntryMetadata,
@@ -36,12 +36,12 @@ import type {
 } from './events';
 
 import { AggregatedIdentifier } from './ids';
-import type { MetadataRegistry } from './registry';
+import type { FileMetadataRegistry } from './registry';
 import * as internal from './symbols';
 
 export type MetadataEventHandlerConfig = {
-  readonly aggregatedResultMetadata: AggregatedResultMetadata;
-  readonly metadataRegistry: MetadataRegistry<AggregatedIdentifier>;
+  readonly globalMetadata: GlobalMetadata;
+  readonly metadataRegistry: FileMetadataRegistry<AggregatedIdentifier>;
 };
 
 type MetadataEventHandlerCallback<K extends MetadataEventType> = <
@@ -55,8 +55,8 @@ type MetadataEventHandlerMap = {
 };
 
 export class MetadataEventHandler {
-  private readonly _metadata: AggregatedResultMetadata;
-  private readonly _metadataRegistry: MetadataRegistry<AggregatedIdentifier>;
+  private readonly _metadata: GlobalMetadata;
+  private readonly _metadataRegistry: FileMetadataRegistry<AggregatedIdentifier>;
   private readonly _handlers: MetadataEventHandlerMap = {
     setup: (_event: SetupEvent) => {
       /* no-op */
@@ -67,16 +67,16 @@ export class MetadataEventHandler {
     },
 
     start_describe_definition: (event: StartDescribeDefinitionEvent) => {
-      const run = this._metadata.getRunMetadata(event.testFilePath);
+      const file = this._metadata.getTestFileMetadata(event.testFilePath);
       const describeId = new AggregatedIdentifier(event.testFilePath, event.describeId);
-      const currentDescribeBlock = run.current.describeBlock;
-      (currentDescribeBlock ?? run)[internal.addDescribeBlock](describeId);
+      const currentDescribeBlock = file.current.describeBlock;
+      (currentDescribeBlock ?? file)[internal.addDescribeBlock](describeId);
     },
 
     add_hook: (event: AddHookEvent) => {
-      const run = this._metadata.getRunMetadata(event.testFilePath);
+      const file = this._metadata.getTestFileMetadata(event.testFilePath);
       const hookId = new AggregatedIdentifier(event.testFilePath, event.hookId);
-      const currentDescribeBlock = run.current.describeBlock;
+      const currentDescribeBlock = file.current.describeBlock;
       if (!currentDescribeBlock) {
         throw new JestMetadataError('No current describe block');
       }
@@ -84,9 +84,9 @@ export class MetadataEventHandler {
     },
 
     add_test: (event: AddTestEvent) => {
-      const run = this._metadata.getRunMetadata(event.testFilePath);
+      const file = this._metadata.getTestFileMetadata(event.testFilePath);
       const testId = new AggregatedIdentifier(event.testFilePath, event.testId);
-      const currentDescribeBlock = run.current.describeBlock;
+      const currentDescribeBlock = file.current.describeBlock;
       if (!currentDescribeBlock) {
         throw new JestMetadataError('No current describe block');
       }
@@ -101,13 +101,13 @@ export class MetadataEventHandler {
     },
 
     run_start: (event: RunStartEvent) => {
-      const run = this._metadata.getRunMetadata(event.testFilePath);
-      run[internal.start]();
+      const file = this._metadata.getTestFileMetadata(event.testFilePath);
+      file[internal.start]();
     },
 
     run_finish: (event: RunFinishEvent) => {
-      const run = this._metadata.getRunMetadata(event.testFilePath);
-      run[internal.finish]();
+      const file = this._metadata.getTestFileMetadata(event.testFilePath);
+      file[internal.finish]();
     },
 
     run_describe_start: (event: RunDescribeStartEvent) => {
@@ -235,7 +235,7 @@ export class MetadataEventHandler {
   };
 
   constructor(protected readonly config: MetadataEventHandlerConfig) {
-    this._metadata = config.aggregatedResultMetadata;
+    this._metadata = config.globalMetadata;
     this._metadataRegistry = config.metadataRegistry;
   }
 

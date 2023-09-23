@@ -4,7 +4,7 @@ import type {
   DescribeBlockMetadata,
   HookDefinitionMetadata,
   HookInvocationMetadata,
-  RunMetadata,
+  TestFileMetadata,
   TestEntryMetadata,
   TestFnInvocationMetadata,
   TestInvocationMetadata,
@@ -17,35 +17,35 @@ export class MetadataSelectorImpl implements MetadataSelector {
     readonly value: () => BaseMetadata | undefined,
   ) {}
 
-  get run(): RunMetadata | undefined {
+  get file(): TestFileMetadata | undefined {
     const metadata = this.value();
 
-    if (this.check.isRunMetadata(metadata)) {
+    if (this.check.isTestFileMetadata(metadata)) {
       return metadata;
     }
 
     if (this.check.isDescribeBlockMetadata(metadata)) {
-      return metadata.run;
+      return metadata.file;
     }
 
     if (this.check.isTestEntryMetadata(metadata)) {
-      return metadata.describeBlock.run;
+      return metadata.describeBlock.file;
     }
 
     if (this.check.isHookDefinitionMetadata(metadata)) {
-      return metadata.owner.run;
+      return metadata.describeBlock.file;
     }
 
     if (this.check.isHookInvocationMetadata(metadata)) {
-      return metadata.definition.owner.run;
+      return metadata.definition.describeBlock.file;
     }
 
     if (this.check.isTestInvocationMetadata(metadata)) {
-      return metadata.entry.describeBlock.run;
+      return metadata.definition.describeBlock.file;
     }
 
     if (this.check.isTestFnInvocationMetadata(metadata)) {
-      return metadata.test.entry.describeBlock.run;
+      return metadata.test.definition.describeBlock.file;
     }
 
     return;
@@ -59,11 +59,11 @@ export class MetadataSelectorImpl implements MetadataSelector {
     }
 
     if (this.check.isHookDefinitionMetadata(metadata)) {
-      return metadata.owner;
+      return metadata.describeBlock;
     }
 
     if (this.check.isHookInvocationMetadata(metadata)) {
-      return metadata.definition.owner;
+      return metadata.definition.describeBlock;
     }
 
     if (this.check.isTestEntryMetadata(metadata)) {
@@ -71,11 +71,11 @@ export class MetadataSelectorImpl implements MetadataSelector {
     }
 
     if (this.check.isTestInvocationMetadata(metadata)) {
-      return metadata.entry.describeBlock;
+      return metadata.definition.describeBlock;
     }
 
     if (this.check.isTestFnInvocationMetadata(metadata)) {
-      return metadata.test.entry.describeBlock;
+      return metadata.test.definition.describeBlock;
     }
 
     return;
@@ -89,18 +89,18 @@ export class MetadataSelectorImpl implements MetadataSelector {
     }
 
     if (this.check.isTestInvocationMetadata(metadata)) {
-      return metadata.entry;
+      return metadata.definition;
     }
 
     if (
       this.check.isHookInvocationMetadata(metadata) &&
-      this.check.isTestEntryMetadata(metadata.definition.owner)
+      this.check.isTestEntryMetadata(metadata.definition.describeBlock)
     ) {
-      return metadata.definition.owner;
+      return metadata.definition.describeBlock;
     }
 
     if (this.check.isTestFnInvocationMetadata(metadata)) {
-      return metadata.test.entry;
+      return metadata.test.definition;
     }
 
     return;
@@ -188,7 +188,7 @@ export class MetadataSelectorImpl implements MetadataSelector {
   }
 
   get invocation():
-    | RunMetadata
+    | TestFileMetadata
     | DescribeBlockMetadata
     | HookInvocationMetadata
     | TestInvocationMetadata
@@ -196,7 +196,7 @@ export class MetadataSelectorImpl implements MetadataSelector {
     | undefined {
     const metadata = this.value();
 
-    if (this.check.isRunMetadata(metadata)) {
+    if (this.check.isTestFileMetadata(metadata)) {
       return metadata;
     }
 

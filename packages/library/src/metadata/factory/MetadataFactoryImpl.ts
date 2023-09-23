@@ -1,11 +1,11 @@
 import { InstanceOfMetadataChecker } from '../checker';
 import {
-  AggregatedResultMetadata,
+  GlobalMetadata,
   DescribeBlockMetadata,
   HookDefinitionMetadata,
   HookInvocationMetadata,
   BaseMetadata,
-  RunMetadata,
+  TestFileMetadata,
   TestEntryMetadata,
   TestFnInvocationMetadata,
   TestInvocationMetadata,
@@ -13,7 +13,7 @@ import {
 
 import type { MetadataContext } from '../containers';
 import { AggregatedIdentifier } from '../ids';
-import type { MetadataRegistry } from '../registry';
+import type { FileMetadataRegistry } from '../registry';
 import { MetadataSelectorImpl } from '../selector';
 import * as symbols from '../symbols';
 import type { HookType, SetMetadataEventEmitter } from '../types';
@@ -22,11 +22,11 @@ import type { MetadataFactory } from './MetadataFactory';
 
 export class MetadataFactoryImpl implements MetadataFactory {
   readonly #checker = new InstanceOfMetadataChecker({
-    AggregatedResultMetadata,
+    GlobalMetadata: GlobalMetadata,
     DescribeBlockMetadata,
     HookDefinitionMetadata,
     HookInvocationMetadata,
-    RunMetadata,
+    TestFileMetadata,
     TestEntryMetadata,
     TestFnInvocationMetadata,
     TestInvocationMetadata,
@@ -35,7 +35,7 @@ export class MetadataFactoryImpl implements MetadataFactory {
   readonly #context: MetadataContext;
 
   constructor(
-    private readonly metadataRegistry: MetadataRegistry<unknown>,
+    private readonly metadataRegistry: FileMetadataRegistry<unknown>,
     private readonly emitter: SetMetadataEventEmitter,
   ) {
     this.#context = {
@@ -50,13 +50,13 @@ export class MetadataFactoryImpl implements MetadataFactory {
     return this.#checker;
   }
 
-  createAggregatedResultMetadata() {
-    const id = AggregatedIdentifier.global('aggregatedResult');
-    return this._register(new AggregatedResultMetadata(this.#context, id));
+  createGlobalMetadata() {
+    const id = AggregatedIdentifier.global('globalMetadata');
+    return this._register(new GlobalMetadata(this.#context, id));
   }
 
   createDescribeBlockMetadata(
-    parent: RunMetadata | DescribeBlockMetadata,
+    parent: TestFileMetadata | DescribeBlockMetadata,
     id: AggregatedIdentifier,
   ) {
     return this._register(new DescribeBlockMetadata(this.#context, parent, id));
@@ -78,9 +78,9 @@ export class MetadataFactoryImpl implements MetadataFactory {
     return this._register(new HookInvocationMetadata(this.#context, hookDefinition, parent, id));
   }
 
-  createRunMetadata(testFilePath: string, aggregatedResult: AggregatedResultMetadata) {
-    const runId = new AggregatedIdentifier(testFilePath, '');
-    return this._register(new RunMetadata(this.#context, runId, aggregatedResult));
+  createTestFileMetadata(testFilePath: string, globalMetadata: GlobalMetadata) {
+    const testFileId = new AggregatedIdentifier(testFilePath, '');
+    return this._register(new TestFileMetadata(this.#context, testFileId, globalMetadata));
   }
 
   createTestEntryMetadata(describeBlock: DescribeBlockMetadata, id: AggregatedIdentifier) {

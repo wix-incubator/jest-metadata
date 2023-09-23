@@ -1,10 +1,10 @@
 import type {
-  AggregatedResultMetadata,
+  GlobalMetadata,
   DescribeBlockMetadata,
   HookDefinitionMetadata,
   HookInvocationMetadata,
   Metadata,
-  RunMetadata,
+  TestFileMetadata,
   TestEntryMetadata,
   TestFnInvocationMetadata,
   TestInvocationMetadata,
@@ -32,7 +32,7 @@ export class PlantMetadataVisitor extends MetadataVisitor {
     super.visit(metadata);
   }
 
-  protected visitAggregatedResult(metadata: AggregatedResultMetadata): void {
+  protected visitGlobal(metadata: GlobalMetadata): void {
     this._registerLink(metadata, 'testResults');
   }
 
@@ -53,7 +53,7 @@ export class PlantMetadataVisitor extends MetadataVisitor {
     // this._registerLink(metadata, 'parent');
   }
 
-  protected visitRun(metadata: RunMetadata): void {
+  protected visitTestFile(metadata: TestFileMetadata): void {
     this._registerLink(metadata, 'rootDescribeBlock');
   }
 
@@ -67,9 +67,9 @@ export class PlantMetadataVisitor extends MetadataVisitor {
 
   protected visitTestInvocation(metadata: TestInvocationMetadata): void {
     this._registerLink(metadata, 'beforeAll');
-    this._registerLink(metadata, 'before');
+    this._registerLink(metadata, 'beforeEach');
     this._registerLink(metadata, 'fn');
-    this._registerLink(metadata, 'after');
+    this._registerLink(metadata, 'afterEach');
     this._registerLink(metadata, 'afterAll');
   }
 

@@ -6,8 +6,8 @@ import { BaseMetadata } from './BaseMetadata';
 import type { HookDefinitionMetadata } from './HookDefinitionMetadata';
 import type { HookInvocationMetadata } from './HookInvocationMetadata';
 import type { MetadataContext } from './MetadataContext';
-import type { RunMetadata } from './RunMetadata';
 import type { TestEntryMetadata } from './TestEntryMetadata';
+import type { TestFileMetadata } from './TestFileMetadata';
 import type { TestFnInvocationMetadata } from './TestFnInvocationMetadata';
 import type { TestInvocationMetadata } from './TestInvocationMetadata';
 
@@ -18,7 +18,7 @@ type ExecutionMetadata =
   | HookInvocationMetadata<DescribeBlockMetadata>;
 
 export class DescribeBlockMetadata extends BaseMetadata {
-  readonly run: RunMetadata;
+  readonly file: TestFileMetadata;
   readonly parent?: DescribeBlockMetadata;
   readonly children: DefinitionMetadata[] = [];
   readonly executions: ExecutionMetadata[] = [];
@@ -30,24 +30,24 @@ export class DescribeBlockMetadata extends BaseMetadata {
 
   constructor(
     context: MetadataContext,
-    parent: RunMetadata | DescribeBlockMetadata,
+    parent: TestFileMetadata | DescribeBlockMetadata,
     id: AggregatedIdentifier,
   ) {
     super(context, id);
 
-    if (context.checker.isRunMetadata(parent)) {
+    if (context.checker.isTestFileMetadata(parent)) {
       this.parent = undefined;
-      this.run = parent;
+      this.file = parent;
     } else {
       this.parent = parent;
-      this.run = parent.run;
+      this.file = parent.file;
     }
   }
 
   [symbols.addDescribeBlock](id: AggregatedIdentifier): DescribeBlockMetadata {
     const describeBlock = this[symbols.context].factory.createDescribeBlockMetadata(this, id);
     this.children.push(describeBlock);
-    this.run[symbols.currentMetadata] = describeBlock;
+    this.file[symbols.currentMetadata] = describeBlock;
 
     return describeBlock;
   }
@@ -56,7 +56,7 @@ export class DescribeBlockMetadata extends BaseMetadata {
     const testEntry = this[symbols.context].factory.createTestEntryMetadata(this, id);
 
     this.children.push(testEntry);
-    this.run[symbols.currentMetadata] = testEntry;
+    this.file[symbols.currentMetadata] = testEntry;
 
     return testEntry;
   }
@@ -71,7 +71,7 @@ export class DescribeBlockMetadata extends BaseMetadata {
       hookType,
     );
     this.children.push(hookDefinition);
-    this.run[symbols.currentMetadata] = hookDefinition;
+    this.file[symbols.currentMetadata] = hookDefinition;
 
     return hookDefinition;
   }
@@ -110,12 +110,12 @@ export class DescribeBlockMetadata extends BaseMetadata {
   }
 
   [symbols.start](): void {
-    this.run[symbols.currentMetadata] = this;
+    this.file[symbols.currentMetadata] = this;
     this.parent?.[symbols.pushExecution](this);
   }
 
   [symbols.finish](): void {
-    this.run[symbols.currentMetadata] = this.parent ?? this.run;
+    this.file[symbols.currentMetadata] = this.parent ?? this.file;
 
     if (this.#pendingBeforeAll.length > 0 && this.#firstTestInvocation) {
       // NOTE: special case when it.todo() is the only test in a describe block
@@ -138,8 +138,8 @@ export class DescribeBlockMetadata extends BaseMetadata {
 
   *allAncestors(): IterableIterator<BaseMetadata> {
     yield* this.ancestors();
-    yield this.run;
-    yield this.run.aggregatedResult;
+    yield this.file;
+    yield this.file.globalMetadata;
   }
 
   *describeBlocks(): IterableIterator<DescribeBlockMetadata> {

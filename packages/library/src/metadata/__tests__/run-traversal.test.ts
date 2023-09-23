@@ -1,7 +1,7 @@
 import fixtures from '@jest-metadata/fixtures';
 
 import {
-  AggregatedMetadataRegistry,
+  GlobalMetadataRegistry,
   Metadata,
   MetadataEventHandler,
   MetadataFactoryImpl,
@@ -10,18 +10,18 @@ import {
 
 import { SerialSyncEmitter } from '../../utils';
 
-describe('run metadata traversal:', () => {
+describe('file metadata traversal:', () => {
   const lastFixtures = Object.values(fixtures).filter(([name]) => {
     return name.startsWith('29.x.x') && name.includes('-worker-N');
   });
 
   test.each(lastFixtures)(`fixtures/%s`, (_name: string, fixture: any[]) => {
     const emitter: SetMetadataEventEmitter = new SerialSyncEmitter('set');
-    const metadataRegistry = new AggregatedMetadataRegistry();
+    const metadataRegistry = new GlobalMetadataRegistry();
     const metadataFactory = new MetadataFactoryImpl(metadataRegistry, emitter);
-    const aggregatedResultMetadata = metadataFactory.createAggregatedResultMetadata();
+    const globalMetadata = metadataFactory.createGlobalMetadata();
     const eventHandler = new MetadataEventHandler({
-      aggregatedResultMetadata,
+      globalMetadata,
       metadataRegistry,
     });
 
@@ -29,8 +29,8 @@ describe('run metadata traversal:', () => {
       eventHandler.handle(event);
     }
 
-    const lastRun = aggregatedResultMetadata.lastTestResult!;
-    if (!lastRun) {
+    const lastFile = globalMetadata.lastTestFile!;
+    if (!lastFile) {
       return;
     }
 
@@ -41,16 +41,16 @@ describe('run metadata traversal:', () => {
 
     const toChain = (x: Iterable<Metadata>) => [...x].map(toId).join(' → ');
 
-    expect(toChain([...lastRun.allDescribeBlocks()])).toMatchSnapshot('allDescribeBlocks');
-    expect(toChain([...lastRun.allTestEntries()])).toMatchSnapshot('allTestEntries');
-    expect(toChain([...lastRun.allTestInvocations()])).toMatchSnapshot('allTestInvocations');
-    expect(toChain([...lastRun.allInvocations()])).toMatchSnapshot('allInvocations');
+    expect(toChain([...lastFile.allDescribeBlocks()])).toMatchSnapshot('allDescribeBlocks');
+    expect(toChain([...lastFile.allTestEntries()])).toMatchSnapshot('allTestEntries');
+    expect(toChain([...lastFile.allTestInvocations()])).toMatchSnapshot('allTestInvocations');
+    expect(toChain([...lastFile.allInvocations()])).toMatchSnapshot('allInvocations');
 
-    for (const test of lastRun.allTestEntries()) {
+    for (const test of lastFile.allTestEntries()) {
       expect(toChain(test.allAncestors())).toMatchSnapshot(`allAncestors ${toId(test)}`);
     }
 
-    for (const invocation of lastRun.allTestInvocations()) {
+    for (const invocation of lastFile.allTestInvocations()) {
       expect(toChain(invocation.allAncestors())).toMatchSnapshot(
         `allAncestors ${toId(invocation)}`,
       );
@@ -61,13 +61,13 @@ describe('run metadata traversal:', () => {
     }
 
     const haveRun = [
-      ...lastRun.allTestEntries(),
-      ...lastRun.allTestInvocations(),
-      ...lastRun.allDescribeBlocks(),
+      ...lastFile.allTestEntries(),
+      ...lastFile.allTestInvocations(),
+      ...lastFile.allDescribeBlocks(),
     ];
 
     for (const meta of haveRun) {
-      expect(meta.run).toBe(lastRun);
+      expect(meta.file).toBe(lastFile);
     }
   });
 });

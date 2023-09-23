@@ -1,8 +1,8 @@
 import type {
-  AggregatedResultMetadata,
+  GlobalMetadata,
   DescribeBlockMetadata,
   HookDefinitionMetadata,
-  RunMetadata,
+  TestFileMetadata,
   TestEntryMetadata,
   TestInvocationMetadata,
   HookInvocationMetadata,
@@ -12,10 +12,10 @@ import type { AggregatedIdentifier } from '../ids';
 import type { HookType } from '../types';
 
 export interface MetadataFactory {
-  createAggregatedResultMetadata(): AggregatedResultMetadata;
+  createGlobalMetadata(): GlobalMetadata;
 
   createDescribeBlockMetadata(
-    parent: RunMetadata | DescribeBlockMetadata,
+    parent: TestFileMetadata | DescribeBlockMetadata,
     id: AggregatedIdentifier,
   ): DescribeBlockMetadata;
 
@@ -31,7 +31,7 @@ export interface MetadataFactory {
     id: AggregatedIdentifier,
   ): HookInvocationMetadata;
 
-  createRunMetadata(testFilePath: string, aggregatedResult: AggregatedResultMetadata): RunMetadata;
+  createTestFileMetadata(testFilePath: string, globalMetadata: GlobalMetadata): TestFileMetadata;
 
   createTestEntryMetadata(
     describeBlock: DescribeBlockMetadata,

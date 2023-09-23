@@ -15,6 +15,6 @@ export class TestFnInvocationMetadata extends BaseMetadata implements Invocation
   }
 
   get definition() {
-    return this.test.entry;
+    return this.test.definition;
   }
 }

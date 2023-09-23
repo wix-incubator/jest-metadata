@@ -25,23 +25,15 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - name: Setup Jest
-        run: npm run setup-fixture
+      - run: npm -g install yarn
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Update fixtures
+        run: npm run update-fixtures
         env:
           JEST_VERSION: ${{ matrix.jest }}
-
-      - uses: bahmutov/npm-install@v1
-        with:
-          useLockFile: false
-
-      - name: Build library
-        run: npm run build --workspace=jest-metadata
-
-      - name: Instrument library
-        run: npm run instrument --workspace=jest-metadata
-
-      - name: Build fixtures
-        run: npm run build --workspace=@jest-metadata/recorder
 
       - name: Assert no Git changes
         run: git diff --exit-code packages/fixtures
@@ -66,9 +58,10 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - uses: bahmutov/npm-install@v1
-        with:
-          useLockFile: false
+      - run: npm -g install yarn
+
+      - name: Install dependencies
+        run: yarn
 
       - name: Lint
         run: npm run lint:ci

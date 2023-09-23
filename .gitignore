@@ -112,5 +112,13 @@ dist
 
 /__fixtures__/events/
 package-lock.json
-yarn.lock
 .DS_Store
+
+# Yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

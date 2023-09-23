@@ -2,8 +2,8 @@
 export { BaseMetadata } from './BaseMetadata';
 
 // Definition metadata:
-export { AggregatedResultMetadata } from './AggregatedResultMetadata';
-export { RunMetadata } from './RunMetadata';
+export { GlobalMetadata } from './GlobalMetadata';
+export { TestFileMetadata } from './TestFileMetadata';
 export { DescribeBlockMetadata } from './DescribeBlockMetadata';
 export { HookDefinitionMetadata } from './HookDefinitionMetadata';
 export { TestEntryMetadata } from './TestEntryMetadata';

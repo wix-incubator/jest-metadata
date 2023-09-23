@@ -3,19 +3,14 @@ import path from 'path';
 import type { TestCaseResult } from '@jest/reporters';
 
 import { JestMetadataError } from '../errors';
-import type {
-  AggregatedResultMetadata,
-  Metadata,
-  RunMetadata,
-  TestEntryMetadata,
-} from '../metadata';
+import type { GlobalMetadata, Metadata, TestFileMetadata, TestEntryMetadata } from '../metadata';
 
 export class AssociateMetadata {
   private readonly _map = new Map<unknown, Metadata>();
 
   constructor(private readonly _cwd: string) {}
 
-  filePath(value: string, metadata: RunMetadata): void {
+  filePath(value: string, metadata: TestFileMetadata): void {
     if (!value) {
       throw new JestMetadataError('Cannot associate metadata with an empty file path');
     }
@@ -41,7 +36,7 @@ export class AssociateMetadata {
     this._map.set(testCaseResult, metadata);
   }
 
-  aggregatedResult(metadata: AggregatedResultMetadata): void {
+  globalMetadata(metadata: GlobalMetadata): void {
     this._map.set(undefined, metadata);
   }
 

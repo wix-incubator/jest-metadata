@@ -4,8 +4,8 @@ import { realm } from './realms';
 
 export type {
   Metadata,
-  AggregatedResultMetadata,
-  RunMetadata,
+  GlobalMetadata,
+  TestFileMetadata,
   DescribeBlockMetadata,
   HookDefinitionMetadata,
   TestEntryMetadata,
@@ -19,12 +19,12 @@ export type {
  * Works as intended only in the main process.
  * Child processes will have their own state, limited to their own tests
  */
-export const state = realm.aggregatedResultMetadata;
+export const state = realm.globalMetadata;
 
 /**
  * Current metadata of a test block that is being added or executed.
  */
-export const metadata = funpermaproxy(() => realm.aggregatedResultMetadata.currentMetadata);
+export const metadata = funpermaproxy(() => realm.globalMetadata.currentMetadata);
 
 /**
  * Pseudo-annotation that allows to associate metadata with a test block.
