@@ -185,65 +185,65 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_5 #ffd
 tests_duplicate_name_js_test_5 : id = "test_5"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_1_0 #fcb
 tests_duplicate_name_js_hook_1_0 : id = "hook_1.0"
-tests_duplicate_name_js_hook_1_0 : data = {"note":"Suite"}
+tests_duplicate_name_js_hook_1_0 : data = {\\n  "note": "Suite"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_2_0 #fcb
 tests_duplicate_name_js_hook_2_0 : id = "hook_2.0"
-tests_duplicate_name_js_hook_2_0 : data = {"note":"Nested suite 1 > beforeAll"}
+tests_duplicate_name_js_hook_2_0 : data = {\\n  "note": "Nested suite 1 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_0_0 #ffb
 tests_duplicate_name_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_0 #fcb
 tests_duplicate_name_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_0_0_fn #fea
 tests_duplicate_name_js_test_0_0_fn : id = "test_0.0.fn"
-tests_duplicate_name_js_test_0_0_fn : data = {"note":"Nested suite 1 > Test 1"}
+tests_duplicate_name_js_test_0_0_fn : data = {\\n  "note": "Nested suite 1 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_1 #fcb
 tests_duplicate_name_js_hook_0_1 : id = "hook_0.1"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_0_fn #fea
 tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
-tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_0_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
 tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
-tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_1_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
-tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
+tests_duplicate_name_js_hook_3_0 : data = {\\n  "note": "Nested suite 1 > afterAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
 tests_duplicate_name_js_test_2_0 : id = "test_2.0"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_0 #ffb
 tests_duplicate_name_js_test_3_0 : id = "test_3.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_4_0 #fcb
 tests_duplicate_name_js_hook_4_0 : id = "hook_4.0"
-tests_duplicate_name_js_hook_4_0 : data = {"note":"Nested suite 2 > beforeAll"}
+tests_duplicate_name_js_hook_4_0 : data = {\\n  "note": "Nested suite 2 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
 tests_duplicate_name_js_test_4_0 : id = "test_4.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_3 #fcb
 tests_duplicate_name_js_hook_0_3 : id = "hook_0.3"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_0_fn #fea
 tests_duplicate_name_js_test_4_0_fn : id = "test_4.0.fn"
-tests_duplicate_name_js_test_4_0_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_0_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_5_0 #ffb
 tests_duplicate_name_js_test_5_0 : id = "test_5.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_4 #fcb
 tests_duplicate_name_js_hook_0_4 : id = "hook_0.4"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_5_0_fn #fea
 tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
-tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
+tests_duplicate_name_js_test_5_0_fn : data = {\\n  "note": "Nested suite 2 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
 tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
-tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_1_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
-tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
+tests_duplicate_name_js_hook_5_0 : data = {\\n  "note": "Nested suite 2 > afterAll"\\n}
 global_metadata --> tests_duplicate_name_js : testResults[0]
 tests_duplicate_name_js --> tests_duplicate_name_js_describe_0 : rootDescribeBlock
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_hook_0 : children[0]
@@ -313,7 +313,7 @@ exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/globalMetadat
 
 object "GlobalMetadata" as global_metadata #dff
 global_metadata : id = "globalMetadata"
-global_metadata : data = {"vendor":{"tests":12}}
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+"\\n    ]\\n  }\\n}
 
 
 @enduml
@@ -431,61 +431,61 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
-tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
+tests_hook_nesting_js_hook_1 : data = {\\n  "vendor": {\\n    "description": "Prepare the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_1 : hookType = "beforeAll"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_2 #fdd
 tests_hook_nesting_js_hook_2 : id = "hook_2"
-tests_hook_nesting_js_hook_2 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_2 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_2 : hookType = "beforeEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_3 #fdd
 tests_hook_nesting_js_hook_3 : id = "hook_3"
-tests_hook_nesting_js_hook_3 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_3 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_3 : hookType = "afterEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_4 #fdd
 tests_hook_nesting_js_hook_4 : id = "hook_4"
-tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the environment"}}
+tests_hook_nesting_js_hook_4 : data = {\\n  "vendor": {\\n    "description": "Tear down the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
-tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
+tests_hook_nesting_js_test_0 : data = {\\n  "vendor": {\\n    "labels": [\\n      "sanity"\\n    ]\\n  }\\n}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
-tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
+tests_hook_nesting_js_test_1 : data = {\\n  "vendor": {\\n    "labels": [\\n      "flaky",\\n      "sanity"\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
-tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
+tests_hook_nesting_js_hook_1_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Open the browser",\\n        "startedAt": 1672524000000\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
-tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
+tests_hook_nesting_js_hook_2_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001000\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
-tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
+tests_hook_nesting_js_test_0_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter invalid credentials",\\n        "startedAt": 1672524001100\\n      },\\n      {\\n        "text": "Assert that the login failed",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
-tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
+tests_hook_nesting_js_hook_3_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
-tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
+tests_hook_nesting_js_hook_2_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001250\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
-tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
+tests_hook_nesting_js_test_1_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter valid credentials",\\n        "startedAt": 1672524001350\\n      },\\n      {\\n        "text": "Assert that the login succeeded",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
-tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
+tests_hook_nesting_js_hook_3_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
-tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
+tests_hook_nesting_js_hook_4_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Close the browser",\\n        "startedAt": 1672524001500\\n      }\\n    ]\\n  }\\n}
 global_metadata --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
@@ -550,35 +550,35 @@ object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_0 #fcb
 tests_test_concurrent_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
 tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
-tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+tests_test_concurrent_js_test_0_0_fn : data = {\\n  "test": {\\n    "slept": 100\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
 tests_test_concurrent_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_1 #fcb
 tests_test_concurrent_js_hook_0_1 : id = "hook_0.1"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
 tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
-tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+tests_test_concurrent_js_test_1_0_fn : data = {\\n  "test": {\\n    "slept": 200\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
 tests_test_concurrent_js_test_2_0 : id = "test_2.0"
 object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_2 #fcb
 tests_test_concurrent_js_hook_0_2 : id = "hook_0.2"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
 tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
-tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+tests_test_concurrent_js_test_2_0_fn : data = {\\n  "test": {\\n    "slept": 300\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
 tests_test_concurrent_js_test_3_0 : id = "test_3.0"
 object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_3 #fcb
 tests_test_concurrent_js_hook_0_3 : id = "hook_0.3"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
 tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
-tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+tests_test_concurrent_js_test_3_0_fn : data = {\\n  "test": {\\n    "slept": 400\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
 tests_test_concurrent_js_test_4_0 : id = "test_4.0"
 object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_4 #fcb
 tests_test_concurrent_js_hook_0_4 : id = "hook_0.4"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
 tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
-tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+tests_test_concurrent_js_test_4_0_fn : data = {\\n  "test": {\\n    "slept": 500\\n  }\\n}
 global_metadata --> tests_test_concurrent_js : testResults[0]
 tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
 tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
@@ -821,18 +821,18 @@ tests_test_todo_js_hook_4 : id = "hook_4"
 tests_test_todo_js_hook_4 : hookType = "afterAll"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_1_0 #fcb
 tests_test_todo_js_hook_1_0 : id = "hook_1.0"
-tests_test_todo_js_hook_1_0 : data = {"note":"beforeAll"}
+tests_test_todo_js_hook_1_0 : data = {\\n  "note": "beforeAll"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_2_0 #fcb
 tests_test_todo_js_hook_2_0 : id = "hook_2.0"
-tests_test_todo_js_hook_2_0 : data = {"note":"beforeAll inner"}
+tests_test_todo_js_hook_2_0 : data = {\\n  "note": "beforeAll inner"\\n}
 object "TestInvocationMetadata" as tests_test_todo_js_test_0_0 #ffb
 tests_test_todo_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_3_0 #fcb
 tests_test_todo_js_hook_3_0 : id = "hook_3.0"
-tests_test_todo_js_hook_3_0 : data = {"note":"afterAll inner"}
+tests_test_todo_js_hook_3_0 : data = {\\n  "note": "afterAll inner"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_4_0 #fcb
 tests_test_todo_js_hook_4_0 : id = "hook_4.0"
-tests_test_todo_js_hook_4_0 : data = {"note":"afterAll"}
+tests_test_todo_js_hook_4_0 : data = {\\n  "note": "afterAll"\\n}
 global_metadata --> tests_test_todo_js : testResults[0]
 tests_test_todo_js --> tests_test_todo_js_describe_0 : rootDescribeBlock
 tests_test_todo_js_describe_0 --> tests_test_todo_js_hook_0 : children[0]
@@ -1042,65 +1042,65 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_5 #ffd
 tests_duplicate_name_js_test_5 : id = "test_5"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_1_0 #fcb
 tests_duplicate_name_js_hook_1_0 : id = "hook_1.0"
-tests_duplicate_name_js_hook_1_0 : data = {"note":"Suite"}
+tests_duplicate_name_js_hook_1_0 : data = {\\n  "note": "Suite"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_2_0 #fcb
 tests_duplicate_name_js_hook_2_0 : id = "hook_2.0"
-tests_duplicate_name_js_hook_2_0 : data = {"note":"Nested suite 1 > beforeAll"}
+tests_duplicate_name_js_hook_2_0 : data = {\\n  "note": "Nested suite 1 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_0_0 #ffb
 tests_duplicate_name_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_0 #fcb
 tests_duplicate_name_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_0_0_fn #fea
 tests_duplicate_name_js_test_0_0_fn : id = "test_0.0.fn"
-tests_duplicate_name_js_test_0_0_fn : data = {"note":"Nested suite 1 > Test 1"}
+tests_duplicate_name_js_test_0_0_fn : data = {\\n  "note": "Nested suite 1 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_1 #fcb
 tests_duplicate_name_js_hook_0_1 : id = "hook_0.1"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_0_fn #fea
 tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
-tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_0_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
 tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
-tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_1_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
-tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
+tests_duplicate_name_js_hook_3_0 : data = {\\n  "note": "Nested suite 1 > afterAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
 tests_duplicate_name_js_test_2_0 : id = "test_2.0"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_0 #ffb
 tests_duplicate_name_js_test_3_0 : id = "test_3.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_4_0 #fcb
 tests_duplicate_name_js_hook_4_0 : id = "hook_4.0"
-tests_duplicate_name_js_hook_4_0 : data = {"note":"Nested suite 2 > beforeAll"}
+tests_duplicate_name_js_hook_4_0 : data = {\\n  "note": "Nested suite 2 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
 tests_duplicate_name_js_test_4_0 : id = "test_4.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_3 #fcb
 tests_duplicate_name_js_hook_0_3 : id = "hook_0.3"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_0_fn #fea
 tests_duplicate_name_js_test_4_0_fn : id = "test_4.0.fn"
-tests_duplicate_name_js_test_4_0_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_0_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_5_0 #ffb
 tests_duplicate_name_js_test_5_0 : id = "test_5.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_4 #fcb
 tests_duplicate_name_js_hook_0_4 : id = "hook_0.4"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_5_0_fn #fea
 tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
-tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
+tests_duplicate_name_js_test_5_0_fn : data = {\\n  "note": "Nested suite 2 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
 tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
-tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_1_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
-tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
+tests_duplicate_name_js_hook_5_0 : data = {\\n  "note": "Nested suite 2 > afterAll"\\n}
 global_metadata --> tests_duplicate_name_js : testResults[0]
 tests_duplicate_name_js --> tests_duplicate_name_js_describe_0 : rootDescribeBlock
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_hook_0 : children[0]
@@ -1170,7 +1170,7 @@ exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/globalMetadat
 
 object "GlobalMetadata" as global_metadata #dff
 global_metadata : id = "globalMetadata"
-global_metadata : data = {"vendor":{"tests":4}}
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+"\\n    ]\\n  }\\n}
 
 
 @enduml
@@ -1288,61 +1288,61 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
-tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
+tests_hook_nesting_js_hook_1 : data = {\\n  "vendor": {\\n    "description": "Prepare the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_1 : hookType = "beforeAll"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_2 #fdd
 tests_hook_nesting_js_hook_2 : id = "hook_2"
-tests_hook_nesting_js_hook_2 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_2 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_2 : hookType = "beforeEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_3 #fdd
 tests_hook_nesting_js_hook_3 : id = "hook_3"
-tests_hook_nesting_js_hook_3 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_3 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_3 : hookType = "afterEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_4 #fdd
 tests_hook_nesting_js_hook_4 : id = "hook_4"
-tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the environment"}}
+tests_hook_nesting_js_hook_4 : data = {\\n  "vendor": {\\n    "description": "Tear down the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
-tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
+tests_hook_nesting_js_test_0 : data = {\\n  "vendor": {\\n    "labels": [\\n      "sanity"\\n    ]\\n  }\\n}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
-tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
+tests_hook_nesting_js_test_1 : data = {\\n  "vendor": {\\n    "labels": [\\n      "flaky",\\n      "sanity"\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
-tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
+tests_hook_nesting_js_hook_1_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Open the browser",\\n        "startedAt": 1672524000000\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
-tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
+tests_hook_nesting_js_hook_2_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001000\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
-tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
+tests_hook_nesting_js_test_0_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter invalid credentials",\\n        "startedAt": 1672524001100\\n      },\\n      {\\n        "text": "Assert that the login failed",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
-tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
+tests_hook_nesting_js_hook_3_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
-tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
+tests_hook_nesting_js_hook_2_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001250\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
-tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
+tests_hook_nesting_js_test_1_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter valid credentials",\\n        "startedAt": 1672524001350\\n      },\\n      {\\n        "text": "Assert that the login succeeded",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
-tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
+tests_hook_nesting_js_hook_3_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
-tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
+tests_hook_nesting_js_hook_4_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Close the browser",\\n        "startedAt": 1672524001500\\n      }\\n    ]\\n  }\\n}
 global_metadata --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
@@ -1407,35 +1407,35 @@ object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_0 #fcb
 tests_test_concurrent_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
 tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
-tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+tests_test_concurrent_js_test_0_0_fn : data = {\\n  "test": {\\n    "slept": 100\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
 tests_test_concurrent_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_1 #fcb
 tests_test_concurrent_js_hook_0_1 : id = "hook_0.1"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
 tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
-tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+tests_test_concurrent_js_test_1_0_fn : data = {\\n  "test": {\\n    "slept": 200\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
 tests_test_concurrent_js_test_2_0 : id = "test_2.0"
 object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_2 #fcb
 tests_test_concurrent_js_hook_0_2 : id = "hook_0.2"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
 tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
-tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+tests_test_concurrent_js_test_2_0_fn : data = {\\n  "test": {\\n    "slept": 300\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
 tests_test_concurrent_js_test_3_0 : id = "test_3.0"
 object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_3 #fcb
 tests_test_concurrent_js_hook_0_3 : id = "hook_0.3"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
 tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
-tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+tests_test_concurrent_js_test_3_0_fn : data = {\\n  "test": {\\n    "slept": 400\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
 tests_test_concurrent_js_test_4_0 : id = "test_4.0"
 object "HookInvocationMetadata" as tests_test_concurrent_js_hook_0_4 #fcb
 tests_test_concurrent_js_hook_0_4 : id = "hook_0.4"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
 tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
-tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+tests_test_concurrent_js_test_4_0_fn : data = {\\n  "test": {\\n    "slept": 500\\n  }\\n}
 global_metadata --> tests_test_concurrent_js : testResults[0]
 tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
 tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
@@ -1678,18 +1678,18 @@ tests_test_todo_js_hook_4 : id = "hook_4"
 tests_test_todo_js_hook_4 : hookType = "afterAll"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_1_0 #fcb
 tests_test_todo_js_hook_1_0 : id = "hook_1.0"
-tests_test_todo_js_hook_1_0 : data = {"note":"beforeAll"}
+tests_test_todo_js_hook_1_0 : data = {\\n  "note": "beforeAll"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_2_0 #fcb
 tests_test_todo_js_hook_2_0 : id = "hook_2.0"
-tests_test_todo_js_hook_2_0 : data = {"note":"beforeAll inner"}
+tests_test_todo_js_hook_2_0 : data = {\\n  "note": "beforeAll inner"\\n}
 object "TestInvocationMetadata" as tests_test_todo_js_test_0_0 #ffb
 tests_test_todo_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_3_0 #fcb
 tests_test_todo_js_hook_3_0 : id = "hook_3.0"
-tests_test_todo_js_hook_3_0 : data = {"note":"afterAll inner"}
+tests_test_todo_js_hook_3_0 : data = {\\n  "note": "afterAll inner"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_4_0 #fcb
 tests_test_todo_js_hook_4_0 : id = "hook_4.0"
-tests_test_todo_js_hook_4_0 : data = {"note":"afterAll"}
+tests_test_todo_js_hook_4_0 : data = {\\n  "note": "afterAll"\\n}
 global_metadata --> tests_test_todo_js : testResults[0]
 tests_test_todo_js --> tests_test_todo_js_describe_0 : rootDescribeBlock
 tests_test_todo_js_describe_0 --> tests_test_todo_js_hook_0 : children[0]
@@ -2547,65 +2547,65 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_5 #ffd
 tests_duplicate_name_js_test_5 : id = "test_5"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_1_0 #fcb
 tests_duplicate_name_js_hook_1_0 : id = "hook_1.0"
-tests_duplicate_name_js_hook_1_0 : data = {"note":"Suite"}
+tests_duplicate_name_js_hook_1_0 : data = {\\n  "note": "Suite"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_2_0 #fcb
 tests_duplicate_name_js_hook_2_0 : id = "hook_2.0"
-tests_duplicate_name_js_hook_2_0 : data = {"note":"Nested suite 1 > beforeAll"}
+tests_duplicate_name_js_hook_2_0 : data = {\\n  "note": "Nested suite 1 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_0_0 #ffb
 tests_duplicate_name_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_0 #fcb
 tests_duplicate_name_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_0_0_fn #fea
 tests_duplicate_name_js_test_0_0_fn : id = "test_0.0.fn"
-tests_duplicate_name_js_test_0_0_fn : data = {"note":"Nested suite 1 > Test 1"}
+tests_duplicate_name_js_test_0_0_fn : data = {\\n  "note": "Nested suite 1 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_1 #fcb
 tests_duplicate_name_js_hook_0_1 : id = "hook_0.1"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_0_fn #fea
 tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
-tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_0_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
 tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
-tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_1_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
-tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
+tests_duplicate_name_js_hook_3_0 : data = {\\n  "note": "Nested suite 1 > afterAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
 tests_duplicate_name_js_test_2_0 : id = "test_2.0"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_0 #ffb
 tests_duplicate_name_js_test_3_0 : id = "test_3.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_4_0 #fcb
 tests_duplicate_name_js_hook_4_0 : id = "hook_4.0"
-tests_duplicate_name_js_hook_4_0 : data = {"note":"Nested suite 2 > beforeAll"}
+tests_duplicate_name_js_hook_4_0 : data = {\\n  "note": "Nested suite 2 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
 tests_duplicate_name_js_test_4_0 : id = "test_4.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_3 #fcb
 tests_duplicate_name_js_hook_0_3 : id = "hook_0.3"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_0_fn #fea
 tests_duplicate_name_js_test_4_0_fn : id = "test_4.0.fn"
-tests_duplicate_name_js_test_4_0_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_0_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_5_0 #ffb
 tests_duplicate_name_js_test_5_0 : id = "test_5.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_4 #fcb
 tests_duplicate_name_js_hook_0_4 : id = "hook_0.4"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_5_0_fn #fea
 tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
-tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
+tests_duplicate_name_js_test_5_0_fn : data = {\\n  "note": "Nested suite 2 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
 tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
-tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_1_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
-tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
+tests_duplicate_name_js_hook_5_0 : data = {\\n  "note": "Nested suite 2 > afterAll"\\n}
 global_metadata --> tests_duplicate_name_js : testResults[0]
 tests_duplicate_name_js --> tests_duplicate_name_js_describe_0 : rootDescribeBlock
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_hook_0 : children[0]
@@ -2675,7 +2675,7 @@ exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/globalMetadat
 
 object "GlobalMetadata" as global_metadata #dff
 global_metadata : id = "globalMetadata"
-global_metadata : data = {"vendor":{"tests":["+","+","+","+","+","+","+","+","+","+","+","+"]}}
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+"\\n    ]\\n  }\\n}
 
 
 @enduml
@@ -2793,61 +2793,61 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
-tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
+tests_hook_nesting_js_hook_1 : data = {\\n  "vendor": {\\n    "description": "Prepare the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_1 : hookType = "beforeAll"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_2 #fdd
 tests_hook_nesting_js_hook_2 : id = "hook_2"
-tests_hook_nesting_js_hook_2 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_2 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_2 : hookType = "beforeEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_3 #fdd
 tests_hook_nesting_js_hook_3 : id = "hook_3"
-tests_hook_nesting_js_hook_3 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_3 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_3 : hookType = "afterEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_4 #fdd
 tests_hook_nesting_js_hook_4 : id = "hook_4"
-tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the environment"}}
+tests_hook_nesting_js_hook_4 : data = {\\n  "vendor": {\\n    "description": "Tear down the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
-tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
+tests_hook_nesting_js_test_0 : data = {\\n  "vendor": {\\n    "labels": [\\n      "sanity"\\n    ]\\n  }\\n}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
-tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
+tests_hook_nesting_js_test_1 : data = {\\n  "vendor": {\\n    "labels": [\\n      "flaky",\\n      "sanity"\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
-tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
+tests_hook_nesting_js_hook_1_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Open the browser",\\n        "startedAt": 1672524000000\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
-tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
+tests_hook_nesting_js_hook_2_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001000\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
-tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
+tests_hook_nesting_js_test_0_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter invalid credentials",\\n        "startedAt": 1672524001100\\n      },\\n      {\\n        "text": "Assert that the login failed",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
-tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
+tests_hook_nesting_js_hook_3_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
-tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
+tests_hook_nesting_js_hook_2_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001250\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
-tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
+tests_hook_nesting_js_test_1_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter valid credentials",\\n        "startedAt": 1672524001350\\n      },\\n      {\\n        "text": "Assert that the login succeeded",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
-tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
+tests_hook_nesting_js_hook_3_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
-tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
+tests_hook_nesting_js_hook_4_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Close the browser",\\n        "startedAt": 1672524001500\\n      }\\n    ]\\n  }\\n}
 global_metadata --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
@@ -2910,27 +2910,27 @@ object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
 tests_test_concurrent_js_test_0_0 : id = "test_0.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
 tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
-tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+tests_test_concurrent_js_test_0_0_fn : data = {\\n  "test": {\\n    "slept": 100\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
 tests_test_concurrent_js_test_1_0 : id = "test_1.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
 tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
-tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+tests_test_concurrent_js_test_1_0_fn : data = {\\n  "test": {\\n    "slept": 200\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
 tests_test_concurrent_js_test_2_0 : id = "test_2.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
 tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
-tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+tests_test_concurrent_js_test_2_0_fn : data = {\\n  "test": {\\n    "slept": 300\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
 tests_test_concurrent_js_test_3_0 : id = "test_3.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
 tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
-tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+tests_test_concurrent_js_test_3_0_fn : data = {\\n  "test": {\\n    "slept": 400\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
 tests_test_concurrent_js_test_4_0 : id = "test_4.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
 tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
-tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+tests_test_concurrent_js_test_4_0_fn : data = {\\n  "test": {\\n    "slept": 500\\n  }\\n}
 global_metadata --> tests_test_concurrent_js : testResults[0]
 tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
 tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
@@ -3163,18 +3163,18 @@ tests_test_todo_js_hook_4 : id = "hook_4"
 tests_test_todo_js_hook_4 : hookType = "afterAll"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_1_0 #fcb
 tests_test_todo_js_hook_1_0 : id = "hook_1.0"
-tests_test_todo_js_hook_1_0 : data = {"note":"beforeAll"}
+tests_test_todo_js_hook_1_0 : data = {\\n  "note": "beforeAll"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_2_0 #fcb
 tests_test_todo_js_hook_2_0 : id = "hook_2.0"
-tests_test_todo_js_hook_2_0 : data = {"note":"beforeAll inner"}
+tests_test_todo_js_hook_2_0 : data = {\\n  "note": "beforeAll inner"\\n}
 object "TestInvocationMetadata" as tests_test_todo_js_test_0_0 #ffb
 tests_test_todo_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_3_0 #fcb
 tests_test_todo_js_hook_3_0 : id = "hook_3.0"
-tests_test_todo_js_hook_3_0 : data = {"note":"afterAll inner"}
+tests_test_todo_js_hook_3_0 : data = {\\n  "note": "afterAll inner"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_4_0 #fcb
 tests_test_todo_js_hook_4_0 : id = "hook_4.0"
-tests_test_todo_js_hook_4_0 : data = {"note":"afterAll"}
+tests_test_todo_js_hook_4_0 : data = {\\n  "note": "afterAll"\\n}
 global_metadata --> tests_test_todo_js : testResults[0]
 tests_test_todo_js --> tests_test_todo_js_describe_0 : rootDescribeBlock
 tests_test_todo_js_describe_0 --> tests_test_todo_js_hook_0 : children[0]
@@ -3384,65 +3384,65 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_5 #ffd
 tests_duplicate_name_js_test_5 : id = "test_5"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_1_0 #fcb
 tests_duplicate_name_js_hook_1_0 : id = "hook_1.0"
-tests_duplicate_name_js_hook_1_0 : data = {"note":"Suite"}
+tests_duplicate_name_js_hook_1_0 : data = {\\n  "note": "Suite"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_2_0 #fcb
 tests_duplicate_name_js_hook_2_0 : id = "hook_2.0"
-tests_duplicate_name_js_hook_2_0 : data = {"note":"Nested suite 1 > beforeAll"}
+tests_duplicate_name_js_hook_2_0 : data = {\\n  "note": "Nested suite 1 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_0_0 #ffb
 tests_duplicate_name_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_0 #fcb
 tests_duplicate_name_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_0_0_fn #fea
 tests_duplicate_name_js_test_0_0_fn : id = "test_0.0.fn"
-tests_duplicate_name_js_test_0_0_fn : data = {"note":"Nested suite 1 > Test 1"}
+tests_duplicate_name_js_test_0_0_fn : data = {\\n  "note": "Nested suite 1 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_1 #fcb
 tests_duplicate_name_js_hook_0_1 : id = "hook_0.1"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_0_fn #fea
 tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
-tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_0_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
 tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
-tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_1_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
-tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
+tests_duplicate_name_js_hook_3_0 : data = {\\n  "note": "Nested suite 1 > afterAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
 tests_duplicate_name_js_test_2_0 : id = "test_2.0"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_0 #ffb
 tests_duplicate_name_js_test_3_0 : id = "test_3.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_4_0 #fcb
 tests_duplicate_name_js_hook_4_0 : id = "hook_4.0"
-tests_duplicate_name_js_hook_4_0 : data = {"note":"Nested suite 2 > beforeAll"}
+tests_duplicate_name_js_hook_4_0 : data = {\\n  "note": "Nested suite 2 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
 tests_duplicate_name_js_test_4_0 : id = "test_4.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_3 #fcb
 tests_duplicate_name_js_hook_0_3 : id = "hook_0.3"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_0_fn #fea
 tests_duplicate_name_js_test_4_0_fn : id = "test_4.0.fn"
-tests_duplicate_name_js_test_4_0_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_0_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_5_0 #ffb
 tests_duplicate_name_js_test_5_0 : id = "test_5.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_4 #fcb
 tests_duplicate_name_js_hook_0_4 : id = "hook_0.4"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_5_0_fn #fea
 tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
-tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
+tests_duplicate_name_js_test_5_0_fn : data = {\\n  "note": "Nested suite 2 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
 tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
-tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_1_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
-tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
+tests_duplicate_name_js_hook_5_0 : data = {\\n  "note": "Nested suite 2 > afterAll"\\n}
 global_metadata --> tests_duplicate_name_js : testResults[0]
 tests_duplicate_name_js --> tests_duplicate_name_js_describe_0 : rootDescribeBlock
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_hook_0 : children[0]
@@ -3512,7 +3512,7 @@ exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/globalMetadat
 
 object "GlobalMetadata" as global_metadata #dff
 global_metadata : id = "globalMetadata"
-global_metadata : data = {"vendor":{"tests":["+","+","+","+","+","+","+","+","+","+","+","+"]}}
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+"\\n    ]\\n  }\\n}
 
 
 @enduml
@@ -3630,61 +3630,61 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
-tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
+tests_hook_nesting_js_hook_1 : data = {\\n  "vendor": {\\n    "description": "Prepare the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_1 : hookType = "beforeAll"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_2 #fdd
 tests_hook_nesting_js_hook_2 : id = "hook_2"
-tests_hook_nesting_js_hook_2 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_2 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_2 : hookType = "beforeEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_3 #fdd
 tests_hook_nesting_js_hook_3 : id = "hook_3"
-tests_hook_nesting_js_hook_3 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_3 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_3 : hookType = "afterEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_4 #fdd
 tests_hook_nesting_js_hook_4 : id = "hook_4"
-tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the environment"}}
+tests_hook_nesting_js_hook_4 : data = {\\n  "vendor": {\\n    "description": "Tear down the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
-tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
+tests_hook_nesting_js_test_0 : data = {\\n  "vendor": {\\n    "labels": [\\n      "sanity"\\n    ]\\n  }\\n}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
-tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
+tests_hook_nesting_js_test_1 : data = {\\n  "vendor": {\\n    "labels": [\\n      "flaky",\\n      "sanity"\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
-tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
+tests_hook_nesting_js_hook_1_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Open the browser",\\n        "startedAt": 1672524000000\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
-tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
+tests_hook_nesting_js_hook_2_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001000\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
-tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
+tests_hook_nesting_js_test_0_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter invalid credentials",\\n        "startedAt": 1672524001100\\n      },\\n      {\\n        "text": "Assert that the login failed",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
-tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
+tests_hook_nesting_js_hook_3_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
-tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
+tests_hook_nesting_js_hook_2_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001250\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
-tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
+tests_hook_nesting_js_test_1_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter valid credentials",\\n        "startedAt": 1672524001350\\n      },\\n      {\\n        "text": "Assert that the login succeeded",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
-tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
+tests_hook_nesting_js_hook_3_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
-tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
+tests_hook_nesting_js_hook_4_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Close the browser",\\n        "startedAt": 1672524001500\\n      }\\n    ]\\n  }\\n}
 global_metadata --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
@@ -3747,27 +3747,27 @@ object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
 tests_test_concurrent_js_test_0_0 : id = "test_0.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
 tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
-tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+tests_test_concurrent_js_test_0_0_fn : data = {\\n  "test": {\\n    "slept": 100\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
 tests_test_concurrent_js_test_1_0 : id = "test_1.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
 tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
-tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+tests_test_concurrent_js_test_1_0_fn : data = {\\n  "test": {\\n    "slept": 200\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
 tests_test_concurrent_js_test_2_0 : id = "test_2.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
 tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
-tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+tests_test_concurrent_js_test_2_0_fn : data = {\\n  "test": {\\n    "slept": 300\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
 tests_test_concurrent_js_test_3_0 : id = "test_3.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
 tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
-tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+tests_test_concurrent_js_test_3_0_fn : data = {\\n  "test": {\\n    "slept": 400\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
 tests_test_concurrent_js_test_4_0 : id = "test_4.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
 tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
-tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+tests_test_concurrent_js_test_4_0_fn : data = {\\n  "test": {\\n    "slept": 500\\n  }\\n}
 global_metadata --> tests_test_concurrent_js : testResults[0]
 tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
 tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
@@ -4000,18 +4000,18 @@ tests_test_todo_js_hook_4 : id = "hook_4"
 tests_test_todo_js_hook_4 : hookType = "afterAll"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_1_0 #fcb
 tests_test_todo_js_hook_1_0 : id = "hook_1.0"
-tests_test_todo_js_hook_1_0 : data = {"note":"beforeAll"}
+tests_test_todo_js_hook_1_0 : data = {\\n  "note": "beforeAll"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_2_0 #fcb
 tests_test_todo_js_hook_2_0 : id = "hook_2.0"
-tests_test_todo_js_hook_2_0 : data = {"note":"beforeAll inner"}
+tests_test_todo_js_hook_2_0 : data = {\\n  "note": "beforeAll inner"\\n}
 object "TestInvocationMetadata" as tests_test_todo_js_test_0_0 #ffb
 tests_test_todo_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_3_0 #fcb
 tests_test_todo_js_hook_3_0 : id = "hook_3.0"
-tests_test_todo_js_hook_3_0 : data = {"note":"afterAll inner"}
+tests_test_todo_js_hook_3_0 : data = {\\n  "note": "afterAll inner"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_4_0 #fcb
 tests_test_todo_js_hook_4_0 : id = "hook_4.0"
-tests_test_todo_js_hook_4_0 : data = {"note":"afterAll"}
+tests_test_todo_js_hook_4_0 : data = {\\n  "note": "afterAll"\\n}
 global_metadata --> tests_test_todo_js : testResults[0]
 tests_test_todo_js --> tests_test_todo_js_describe_0 : rootDescribeBlock
 tests_test_todo_js_describe_0 --> tests_test_todo_js_hook_0 : children[0]
@@ -4869,65 +4869,65 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_5 #ffd
 tests_duplicate_name_js_test_5 : id = "test_5"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_1_0 #fcb
 tests_duplicate_name_js_hook_1_0 : id = "hook_1.0"
-tests_duplicate_name_js_hook_1_0 : data = {"note":"Suite"}
+tests_duplicate_name_js_hook_1_0 : data = {\\n  "note": "Suite"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_2_0 #fcb
 tests_duplicate_name_js_hook_2_0 : id = "hook_2.0"
-tests_duplicate_name_js_hook_2_0 : data = {"note":"Nested suite 1 > beforeAll"}
+tests_duplicate_name_js_hook_2_0 : data = {\\n  "note": "Nested suite 1 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_0_0 #ffb
 tests_duplicate_name_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_0 #fcb
 tests_duplicate_name_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_0_0_fn #fea
 tests_duplicate_name_js_test_0_0_fn : id = "test_0.0.fn"
-tests_duplicate_name_js_test_0_0_fn : data = {"note":"Nested suite 1 > Test 1"}
+tests_duplicate_name_js_test_0_0_fn : data = {\\n  "note": "Nested suite 1 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_1 #fcb
 tests_duplicate_name_js_hook_0_1 : id = "hook_0.1"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_0_fn #fea
 tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
-tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_0_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
 tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
-tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_1_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
-tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
+tests_duplicate_name_js_hook_3_0 : data = {\\n  "note": "Nested suite 1 > afterAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
 tests_duplicate_name_js_test_2_0 : id = "test_2.0"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_0 #ffb
 tests_duplicate_name_js_test_3_0 : id = "test_3.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_4_0 #fcb
 tests_duplicate_name_js_hook_4_0 : id = "hook_4.0"
-tests_duplicate_name_js_hook_4_0 : data = {"note":"Nested suite 2 > beforeAll"}
+tests_duplicate_name_js_hook_4_0 : data = {\\n  "note": "Nested suite 2 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
 tests_duplicate_name_js_test_4_0 : id = "test_4.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_3 #fcb
 tests_duplicate_name_js_hook_0_3 : id = "hook_0.3"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_0_fn #fea
 tests_duplicate_name_js_test_4_0_fn : id = "test_4.0.fn"
-tests_duplicate_name_js_test_4_0_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_0_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_5_0 #ffb
 tests_duplicate_name_js_test_5_0 : id = "test_5.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_4 #fcb
 tests_duplicate_name_js_hook_0_4 : id = "hook_0.4"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_5_0_fn #fea
 tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
-tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
+tests_duplicate_name_js_test_5_0_fn : data = {\\n  "note": "Nested suite 2 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
 tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
-tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_1_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
-tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
+tests_duplicate_name_js_hook_5_0 : data = {\\n  "note": "Nested suite 2 > afterAll"\\n}
 global_metadata --> tests_duplicate_name_js : testResults[0]
 tests_duplicate_name_js --> tests_duplicate_name_js_describe_0 : rootDescribeBlock
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_hook_0 : children[0]
@@ -4997,7 +4997,7 @@ exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/globalMetadat
 
 object "GlobalMetadata" as global_metadata #dff
 global_metadata : id = "globalMetadata"
-global_metadata : data = {"vendor":{"tests":["+","+","+","+","+","+","+","+","+","+","+","+"]}}
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+"\\n    ]\\n  }\\n}
 
 
 @enduml
@@ -5115,61 +5115,61 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
-tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
+tests_hook_nesting_js_hook_1 : data = {\\n  "vendor": {\\n    "description": "Prepare the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_1 : hookType = "beforeAll"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_2 #fdd
 tests_hook_nesting_js_hook_2 : id = "hook_2"
-tests_hook_nesting_js_hook_2 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_2 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_2 : hookType = "beforeEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_3 #fdd
 tests_hook_nesting_js_hook_3 : id = "hook_3"
-tests_hook_nesting_js_hook_3 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_3 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_3 : hookType = "afterEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_4 #fdd
 tests_hook_nesting_js_hook_4 : id = "hook_4"
-tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the environment"}}
+tests_hook_nesting_js_hook_4 : data = {\\n  "vendor": {\\n    "description": "Tear down the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
-tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
+tests_hook_nesting_js_test_0 : data = {\\n  "vendor": {\\n    "labels": [\\n      "sanity"\\n    ]\\n  }\\n}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
-tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
+tests_hook_nesting_js_test_1 : data = {\\n  "vendor": {\\n    "labels": [\\n      "flaky",\\n      "sanity"\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
-tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
+tests_hook_nesting_js_hook_1_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Open the browser",\\n        "startedAt": 1672524000000\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
-tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
+tests_hook_nesting_js_hook_2_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001000\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
-tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
+tests_hook_nesting_js_test_0_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter invalid credentials",\\n        "startedAt": 1672524001100\\n      },\\n      {\\n        "text": "Assert that the login failed",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
-tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
+tests_hook_nesting_js_hook_3_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
-tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
+tests_hook_nesting_js_hook_2_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001250\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
-tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
+tests_hook_nesting_js_test_1_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter valid credentials",\\n        "startedAt": 1672524001350\\n      },\\n      {\\n        "text": "Assert that the login succeeded",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
-tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
+tests_hook_nesting_js_hook_3_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
-tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
+tests_hook_nesting_js_hook_4_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Close the browser",\\n        "startedAt": 1672524001500\\n      }\\n    ]\\n  }\\n}
 global_metadata --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
@@ -5232,27 +5232,27 @@ object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
 tests_test_concurrent_js_test_0_0 : id = "test_0.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
 tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
-tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+tests_test_concurrent_js_test_0_0_fn : data = {\\n  "test": {\\n    "slept": 100\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
 tests_test_concurrent_js_test_1_0 : id = "test_1.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
 tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
-tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+tests_test_concurrent_js_test_1_0_fn : data = {\\n  "test": {\\n    "slept": 200\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
 tests_test_concurrent_js_test_2_0 : id = "test_2.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
 tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
-tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+tests_test_concurrent_js_test_2_0_fn : data = {\\n  "test": {\\n    "slept": 300\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
 tests_test_concurrent_js_test_3_0 : id = "test_3.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
 tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
-tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+tests_test_concurrent_js_test_3_0_fn : data = {\\n  "test": {\\n    "slept": 400\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
 tests_test_concurrent_js_test_4_0 : id = "test_4.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
 tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
-tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+tests_test_concurrent_js_test_4_0_fn : data = {\\n  "test": {\\n    "slept": 500\\n  }\\n}
 global_metadata --> tests_test_concurrent_js : testResults[0]
 tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
 tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
@@ -5485,18 +5485,18 @@ tests_test_todo_js_hook_4 : id = "hook_4"
 tests_test_todo_js_hook_4 : hookType = "afterAll"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_1_0 #fcb
 tests_test_todo_js_hook_1_0 : id = "hook_1.0"
-tests_test_todo_js_hook_1_0 : data = {"note":"beforeAll"}
+tests_test_todo_js_hook_1_0 : data = {\\n  "note": "beforeAll"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_2_0 #fcb
 tests_test_todo_js_hook_2_0 : id = "hook_2.0"
-tests_test_todo_js_hook_2_0 : data = {"note":"beforeAll inner"}
+tests_test_todo_js_hook_2_0 : data = {\\n  "note": "beforeAll inner"\\n}
 object "TestInvocationMetadata" as tests_test_todo_js_test_0_0 #ffb
 tests_test_todo_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_3_0 #fcb
 tests_test_todo_js_hook_3_0 : id = "hook_3.0"
-tests_test_todo_js_hook_3_0 : data = {"note":"afterAll inner"}
+tests_test_todo_js_hook_3_0 : data = {\\n  "note": "afterAll inner"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_4_0 #fcb
 tests_test_todo_js_hook_4_0 : id = "hook_4.0"
-tests_test_todo_js_hook_4_0 : data = {"note":"afterAll"}
+tests_test_todo_js_hook_4_0 : data = {\\n  "note": "afterAll"\\n}
 global_metadata --> tests_test_todo_js : testResults[0]
 tests_test_todo_js --> tests_test_todo_js_describe_0 : rootDescribeBlock
 tests_test_todo_js_describe_0 --> tests_test_todo_js_hook_0 : children[0]
@@ -5706,65 +5706,65 @@ object "TestEntryMetadata" as tests_duplicate_name_js_test_5 #ffd
 tests_duplicate_name_js_test_5 : id = "test_5"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_1_0 #fcb
 tests_duplicate_name_js_hook_1_0 : id = "hook_1.0"
-tests_duplicate_name_js_hook_1_0 : data = {"note":"Suite"}
+tests_duplicate_name_js_hook_1_0 : data = {\\n  "note": "Suite"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_2_0 #fcb
 tests_duplicate_name_js_hook_2_0 : id = "hook_2.0"
-tests_duplicate_name_js_hook_2_0 : data = {"note":"Nested suite 1 > beforeAll"}
+tests_duplicate_name_js_hook_2_0 : data = {\\n  "note": "Nested suite 1 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_0_0 #ffb
 tests_duplicate_name_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_0 #fcb
 tests_duplicate_name_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_0_0_fn #fea
 tests_duplicate_name_js_test_0_0_fn : id = "test_0.0.fn"
-tests_duplicate_name_js_test_0_0_fn : data = {"note":"Nested suite 1 > Test 1"}
+tests_duplicate_name_js_test_0_0_fn : data = {\\n  "note": "Nested suite 1 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_0 #ffb
 tests_duplicate_name_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_1 #fcb
 tests_duplicate_name_js_hook_0_1 : id = "hook_0.1"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_0_fn #fea
 tests_duplicate_name_js_test_1_0_fn : id = "test_1.0.fn"
-tests_duplicate_name_js_test_1_0_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_0_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_1_1 #ffb
 tests_duplicate_name_js_test_1_1 : id = "test_1.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_2 #fcb
 tests_duplicate_name_js_hook_0_2 : id = "hook_0.2"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_1_1_fn #fea
 tests_duplicate_name_js_test_1_1_fn : id = "test_1.1.fn"
-tests_duplicate_name_js_test_1_1_fn : data = {"note":"Nested suite 1 > Test 2"}
+tests_duplicate_name_js_test_1_1_fn : data = {\\n  "note": "Nested suite 1 > Test 2"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_3_0 #fcb
 tests_duplicate_name_js_hook_3_0 : id = "hook_3.0"
-tests_duplicate_name_js_hook_3_0 : data = {"note":"Nested suite 1 > afterAll"}
+tests_duplicate_name_js_hook_3_0 : data = {\\n  "note": "Nested suite 1 > afterAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_2_0 #ffb
 tests_duplicate_name_js_test_2_0 : id = "test_2.0"
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_3_0 #ffb
 tests_duplicate_name_js_test_3_0 : id = "test_3.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_4_0 #fcb
 tests_duplicate_name_js_hook_4_0 : id = "hook_4.0"
-tests_duplicate_name_js_hook_4_0 : data = {"note":"Nested suite 2 > beforeAll"}
+tests_duplicate_name_js_hook_4_0 : data = {\\n  "note": "Nested suite 2 > beforeAll"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_0 #ffb
 tests_duplicate_name_js_test_4_0 : id = "test_4.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_3 #fcb
 tests_duplicate_name_js_hook_0_3 : id = "hook_0.3"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_0_fn #fea
 tests_duplicate_name_js_test_4_0_fn : id = "test_4.0.fn"
-tests_duplicate_name_js_test_4_0_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_0_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_5_0 #ffb
 tests_duplicate_name_js_test_5_0 : id = "test_5.0"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_4 #fcb
 tests_duplicate_name_js_hook_0_4 : id = "hook_0.4"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_5_0_fn #fea
 tests_duplicate_name_js_test_5_0_fn : id = "test_5.0.fn"
-tests_duplicate_name_js_test_5_0_fn : data = {"note":"Nested suite 2 > Test 2"}
+tests_duplicate_name_js_test_5_0_fn : data = {\\n  "note": "Nested suite 2 > Test 2"\\n}
 object "TestInvocationMetadata" as tests_duplicate_name_js_test_4_1 #ffb
 tests_duplicate_name_js_test_4_1 : id = "test_4.1"
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_0_5 #fcb
 tests_duplicate_name_js_hook_0_5 : id = "hook_0.5"
 object "TestFnInvocationMetadata" as tests_duplicate_name_js_test_4_1_fn #fea
 tests_duplicate_name_js_test_4_1_fn : id = "test_4.1.fn"
-tests_duplicate_name_js_test_4_1_fn : data = {"note":"Nested suite 2 > Test 1"}
+tests_duplicate_name_js_test_4_1_fn : data = {\\n  "note": "Nested suite 2 > Test 1"\\n}
 object "HookInvocationMetadata" as tests_duplicate_name_js_hook_5_0 #fcb
 tests_duplicate_name_js_hook_5_0 : id = "hook_5.0"
-tests_duplicate_name_js_hook_5_0 : data = {"note":"Nested suite 2 > afterAll"}
+tests_duplicate_name_js_hook_5_0 : data = {\\n  "note": "Nested suite 2 > afterAll"\\n}
 global_metadata --> tests_duplicate_name_js : testResults[0]
 tests_duplicate_name_js --> tests_duplicate_name_js_describe_0 : rootDescribeBlock
 tests_duplicate_name_js_describe_0 --> tests_duplicate_name_js_hook_0 : children[0]
@@ -5834,7 +5834,7 @@ exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/globalMetadat
 
 object "GlobalMetadata" as global_metadata #dff
 global_metadata : id = "globalMetadata"
-global_metadata : data = {"vendor":{"tests":["+","+","+","+","+","+","+","+","+","+","+","+"]}}
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+",\\n      "+"\\n    ]\\n  }\\n}
 
 
 @enduml
@@ -5952,61 +5952,61 @@ tests_hook_nesting_js_hook_0 : id = "hook_0"
 tests_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_hook_nesting_js_describe_1 #ded
 tests_hook_nesting_js_describe_1 : id = "describe_1"
-tests_hook_nesting_js_describe_1 : data = {"vendor":{"maintainer":{"name":"Jane Smith","email":"jane.smith@example.com"},"lead":{"name":"Samantha Jones","email":"samantha.jones@example.com"},"description":"This is a sample test suite."}}
+tests_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_1 #fdd
 tests_hook_nesting_js_hook_1 : id = "hook_1"
-tests_hook_nesting_js_hook_1 : data = {"vendor":{"description":"Prepare the environment"}}
+tests_hook_nesting_js_hook_1 : data = {\\n  "vendor": {\\n    "description": "Prepare the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_1 : hookType = "beforeAll"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_2 #fdd
 tests_hook_nesting_js_hook_2 : id = "hook_2"
-tests_hook_nesting_js_hook_2 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_2 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_2 : hookType = "beforeEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_3 #fdd
 tests_hook_nesting_js_hook_3 : id = "hook_3"
-tests_hook_nesting_js_hook_3 : data = {"vendor":{"description":"Visit the website"}}
+tests_hook_nesting_js_hook_3 : data = {\\n  "vendor": {\\n    "description": "Visit the website"\\n  }\\n}
 tests_hook_nesting_js_hook_3 : hookType = "afterEach"
 object "HookDefinitionMetadata" as tests_hook_nesting_js_hook_4 #fdd
 tests_hook_nesting_js_hook_4 : id = "hook_4"
-tests_hook_nesting_js_hook_4 : data = {"vendor":{"description":"Tear down the environment"}}
+tests_hook_nesting_js_hook_4 : data = {\\n  "vendor": {\\n    "description": "Tear down the environment"\\n  }\\n}
 tests_hook_nesting_js_hook_4 : hookType = "afterAll"
 object "TestEntryMetadata" as tests_hook_nesting_js_test_0 #ffd
 tests_hook_nesting_js_test_0 : id = "test_0"
-tests_hook_nesting_js_test_0 : data = {"vendor":{"labels":["sanity"]}}
+tests_hook_nesting_js_test_0 : data = {\\n  "vendor": {\\n    "labels": [\\n      "sanity"\\n    ]\\n  }\\n}
 object "TestEntryMetadata" as tests_hook_nesting_js_test_1 #ffd
 tests_hook_nesting_js_test_1 : id = "test_1"
-tests_hook_nesting_js_test_1 : data = {"vendor":{"labels":["flaky","sanity"]}}
+tests_hook_nesting_js_test_1 : data = {\\n  "vendor": {\\n    "labels": [\\n      "flaky",\\n      "sanity"\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_1_0 #fcb
 tests_hook_nesting_js_hook_1_0 : id = "hook_1.0"
-tests_hook_nesting_js_hook_1_0 : data = {"vendor":{"steps":[{"text":"Open the browser","startedAt":1672524000000}]}}
+tests_hook_nesting_js_hook_1_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Open the browser",\\n        "startedAt": 1672524000000\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_0_0 #ffb
 tests_hook_nesting_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_0 #fcb
 tests_hook_nesting_js_hook_0_0 : id = "hook_0.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_0 #fcb
 tests_hook_nesting_js_hook_2_0 : id = "hook_2.0"
-tests_hook_nesting_js_hook_2_0 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001000}]}}
+tests_hook_nesting_js_hook_2_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001000\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_0_0_fn #fea
 tests_hook_nesting_js_test_0_0_fn : id = "test_0.0.fn"
-tests_hook_nesting_js_test_0_0_fn : data = {"vendor":{"steps":[{"text":"Enter invalid credentials","startedAt":1672524001100},{"text":"Assert that the login failed","startedAt":1672524001200}]}}
+tests_hook_nesting_js_test_0_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter invalid credentials",\\n        "startedAt": 1672524001100\\n      },\\n      {\\n        "text": "Assert that the login failed",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_0 #fcb
 tests_hook_nesting_js_hook_3_0 : id = "hook_3.0"
-tests_hook_nesting_js_hook_3_0 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001200}]}}
+tests_hook_nesting_js_hook_3_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001200\\n      }\\n    ]\\n  }\\n}
 object "TestInvocationMetadata" as tests_hook_nesting_js_test_1_0 #ffb
 tests_hook_nesting_js_test_1_0 : id = "test_1.0"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_0_1 #fcb
 tests_hook_nesting_js_hook_0_1 : id = "hook_0.1"
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_2_1 #fcb
 tests_hook_nesting_js_hook_2_1 : id = "hook_2.1"
-tests_hook_nesting_js_hook_2_1 : data = {"vendor":{"steps":[{"text":"Goto the URL: https://example.com","startedAt":1672524001250}]}}
+tests_hook_nesting_js_hook_2_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Goto the URL: https://example.com",\\n        "startedAt": 1672524001250\\n      }\\n    ]\\n  }\\n}
 object "TestFnInvocationMetadata" as tests_hook_nesting_js_test_1_0_fn #fea
 tests_hook_nesting_js_test_1_0_fn : id = "test_1.0.fn"
-tests_hook_nesting_js_test_1_0_fn : data = {"vendor":{"steps":[{"text":"Enter valid credentials","startedAt":1672524001350},{"text":"Assert that the login succeeded","startedAt":1672524001450}]}}
+tests_hook_nesting_js_test_1_0_fn : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Enter valid credentials",\\n        "startedAt": 1672524001350\\n      },\\n      {\\n        "text": "Assert that the login succeeded",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_3_1 #fcb
 tests_hook_nesting_js_hook_3_1 : id = "hook_3.1"
-tests_hook_nesting_js_hook_3_1 : data = {"vendor":{"steps":[{"text":"Clear cookies","startedAt":1672524001450}]}}
+tests_hook_nesting_js_hook_3_1 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Clear cookies",\\n        "startedAt": 1672524001450\\n      }\\n    ]\\n  }\\n}
 object "HookInvocationMetadata" as tests_hook_nesting_js_hook_4_0 #fcb
 tests_hook_nesting_js_hook_4_0 : id = "hook_4.0"
-tests_hook_nesting_js_hook_4_0 : data = {"vendor":{"steps":[{"text":"Close the browser","startedAt":1672524001500}]}}
+tests_hook_nesting_js_hook_4_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Close the browser",\\n        "startedAt": 1672524001500\\n      }\\n    ]\\n  }\\n}
 global_metadata --> tests_hook_nesting_js : testResults[0]
 tests_hook_nesting_js --> tests_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_hook_nesting_js_describe_0 --> tests_hook_nesting_js_hook_0 : children[0]
@@ -6069,27 +6069,27 @@ object "TestInvocationMetadata" as tests_test_concurrent_js_test_0_0 #ffb
 tests_test_concurrent_js_test_0_0 : id = "test_0.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_0_0_fn #fea
 tests_test_concurrent_js_test_0_0_fn : id = "test_0.0.fn"
-tests_test_concurrent_js_test_0_0_fn : data = {"test":{"slept":100}}
+tests_test_concurrent_js_test_0_0_fn : data = {\\n  "test": {\\n    "slept": 100\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_1_0 #ffb
 tests_test_concurrent_js_test_1_0 : id = "test_1.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_1_0_fn #fea
 tests_test_concurrent_js_test_1_0_fn : id = "test_1.0.fn"
-tests_test_concurrent_js_test_1_0_fn : data = {"test":{"slept":200}}
+tests_test_concurrent_js_test_1_0_fn : data = {\\n  "test": {\\n    "slept": 200\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_2_0 #ffb
 tests_test_concurrent_js_test_2_0 : id = "test_2.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_2_0_fn #fea
 tests_test_concurrent_js_test_2_0_fn : id = "test_2.0.fn"
-tests_test_concurrent_js_test_2_0_fn : data = {"test":{"slept":300}}
+tests_test_concurrent_js_test_2_0_fn : data = {\\n  "test": {\\n    "slept": 300\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_3_0 #ffb
 tests_test_concurrent_js_test_3_0 : id = "test_3.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_3_0_fn #fea
 tests_test_concurrent_js_test_3_0_fn : id = "test_3.0.fn"
-tests_test_concurrent_js_test_3_0_fn : data = {"test":{"slept":400}}
+tests_test_concurrent_js_test_3_0_fn : data = {\\n  "test": {\\n    "slept": 400\\n  }\\n}
 object "TestInvocationMetadata" as tests_test_concurrent_js_test_4_0 #ffb
 tests_test_concurrent_js_test_4_0 : id = "test_4.0"
 object "TestFnInvocationMetadata" as tests_test_concurrent_js_test_4_0_fn #fea
 tests_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
-tests_test_concurrent_js_test_4_0_fn : data = {"test":{"slept":500}}
+tests_test_concurrent_js_test_4_0_fn : data = {\\n  "test": {\\n    "slept": 500\\n  }\\n}
 global_metadata --> tests_test_concurrent_js : testResults[0]
 tests_test_concurrent_js --> tests_test_concurrent_js_describe_0 : rootDescribeBlock
 tests_test_concurrent_js_describe_0 --> tests_test_concurrent_js_hook_0 : children[0]
@@ -6322,18 +6322,18 @@ tests_test_todo_js_hook_4 : id = "hook_4"
 tests_test_todo_js_hook_4 : hookType = "afterAll"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_1_0 #fcb
 tests_test_todo_js_hook_1_0 : id = "hook_1.0"
-tests_test_todo_js_hook_1_0 : data = {"note":"beforeAll"}
+tests_test_todo_js_hook_1_0 : data = {\\n  "note": "beforeAll"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_2_0 #fcb
 tests_test_todo_js_hook_2_0 : id = "hook_2.0"
-tests_test_todo_js_hook_2_0 : data = {"note":"beforeAll inner"}
+tests_test_todo_js_hook_2_0 : data = {\\n  "note": "beforeAll inner"\\n}
 object "TestInvocationMetadata" as tests_test_todo_js_test_0_0 #ffb
 tests_test_todo_js_test_0_0 : id = "test_0.0"
 object "HookInvocationMetadata" as tests_test_todo_js_hook_3_0 #fcb
 tests_test_todo_js_hook_3_0 : id = "hook_3.0"
-tests_test_todo_js_hook_3_0 : data = {"note":"afterAll inner"}
+tests_test_todo_js_hook_3_0 : data = {\\n  "note": "afterAll inner"\\n}
 object "HookInvocationMetadata" as tests_test_todo_js_hook_4_0 #fcb
 tests_test_todo_js_hook_4_0 : id = "hook_4.0"
-tests_test_todo_js_hook_4_0 : data = {"note":"afterAll"}
+tests_test_todo_js_hook_4_0 : data = {\\n  "note": "afterAll"\\n}
 global_metadata --> tests_test_todo_js : testResults[0]
 tests_test_todo_js --> tests_test_todo_js_describe_0 : rootDescribeBlock
 tests_test_todo_js_describe_0 --> tests_test_todo_js_hook_0 : children[0]
