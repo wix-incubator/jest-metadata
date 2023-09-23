@@ -33,15 +33,12 @@ export class PlantObject {
 
     return [
       `object ${name} as ${id}${color}`,
-      ...Object.entries(this.properties).map(
-        ([key, value]) => {
-          const stringifiedValue = JSON.stringify(value, null, 2);
-          const escapedValue = stringifiedValue
-            .replace(/\n/g, '\\n');
+      ...Object.entries(this.properties).map(([key, value]) => {
+        const stringifiedValue = JSON.stringify(value, undefined, 2);
+        const escapedValue = stringifiedValue.replace(/\n/g, '\\n');
 
-          return `${id} : ${key} = ${escapedValue}`;
-        },
-      ),
+        return `${id} : ${key} = ${escapedValue}`;
+      }),
     ].join('\n');
   }
 }
