@@ -7,7 +7,7 @@
     "npm": ">=8.0.0"
   },
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky install || true",
     "build": "yarn workspaces foreach run build",
     "lint": "yarn workspaces foreach run lint",
     "lint:ci": "yarn workspaces foreach run lint:ci",
