@@ -18,6 +18,8 @@ export type IPCClientConfig = {
 };
 
 const __SEND = optimizeForLogger((msg: unknown) => ({ msg }));
+const __OMIT = optimizeForLogger((event: unknown) => ({ event }));
+const __ERROR = optimizeForLogger((error: unknown) => ({ cat: ['error'], error }));
 
 export class IPCClient {
   private readonly _ipc: IPC;
@@ -69,23 +71,24 @@ export class IPCClient {
   }
 
   enqueue(event: MetadataEvent) {
+    if (this._stopPromise) {
+      log.debug(__OMIT(event), 'enqueue (aborted)');
+      return;
+    }
+
     this._queue.push(event);
   }
 
-  async send(event: MetadataEvent) {
-    this.enqueue(event);
-    return this.flush();
-  }
-
-  async flush(): Promise<void> {
+  async flush(last: boolean = false): Promise<void> {
     if (!this._connection) {
-      throw new JestMetadataError('IPC client is not connected to server.');
+      log.trace(__OMIT(this._queue), 'flush (no connection)');
+      return;
     }
 
     const connection = this._connection;
     const batch = this._queue.splice(0, this._queue.length);
-    if (batch.length > 0) {
-      const msg = { batch };
+    if (last || batch.length > 0) {
+      const msg = { last, batch };
       await log.trace.complete(__SEND(msg), 'send', () =>
         sendAsyncMessage(connection, 'clientMessageBatch', msg),
       );
@@ -100,13 +103,17 @@ export class IPCClient {
 
     const serverId = this._serverId;
 
-    this._connection = await new Promise<IPCConnection>((resolve, reject) => {
+    const connection = await new Promise<IPCConnection | undefined>((resolve) => {
       const onConnect = (client: typeof node_ipc) => {
         client.of[serverId]
           // @ts-expect-error TS2339: Property 'once' does not exist on type 'Client'.
-          .once('error', reject)
+          .once('error', (err) => {
+            log.error(__ERROR(err), 'Failed to connect to IPC server.');
+            resolve(void 0);
+          })
           .once('disconnect', () => {
-            reject(new JestMetadataError('IPC server has unexpectedly disconnected.'));
+            log.error(__ERROR(void 0), 'IPC server has unexpectedly disconnected.');
+            resolve(void 0);
           })
           .once('connect', () => resolve(client.of[serverId]));
       };
@@ -115,23 +122,29 @@ export class IPCClient {
       this._ipc.connectTo(serverId, onConnect);
     });
 
-    await this.flush();
+    if (connection) {
+      this._connection = connection;
+      this._connection.on('beforeExit', () => this.stop());
+      await this.flush();
+    }
   }
 
   private async _doStop() {
     await this._startPromise;
     this._startPromise = undefined;
 
-    await this.flush();
-    await new Promise((resolve, reject) => {
-      this._ipc.of[this._serverId]
-        // @ts-expect-error TS2339: Property 'once' does not exist on type 'Client'.
-        .once('disconnect', resolve)
-        .once('error', reject);
+    if (this._connection) {
+      await this.flush(true);
+      await new Promise((resolve, reject) => {
+        this._ipc.of[this._serverId]
+          // @ts-expect-error TS2339: Property 'once' does not exist on type 'Client'.
+          .once('disconnect', resolve)
+          .once('error', reject);
 
-      this._ipc.disconnect(this._serverId);
-    });
+        this._ipc.disconnect(this._serverId);
+      });
 
-    this._connection = undefined;
+      this._connection = undefined;
+    }
   }
 }
