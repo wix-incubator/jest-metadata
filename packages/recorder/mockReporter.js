@@ -15,11 +15,13 @@ const cwd = process.cwd();
 class MockReporter extends JestMetadataReporter {
   _events = {};
   _single = false;
+  _bail = false;
 
   constructor(globalConfig, reporterConfig) {
     super(globalConfig, reporterConfig);
 
     this._single = globalConfig.maxWorkers === 1;
+    this._bail = globalConfig.bail > 0;
 
     const onEvent = (event) => {
       const id = event.testFilePath
@@ -43,7 +45,7 @@ class MockReporter extends JestMetadataReporter {
       const contents = JSON.stringify(events, null, 2);
       const fixturesProject = path.join(__dirname, '../fixtures');
       const jestFolder = fs.readdirSync(fixturesProject).find(constraint => semverSatisfies(jestVersion, constraint));
-      const subDir = (debugUtils.isFallback() ? 'no-' : '') + 'env-worker-' + (this._single ? '1' : 'N');
+      const subDir = (this._bail ? 'bail-' : '') + (debugUtils.isFallback() ? 'no-' : '') + 'env-' + (this._single ? '1' : 'N');
       const fixturePath =  path.join(fixturesProject, jestFolder, subDir, fileName);
 
       fs.mkdirSync(path.dirname(fixturePath), { recursive: true });

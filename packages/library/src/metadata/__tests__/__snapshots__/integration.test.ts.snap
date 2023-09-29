@@ -1,6 +1,206 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/bail-env-1/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as bail_bail_short_js_hook_0 #fdd
+bail_bail_short_js_hook_0 : id = "hook_0"
+bail_bail_short_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as bail_bail_short_js_hook_0_0 #fcb
+bail_bail_short_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as bail_bail_short_js_test_0_0_fn #fea
+bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_hook_0 : children[0]
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[1]
+bail_bail_short_js_hook_0 --> bail_bail_short_js_hook_0_0 : invocations[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_hook_0_0 : beforeEach[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_test_0_0_fn : fn
+bail_bail_short_js_test_0_0_fn --> bail_bail_short_js_test_0_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/27.x.x/bail-env-1/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+"\\n    ]\\n  }\\n}
+
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/27.x.x/bail-env-N/bail-long 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_long_js #def
+object "DescribeBlockMetadata" as bail_bail_long_js_describe_0 #ded
+bail_bail_long_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as bail_bail_long_js_hook_0 #fdd
+bail_bail_long_js_hook_0 : id = "hook_0"
+bail_bail_long_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as bail_bail_long_js_test_0 #ffd
+bail_bail_long_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as bail_bail_long_js_test_1 #ffd
+bail_bail_long_js_test_1 : id = "test_1"
+object "TestInvocationMetadata" as bail_bail_long_js_test_0_0 #ffb
+bail_bail_long_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as bail_bail_long_js_hook_0_0 #fcb
+bail_bail_long_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as bail_bail_long_js_test_0_0_fn #fea
+bail_bail_long_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as bail_bail_long_js_test_1_0 #ffb
+bail_bail_long_js_test_1_0 : id = "test_1.0"
+object "HookInvocationMetadata" as bail_bail_long_js_hook_0_1 #fcb
+bail_bail_long_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as bail_bail_long_js_test_1_0_fn #fea
+bail_bail_long_js_test_1_0_fn : id = "test_1.0.fn"
+global_metadata --> bail_bail_long_js : testResults[0]
+bail_bail_long_js --> bail_bail_long_js_describe_0 : rootDescribeBlock
+bail_bail_long_js_describe_0 --> bail_bail_long_js_hook_0 : children[0]
+bail_bail_long_js_describe_0 --> bail_bail_long_js_test_0 : children[1]
+bail_bail_long_js_describe_0 --> bail_bail_long_js_test_1 : children[2]
+bail_bail_long_js_hook_0 --> bail_bail_long_js_hook_0_0 : invocations[0]
+bail_bail_long_js_hook_0 --> bail_bail_long_js_hook_0_1 : invocations[1]
+bail_bail_long_js_test_0 --> bail_bail_long_js_test_0_0 : invocations[0]
+bail_bail_long_js_test_1 --> bail_bail_long_js_test_1_0 : invocations[0]
+bail_bail_long_js_test_0_0 --> bail_bail_long_js_hook_0_0 : beforeEach[0]
+bail_bail_long_js_test_0_0 --> bail_bail_long_js_test_0_0_fn : fn
+bail_bail_long_js_test_0_0_fn --> bail_bail_long_js_test_0_0 : test
+bail_bail_long_js_test_1_0 --> bail_bail_long_js_hook_0_1 : beforeEach[0]
+bail_bail_long_js_test_1_0 --> bail_bail_long_js_test_1_0_fn : fn
+bail_bail_long_js_test_1_0_fn --> bail_bail_long_js_test_1_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/27.x.x/bail-env-N/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as bail_bail_short_js_hook_0 #fdd
+bail_bail_short_js_hook_0 : id = "hook_0"
+bail_bail_short_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as bail_bail_short_js_hook_0_0 #fcb
+bail_bail_short_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as bail_bail_short_js_test_0_0_fn #fea
+bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_hook_0 : children[0]
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[1]
+bail_bail_short_js_hook_0 --> bail_bail_short_js_hook_0_0 : invocations[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_hook_0_0 : beforeEach[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_test_0_0_fn : fn
+bail_bail_short_js_test_0_0_fn --> bail_bail_short_js_test_0_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/27.x.x/bail-env-N/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n      "+"\\n    ]\\n  }\\n}
+
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/27.x.x/bail-no-env-1/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/27.x.x/bail-no-env-N/bail-long 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_long_js #def
+object "DescribeBlockMetadata" as bail_bail_long_js_describe_0 #ded
+bail_bail_long_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as bail_bail_long_js_test_0 #ffd
+bail_bail_long_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_long_js_test_0_0 #ffb
+bail_bail_long_js_test_0_0 : id = "test_0.0"
+global_metadata --> bail_bail_long_js : testResults[0]
+bail_bail_long_js --> bail_bail_long_js_describe_0 : rootDescribeBlock
+bail_bail_long_js_describe_0 --> bail_bail_long_js_test_0 : children[0]
+bail_bail_long_js_test_0 --> bail_bail_long_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/27.x.x/bail-no-env-N/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/27.x.x/env-1/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -81,7 +281,7 @@ tests_duplicate_cases_js_test_3_0_fn --> tests_duplicate_cases_js_test_3_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -139,7 +339,7 @@ tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -308,7 +508,7 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/globalMetadata 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/globalMetadata 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -320,7 +520,7 @@ global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n     
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -372,7 +572,7 @@ tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -418,7 +618,7 @@ tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -523,7 +723,7 @@ tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -617,7 +817,7 @@ tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -650,7 +850,7 @@ tests_test_fail_js_test_0_0_fn --> tests_test_fail_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -683,7 +883,7 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -743,7 +943,7 @@ tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -790,7 +990,7 @@ tests_test_skip_js_test_0 --> tests_test_skip_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-1/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-1/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -857,7 +1057,7 @@ tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -938,7 +1138,7 @@ tests_duplicate_cases_js_test_3_0_fn --> tests_duplicate_cases_js_test_3_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -996,7 +1196,7 @@ tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1165,7 +1365,7 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/globalMetadata 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/globalMetadata 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1177,7 +1377,7 @@ global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n     
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1229,7 +1429,7 @@ tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1275,7 +1475,7 @@ tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1380,7 +1580,7 @@ tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1474,7 +1674,7 @@ tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1507,7 +1707,7 @@ tests_test_fail_js_test_0_0_fn --> tests_test_fail_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1540,7 +1740,7 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1600,7 +1800,7 @@ tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1647,7 +1847,7 @@ tests_test_skip_js_test_0 --> tests_test_skip_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/env-worker-N/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/env-N/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1714,7 +1914,7 @@ tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1753,7 +1953,7 @@ tests_duplicate_cases_js_test_3 --> tests_duplicate_cases_js_test_3_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1780,7 +1980,7 @@ tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1831,7 +2031,7 @@ tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocation
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1852,7 +2052,7 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1879,7 +2079,7 @@ tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1906,7 +2106,7 @@ tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1951,7 +2151,7 @@ tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1972,7 +2172,7 @@ tests_test_fail_js_test_0 --> tests_test_fail_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -1993,7 +2193,7 @@ tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2014,7 +2214,7 @@ tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2026,7 +2226,7 @@ global_metadata --> tests_test_skip_js : testResults[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-1/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-1/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2038,7 +2238,7 @@ global_metadata --> tests_test_todo_js : testResults[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2077,7 +2277,7 @@ tests_duplicate_cases_js_test_3 --> tests_duplicate_cases_js_test_3_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2104,7 +2304,7 @@ tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2155,7 +2355,7 @@ tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocation
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2176,7 +2376,7 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2203,7 +2403,7 @@ tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2230,7 +2430,7 @@ tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2275,7 +2475,7 @@ tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2296,7 +2496,7 @@ tests_test_fail_js_test_0 --> tests_test_fail_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2317,7 +2517,7 @@ tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2338,7 +2538,7 @@ tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2350,7 +2550,7 @@ global_metadata --> tests_test_skip_js : testResults[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/27.x.x/no-env-worker-N/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/27.x.x/no-env-N/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2362,7 +2562,207 @@ global_metadata --> tests_test_todo_js : testResults[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/bail-env-1/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as bail_bail_short_js_hook_0 #fdd
+bail_bail_short_js_hook_0 : id = "hook_0"
+bail_bail_short_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as bail_bail_short_js_hook_0_0 #fcb
+bail_bail_short_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as bail_bail_short_js_test_0_0_fn #fea
+bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_hook_0 : children[0]
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[1]
+bail_bail_short_js_hook_0 --> bail_bail_short_js_hook_0_0 : invocations[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_hook_0_0 : beforeEach[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_test_0_0_fn : fn
+bail_bail_short_js_test_0_0_fn --> bail_bail_short_js_test_0_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/bail-env-1/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+"\\n    ]\\n  }\\n}
+
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/bail-env-N/bail-long 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_long_js #def
+object "DescribeBlockMetadata" as bail_bail_long_js_describe_0 #ded
+bail_bail_long_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as bail_bail_long_js_hook_0 #fdd
+bail_bail_long_js_hook_0 : id = "hook_0"
+bail_bail_long_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as bail_bail_long_js_test_0 #ffd
+bail_bail_long_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as bail_bail_long_js_test_1 #ffd
+bail_bail_long_js_test_1 : id = "test_1"
+object "TestInvocationMetadata" as bail_bail_long_js_test_0_0 #ffb
+bail_bail_long_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as bail_bail_long_js_hook_0_0 #fcb
+bail_bail_long_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as bail_bail_long_js_test_0_0_fn #fea
+bail_bail_long_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as bail_bail_long_js_test_1_0 #ffb
+bail_bail_long_js_test_1_0 : id = "test_1.0"
+object "HookInvocationMetadata" as bail_bail_long_js_hook_0_1 #fcb
+bail_bail_long_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as bail_bail_long_js_test_1_0_fn #fea
+bail_bail_long_js_test_1_0_fn : id = "test_1.0.fn"
+global_metadata --> bail_bail_long_js : testResults[0]
+bail_bail_long_js --> bail_bail_long_js_describe_0 : rootDescribeBlock
+bail_bail_long_js_describe_0 --> bail_bail_long_js_hook_0 : children[0]
+bail_bail_long_js_describe_0 --> bail_bail_long_js_test_0 : children[1]
+bail_bail_long_js_describe_0 --> bail_bail_long_js_test_1 : children[2]
+bail_bail_long_js_hook_0 --> bail_bail_long_js_hook_0_0 : invocations[0]
+bail_bail_long_js_hook_0 --> bail_bail_long_js_hook_0_1 : invocations[1]
+bail_bail_long_js_test_0 --> bail_bail_long_js_test_0_0 : invocations[0]
+bail_bail_long_js_test_1 --> bail_bail_long_js_test_1_0 : invocations[0]
+bail_bail_long_js_test_0_0 --> bail_bail_long_js_hook_0_0 : beforeEach[0]
+bail_bail_long_js_test_0_0 --> bail_bail_long_js_test_0_0_fn : fn
+bail_bail_long_js_test_0_0_fn --> bail_bail_long_js_test_0_0 : test
+bail_bail_long_js_test_1_0 --> bail_bail_long_js_hook_0_1 : beforeEach[0]
+bail_bail_long_js_test_1_0 --> bail_bail_long_js_test_1_0_fn : fn
+bail_bail_long_js_test_1_0_fn --> bail_bail_long_js_test_1_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/bail-env-N/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as bail_bail_short_js_hook_0 #fdd
+bail_bail_short_js_hook_0 : id = "hook_0"
+bail_bail_short_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as bail_bail_short_js_hook_0_0 #fcb
+bail_bail_short_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as bail_bail_short_js_test_0_0_fn #fea
+bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_hook_0 : children[0]
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[1]
+bail_bail_short_js_hook_0 --> bail_bail_short_js_hook_0_0 : invocations[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_hook_0_0 : beforeEach[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_test_0_0_fn : fn
+bail_bail_short_js_test_0_0_fn --> bail_bail_short_js_test_0_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/bail-env-N/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n      "+"\\n    ]\\n  }\\n}
+
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/bail-no-env-1/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/bail-no-env-N/bail-long 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_long_js #def
+object "DescribeBlockMetadata" as bail_bail_long_js_describe_0 #ded
+bail_bail_long_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as bail_bail_long_js_test_0 #ffd
+bail_bail_long_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_long_js_test_0_0 #ffb
+bail_bail_long_js_test_0_0 : id = "test_0.0"
+global_metadata --> bail_bail_long_js : testResults[0]
+bail_bail_long_js --> bail_bail_long_js_describe_0 : rootDescribeBlock
+bail_bail_long_js_describe_0 --> bail_bail_long_js_test_0 : children[0]
+bail_bail_long_js_test_0 --> bail_bail_long_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/bail-no-env-N/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/28.x.x/env-1/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2443,7 +2843,7 @@ tests_duplicate_cases_js_test_3_0_fn --> tests_duplicate_cases_js_test_3_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2501,7 +2901,7 @@ tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2670,7 +3070,7 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/globalMetadata 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/globalMetadata 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2682,7 +3082,7 @@ global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n     
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2734,7 +3134,7 @@ tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2780,7 +3180,7 @@ tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2885,7 +3285,7 @@ tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2959,7 +3359,7 @@ tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -2992,7 +3392,7 @@ tests_test_fail_js_test_0_0_fn --> tests_test_fail_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3025,7 +3425,7 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3085,7 +3485,7 @@ tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3132,7 +3532,7 @@ tests_test_skip_js_test_0 --> tests_test_skip_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-1/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-1/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3199,7 +3599,7 @@ tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3280,7 +3680,7 @@ tests_duplicate_cases_js_test_3_0_fn --> tests_duplicate_cases_js_test_3_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3338,7 +3738,7 @@ tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3507,7 +3907,7 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/globalMetadata 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/globalMetadata 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3519,7 +3919,7 @@ global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n     
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3571,7 +3971,7 @@ tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3617,7 +4017,7 @@ tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3722,7 +4122,7 @@ tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3796,7 +4196,7 @@ tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3829,7 +4229,7 @@ tests_test_fail_js_test_0_0_fn --> tests_test_fail_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3862,7 +4262,7 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3922,7 +4322,7 @@ tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -3969,7 +4369,7 @@ tests_test_skip_js_test_0 --> tests_test_skip_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/env-worker-N/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/env-N/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4036,7 +4436,7 @@ tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4075,7 +4475,7 @@ tests_duplicate_cases_js_test_3 --> tests_duplicate_cases_js_test_3_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4102,7 +4502,7 @@ tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4153,7 +4553,7 @@ tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocation
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4174,7 +4574,7 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4201,7 +4601,7 @@ tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4228,7 +4628,7 @@ tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4273,7 +4673,7 @@ tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4294,7 +4694,7 @@ tests_test_fail_js_test_0 --> tests_test_fail_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4315,7 +4715,7 @@ tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4336,7 +4736,7 @@ tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4348,7 +4748,7 @@ global_metadata --> tests_test_skip_js : testResults[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-1/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-1/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4360,7 +4760,7 @@ global_metadata --> tests_test_todo_js : testResults[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4399,7 +4799,7 @@ tests_duplicate_cases_js_test_3 --> tests_duplicate_cases_js_test_3_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4426,7 +4826,7 @@ tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4477,7 +4877,7 @@ tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocation
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4498,7 +4898,7 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4525,7 +4925,7 @@ tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4552,7 +4952,7 @@ tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4597,7 +4997,7 @@ tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4618,7 +5018,7 @@ tests_test_fail_js_test_0 --> tests_test_fail_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4639,7 +5039,7 @@ tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4660,7 +5060,7 @@ tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4672,7 +5072,7 @@ global_metadata --> tests_test_skip_js : testResults[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/28.x.x/no-env-worker-N/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/28.x.x/no-env-N/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4684,7 +5084,207 @@ global_metadata --> tests_test_todo_js : testResults[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/bail-env-1/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as bail_bail_short_js_hook_0 #fdd
+bail_bail_short_js_hook_0 : id = "hook_0"
+bail_bail_short_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as bail_bail_short_js_hook_0_0 #fcb
+bail_bail_short_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as bail_bail_short_js_test_0_0_fn #fea
+bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_hook_0 : children[0]
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[1]
+bail_bail_short_js_hook_0 --> bail_bail_short_js_hook_0_0 : invocations[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_hook_0_0 : beforeEach[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_test_0_0_fn : fn
+bail_bail_short_js_test_0_0_fn --> bail_bail_short_js_test_0_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/bail-env-1/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+"\\n    ]\\n  }\\n}
+
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/bail-env-N/bail-long 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_long_js #def
+object "DescribeBlockMetadata" as bail_bail_long_js_describe_0 #ded
+bail_bail_long_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as bail_bail_long_js_hook_0 #fdd
+bail_bail_long_js_hook_0 : id = "hook_0"
+bail_bail_long_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as bail_bail_long_js_test_0 #ffd
+bail_bail_long_js_test_0 : id = "test_0"
+object "TestEntryMetadata" as bail_bail_long_js_test_1 #ffd
+bail_bail_long_js_test_1 : id = "test_1"
+object "TestInvocationMetadata" as bail_bail_long_js_test_0_0 #ffb
+bail_bail_long_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as bail_bail_long_js_hook_0_0 #fcb
+bail_bail_long_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as bail_bail_long_js_test_0_0_fn #fea
+bail_bail_long_js_test_0_0_fn : id = "test_0.0.fn"
+object "TestInvocationMetadata" as bail_bail_long_js_test_1_0 #ffb
+bail_bail_long_js_test_1_0 : id = "test_1.0"
+object "HookInvocationMetadata" as bail_bail_long_js_hook_0_1 #fcb
+bail_bail_long_js_hook_0_1 : id = "hook_0.1"
+object "TestFnInvocationMetadata" as bail_bail_long_js_test_1_0_fn #fea
+bail_bail_long_js_test_1_0_fn : id = "test_1.0.fn"
+global_metadata --> bail_bail_long_js : testResults[0]
+bail_bail_long_js --> bail_bail_long_js_describe_0 : rootDescribeBlock
+bail_bail_long_js_describe_0 --> bail_bail_long_js_hook_0 : children[0]
+bail_bail_long_js_describe_0 --> bail_bail_long_js_test_0 : children[1]
+bail_bail_long_js_describe_0 --> bail_bail_long_js_test_1 : children[2]
+bail_bail_long_js_hook_0 --> bail_bail_long_js_hook_0_0 : invocations[0]
+bail_bail_long_js_hook_0 --> bail_bail_long_js_hook_0_1 : invocations[1]
+bail_bail_long_js_test_0 --> bail_bail_long_js_test_0_0 : invocations[0]
+bail_bail_long_js_test_1 --> bail_bail_long_js_test_1_0 : invocations[0]
+bail_bail_long_js_test_0_0 --> bail_bail_long_js_hook_0_0 : beforeEach[0]
+bail_bail_long_js_test_0_0 --> bail_bail_long_js_test_0_0_fn : fn
+bail_bail_long_js_test_0_0_fn --> bail_bail_long_js_test_0_0 : test
+bail_bail_long_js_test_1_0 --> bail_bail_long_js_hook_0_1 : beforeEach[0]
+bail_bail_long_js_test_1_0 --> bail_bail_long_js_test_1_0_fn : fn
+bail_bail_long_js_test_1_0_fn --> bail_bail_long_js_test_1_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/bail-env-N/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "HookDefinitionMetadata" as bail_bail_short_js_hook_0 #fdd
+bail_bail_short_js_hook_0 : id = "hook_0"
+bail_bail_short_js_hook_0 : hookType = "beforeEach"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+object "HookInvocationMetadata" as bail_bail_short_js_hook_0_0 #fcb
+bail_bail_short_js_hook_0_0 : id = "hook_0.0"
+object "TestFnInvocationMetadata" as bail_bail_short_js_test_0_0_fn #fea
+bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_hook_0 : children[0]
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[1]
+bail_bail_short_js_hook_0 --> bail_bail_short_js_hook_0_0 : invocations[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_hook_0_0 : beforeEach[0]
+bail_bail_short_js_test_0_0 --> bail_bail_short_js_test_0_0_fn : fn
+bail_bail_short_js_test_0_0_fn --> bail_bail_short_js_test_0_0 : test
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/bail-env-N/globalMetadata 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n      "+"\\n    ]\\n  }\\n}
+
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/bail-no-env-1/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/bail-no-env-N/bail-long 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_long_js #def
+object "DescribeBlockMetadata" as bail_bail_long_js_describe_0 #ded
+bail_bail_long_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as bail_bail_long_js_test_0 #ffd
+bail_bail_long_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_long_js_test_0_0 #ffb
+bail_bail_long_js_test_0_0 : id = "test_0.0"
+global_metadata --> bail_bail_long_js : testResults[0]
+bail_bail_long_js --> bail_bail_long_js_describe_0 : rootDescribeBlock
+bail_bail_long_js_describe_0 --> bail_bail_long_js_test_0 : children[0]
+bail_bail_long_js_test_0 --> bail_bail_long_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/bail-no-env-N/bail-short 1`] = `
+"@startuml
+
+object "GlobalMetadata" as global_metadata #dff
+global_metadata : id = "globalMetadata"
+object "TestFileMetadata" as bail_bail_short_js #def
+object "DescribeBlockMetadata" as bail_bail_short_js_describe_0 #ded
+bail_bail_short_js_describe_0 : id = "describe_0"
+object "TestEntryMetadata" as bail_bail_short_js_test_0 #ffd
+bail_bail_short_js_test_0 : id = "test_0"
+object "TestInvocationMetadata" as bail_bail_short_js_test_0_0 #ffb
+bail_bail_short_js_test_0_0 : id = "test_0.0"
+global_metadata --> bail_bail_short_js : testResults[0]
+bail_bail_short_js --> bail_bail_short_js_describe_0 : rootDescribeBlock
+bail_bail_short_js_describe_0 --> bail_bail_short_js_test_0 : children[0]
+bail_bail_short_js_test_0 --> bail_bail_short_js_test_0_0 : invocations[0]
+
+@enduml
+"
+`;
+
+exports[`metadata - integration test: fixtures/29.x.x/env-1/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4765,7 +5365,7 @@ tests_duplicate_cases_js_test_3_0_fn --> tests_duplicate_cases_js_test_3_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4823,7 +5423,7 @@ tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -4992,7 +5592,7 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/globalMetadata 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/globalMetadata 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5004,7 +5604,7 @@ global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n     
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5056,7 +5656,7 @@ tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5102,7 +5702,7 @@ tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5207,7 +5807,7 @@ tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5281,7 +5881,7 @@ tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5314,7 +5914,7 @@ tests_test_fail_js_test_0_0_fn --> tests_test_fail_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5347,7 +5947,7 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5407,7 +6007,7 @@ tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5454,7 +6054,7 @@ tests_test_skip_js_test_0 --> tests_test_skip_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-1/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-1/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5521,7 +6121,7 @@ tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5602,7 +6202,7 @@ tests_duplicate_cases_js_test_3_0_fn --> tests_duplicate_cases_js_test_3_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5660,7 +6260,7 @@ tests_duplicate_generation_js_test_0_1_fn --> tests_duplicate_generation_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5829,7 +6429,7 @@ tests_duplicate_name_js_test_4_1_fn --> tests_duplicate_name_js_test_4_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/globalMetadata 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/globalMetadata 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5841,7 +6441,7 @@ global_metadata : data = {\\n  "vendor": {\\n    "tests": [\\n      "+",\\n     
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5893,7 +6493,7 @@ tests_hook_after_all_fail_js_test_0_0_fn --> tests_hook_after_all_fail_js_test_0
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -5939,7 +6539,7 @@ tests_hook_before_all_fail_js_test_1_0_fn --> tests_hook_before_all_fail_js_test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6044,7 +6644,7 @@ tests_hook_nesting_js_test_1_0_fn --> tests_hook_nesting_js_test_1_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6118,7 +6718,7 @@ tests_test_concurrent_js_test_4_0_fn --> tests_test_concurrent_js_test_4_0 : tes
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6151,7 +6751,7 @@ tests_test_fail_js_test_0_0_fn --> tests_test_fail_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6184,7 +6784,7 @@ tests_test_pass_js_test_0_0_fn --> tests_test_pass_js_test_0_0 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6244,7 +6844,7 @@ tests_test_retry_js_test_0_1_fn --> tests_test_retry_js_test_0_1 : test
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6291,7 +6891,7 @@ tests_test_skip_js_test_0 --> tests_test_skip_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/env-worker-N/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/env-N/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6358,7 +6958,7 @@ tests_test_todo_js_test_0_0 --> tests_test_todo_js_hook_4_0 : afterAll[1]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6397,7 +6997,7 @@ tests_duplicate_cases_js_test_3 --> tests_duplicate_cases_js_test_3_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6424,7 +7024,7 @@ tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6475,7 +7075,7 @@ tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocation
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6496,7 +7096,7 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6523,7 +7123,7 @@ tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6550,7 +7150,7 @@ tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6595,7 +7195,7 @@ tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6616,7 +7216,7 @@ tests_test_fail_js_test_0 --> tests_test_fail_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6637,7 +7237,7 @@ tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6658,7 +7258,7 @@ tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6670,7 +7270,7 @@ global_metadata --> tests_test_skip_js : testResults[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-1/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-1/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6691,7 +7291,7 @@ tests_test_todo_js_test_0 --> tests_test_todo_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/duplicate-cases 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/duplicate-cases 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6730,7 +7330,7 @@ tests_duplicate_cases_js_test_3 --> tests_duplicate_cases_js_test_3_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/duplicate-generation 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/duplicate-generation 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6757,7 +7357,7 @@ tests_duplicate_generation_js_test_1 --> tests_duplicate_generation_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/duplicate-name 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/duplicate-name 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6808,7 +7408,7 @@ tests_duplicate_name_js_test_5 --> tests_duplicate_name_js_test_5_0 : invocation
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/hook-afterAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/hook-afterAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6829,7 +7429,7 @@ tests_hook_after_all_fail_js_test_0 --> tests_hook_after_all_fail_js_test_0_0 : 
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/hook-beforeAll-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/hook-beforeAll-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6856,7 +7456,7 @@ tests_hook_before_all_fail_js_test_1 --> tests_hook_before_all_fail_js_test_1_0 
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/hook-nesting 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/hook-nesting 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6883,7 +7483,7 @@ tests_hook_nesting_js_test_1 --> tests_hook_nesting_js_test_1_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/test-concurrent 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/test-concurrent 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6928,7 +7528,7 @@ tests_test_concurrent_js_test_4 --> tests_test_concurrent_js_test_4_0 : invocati
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/test-fail 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/test-fail 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6949,7 +7549,7 @@ tests_test_fail_js_test_0 --> tests_test_fail_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/test-pass 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/test-pass 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6970,7 +7570,7 @@ tests_test_pass_js_test_0 --> tests_test_pass_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/test-retry 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/test-retry 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -6991,7 +7591,7 @@ tests_test_retry_js_test_0 --> tests_test_retry_js_test_0_0 : invocations[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/test-skip 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/test-skip 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff
@@ -7003,7 +7603,7 @@ global_metadata --> tests_test_skip_js : testResults[0]
 "
 `;
 
-exports[`metadata - integration test: fixtures/29.x.x/no-env-worker-N/test-todo 1`] = `
+exports[`metadata - integration test: fixtures/29.x.x/no-env-N/test-todo 1`] = `
 "@startuml
 
 object "GlobalMetadata" as global_metadata #dff

@@ -12,7 +12,7 @@ import { SerialSyncEmitter } from '../../utils';
 
 describe('file metadata traversal:', () => {
   const lastFixtures = Object.values(fixtures).filter(([name]) => {
-    return name.startsWith('29.x.x') && name.includes('-worker-N');
+    return name.startsWith('29.x.x') && name.includes('env-N');
   });
 
   test.each(lastFixtures)(`fixtures/%s`, (_name: string, fixture: any[]) => {

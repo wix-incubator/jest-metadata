@@ -12,13 +12,19 @@
     "semver": "^7.5.4"
   },
   "scripts": {
-    "build:dev": "npm run build --workspace=jest-metadata && npm run instrument --workspace=jest-metadata && npm run build",
+    "build:dev": "yarn workspace jest-metadata build && yarn workspace jest-metadata instrument && yarn build",
     "build:jsdom": "cross-env JEST_ENVIRONMENT=jsdom npm run build",
     "build:node": "cross-env JEST_ENVIRONMENT=node npm run build",
-    "build": "npm run build:env-1 ; npm run build:env-N ; npm run build:no-env-1 ; npm run build:no-env-N ; true",
+    "build": "npm run build:normal && npm run build:bail",
+    "build:normal": "npm run build:env-1 ; npm run build:env-N ; npm run build:no-env-1 ; npm run build:no-env-N ; true",
+    "build:bail": "npm run build:bail-env-1 ; npm run build:bail-env-N ; npm run build:bail-no-env-1 ; npm run build:bail-no-env-N ; true",
     "build:env-1": "cross-env PRESET=env-1 jest",
     "build:env-N": "cross-env PRESET=env-N jest",
     "build:no-env-1": "cross-env PRESET=no-env-1 jest",
-    "build:no-env-N": "cross-env PRESET=no-env-N jest"
+    "build:no-env-N": "cross-env PRESET=no-env-N jest",
+    "build:bail-env-1": "cross-env PRESET=bail-env-1 jest",
+    "build:bail-env-N": "cross-env PRESET=bail-env-N jest",
+    "build:bail-no-env-1": "cross-env PRESET=bail-no-env-1 jest",
+    "build:bail-no-env-N": "cross-env PRESET=bail-no-env-N jest"
   }
 }

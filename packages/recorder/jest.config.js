@@ -20,6 +20,12 @@ const mixins = {
   workers: (n) => ({
     maxWorkers: n,
   }),
+  bail: (n) => ({
+    bail: n,
+    testMatch: [
+      '<rootDir>/__bail__/*.js',
+    ],
+  }),
 };
 
 const presets = {
@@ -39,6 +45,28 @@ const presets = {
     ...mixins.env(false),
     ...mixins.workers(2),
   },
+  'bail-env-1': {
+    ...mixins.env(true),
+    ...mixins.workers(1),
+    ...mixins.bail(1),
+    testMatch: ['<rootDir>/__bail__/bail-short.js'],
+  },
+  'bail-env-N': {
+    ...mixins.env(true),
+    ...mixins.workers(2),
+    ...mixins.bail(1),
+  },
+  'bail-no-env-1': {
+    ...mixins.env(false),
+    ...mixins.workers(1),
+    ...mixins.bail(1),
+    testMatch: ['<rootDir>/__bail__/bail-short.js'],
+  },
+  'bail-no-env-N': {
+    ...mixins.env(false),
+    ...mixins.workers(2),
+    ...mixins.bail(1),
+  },
 };
 
 /** @type {import('@jest/types').Config.InitialOptions}*/
@@ -50,7 +78,7 @@ module.exports = {
     'default',
     '<rootDir>/mockReporter'
   ],
-  setupFiles: [
+  setupFilesAfterEnv: [
     '<rootDir>/setup.js',
   ],
   testMatch: [
