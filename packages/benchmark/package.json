@@ -2,7 +2,7 @@
   "name": "@jest-metadata/benchmark",
   "description": "Benchmarks to avoid performance regressions in jest-metadata",
   "private": true,
-  "version": "1.0.0-beta.20",
+  "version": "1.0.0-beta.21",
   "devDependencies": {
     "cross-env": "^7.0.3",
     "jest": "latest",
