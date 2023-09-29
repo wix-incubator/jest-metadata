@@ -112,7 +112,7 @@ jobs:
       - uses: actions/setup-node@v3
 
       - name: Install dependencies
-        run: npm -g install "lcov-result-merger@3.x.x" "lcov-badge2"
+        run: npm -g install "lcov-result-merger@3.x.x" "lcov-badge2@1.0.3"
 
       - name: Merge coverage reports
         run: lcov-result-merger 'artifacts/**/lcov.info' 'artifacts/lcov.info'
