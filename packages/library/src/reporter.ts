@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function,unicorn/no-for-loop */
 import type {
   AggregatedResult,
+  Config,
   Reporter,
   ReporterOnStartOptions,
   Test,
@@ -8,29 +9,28 @@ import type {
   TestContext,
   TestResult,
 } from '@jest/reporters';
-import { realm } from './realms';
-import { logger } from './utils';
+import { JestMetadataError } from './errors';
+import { realm as unknownRealm } from './realms';
+import type { ParentProcessRealm } from './realms';
 
-export type JestMetadataServerReporterConfig = {
-  // empty for now
-};
-
-export const query = realm.query;
+const realm = unknownRealm as ParentProcessRealm;
 
 /**
  * @implements {import('@jest/reporters').Reporter}
  */
 export class JestMetadataReporter implements Reporter {
-  #log = logger.child({ cat: 'reporter', tid: 'reporter' });
-
-  constructor(_globalConfig: unknown, _options: JestMetadataServerReporterConfig) {}
+  constructor(_globalConfig: Config.GlobalConfig) {
+    if (realm.type !== 'parent_process') {
+      throw new JestMetadataError(`JestMetadataReporter can be used only in the parent process`);
+    }
+  }
 
   getLastError(): Error | void {
     return undefined;
   }
 
-  async onRunStart(_results: AggregatedResult, _options: ReporterOnStartOptions): Promise<void> {
-    await realm.ipc.start();
+  onRunStart(_results: AggregatedResult, _options: ReporterOnStartOptions): Promise<void> {
+    return realm.reporterServer.onRunStart();
   }
 
   /**
@@ -41,10 +41,7 @@ export class JestMetadataReporter implements Reporter {
   }
 
   onTestFileStart(test: Test): void {
-    this.#log.debug.begin({ tid: ['reporter', test.path] }, test.path);
-    realm.fallbackAPI.reportTestFile(test.path);
-    const testFileMetadata = realm.globalMetadata.getTestFileMetadata(test.path);
-    realm.associate.filePath(test.path, testFileMetadata);
+    return realm.reporterServer.onTestFileStart(test.path);
   }
 
   /**
@@ -52,19 +49,11 @@ export class JestMetadataReporter implements Reporter {
    * @see {import('@jest/types').Circus.TestCaseStartInfo}
    */
   onTestCaseStart(test: Test, _testCaseStartInfo: /* for type safety */ unknown): void {
-    this.#log.debug({ tid: ['reporter', test.path] }, 'onTestCaseStart');
-    // We cannot use the fallback API here because `testCaseStartInfo`
-    // does not contain information, whether this is a retry or not.
-    // That's why we might end up with multiple test entries for the same test,
-    // so better to ignore this event, rather than distort the data.
+    return realm.reporterServer.onTestCaseStart(test);
   }
 
   onTestCaseResult(test: Test, testCaseResult: TestCaseResult): void {
-    this.#log.debug({ tid: ['reporter', test.path] }, 'onTestCaseResult');
-
-    realm.fallbackAPI.reportTestCase(test.path, testCaseResult);
-    const lastTestEntry = realm.query.test(test)!.lastTestEntry!;
-    realm.associate.testCaseResult(testCaseResult, lastTestEntry);
+    return realm.reporterServer.onTestCaseResult(test, testCaseResult);
   }
 
   /**
@@ -75,17 +64,11 @@ export class JestMetadataReporter implements Reporter {
   }
 
   onTestFileResult(test: Test, testResult: TestResult, _aggregatedResult: AggregatedResult): void {
-    const allTestEntries = realm.fallbackAPI.reportTestFileResult(testResult);
-    const testResults = testResult.testResults;
-    for (let i = 0; i < testResults.length; i++) {
-      realm.associate.testCaseResult(testResults[i], allTestEntries[i]);
-    }
-
-    this.#log.debug.end({ tid: ['reporter', test.path] });
+    return realm.reporterServer.onTestFileResult(test, testResult);
   }
 
-  async onRunComplete(_testContexts: Set<TestContext>, _results: AggregatedResult): Promise<void> {
-    await realm.ipc.stop();
+  onRunComplete(_testContexts: Set<TestContext>, _results: AggregatedResult): Promise<void> {
+    return realm.reporterServer.onRunComplete();
   }
 }
 

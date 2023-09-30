@@ -76,6 +76,7 @@ module.exports = {
 
   reporters: [
     'default',
+    'jest-metadata/reporter',
     '<rootDir>/mockReporter'
   ],
   setupFilesAfterEnv: [

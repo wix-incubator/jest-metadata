@@ -1,7 +1,13 @@
 import type { TestCaseResult, TestResult } from '@jest/reporters';
 import { JestMetadataError } from '../errors';
-import type { GlobalMetadata, MetadataEventEmitter, TestEntryMetadata } from '../metadata';
-import { memoizeLast, Rotator } from '../utils';
+import type {
+  GlobalMetadata,
+  MetadataEventEmitter,
+  TestDoneEvent,
+  TestEntryMetadata,
+  TestSkipEvent,
+} from '../metadata';
+import { Rotator } from '../utils';
 
 export class FallbackAPI {
   private _fallbackMode: boolean | undefined = undefined;
@@ -10,10 +16,7 @@ export class FallbackAPI {
   constructor(
     private readonly globalMetadata: GlobalMetadata,
     private readonly eventEmitter: MetadataEventEmitter,
-  ) {
-    this.reportTestFile = memoizeLast(this.reportTestFile.bind(this));
-    this.reportTestCase = memoizeLast(this.reportTestCase.bind(this));
-  }
+  ) {}
 
   public get enabled() {
     return this._fallbackMode ?? true;
@@ -24,16 +27,18 @@ export class FallbackAPI {
       type: 'add_test_file',
       testFilePath,
     });
+
+    return this.globalMetadata.getTestFileMetadata(testFilePath);
   }
 
-  reportTestCase(testFilePath: string, testCaseResult: TestCaseResult) {
+  reportTestCase(testFilePath: string, testCaseResult: TestCaseResult): TestEntryMetadata {
     const file = this.globalMetadata.getTestFileMetadata(testFilePath);
     if (this._fallbackMode === undefined) {
       this._fallbackMode = !file.rootDescribeBlock;
     }
 
     if (!this._fallbackMode) {
-      return;
+      return file.lastTestEntry!;
     }
 
     if (!file.rootDescribeBlock) {
@@ -88,7 +93,9 @@ export class FallbackAPI {
         type: this._getCompletionEventType(testCaseResult),
         testFilePath,
         testId,
-      });
+      } as TestDoneEvent | TestSkipEvent | TestDoneEvent);
+
+      return lastChild;
     } else {
       const tests = this._cache.get(nameIdentifier)!;
       const info = tests.find((t) => t.testCaseResult.status === 'failed')!;
@@ -104,7 +111,9 @@ export class FallbackAPI {
         type: this._getCompletionEventType(testCaseResult),
         testFilePath: info.testFilePath,
         testId: info.testId,
-      });
+      } as TestDoneEvent | TestSkipEvent | TestDoneEvent);
+
+      return info.testEntryMetadata;
     }
   }
 
@@ -148,7 +157,7 @@ export class FallbackAPI {
           type: this._getCompletionEventType(testCaseResult),
           testFilePath,
           testId,
-        });
+        } as TestDoneEvent | TestSkipEvent | TestDoneEvent);
       }
 
       result.push(info ? info.testEntryMetadata : file.lastTestEntry!);
@@ -188,5 +197,6 @@ type TestEntryInfo = {
   testId: string;
   testFilePath: string;
   testEntryMetadata: TestEntryMetadata;
+  /** Only or the last invocation */
   testCaseResult: TestCaseResult;
 };
