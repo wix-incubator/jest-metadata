@@ -17,8 +17,8 @@ class MockReporter extends JestMetadataReporter {
   _single = false;
   _bail = false;
 
-  constructor(globalConfig, reporterConfig) {
-    super(globalConfig, reporterConfig);
+  constructor(globalConfig) {
+    super(globalConfig);
 
     this._single = globalConfig.maxWorkers === 1;
     this._bail = globalConfig.bail > 0;

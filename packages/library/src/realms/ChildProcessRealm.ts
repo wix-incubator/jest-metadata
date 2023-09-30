@@ -6,7 +6,7 @@ import { BaseRealm } from './BaseRealm';
 import { getClientId, getServerId } from './detect';
 
 export class ChildProcessRealm extends BaseRealm {
-  readonly type = 'child_process';
+  readonly type = 'child_process' as const;
 
   readonly environmentHandler: EnvironmentEventHandler = new EnvironmentEventHandler({
     emitter: this.coreEmitter,

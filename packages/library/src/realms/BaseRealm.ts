@@ -1,6 +1,6 @@
 import { EnvironmentEventHandler } from '../jest-environment';
 
-import { AssociateMetadata, FallbackAPI, QueryMetadata } from '../jest-reporter';
+import { AssociateMetadata, QueryMetadata } from '../jest-reporter';
 import {
   GlobalMetadataRegistry,
   MetadataDSL,
@@ -15,13 +15,13 @@ import {
 import { AggregatedEmitter, SerialSyncEmitter } from '../utils';
 
 export abstract class BaseRealm {
-  readonly coreEmitter: MetadataEventEmitter = new SerialSyncEmitter<MetadataEvent>('core').on(
+  readonly coreEmitter = new SerialSyncEmitter<MetadataEvent>('core').on(
     '*',
     (event: MetadataEvent) => {
       this.metadataHandler.handle(event);
     },
-  );
-  readonly setEmitter: SetMetadataEventEmitter = new SerialSyncEmitter<SetMetadataEvent>('set');
+  ) as MetadataEventEmitter;
+  readonly setEmitter = new SerialSyncEmitter<SetMetadataEvent>('set') as SetMetadataEventEmitter;
   readonly events = new AggregatedEmitter<MetadataEvent>('events').add(this.coreEmitter);
 
   readonly metadataRegistry = new GlobalMetadataRegistry();
@@ -34,11 +34,10 @@ export abstract class BaseRealm {
     globalMetadata: this.globalMetadata,
     metadataRegistry: this.metadataRegistry,
   });
-  readonly associate = new AssociateMetadata(process.cwd());
-  readonly query = new QueryMetadata(this.associate, this.metadataFactory.checker);
-  readonly fallbackAPI = new FallbackAPI(this.globalMetadata, this.coreEmitter);
   readonly metadataDSL = new MetadataDSL(
     this.coreEmitter,
     () => this.globalMetadata.currentMetadata,
   );
+  readonly associate = new AssociateMetadata();
+  readonly query = new QueryMetadata(this.associate, this.metadataFactory.checker);
 }

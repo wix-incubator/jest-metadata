@@ -4,7 +4,6 @@ import { JestMetadataError } from '../errors';
 import type {
   GlobalMetadata,
   MetadataChecker,
-  InstanceOfMetadataChecker,
   TestFileMetadata,
   TestEntryMetadata,
 } from '../metadata';
@@ -18,7 +17,7 @@ export class QueryMetadata {
   private readonly [_associate]: AssociateMetadata;
   private readonly [_checker]: MetadataChecker;
 
-  constructor(associate: AssociateMetadata, checker: InstanceOfMetadataChecker) {
+  constructor(associate: AssociateMetadata, checker: MetadataChecker) {
     this[_associate] = associate;
     this[_checker] = checker;
   }

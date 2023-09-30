@@ -1,4 +1,4 @@
-import { realm } from './realms';
+import { ParentProcessRealm, realm } from './realms';
 
 export { aggregateLogs } from './utils';
 
@@ -7,7 +7,9 @@ export function isEnabled() {
 }
 
 export function isFallback() {
-  return realm.fallbackAPI.enabled;
+  return realm.type === 'parent_process'
+    ? (realm as ParentProcessRealm).fallbackAPI.enabled
+    : undefined;
 }
 
 export const events = realm.events;
