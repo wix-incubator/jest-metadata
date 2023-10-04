@@ -7,37 +7,34 @@ go_root() {
   cd $(git rev-parse --show-toplevel)
 }
 
-prepare_fixtures() {
-  go_root
-  yarn workspace jest-metadata build
-  yarn workspace jest-metadata instrument
-  yarn workspace jest-metadata pack
-  mv packages/library/package.tgz packages/recorder/jest-metadata.tgz
-  git clean -xdf 'node_modules' '**/node_modules'
-}
-
 build_fixtures() {
-  go_root
   scripts/setup-fixture.mjs
-  cd packages/recorder
+  cd e2e
   rm -rf node_modules
-  npm install --workspaces=false
+  npm install
   npm run build
-  git checkout -- package.json
+  go_root
 }
 
-prepare_fixtures
+restore_fixtures() {
+  cd e2e
+  rm -rf node_modules
+  git checkout -- package.json
+  npm install
+  go_root
+}
 
 if [ -z "$JEST_VERSION" ]; then
+  npm run build:e2e
+
   # Iterate over Jest versions
   for version in 27.x.x 28.x.x 29.x.x; do
     export JEST_VERSION="$version"
     build_fixtures
   done
 
-  git clean -xdf '**/node_modules' node_modules
-  yarn
-  yarn workspace jest-metadata test -u
+  restore_fixtures
+  npx jest -u
 else
   # If JEST_VERSION is set, run build_fixtures once
   build_fixtures

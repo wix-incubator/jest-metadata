@@ -1,0 +1,121 @@
+[
+  {
+    "type": "add_test_file",
+    "testFilePath": "__tests__/default/duplicate-name.js"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "describeId": "describe_0"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "test_retry",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3"
+  },
+  {
+    "type": "test_retry",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2"
+  },
+  {
+    "type": "test_done",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4"
+  },
+  {
+    "type": "test_skip",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_5"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_5"
+  },
+  {
+    "type": "test_todo",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_5"
+  }
+]

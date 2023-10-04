@@ -64,6 +64,7 @@ typings/
 
 # Output of 'npm pack'
 *.tgz
+*.tar.gz
 
 # Yarn Integrity file
 .yarn-integrity
@@ -110,15 +111,8 @@ dist
 # Generated content
 /website
 
-/__fixtures__/events/
 package-lock.json
 .DS_Store
 
-# Yarn
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+# Benchmarking
+benchmark.json
