@@ -1,6 +1,0 @@
-[
-  {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/test-todo.js"
-  }
-]

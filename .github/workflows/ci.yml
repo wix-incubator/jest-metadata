@@ -25,10 +25,16 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - run: npm -g install yarn
+      - uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
 
-      - name: Install dependencies
-        run: yarn
+      - name: Build package for E2E
+        run: npm run build:e2e
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: 'e2e/.nvmrc'
 
       - name: Update fixtures
         run: npm run update-fixtures
@@ -36,7 +42,7 @@ jobs:
           JEST_VERSION: ${{ matrix.jest }}
 
       - name: Assert no Git changes
-        run: git diff --exit-code packages/fixtures
+        run: git diff --exit-code e2e/__fixtures__
 
       - name: Upload artifacts
         if: always()
@@ -58,28 +64,30 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - run: npm -g install yarn
-
-      - name: Install dependencies
-        run: yarn
+      - uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
 
       - name: Lint
         run: npm run lint:ci
 
       - name: Unit and Integration
-        run: npm run test --workspace=jest-metadata
+        run: npm test
 
-      - name: Build library
-        run: npm run build --workspace=jest-metadata
+      - name: Build package for E2E
+        run: npm run build:e2e
 
-      - name: Instrument library
-        run: npm run instrument --workspace=jest-metadata
+      - uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+          working-directory: e2e
 
-      - name: Build fixtures
-        run: npm run build --workspace=@jest-metadata/recorder
+      - name: Record fixtures
+        run: npm run build
+        working-directory: e2e
 
       - name: Assert no Git changes
-        run: git diff --exit-code packages/fixtures
+        run: git diff --exit-code e2e/__fixtures__
 
       - name: Upload artifacts
         if: always()
@@ -112,7 +120,7 @@ jobs:
       - uses: actions/setup-node@v3
 
       - name: Install dependencies
-        run: npm -g install "lcov-result-merger@3.x.x" "lcov-badge2@1.0.3"
+        run: npm -g install "lcov-result-merger@4.x.x" "lcov-badge2@1.1.1"
 
       - name: Merge coverage reports
         run: lcov-result-merger 'artifacts/**/lcov.info' 'artifacts/lcov.info'

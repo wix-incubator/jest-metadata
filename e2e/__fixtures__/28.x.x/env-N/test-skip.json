@@ -1,0 +1,123 @@
+[
+  {
+    "type": "add_test_file",
+    "testFilePath": "__tests__/default/test-skip.js"
+  },
+  {
+    "type": "setup",
+    "testFilePath": "__tests__/default/test-skip.js"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_0"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "hookId": "hook_0",
+    "hookType": "beforeEach"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_1"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "hookId": "hook_1",
+    "hookType": "beforeAll"
+  },
+  {
+    "type": "start_describe_definition",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_2"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "hookId": "hook_2",
+    "hookType": "beforeAll"
+  },
+  {
+    "type": "add_test",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "hookId": "hook_3",
+    "hookType": "afterAll"
+  },
+  {
+    "type": "finish_describe_definition",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_2"
+  },
+  {
+    "type": "add_hook",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "hookId": "hook_4",
+    "hookType": "afterAll"
+  },
+  {
+    "type": "finish_describe_definition",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_1"
+  },
+  {
+    "type": "finish_describe_definition",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_0"
+  },
+  {
+    "type": "run_start",
+    "testFilePath": "__tests__/default/test-skip.js"
+  },
+  {
+    "type": "run_describe_start",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_0"
+  },
+  {
+    "type": "run_describe_start",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_1"
+  },
+  {
+    "type": "run_describe_start",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_2"
+  },
+  {
+    "type": "test_start",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "test_skip",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "testId": "test_0"
+  },
+  {
+    "type": "run_describe_finish",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_2"
+  },
+  {
+    "type": "run_describe_finish",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_1"
+  },
+  {
+    "type": "run_describe_finish",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "describeId": "describe_0"
+  },
+  {
+    "type": "run_finish",
+    "testFilePath": "__tests__/default/test-skip.js"
+  }
+]

@@ -7,12 +7,13 @@ import process from 'node:process';
 const jestVersion = process.env.JEST_VERSION || 'latest';
 console.log(`Setting jest@${jestVersion}\n`);
 
-const recorderRootDir = path.join(process.cwd(), 'packages/recorder')
-const recorderManifestPath = path.join(recorderRootDir, 'package.json');
-const recorderManifest = JSON.parse(fs.readFileSync(recorderManifestPath, 'utf8'));
-Object.assign(recorderManifest.devDependencies, {
+const e2eRootDir = path.join(process.cwd(), 'e2e')
+const e2eManifestPath = path.join(e2eRootDir, 'package.json');
+const e2eManifest = JSON.parse(fs.readFileSync(e2eManifestPath, 'utf8'));
+Object.assign(e2eManifest.devDependencies, {
   "jest": jestVersion,
   "jest-environment-jsdom": jestVersion,
-  "jest-metadata": "file:jest-metadata.tgz",
+  "jest-metadata": "file:../package.tar.gz",
 });
-fs.writeFileSync(recorderManifestPath, JSON.stringify(recorderManifest, null, 2) + '\n');
+
+fs.writeFileSync(e2eManifestPath, JSON.stringify(e2eManifest, null, 2) + '\n');
