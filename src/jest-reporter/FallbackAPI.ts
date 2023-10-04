@@ -131,13 +131,14 @@ export class FallbackAPI {
       return [...rootDescribeBlock.allTestEntries()];
     }
 
+    for (const rotator of this._cache.values()) {
+      rotator.reset();
+    }
+
     for (const testCaseResult of testResults) {
       const nameId = this._getNameIdentifier(testFilePath, testCaseResult);
       const tests = this._cache.get(nameId);
-      const info = tests
-        ?.reset()
-        .items.reverse()
-        .find((t) => t.testCaseResult.status === testCaseResult.status);
+      const info = tests?.find((t) => t.testCaseResult.status === testCaseResult.status);
 
       if (!info) {
         const testId = `test_${rootDescribeBlock.children.length}`;

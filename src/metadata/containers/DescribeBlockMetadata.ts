@@ -57,6 +57,7 @@ export class DescribeBlockMetadata extends BaseMetadata {
 
     this.children.push(testEntry);
     this.file[symbols.currentMetadata] = testEntry;
+    this.file[symbols.lastTestEntry] = testEntry;
 
     return testEntry;
   }
