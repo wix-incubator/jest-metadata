@@ -1,41 +1,55 @@
 [
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/hook-nesting.js"
+    "type": "reporter:onTestFileStart",
+    "testFilePath": "__tests__/default/hook-nesting.js"
   },
   {
-    "type": "start_describe_definition",
-    "testFilePath": "__tests__/hook-nesting.js",
-    "describeId": "describe_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/hook-nesting.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "Unhappy scenario",
+      "ancestorTitles": [
+        "Login flow"
+      ],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
-    "testFilePath": "__tests__/hook-nesting.js",
-    "testId": "test_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/hook-nesting.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "Happy scenario",
+      "ancestorTitles": [
+        "Login flow"
+      ],
+      "invocations": 1
+    }
   },
   {
-    "type": "test_start",
-    "testFilePath": "__tests__/hook-nesting.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/hook-nesting.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/hook-nesting.js",
-    "testId": "test_1"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/hook-nesting.js",
-    "testId": "test_1"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/hook-nesting.js",
-    "testId": "test_1"
+    "type": "reporter:onTestFileResult",
+    "testFilePath": "__tests__/default/hook-nesting.js",
+    "testResult": {
+      "testFilePath": "__tests__/default/hook-nesting.js",
+      "testResults": [
+        {
+          "status": "passed",
+          "title": "Unhappy scenario",
+          "ancestorTitles": [
+            "Login flow"
+          ],
+          "invocations": 1
+        },
+        {
+          "status": "passed",
+          "title": "Happy scenario",
+          "ancestorTitles": [
+            "Login flow"
+          ],
+          "invocations": 1
+        }
+      ]
+    }
   }
 ]

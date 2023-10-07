@@ -1,6 +1,24 @@
 [
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/test-todo.js"
+    "type": "reporter:onTestFileStart",
+    "testFilePath": "__tests__/default/test-todo.js"
+  },
+  {
+    "type": "reporter:onTestFileResult",
+    "testFilePath": "__tests__/default/test-todo.js",
+    "testResult": {
+      "testFilePath": "__tests__/default/test-todo.js",
+      "testResults": [
+        {
+          "status": "todo",
+          "title": "should todo",
+          "ancestorTitles": [
+            "suite",
+            "inner suite"
+          ],
+          "invocations": 1
+        }
+      ]
+    }
   }
 ]

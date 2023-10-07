@@ -1,26 +1,37 @@
 [
   {
-    "type": "add_test_file",
+    "type": "reporter:onTestFileStart",
     "testFilePath": "__tests__/default/test-todo.js"
   },
   {
-    "type": "start_describe_definition",
+    "type": "reporter:onTestCaseResult",
     "testFilePath": "__tests__/default/test-todo.js",
-    "describeId": "describe_0"
+    "testCaseResult": {
+      "status": "todo",
+      "title": "should todo",
+      "ancestorTitles": [
+        "suite",
+        "inner suite"
+      ],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
+    "type": "reporter:onTestFileResult",
     "testFilePath": "__tests__/default/test-todo.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/default/test-todo.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_todo",
-    "testFilePath": "__tests__/default/test-todo.js",
-    "testId": "test_0"
+    "testResult": {
+      "testFilePath": "__tests__/default/test-todo.js",
+      "testResults": [
+        {
+          "status": "todo",
+          "title": "should todo",
+          "ancestorTitles": [
+            "suite",
+            "inner suite"
+          ],
+          "invocations": 1
+        }
+      ]
+    }
   }
 ]

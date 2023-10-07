@@ -1,41 +1,41 @@
 [
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/hook-beforeAll-fail.js"
+    "type": "reporter:onTestFileStart",
+    "testFilePath": "__tests__/default/hook-beforeAll-fail.js"
   },
   {
-    "type": "start_describe_definition",
-    "testFilePath": "__tests__/hook-beforeAll-fail.js",
-    "describeId": "describe_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
+    "testCaseResult": {
+      "status": "failed",
+      "title": "Test",
+      "ancestorTitles": [
+        "Suite"
+      ],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
-    "testFilePath": "__tests__/hook-beforeAll-fail.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/hook-beforeAll-fail.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/hook-beforeAll-fail.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/hook-beforeAll-fail.js",
-    "testId": "test_1"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/hook-beforeAll-fail.js",
-    "testId": "test_1"
-  },
-  {
-    "type": "test_skip",
-    "testFilePath": "__tests__/hook-beforeAll-fail.js",
-    "testId": "test_1"
+    "type": "reporter:onTestFileResult",
+    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
+    "testResult": {
+      "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
+      "testResults": [
+        {
+          "status": "pending",
+          "title": "Skipped test",
+          "ancestorTitles": [],
+          "invocations": 1
+        },
+        {
+          "status": "failed",
+          "title": "Test",
+          "ancestorTitles": [
+            "Suite"
+          ],
+          "invocations": 1
+        }
+      ]
+    }
   }
 ]

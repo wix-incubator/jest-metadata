@@ -7,6 +7,7 @@
   "files": [
     "src",
     "dist",
+    "*.js",
     "!**/__utils__",
     "!**/__tests__",
     "!**/*.test.*"

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function,unicorn/no-for-loop */
-import type { Test, TestCaseResult, TestResult } from '@jest/reporters';
+import type { TestCaseResult, TestResult } from '@jest/reporters';
 import memoize from 'lodash.memoize';
 import type { IPCServer } from '../ipc';
-import { logger } from '../utils';
+import { logger, optimizeForLogger } from '../utils';
 import type { AssociateMetadata } from './AssociateMetadata';
 import type { FallbackAPI } from './FallbackAPI';
 
@@ -11,6 +11,13 @@ export type ReporterServerConfig = {
   fallbackAPI: FallbackAPI;
   associate: AssociateMetadata;
 };
+
+const __REPORTER = optimizeForLogger((testFilePath: string, data?: unknown) => {
+  return {
+    tid: ['reporter', testFilePath],
+    data,
+  };
+});
 
 /**
  * @implements {import('@jest/reporters').Reporter}
@@ -48,34 +55,34 @@ export class ReporterServer {
   }
 
   onTestFileStart(testPath: string): void {
-    this.#log.debug.begin({ tid: ['reporter', testPath] }, testPath);
+    this.#log.debug.begin(__REPORTER(testPath), testPath);
     const testFileMetadata = this.#fallbackAPI.reportTestFile(testPath);
     this.#associate.filePath(testPath, testFileMetadata);
   }
 
-  onTestCaseStart(test: Test): void {
-    this.#log.debug({ tid: ['reporter', test.path] }, 'onTestCaseStart');
+  onTestCaseStart(testPath: string, testCaseStartInfo: unknown): void {
+    this.#log.debug(__REPORTER(testPath, testCaseStartInfo), 'onTestCaseStart');
     // We cannot use the fallback API here because `testCaseStartInfo`
     // does not contain information, whether this is a retry or not.
     // That's why we might end up with multiple test entries for the same test,
     // so better to ignore this event, rather than distort the data.
   }
 
-  onTestCaseResult(test: Test, testCaseResult: TestCaseResult): void {
-    this.#log.debug({ tid: ['reporter', test.path] }, 'onTestCaseResult');
+  onTestCaseResult(testPath: string, testCaseResult: TestCaseResult): void {
+    this.#log.debug(__REPORTER(testPath), 'onTestCaseResult');
 
-    const lastTestEntry = this.#fallbackAPI.reportTestCase(test.path, testCaseResult);
+    const lastTestEntry = this.#fallbackAPI.reportTestCase(testPath, testCaseResult);
     this.#associate.testCaseResult(testCaseResult, lastTestEntry);
   }
 
-  onTestFileResult(test: Test, testResult: TestResult): void {
+  onTestFileResult(testPath: string, testResult: TestResult): void {
     const allTestEntries = this.#fallbackAPI.reportTestFileResult(testResult);
     const testResults = testResult.testResults;
     for (let i = 0; i < testResults.length; i++) {
       this.#associate.testCaseResult(testResults[i], allTestEntries[i]);
     }
 
-    this.#log.debug.end({ tid: ['reporter', test.path] });
+    this.#log.debug.end(__REPORTER(testPath));
   }
 
   async onRunComplete(): Promise<void> {

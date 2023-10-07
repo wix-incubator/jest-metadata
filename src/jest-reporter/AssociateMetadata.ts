@@ -11,22 +11,12 @@ export class AssociateMetadata {
       throw new JestMetadataError('Cannot associate metadata with an empty file path');
     }
 
-    if (!metadata) {
-      throw new JestMetadataError(`Cannot associate a non-existent metadata with a file: ${value}`);
-    }
-
     this._map.set(value, metadata);
   }
 
   testCaseResult(testCaseResult: TestCaseResult, metadata: TestEntryMetadata): void {
-    if (!testCaseResult) {
-      throw new JestMetadataError('Cannot associate metadata with a non-existent test case');
-    }
-
-    if (!metadata) {
-      throw new JestMetadataError(
-        `Cannot associate a non-existent metadata with a test case: ${testCaseResult.fullName}`,
-      );
+    if (testCaseResult == undefined) {
+      throw new JestMetadataError('Cannot associate metadata with an undefined test case result');
     }
 
     this._map.set(testCaseResult, metadata);

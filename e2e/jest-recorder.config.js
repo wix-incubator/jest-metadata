@@ -4,7 +4,7 @@ const CI = require('is-ci');
 
 const artifactsDir = path.join(__dirname, '../artifacts');
 
-const PRESET = process.env.PRESET || 'env-1';
+const PRESET = (process.env.PRESET = process.env.PRESET || 'env-1');
 const JEST_ENVIRONMENT = process.env.JEST_ENVIRONMENT || 'node';
 
 if (CI) {

@@ -1,26 +1,31 @@
 [
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/test-pass.js"
+    "type": "reporter:onTestFileStart",
+    "testFilePath": "__tests__/default/test-pass.js"
   },
   {
-    "type": "start_describe_definition",
-    "testFilePath": "__tests__/test-pass.js",
-    "describeId": "describe_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/test-pass.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "should pass",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
-    "testFilePath": "__tests__/test-pass.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/test-pass.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/test-pass.js",
-    "testId": "test_0"
+    "type": "reporter:onTestFileResult",
+    "testFilePath": "__tests__/default/test-pass.js",
+    "testResult": {
+      "testFilePath": "__tests__/default/test-pass.js",
+      "testResults": [
+        {
+          "status": "passed",
+          "title": "should pass",
+          "ancestorTitles": [],
+          "invocations": 1
+        }
+      ]
+    }
   }
 ]

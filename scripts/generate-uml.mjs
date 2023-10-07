@@ -12,7 +12,7 @@ const require = module.createRequire(import.meta.url);
 const fixtures = require('../src/metadata/__tests__/__snapshots__/integration.test.ts.snap');
 
 for (const [name, fixture] of Object.entries(fixtures)) {
-  const fixturePath = path.join(__dirname, '../packages', name.split(':')[1].trim().replace(/\s+\d+$/, '') + '.uml');
+  const fixturePath = path.join(__dirname, '..', name.split(':')[1].trim().replace(/\s+\d+$/, '') + '.uml');
   fs.writeFileSync(fixturePath, fixture.trim().replace(/^"/, '').split('\n').slice(0, -1).join('\n').trim() + '\n');
 }
 

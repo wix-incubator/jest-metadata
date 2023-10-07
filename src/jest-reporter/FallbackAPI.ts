@@ -1,4 +1,4 @@
-import type { TestCaseResult, TestResult } from '@jest/reporters';
+import type { TestCaseResult } from '@jest/reporters';
 import { JestMetadataError } from '../errors';
 import type {
   GlobalMetadata,
@@ -8,6 +8,20 @@ import type {
   TestSkipEvent,
 } from '../metadata';
 import { Rotator } from '../utils';
+
+export type TestCaseResultArg = Pick<
+  TestCaseResult,
+  'status' | 'title' | 'ancestorTitles' | 'invocations'
+>;
+
+export type TestFileResultArg = {
+  testFilePath: string;
+  testResults: TestCaseResultArg[];
+};
+
+export type AggregatedResultArg = {
+  testResults: TestFileResultArg[];
+};
 
 export class FallbackAPI {
   private _fallbackMode: boolean | undefined = undefined;
@@ -31,7 +45,7 @@ export class FallbackAPI {
     return this.globalMetadata.getTestFileMetadata(testFilePath);
   }
 
-  reportTestCase(testFilePath: string, testCaseResult: TestCaseResult): TestEntryMetadata {
+  reportTestCase(testFilePath: string, testCaseResult: TestCaseResultArg): TestEntryMetadata {
     const file = this.globalMetadata.getTestFileMetadata(testFilePath);
     if (this._fallbackMode === undefined) {
       this._fallbackMode = !file.rootDescribeBlock;
@@ -117,7 +131,7 @@ export class FallbackAPI {
     }
   }
 
-  reportTestFileResult(testFileResult: TestResult): TestEntryMetadata[] {
+  reportTestFileResult(testFileResult: TestFileResultArg): TestEntryMetadata[] {
     const result: TestEntryMetadata[] = [];
     const { testFilePath, testResults } = testFileResult;
     const file = this.globalMetadata.getTestFileMetadata(testFilePath);
@@ -167,12 +181,12 @@ export class FallbackAPI {
     return result;
   }
 
-  private _getNameIdentifier(testFilePath: string, testCaseResult: TestCaseResult) {
+  private _getNameIdentifier(testFilePath: string, testCaseResult: TestCaseResultArg) {
     return [testFilePath, ...testCaseResult.ancestorTitles, testCaseResult.title].join('\u001F');
   }
 
   private _getCompletionEventType(
-    testCaseResult: TestCaseResult,
+    testCaseResult: TestCaseResultArg,
   ): 'test_done' | 'test_skip' | 'test_todo' {
     switch (testCaseResult.status) {
       case 'passed':
@@ -199,5 +213,5 @@ type TestEntryInfo = {
   testFilePath: string;
   testEntryMetadata: TestEntryMetadata;
   /** Only or the last invocation */
-  testCaseResult: TestCaseResult;
+  testCaseResult: TestCaseResultArg;
 };

@@ -10,8 +10,8 @@ import {
 } from '../index';
 
 describe('file metadata traversal:', () => {
-  const lastFixtures = Object.values(fixtures).filter(([name]) => {
-    return name.startsWith('29.x.x') && name.includes('env-N');
+  const lastFixtures = Object.values(fixtures.metadata).filter(([name]) => {
+    return name.startsWith('29.x.x') && name.includes('env-N') && !name.includes('no-env');
   });
 
   test.each(lastFixtures)(`fixtures/%s`, (_name: string, fixture: any[]) => {

@@ -1,26 +1,31 @@
 [
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/test-fail.js"
+    "type": "reporter:onTestFileStart",
+    "testFilePath": "__tests__/default/test-fail.js"
   },
   {
-    "type": "start_describe_definition",
-    "testFilePath": "__tests__/test-fail.js",
-    "describeId": "describe_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/test-fail.js",
+    "testCaseResult": {
+      "status": "failed",
+      "title": "should fail",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
-    "testFilePath": "__tests__/test-fail.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/test-fail.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/test-fail.js",
-    "testId": "test_0"
+    "type": "reporter:onTestFileResult",
+    "testFilePath": "__tests__/default/test-fail.js",
+    "testResult": {
+      "testFilePath": "__tests__/default/test-fail.js",
+      "testResults": [
+        {
+          "status": "failed",
+          "title": "should fail",
+          "ancestorTitles": [],
+          "invocations": 1
+        }
+      ]
+    }
   }
 ]
