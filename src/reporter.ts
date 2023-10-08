@@ -15,6 +15,8 @@ import type { ParentProcessRealm } from './realms';
 
 const realm = unknownRealm as ParentProcessRealm;
 
+export const query = realm.query;
+
 /**
  * @implements {import('@jest/reporters').Reporter}
  */
