@@ -1,121 +1,145 @@
 [
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/duplicate-name.js"
+    "type": "reporter:onTestFileStart",
+    "testFilePath": "__tests__/default/duplicate-name.js"
   },
   {
-    "type": "start_describe_definition",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "describeId": "describe_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "Test",
+      "ancestorTitles": [
+        "Suite",
+        "Nested suite"
+      ],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testCaseResult": {
+      "status": "failed",
+      "title": "Test",
+      "ancestorTitles": [
+        "Suite",
+        "Nested suite"
+      ],
+      "invocations": 1
+    }
   },
   {
-    "type": "test_start",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "Test",
+      "ancestorTitles": [
+        "Suite",
+        "Nested suite"
+      ],
+      "invocations": 2
+    }
   },
   {
-    "type": "test_done",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testCaseResult": {
+      "status": "failed",
+      "title": "Test",
+      "ancestorTitles": [
+        "Suite",
+        "Nested suite"
+      ],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_1"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "Test",
+      "ancestorTitles": [
+        "Suite",
+        "Nested suite"
+      ],
+      "invocations": 1
+    }
   },
   {
-    "type": "test_start",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_1"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "Test",
+      "ancestorTitles": [
+        "Suite",
+        "Nested suite"
+      ],
+      "invocations": 2
+    }
   },
   {
-    "type": "test_done",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_1"
-  },
-  {
-    "type": "test_retry",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_1"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_1"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_2"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_2"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_2"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_3"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_3"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_3"
-  },
-  {
-    "type": "test_retry",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_2"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_2"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_4"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_4"
-  },
-  {
-    "type": "test_skip",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_4"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_5"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_5"
-  },
-  {
-    "type": "test_todo",
-    "testFilePath": "__tests__/duplicate-name.js",
-    "testId": "test_5"
+    "type": "reporter:onTestFileResult",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testResult": {
+      "testFilePath": "__tests__/default/duplicate-name.js",
+      "testResults": [
+        {
+          "status": "passed",
+          "title": "Test",
+          "ancestorTitles": [
+            "Suite",
+            "Nested suite"
+          ],
+          "invocations": 1
+        },
+        {
+          "status": "passed",
+          "title": "Test",
+          "ancestorTitles": [
+            "Suite",
+            "Nested suite"
+          ],
+          "invocations": 2
+        },
+        {
+          "status": "pending",
+          "title": "Ignore it",
+          "ancestorTitles": [
+            "Suite"
+          ],
+          "invocations": 1
+        },
+        {
+          "status": "todo",
+          "title": "Ignore it",
+          "ancestorTitles": [
+            "Suite"
+          ],
+          "invocations": 1
+        },
+        {
+          "status": "passed",
+          "title": "Test",
+          "ancestorTitles": [
+            "Suite",
+            "Nested suite"
+          ],
+          "invocations": 2
+        },
+        {
+          "status": "passed",
+          "title": "Test",
+          "ancestorTitles": [
+            "Suite",
+            "Nested suite"
+          ],
+          "invocations": 1
+        }
+      ]
+    }
   }
 ]

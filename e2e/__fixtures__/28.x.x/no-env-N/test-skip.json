@@ -1,6 +1,24 @@
 [
   {
-    "type": "add_test_file",
+    "type": "reporter:onTestFileStart",
     "testFilePath": "__tests__/default/test-skip.js"
+  },
+  {
+    "type": "reporter:onTestFileResult",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "testResult": {
+      "testFilePath": "__tests__/default/test-skip.js",
+      "testResults": [
+        {
+          "status": "pending",
+          "title": "should skip",
+          "ancestorTitles": [
+            "suite",
+            "inner suite"
+          ],
+          "invocations": 1
+        }
+      ]
+    }
   }
 ]

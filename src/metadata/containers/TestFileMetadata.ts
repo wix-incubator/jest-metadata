@@ -49,6 +49,7 @@ export class TestFileMetadata extends BaseMetadata {
 
   [symbols.start](): void {
     this[symbols.currentMetadata] = this;
+    this[symbols.lastTestEntry] = undefined;
   }
 
   [symbols.finish](): void {

@@ -1,4 +1,4 @@
-import type { TestCaseResult, TestResult } from '@jest/reporters';
+import type { TestCaseResult } from '@jest/reporters';
 import { JestMetadataError } from '../errors';
 import type {
   GlobalMetadata,
@@ -8,6 +8,20 @@ import type {
   TestSkipEvent,
 } from '../metadata';
 import { Rotator } from '../utils';
+
+export type TestCaseResultArg = Pick<
+  TestCaseResult,
+  'status' | 'title' | 'ancestorTitles' | 'invocations'
+>;
+
+export type TestFileResultArg = {
+  testFilePath: string;
+  testResults: TestCaseResultArg[];
+};
+
+export type AggregatedResultArg = {
+  testResults: TestFileResultArg[];
+};
 
 export class FallbackAPI {
   private _fallbackMode: boolean | undefined = undefined;
@@ -31,7 +45,7 @@ export class FallbackAPI {
     return this.globalMetadata.getTestFileMetadata(testFilePath);
   }
 
-  reportTestCase(testFilePath: string, testCaseResult: TestCaseResult): TestEntryMetadata {
+  reportTestCase(testFilePath: string, testCaseResult: TestCaseResultArg): TestEntryMetadata {
     const file = this.globalMetadata.getTestFileMetadata(testFilePath);
     if (this._fallbackMode === undefined) {
       this._fallbackMode = !file.rootDescribeBlock;
@@ -108,6 +122,12 @@ export class FallbackAPI {
       });
 
       this.eventEmitter.emit({
+        type: 'test_start',
+        testFilePath: info.testFilePath,
+        testId: info.testId,
+      });
+
+      this.eventEmitter.emit({
         type: this._getCompletionEventType(testCaseResult),
         testFilePath: info.testFilePath,
         testId: info.testId,
@@ -117,29 +137,41 @@ export class FallbackAPI {
     }
   }
 
-  reportTestFileResult(testFileResult: TestResult): TestEntryMetadata[] {
-    const result: TestEntryMetadata[] = [];
+  reportTestFileResult(testFileResult: TestFileResultArg): TestEntryMetadata[] {
     const { testFilePath, testResults } = testFileResult;
     const file = this.globalMetadata.getTestFileMetadata(testFilePath);
-    const rootDescribeBlock = file.rootDescribeBlock;
 
-    if (!rootDescribeBlock) {
-      return result;
+    if (this._fallbackMode === undefined) {
+      this._fallbackMode = !file.rootDescribeBlock;
     }
 
+    if (!file.rootDescribeBlock) {
+      this.eventEmitter.emit({
+        type: 'start_describe_definition',
+        testFilePath,
+        describeId: 'describe_0',
+      });
+    }
+
+    const rootDescribeBlock = file.rootDescribeBlock!;
     if (!this._fallbackMode) {
       return [...rootDescribeBlock.allTestEntries()];
     }
 
+    for (const rotator of this._cache.values()) {
+      rotator.reset();
+    }
+
+    const result: TestEntryMetadata[] = [];
     for (const testCaseResult of testResults) {
       const nameId = this._getNameIdentifier(testFilePath, testCaseResult);
       const tests = this._cache.get(nameId);
-      const info = tests
-        ?.reset()
-        .items.reverse()
-        .find((t) => t.testCaseResult.status === testCaseResult.status);
+      const info = tests?.peek();
 
-      if (!info) {
+      if (info && info.testCaseResult.status === testCaseResult.status) {
+        result.push(info.testEntryMetadata);
+        tests!.next();
+      } else {
         const testId = `test_${rootDescribeBlock.children.length}`;
         this.eventEmitter.emit({
           type: 'add_test',
@@ -158,20 +190,20 @@ export class FallbackAPI {
           testFilePath,
           testId,
         } as TestDoneEvent | TestSkipEvent | TestDoneEvent);
-      }
 
-      result.push(info ? info.testEntryMetadata : file.lastTestEntry!);
+        result.push(file.lastTestEntry!);
+      }
     }
 
     return result;
   }
 
-  private _getNameIdentifier(testFilePath: string, testCaseResult: TestCaseResult) {
+  private _getNameIdentifier(testFilePath: string, testCaseResult: TestCaseResultArg) {
     return [testFilePath, ...testCaseResult.ancestorTitles, testCaseResult.title].join('\u001F');
   }
 
   private _getCompletionEventType(
-    testCaseResult: TestCaseResult,
+    testCaseResult: TestCaseResultArg,
   ): 'test_done' | 'test_skip' | 'test_todo' {
     switch (testCaseResult.status) {
       case 'passed':
@@ -198,5 +230,5 @@ type TestEntryInfo = {
   testFilePath: string;
   testEntryMetadata: TestEntryMetadata;
   /** Only or the last invocation */
-  testCaseResult: TestCaseResult;
+  testCaseResult: TestCaseResultArg;
 };

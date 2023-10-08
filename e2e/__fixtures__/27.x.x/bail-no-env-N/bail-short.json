@@ -1,26 +1,31 @@
 [
   {
-    "type": "add_test_file",
-    "testFilePath": "__bail__/bail-short.js"
+    "type": "reporter:onTestFileStart",
+    "testFilePath": "__tests__/bail/bail-short.js"
   },
   {
-    "type": "start_describe_definition",
-    "testFilePath": "__bail__/bail-short.js",
-    "describeId": "describe_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/bail/bail-short.js",
+    "testCaseResult": {
+      "status": "failed",
+      "title": "should fail short",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
-    "testFilePath": "__bail__/bail-short.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__bail__/bail-short.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__bail__/bail-short.js",
-    "testId": "test_0"
+    "type": "reporter:onTestFileResult",
+    "testFilePath": "__tests__/bail/bail-short.js",
+    "testResult": {
+      "testFilePath": "__tests__/bail/bail-short.js",
+      "testResults": [
+        {
+          "status": "failed",
+          "title": "should fail short",
+          "ancestorTitles": [],
+          "invocations": 1
+        }
+      ]
+    }
   }
 ]

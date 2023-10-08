@@ -48,12 +48,12 @@ export class JestMetadataReporter implements Reporter {
    * NEW! Supported only since Jest 29.6.0
    * @see {import('@jest/types').Circus.TestCaseStartInfo}
    */
-  onTestCaseStart(test: Test, _testCaseStartInfo: /* for type safety */ unknown): void {
-    return realm.reporterServer.onTestCaseStart(test);
+  onTestCaseStart(test: Test, testCaseStartInfo: /* for type safety */ unknown): void {
+    return realm.reporterServer.onTestCaseStart(test.path, testCaseStartInfo);
   }
 
   onTestCaseResult(test: Test, testCaseResult: TestCaseResult): void {
-    return realm.reporterServer.onTestCaseResult(test, testCaseResult);
+    return realm.reporterServer.onTestCaseResult(test.path, testCaseResult);
   }
 
   /**
@@ -64,10 +64,13 @@ export class JestMetadataReporter implements Reporter {
   }
 
   onTestFileResult(test: Test, testResult: TestResult, _aggregatedResult: AggregatedResult): void {
-    return realm.reporterServer.onTestFileResult(test, testResult);
+    return realm.reporterServer.onTestFileResult(test.path, testResult);
   }
 
-  onRunComplete(_testContexts: Set<TestContext>, _results: AggregatedResult): Promise<void> {
+  onRunComplete(
+    _testContexts: Set<TestContext>,
+    _aggregatedResult: AggregatedResult,
+  ): Promise<void> {
     return realm.reporterServer.onRunComplete();
   }
 }

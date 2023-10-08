@@ -1,86 +1,95 @@
 [
   {
-    "type": "add_test_file",
-    "testFilePath": "__tests__/test-concurrent.js"
+    "type": "reporter:onTestFileStart",
+    "testFilePath": "__tests__/default/test-concurrent.js"
   },
   {
-    "type": "start_describe_definition",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "describeId": "describe_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/test-concurrent.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "sleeps for 100 ms",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/test-concurrent.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "sleeps for 200 ms",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "test_start",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/test-concurrent.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "sleeps for 300 ms",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "test_done",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_0"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/test-concurrent.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "sleeps for 400 ms",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_1"
+    "type": "reporter:onTestCaseResult",
+    "testFilePath": "__tests__/default/test-concurrent.js",
+    "testCaseResult": {
+      "status": "passed",
+      "title": "sleeps for 500 ms",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "test_start",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_1"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_1"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_2"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_2"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_2"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_3"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_3"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_3"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_4"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_4"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/test-concurrent.js",
-    "testId": "test_4"
+    "type": "reporter:onTestFileResult",
+    "testFilePath": "__tests__/default/test-concurrent.js",
+    "testResult": {
+      "testFilePath": "__tests__/default/test-concurrent.js",
+      "testResults": [
+        {
+          "status": "passed",
+          "title": "sleeps for 100 ms",
+          "ancestorTitles": [],
+          "invocations": 1
+        },
+        {
+          "status": "passed",
+          "title": "sleeps for 200 ms",
+          "ancestorTitles": [],
+          "invocations": 1
+        },
+        {
+          "status": "passed",
+          "title": "sleeps for 300 ms",
+          "ancestorTitles": [],
+          "invocations": 1
+        },
+        {
+          "status": "passed",
+          "title": "sleeps for 400 ms",
+          "ancestorTitles": [],
+          "invocations": 1
+        },
+        {
+          "status": "passed",
+          "title": "sleeps for 500 ms",
+          "ancestorTitles": [],
+          "invocations": 1
+        }
+      ]
+    }
   }
 ]

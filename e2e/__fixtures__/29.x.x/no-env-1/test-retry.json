@@ -1,36 +1,41 @@
 [
   {
-    "type": "add_test_file",
+    "type": "reporter:onTestFileStart",
     "testFilePath": "__tests__/default/test-retry.js"
   },
   {
-    "type": "start_describe_definition",
+    "type": "reporter:onTestCaseResult",
     "testFilePath": "__tests__/default/test-retry.js",
-    "describeId": "describe_0"
+    "testCaseResult": {
+      "status": "failed",
+      "title": "should pass on the second time",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
+    "type": "reporter:onTestCaseResult",
     "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_0"
+    "testCaseResult": {
+      "status": "passed",
+      "title": "should pass on the second time",
+      "ancestorTitles": [],
+      "invocations": 2
+    }
   },
   {
-    "type": "test_start",
+    "type": "reporter:onTestFileResult",
     "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_retry",
-    "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_0"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_0"
+    "testResult": {
+      "testFilePath": "__tests__/default/test-retry.js",
+      "testResults": [
+        {
+          "status": "passed",
+          "title": "should pass on the second time",
+          "ancestorTitles": [],
+          "invocations": 2
+        }
+      ]
+    }
   }
 ]

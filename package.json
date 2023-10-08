@@ -1,12 +1,13 @@
 {
   "name": "jest-metadata",
-  "version": "1.0.0-beta.21",
+  "version": "1.0.0-beta.22",
   "description": "Extend Jest with custom metadata",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "src",
     "dist",
+    "*.js",
     "!**/__utils__",
     "!**/__tests__",
     "!**/*.test.*"

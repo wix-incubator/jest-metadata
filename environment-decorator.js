@@ -1,2 +1,2 @@
-// Compatibility re-export for older versions of Node.js and Jest
+/* Jest 27 fallback */
 module.exports = require('./dist/environment-decorator');

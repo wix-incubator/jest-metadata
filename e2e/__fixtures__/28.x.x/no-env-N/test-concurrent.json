@@ -1,86 +1,95 @@
 [
   {
-    "type": "add_test_file",
+    "type": "reporter:onTestFileStart",
     "testFilePath": "__tests__/default/test-concurrent.js"
   },
   {
-    "type": "start_describe_definition",
+    "type": "reporter:onTestCaseResult",
     "testFilePath": "__tests__/default/test-concurrent.js",
-    "describeId": "describe_0"
+    "testCaseResult": {
+      "status": "passed",
+      "title": "sleeps for 100 ms",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
+    "type": "reporter:onTestCaseResult",
     "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_0"
+    "testCaseResult": {
+      "status": "passed",
+      "title": "sleeps for 200 ms",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "test_start",
+    "type": "reporter:onTestCaseResult",
     "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_0"
+    "testCaseResult": {
+      "status": "passed",
+      "title": "sleeps for 300 ms",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "test_done",
+    "type": "reporter:onTestCaseResult",
     "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_0"
+    "testCaseResult": {
+      "status": "passed",
+      "title": "sleeps for 400 ms",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "add_test",
+    "type": "reporter:onTestCaseResult",
     "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_1"
+    "testCaseResult": {
+      "status": "passed",
+      "title": "sleeps for 500 ms",
+      "ancestorTitles": [],
+      "invocations": 1
+    }
   },
   {
-    "type": "test_start",
+    "type": "reporter:onTestFileResult",
     "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_1"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_1"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_2"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_2"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_2"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_3"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_3"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_3"
-  },
-  {
-    "type": "add_test",
-    "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_4"
-  },
-  {
-    "type": "test_start",
-    "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_4"
-  },
-  {
-    "type": "test_done",
-    "testFilePath": "__tests__/default/test-concurrent.js",
-    "testId": "test_4"
+    "testResult": {
+      "testFilePath": "__tests__/default/test-concurrent.js",
+      "testResults": [
+        {
+          "status": "passed",
+          "title": "sleeps for 100 ms",
+          "ancestorTitles": [],
+          "invocations": 1
+        },
+        {
+          "status": "passed",
+          "title": "sleeps for 200 ms",
+          "ancestorTitles": [],
+          "invocations": 1
+        },
+        {
+          "status": "passed",
+          "title": "sleeps for 300 ms",
+          "ancestorTitles": [],
+          "invocations": 1
+        },
+        {
+          "status": "passed",
+          "title": "sleeps for 400 ms",
+          "ancestorTitles": [],
+          "invocations": 1
+        },
+        {
+          "status": "passed",
+          "title": "sleeps for 500 ms",
+          "ancestorTitles": [],
+          "invocations": 1
+        }
+      ]
+    }
   }
 ]

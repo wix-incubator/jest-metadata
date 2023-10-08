@@ -20,8 +20,7 @@
     "dist",
     "scripts",
     "website",
-    "jest.config.js",
-    "*.jest.config.js"
+    "*.js"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

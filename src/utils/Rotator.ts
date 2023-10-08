@@ -26,6 +26,10 @@ export class Rotator<T> {
     return;
   }
 
+  peek(): T | undefined {
+    return this.#items[this.#offset];
+  }
+
   reset(): this {
     this.#offset = 0;
     return this;
@@ -37,7 +41,7 @@ export class Rotator<T> {
   }
 
   next(): T | undefined {
-    const item = this.#items[this.offset];
+    const item = this.peek();
     this.#offset = (this.offset + 1) % this.items.length;
     return item;
   }

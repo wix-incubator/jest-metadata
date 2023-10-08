@@ -1,7 +1,6 @@
 [
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
@@ -11,7 +10,6 @@
   },
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
@@ -21,7 +19,6 @@
   },
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
@@ -31,7 +28,6 @@
   },
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
@@ -41,7 +37,6 @@
   },
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
@@ -51,7 +46,6 @@
   },
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
@@ -61,7 +55,6 @@
   },
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
@@ -71,7 +64,6 @@
   },
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
@@ -81,7 +73,6 @@
   },
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
@@ -91,7 +82,6 @@
   },
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
@@ -101,7 +91,6 @@
   },
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
@@ -111,7 +100,6 @@
   },
   {
     "type": "set_metadata",
-    "testFilePath": "",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [
