@@ -11,8 +11,8 @@ import {
 import { SerialSyncEmitter } from '../../utils';
 import { AssociateMetadata } from '../AssociateMetadata';
 import { FallbackAPI } from '../FallbackAPI';
+import { QueryMetadata } from '../QueryMetadata';
 import { ReporterServer } from '../ReporterServer';
-import {QueryMetadata} from "../QueryMetadata";
 
 describe('Fallback API', () => {
   let server: ReporterServer;
@@ -57,7 +57,7 @@ describe('Fallback API', () => {
 
       const handle = metadataHandler.handle as jest.MockedFunction<any>;
       expect(handle.mock.calls.map((args: any[]) => args[0])).toMatchSnapshot('emitted events');
-      expect(handle.mock.calls.map((args: any[]) => args[0])).toMatchSnapshot('emitted events');
+      expect(acc).toMatchSnapshot('metadata ids');
     },
   );
 

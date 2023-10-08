@@ -122,6 +122,12 @@ export class FallbackAPI {
       });
 
       this.eventEmitter.emit({
+        type: 'test_start',
+        testFilePath: info.testFilePath,
+        testId: info.testId,
+      });
+
+      this.eventEmitter.emit({
         type: this._getCompletionEventType(testCaseResult),
         testFilePath: info.testFilePath,
         testId: info.testId,
@@ -132,15 +138,22 @@ export class FallbackAPI {
   }
 
   reportTestFileResult(testFileResult: TestFileResultArg): TestEntryMetadata[] {
-    const result: TestEntryMetadata[] = [];
     const { testFilePath, testResults } = testFileResult;
     const file = this.globalMetadata.getTestFileMetadata(testFilePath);
-    const rootDescribeBlock = file.rootDescribeBlock;
 
-    if (!rootDescribeBlock) {
-      return result;
+    if (this._fallbackMode === undefined) {
+      this._fallbackMode = !file.rootDescribeBlock;
     }
 
+    if (!file.rootDescribeBlock) {
+      this.eventEmitter.emit({
+        type: 'start_describe_definition',
+        testFilePath,
+        describeId: 'describe_0',
+      });
+    }
+
+    const rootDescribeBlock = file.rootDescribeBlock!;
     if (!this._fallbackMode) {
       return [...rootDescribeBlock.allTestEntries()];
     }
@@ -149,12 +162,16 @@ export class FallbackAPI {
       rotator.reset();
     }
 
+    const result: TestEntryMetadata[] = [];
     for (const testCaseResult of testResults) {
       const nameId = this._getNameIdentifier(testFilePath, testCaseResult);
       const tests = this._cache.get(nameId);
-      const info = tests?.find((t) => t.testCaseResult.status === testCaseResult.status);
+      const info = tests?.peek();
 
-      if (!info) {
+      if (info && info.testCaseResult.status === testCaseResult.status) {
+        result.push(info.testEntryMetadata);
+        tests!.next();
+      } else {
         const testId = `test_${rootDescribeBlock.children.length}`;
         this.eventEmitter.emit({
           type: 'add_test',
@@ -173,9 +190,9 @@ export class FallbackAPI {
           testFilePath,
           testId,
         } as TestDoneEvent | TestSkipEvent | TestDoneEvent);
-      }
 
-      result.push(info ? info.testEntryMetadata : file.lastTestEntry!);
+        result.push(file.lastTestEntry!);
+      }
     }
 
     return result;

@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function,unicorn/no-for-loop */
 import type { TestCaseResult, TestResult } from '@jest/reporters';
-import memoize from 'lodash.memoize';
 import type { IPCServer } from '../ipc';
-import { logger, optimizeForLogger } from '../utils';
+import { logger, memoizeArg1, memoizeLast, optimizeForLogger } from '../utils';
 import type { AssociateMetadata } from './AssociateMetadata';
 import type { FallbackAPI } from './FallbackAPI';
 
@@ -38,16 +37,27 @@ export class ReporterServer {
     // make sure that we are calling every method only once per
     // a given test case result.
     //
-    // Unfortunately, we can't use a quicker `memoizeLast` because
-    // of obscure race conditions in Jest's ReporterDispatcher.
-    // This might be a good candidate for a future optimization.
+    // Unfortunately, we can't _simply_ use `memoizeLast` (last arguments call memoization)
+    // due to possibility of concurrent reported events from different files interfering
+    // with each other.
 
-    this.onRunStart = memoize(this.onRunStart.bind(this));
-    this.onTestFileStart = memoize(this.onTestFileStart.bind(this));
-    this.onTestCaseStart = memoize(this.onTestCaseStart.bind(this));
-    this.onTestCaseResult = memoize(this.onTestCaseResult.bind(this));
-    this.onTestFileResult = memoize(this.onTestFileResult.bind(this));
-    this.onRunComplete = memoize(this.onRunComplete.bind(this));
+    const onRunStart = this.onRunStart.bind(this);
+    this.onRunStart = memoizeLast(onRunStart);
+
+    const onTestFileStart = this.onTestFileStart.bind(this);
+    this.onTestFileStart = memoizeArg1(() => memoizeLast(onTestFileStart));
+
+    const onTestCaseStart = this.onTestCaseStart.bind(this);
+    this.onTestCaseStart = memoizeArg1(() => memoizeLast(onTestCaseStart));
+
+    const onTestCaseResult = this.onTestCaseResult.bind(this);
+    this.onTestCaseResult = memoizeArg1(() => memoizeLast(onTestCaseResult));
+
+    const onTestFileResult = this.onTestFileResult.bind(this);
+    this.onTestFileResult = memoizeArg1(() => memoizeLast(onTestFileResult));
+
+    const onRunComplete = this.onRunComplete.bind(this);
+    this.onRunComplete = memoizeLast(onRunComplete);
   }
 
   async onRunStart(): Promise<void> {

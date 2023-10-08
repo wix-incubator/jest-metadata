@@ -1,34 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-1/bail-short 1`] = `
-[
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
-
 exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-1/bail-short: emitted events 1`] = `
 [
   {
@@ -58,69 +29,18 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-1/bail-short: emitted 
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-1/bail-short: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-1/bail-short: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
 ]
 `;
-
-exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-1/globalMetadata 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-1/globalMetadata: emitted events 1`] = `[]`;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-1/globalMetadata: emitted events 2`] = `[]`;
-
-exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/bail-long 1`] = `
-[
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
+exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-1/globalMetadata: metadata ids 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/bail-long: emitted events 1`] = `
 [
@@ -151,61 +71,10 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/bail-long: emitted e
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/bail-long: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/bail-long: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/bail-short 1`] = `
-[
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/bail/bail-long.js:",
+  "__tests__/bail/bail-long.js:test_0",
 ]
 `;
 
@@ -238,42 +107,20 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/bail-short: emitted 
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/bail-short: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/bail-short: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
 ]
 `;
-
-exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/globalMetadata 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/globalMetadata: emitted events 1`] = `[]`;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/globalMetadata: emitted events 2`] = `[]`;
+exports[`Fallback API e2e/__fixtures__/27.x.x/bail-no-env-N/globalMetadata: metadata ids 1`] = `[]`;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-cases 1`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-cases: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/duplicate-cases.js",
@@ -327,12 +174,42 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-cases 1`] = `
   {
     "testFilePath": "__tests__/default/duplicate-cases.js",
     "testId": "test_2",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-cases.js",
+    "testId": "test_3",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-cases.js",
+    "testId": "test_3",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-cases.js",
+    "testId": "test_3",
     "type": "test_done",
   },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-generation 1`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-cases: metadata ids 1`] = `
+[
+  "__tests__/default/duplicate-cases.js:",
+  "__tests__/default/duplicate-cases.js:test_0",
+  "__tests__/default/duplicate-cases.js:test_1",
+  "__tests__/default/duplicate-cases.js:test_2",
+  "__tests__/default/duplicate-cases.js:test_3",
+  "__tests__/default/duplicate-cases.js:",
+  "__tests__/default/duplicate-cases.js:test_0",
+  "__tests__/default/duplicate-cases.js:test_1",
+  "__tests__/default/duplicate-cases.js:test_2",
+  "__tests__/default/duplicate-cases.js:test_3",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-generation: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
@@ -375,23 +252,35 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-generation 1`] 
   },
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
-    "testId": "test_2",
-    "type": "add_test",
+    "testId": "test_0",
+    "type": "test_retry",
   },
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
-    "testId": "test_2",
+    "testId": "test_0",
     "type": "test_start",
   },
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
-    "testId": "test_2",
+    "testId": "test_0",
     "type": "test_done",
   },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-name 1`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-generation: metadata ids 1`] = `
+[
+  "__tests__/default/duplicate-generation.js:",
+  "__tests__/default/duplicate-generation.js:test_0",
+  "__tests__/default/duplicate-generation.js:test_1",
+  "__tests__/default/duplicate-generation.js:test_0",
+  "__tests__/default/duplicate-generation.js:",
+  "__tests__/default/duplicate-generation.js:test_0",
+  "__tests__/default/duplicate-generation.js:test_1",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-name: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
@@ -430,60 +319,123 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-name 1`] = `
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
     "testId": "test_1",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1",
+    "type": "test_retry",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "test_retry",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4",
     "type": "test_skip",
   },
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
-    "testId": "test_2",
+    "testId": "test_5",
     "type": "add_test",
   },
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
-    "testId": "test_2",
+    "testId": "test_5",
     "type": "test_start",
   },
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
-    "testId": "test_2",
+    "testId": "test_5",
     "type": "test_todo",
   },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/globalMetadata 1`] = `[]`;
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/duplicate-name: metadata ids 1`] = `
+[
+  "__tests__/default/duplicate-name.js:",
+  "__tests__/default/duplicate-name.js:test_0",
+  "__tests__/default/duplicate-name.js:test_1",
+  "__tests__/default/duplicate-name.js:test_1",
+  "__tests__/default/duplicate-name.js:test_2",
+  "__tests__/default/duplicate-name.js:test_3",
+  "__tests__/default/duplicate-name.js:test_2",
+  "__tests__/default/duplicate-name.js:",
+  "__tests__/default/duplicate-name.js:test_0",
+  "__tests__/default/duplicate-name.js:test_1",
+  "__tests__/default/duplicate-name.js:test_4",
+  "__tests__/default/duplicate-name.js:test_5",
+  "__tests__/default/duplicate-name.js:test_2",
+  "__tests__/default/duplicate-name.js:test_3",
+]
+`;
 
 exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/globalMetadata: emitted events 1`] = `[]`;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/globalMetadata: emitted events 2`] = `[]`;
-
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-afterAll-fail 1`] = `
-[
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/globalMetadata: metadata ids 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-afterAll-fail: emitted events 1`] = `
 [
@@ -514,76 +466,12 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-afterAll-fail: emitt
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-afterAll-fail: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-afterAll-fail: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-beforeAll-fail 1`] = `
-[
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_skip",
-  },
+  "__tests__/default/hook-afterAll-fail.js:",
+  "__tests__/default/hook-afterAll-fail.js:test_0",
+  "__tests__/default/hook-afterAll-fail.js:",
+  "__tests__/default/hook-afterAll-fail.js:test_0",
 ]
 `;
 
@@ -631,51 +519,17 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-beforeAll-fail: emit
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-beforeAll-fail: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-beforeAll-fail: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_skip",
-  },
+  "__tests__/default/hook-beforeAll-fail.js:",
+  "__tests__/default/hook-beforeAll-fail.js:test_0",
+  "__tests__/default/hook-beforeAll-fail.js:",
+  "__tests__/default/hook-beforeAll-fail.js:test_1",
+  "__tests__/default/hook-beforeAll-fail.js:test_0",
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-nesting 1`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-nesting: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/hook-nesting.js",
@@ -719,7 +573,18 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-nesting 1`] = `
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-concurrent 1`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/hook-nesting: metadata ids 1`] = `
+[
+  "__tests__/default/hook-nesting.js:",
+  "__tests__/default/hook-nesting.js:test_0",
+  "__tests__/default/hook-nesting.js:test_1",
+  "__tests__/default/hook-nesting.js:",
+  "__tests__/default/hook-nesting.js:test_0",
+  "__tests__/default/hook-nesting.js:test_1",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-concurrent: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/test-concurrent.js",
@@ -808,32 +673,20 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-concurrent 1`] = `
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-fail 1`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-concurrent: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/default/test-concurrent.js:",
+  "__tests__/default/test-concurrent.js:test_0",
+  "__tests__/default/test-concurrent.js:test_1",
+  "__tests__/default/test-concurrent.js:test_2",
+  "__tests__/default/test-concurrent.js:test_3",
+  "__tests__/default/test-concurrent.js:test_4",
+  "__tests__/default/test-concurrent.js:",
+  "__tests__/default/test-concurrent.js:test_0",
+  "__tests__/default/test-concurrent.js:test_1",
+  "__tests__/default/test-concurrent.js:test_2",
+  "__tests__/default/test-concurrent.js:test_3",
+  "__tests__/default/test-concurrent.js:test_4",
 ]
 `;
 
@@ -866,61 +719,12 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-fail: emitted events
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-fail: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-fail: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-pass 1`] = `
-[
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/default/test-fail.js:",
+  "__tests__/default/test-fail.js:test_0",
+  "__tests__/default/test-fail.js:",
+  "__tests__/default/test-fail.js:test_0",
 ]
 `;
 
@@ -953,36 +757,16 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-pass: emitted events
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-pass: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-pass: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/default/test-pass.js:",
+  "__tests__/default/test-pass.js:test_0",
+  "__tests__/default/test-pass.js:",
+  "__tests__/default/test-pass.js:test_0",
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-retry 1`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-retry: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/test-retry.js",
@@ -1010,66 +794,103 @@ exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-retry 1`] = `
   },
   {
     "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_1",
-    "type": "add_test",
+    "testId": "test_0",
+    "type": "test_retry",
   },
   {
     "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_1",
+    "testId": "test_0",
     "type": "test_start",
   },
   {
     "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_1",
+    "testId": "test_0",
     "type": "test_done",
   },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-skip 1`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-retry: metadata ids 1`] = `
+[
+  "__tests__/default/test-retry.js:",
+  "__tests__/default/test-retry.js:test_0",
+  "__tests__/default/test-retry.js:test_0",
+  "__tests__/default/test-retry.js:",
+  "__tests__/default/test-retry.js:test_0",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-skip: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/test-skip.js",
     "type": "add_test_file",
   },
+  {
+    "describeId": "describe_0",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "type": "start_describe_definition",
+  },
+  {
+    "testFilePath": "__tests__/default/test-skip.js",
+    "testId": "test_0",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/test-skip.js",
+    "testId": "test_0",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/test-skip.js",
+    "testId": "test_0",
+    "type": "test_skip",
+  },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-todo 1`] = `
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-skip: metadata ids 1`] = `
+[
+  "__tests__/default/test-skip.js:",
+  "__tests__/default/test-skip.js:",
+  "__tests__/default/test-skip.js:test_0",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-todo: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/test-todo.js",
     "type": "add_test_file",
   },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-1/bail-short 1`] = `
-[
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
   {
     "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
+    "testFilePath": "__tests__/default/test-todo.js",
     "type": "start_describe_definition",
   },
   {
-    "testFilePath": "__tests__/bail/bail-short.js",
+    "testFilePath": "__tests__/default/test-todo.js",
     "testId": "test_0",
     "type": "add_test",
   },
   {
-    "testFilePath": "__tests__/bail/bail-short.js",
+    "testFilePath": "__tests__/default/test-todo.js",
     "testId": "test_0",
     "type": "test_start",
   },
   {
-    "testFilePath": "__tests__/bail/bail-short.js",
+    "testFilePath": "__tests__/default/test-todo.js",
     "testId": "test_0",
-    "type": "test_done",
+    "type": "test_todo",
   },
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/27.x.x/no-env-N/test-todo: metadata ids 1`] = `
+[
+  "__tests__/default/test-todo.js:",
+  "__tests__/default/test-todo.js:",
+  "__tests__/default/test-todo.js:test_0",
 ]
 `;
 
@@ -1102,69 +923,18 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-1/bail-short: emitted 
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-1/bail-short: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-1/bail-short: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
 ]
 `;
-
-exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-1/globalMetadata 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-1/globalMetadata: emitted events 1`] = `[]`;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-1/globalMetadata: emitted events 2`] = `[]`;
-
-exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/bail-long 1`] = `
-[
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
+exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-1/globalMetadata: metadata ids 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/bail-long: emitted events 1`] = `
 [
@@ -1195,61 +965,10 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/bail-long: emitted e
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/bail-long: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/bail-long: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/bail-short 1`] = `
-[
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/bail/bail-long.js:",
+  "__tests__/bail/bail-long.js:test_0",
 ]
 `;
 
@@ -1282,42 +1001,20 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/bail-short: emitted 
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/bail-short: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/bail-short: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
 ]
 `;
-
-exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/globalMetadata 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/globalMetadata: emitted events 1`] = `[]`;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/globalMetadata: emitted events 2`] = `[]`;
+exports[`Fallback API e2e/__fixtures__/28.x.x/bail-no-env-N/globalMetadata: metadata ids 1`] = `[]`;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-cases 1`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-cases: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/duplicate-cases.js",
@@ -1371,12 +1068,42 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-cases 1`] = `
   {
     "testFilePath": "__tests__/default/duplicate-cases.js",
     "testId": "test_2",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-cases.js",
+    "testId": "test_3",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-cases.js",
+    "testId": "test_3",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-cases.js",
+    "testId": "test_3",
     "type": "test_done",
   },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-generation 1`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-cases: metadata ids 1`] = `
+[
+  "__tests__/default/duplicate-cases.js:",
+  "__tests__/default/duplicate-cases.js:test_0",
+  "__tests__/default/duplicate-cases.js:test_1",
+  "__tests__/default/duplicate-cases.js:test_2",
+  "__tests__/default/duplicate-cases.js:test_3",
+  "__tests__/default/duplicate-cases.js:",
+  "__tests__/default/duplicate-cases.js:test_0",
+  "__tests__/default/duplicate-cases.js:test_1",
+  "__tests__/default/duplicate-cases.js:test_2",
+  "__tests__/default/duplicate-cases.js:test_3",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-generation: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
@@ -1419,23 +1146,35 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-generation 1`] 
   },
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
-    "testId": "test_2",
-    "type": "add_test",
+    "testId": "test_0",
+    "type": "test_retry",
   },
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
-    "testId": "test_2",
+    "testId": "test_0",
     "type": "test_start",
   },
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
-    "testId": "test_2",
+    "testId": "test_0",
     "type": "test_done",
   },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-name 1`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-generation: metadata ids 1`] = `
+[
+  "__tests__/default/duplicate-generation.js:",
+  "__tests__/default/duplicate-generation.js:test_0",
+  "__tests__/default/duplicate-generation.js:test_1",
+  "__tests__/default/duplicate-generation.js:test_0",
+  "__tests__/default/duplicate-generation.js:",
+  "__tests__/default/duplicate-generation.js:test_0",
+  "__tests__/default/duplicate-generation.js:test_1",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-name: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
@@ -1474,60 +1213,123 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-name 1`] = `
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
     "testId": "test_1",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1",
+    "type": "test_retry",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "test_retry",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_2",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4",
     "type": "test_skip",
   },
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
-    "testId": "test_2",
+    "testId": "test_5",
     "type": "add_test",
   },
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
-    "testId": "test_2",
+    "testId": "test_5",
     "type": "test_start",
   },
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
-    "testId": "test_2",
+    "testId": "test_5",
     "type": "test_todo",
   },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/globalMetadata 1`] = `[]`;
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/duplicate-name: metadata ids 1`] = `
+[
+  "__tests__/default/duplicate-name.js:",
+  "__tests__/default/duplicate-name.js:test_0",
+  "__tests__/default/duplicate-name.js:test_1",
+  "__tests__/default/duplicate-name.js:test_1",
+  "__tests__/default/duplicate-name.js:test_2",
+  "__tests__/default/duplicate-name.js:test_3",
+  "__tests__/default/duplicate-name.js:test_2",
+  "__tests__/default/duplicate-name.js:",
+  "__tests__/default/duplicate-name.js:test_0",
+  "__tests__/default/duplicate-name.js:test_1",
+  "__tests__/default/duplicate-name.js:test_4",
+  "__tests__/default/duplicate-name.js:test_5",
+  "__tests__/default/duplicate-name.js:test_2",
+  "__tests__/default/duplicate-name.js:test_3",
+]
+`;
 
 exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/globalMetadata: emitted events 1`] = `[]`;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/globalMetadata: emitted events 2`] = `[]`;
-
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-afterAll-fail 1`] = `
-[
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/globalMetadata: metadata ids 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-afterAll-fail: emitted events 1`] = `
 [
@@ -1558,76 +1360,12 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-afterAll-fail: emitt
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-afterAll-fail: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-afterAll-fail: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-beforeAll-fail 1`] = `
-[
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_skip",
-  },
+  "__tests__/default/hook-afterAll-fail.js:",
+  "__tests__/default/hook-afterAll-fail.js:test_0",
+  "__tests__/default/hook-afterAll-fail.js:",
+  "__tests__/default/hook-afterAll-fail.js:test_0",
 ]
 `;
 
@@ -1675,51 +1413,17 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-beforeAll-fail: emit
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-beforeAll-fail: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-beforeAll-fail: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_skip",
-  },
+  "__tests__/default/hook-beforeAll-fail.js:",
+  "__tests__/default/hook-beforeAll-fail.js:test_0",
+  "__tests__/default/hook-beforeAll-fail.js:",
+  "__tests__/default/hook-beforeAll-fail.js:test_1",
+  "__tests__/default/hook-beforeAll-fail.js:test_0",
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-nesting 1`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-nesting: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/hook-nesting.js",
@@ -1763,7 +1467,18 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-nesting 1`] = `
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-concurrent 1`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/hook-nesting: metadata ids 1`] = `
+[
+  "__tests__/default/hook-nesting.js:",
+  "__tests__/default/hook-nesting.js:test_0",
+  "__tests__/default/hook-nesting.js:test_1",
+  "__tests__/default/hook-nesting.js:",
+  "__tests__/default/hook-nesting.js:test_0",
+  "__tests__/default/hook-nesting.js:test_1",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-concurrent: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/test-concurrent.js",
@@ -1852,32 +1567,20 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-concurrent 1`] = `
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-fail 1`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-concurrent: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/default/test-concurrent.js:",
+  "__tests__/default/test-concurrent.js:test_0",
+  "__tests__/default/test-concurrent.js:test_1",
+  "__tests__/default/test-concurrent.js:test_2",
+  "__tests__/default/test-concurrent.js:test_3",
+  "__tests__/default/test-concurrent.js:test_4",
+  "__tests__/default/test-concurrent.js:",
+  "__tests__/default/test-concurrent.js:test_0",
+  "__tests__/default/test-concurrent.js:test_1",
+  "__tests__/default/test-concurrent.js:test_2",
+  "__tests__/default/test-concurrent.js:test_3",
+  "__tests__/default/test-concurrent.js:test_4",
 ]
 `;
 
@@ -1910,61 +1613,12 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-fail: emitted events
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-fail: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-fail: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-pass 1`] = `
-[
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/default/test-fail.js:",
+  "__tests__/default/test-fail.js:test_0",
+  "__tests__/default/test-fail.js:",
+  "__tests__/default/test-fail.js:test_0",
 ]
 `;
 
@@ -1997,36 +1651,16 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-pass: emitted events
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-pass: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-pass: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/default/test-pass.js:",
+  "__tests__/default/test-pass.js:test_0",
+  "__tests__/default/test-pass.js:",
+  "__tests__/default/test-pass.js:test_0",
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-retry 1`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-retry: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/test-retry.js",
@@ -2054,66 +1688,103 @@ exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-retry 1`] = `
   },
   {
     "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_1",
-    "type": "add_test",
+    "testId": "test_0",
+    "type": "test_retry",
   },
   {
     "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_1",
+    "testId": "test_0",
     "type": "test_start",
   },
   {
     "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_1",
+    "testId": "test_0",
     "type": "test_done",
   },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-skip 1`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-retry: metadata ids 1`] = `
+[
+  "__tests__/default/test-retry.js:",
+  "__tests__/default/test-retry.js:test_0",
+  "__tests__/default/test-retry.js:test_0",
+  "__tests__/default/test-retry.js:",
+  "__tests__/default/test-retry.js:test_0",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-skip: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/test-skip.js",
     "type": "add_test_file",
   },
+  {
+    "describeId": "describe_0",
+    "testFilePath": "__tests__/default/test-skip.js",
+    "type": "start_describe_definition",
+  },
+  {
+    "testFilePath": "__tests__/default/test-skip.js",
+    "testId": "test_0",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/test-skip.js",
+    "testId": "test_0",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/test-skip.js",
+    "testId": "test_0",
+    "type": "test_skip",
+  },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-todo 1`] = `
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-skip: metadata ids 1`] = `
+[
+  "__tests__/default/test-skip.js:",
+  "__tests__/default/test-skip.js:",
+  "__tests__/default/test-skip.js:test_0",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-todo: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/test-todo.js",
     "type": "add_test_file",
   },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-1/bail-short 1`] = `
-[
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
   {
     "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
+    "testFilePath": "__tests__/default/test-todo.js",
     "type": "start_describe_definition",
   },
   {
-    "testFilePath": "__tests__/bail/bail-short.js",
+    "testFilePath": "__tests__/default/test-todo.js",
     "testId": "test_0",
     "type": "add_test",
   },
   {
-    "testFilePath": "__tests__/bail/bail-short.js",
+    "testFilePath": "__tests__/default/test-todo.js",
     "testId": "test_0",
     "type": "test_start",
   },
   {
-    "testFilePath": "__tests__/bail/bail-short.js",
+    "testFilePath": "__tests__/default/test-todo.js",
     "testId": "test_0",
-    "type": "test_done",
+    "type": "test_todo",
   },
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/28.x.x/no-env-N/test-todo: metadata ids 1`] = `
+[
+  "__tests__/default/test-todo.js:",
+  "__tests__/default/test-todo.js:",
+  "__tests__/default/test-todo.js:test_0",
 ]
 `;
 
@@ -2146,69 +1817,18 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-1/bail-short: emitted 
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-1/bail-short: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-1/bail-short: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
 ]
 `;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-1/globalMetadata 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-1/globalMetadata: emitted events 1`] = `[]`;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-1/globalMetadata: emitted events 2`] = `[]`;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/bail-long 1`] = `
-[
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
+exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-1/globalMetadata: metadata ids 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/bail-long: emitted events 1`] = `
 [
@@ -2239,61 +1859,10 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/bail-long: emitted e
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/bail-long: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/bail-long: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-long.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/bail-short 1`] = `
-[
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/bail/bail-long.js:",
+  "__tests__/bail/bail-long.js:test_0",
 ]
 `;
 
@@ -2326,42 +1895,20 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/bail-short: emitted 
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/bail-short: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/bail-short: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/bail/bail-short.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
+  "__tests__/bail/bail-short.js:",
+  "__tests__/bail/bail-short.js:test_0",
 ]
 `;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/globalMetadata 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/globalMetadata: emitted events 1`] = `[]`;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/globalMetadata: emitted events 2`] = `[]`;
+exports[`Fallback API e2e/__fixtures__/29.x.x/bail-no-env-N/globalMetadata: metadata ids 1`] = `[]`;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-cases 1`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-cases: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/duplicate-cases.js",
@@ -2415,12 +1962,42 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-cases 1`] = `
   {
     "testFilePath": "__tests__/default/duplicate-cases.js",
     "testId": "test_2",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-cases.js",
+    "testId": "test_3",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-cases.js",
+    "testId": "test_3",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-cases.js",
+    "testId": "test_3",
     "type": "test_done",
   },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-generation 1`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-cases: metadata ids 1`] = `
+[
+  "__tests__/default/duplicate-cases.js:",
+  "__tests__/default/duplicate-cases.js:test_0",
+  "__tests__/default/duplicate-cases.js:test_1",
+  "__tests__/default/duplicate-cases.js:test_2",
+  "__tests__/default/duplicate-cases.js:test_3",
+  "__tests__/default/duplicate-cases.js:",
+  "__tests__/default/duplicate-cases.js:test_0",
+  "__tests__/default/duplicate-cases.js:test_1",
+  "__tests__/default/duplicate-cases.js:test_2",
+  "__tests__/default/duplicate-cases.js:test_3",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-generation: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
@@ -2463,23 +2040,35 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-generation 1`] 
   },
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
-    "testId": "test_2",
-    "type": "add_test",
+    "testId": "test_0",
+    "type": "test_retry",
   },
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
-    "testId": "test_2",
+    "testId": "test_0",
     "type": "test_start",
   },
   {
     "testFilePath": "__tests__/default/duplicate-generation.js",
-    "testId": "test_2",
+    "testId": "test_0",
     "type": "test_done",
   },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-name 1`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-generation: metadata ids 1`] = `
+[
+  "__tests__/default/duplicate-generation.js:",
+  "__tests__/default/duplicate-generation.js:test_0",
+  "__tests__/default/duplicate-generation.js:test_1",
+  "__tests__/default/duplicate-generation.js:test_0",
+  "__tests__/default/duplicate-generation.js:",
+  "__tests__/default/duplicate-generation.js:test_0",
+  "__tests__/default/duplicate-generation.js:test_1",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-name: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
@@ -2518,7 +2107,22 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-name 1`] = `
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
     "testId": "test_1",
-    "type": "test_skip",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1",
+    "type": "test_retry",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_1",
+    "type": "test_done",
   },
   {
     "testFilePath": "__tests__/default/duplicate-name.js",
@@ -2535,43 +2139,92 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-name 1`] = `
     "testId": "test_2",
     "type": "test_todo",
   },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/globalMetadata 1`] = `[]`;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/globalMetadata: emitted events 1`] = `[]`;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/globalMetadata: emitted events 2`] = `[]`;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-afterAll-fail 1`] = `
-[
   {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
     "type": "add_test",
   },
   {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
     "type": "test_start",
   },
   {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
     "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_4",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
+    "type": "test_retry",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_3",
+    "type": "test_done",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_5",
+    "type": "add_test",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_5",
+    "type": "test_start",
+  },
+  {
+    "testFilePath": "__tests__/default/duplicate-name.js",
+    "testId": "test_5",
+    "type": "test_skip",
   },
 ]
 `;
+
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/duplicate-name: metadata ids 1`] = `
+[
+  "__tests__/default/duplicate-name.js:",
+  "__tests__/default/duplicate-name.js:test_0",
+  "__tests__/default/duplicate-name.js:test_1",
+  "__tests__/default/duplicate-name.js:test_1",
+  "__tests__/default/duplicate-name.js:test_2",
+  "__tests__/default/duplicate-name.js:test_3",
+  "__tests__/default/duplicate-name.js:test_4",
+  "__tests__/default/duplicate-name.js:test_3",
+  "__tests__/default/duplicate-name.js:",
+  "__tests__/default/duplicate-name.js:test_0",
+  "__tests__/default/duplicate-name.js:test_1",
+  "__tests__/default/duplicate-name.js:test_5",
+  "__tests__/default/duplicate-name.js:test_2",
+  "__tests__/default/duplicate-name.js:test_3",
+  "__tests__/default/duplicate-name.js:test_4",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/globalMetadata: emitted events 1`] = `[]`;
+
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/globalMetadata: metadata ids 1`] = `[]`;
 
 exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-afterAll-fail: emitted events 1`] = `
 [
@@ -2602,76 +2255,12 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-afterAll-fail: emitt
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-afterAll-fail: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-afterAll-fail: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-afterAll-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-beforeAll-fail 1`] = `
-[
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_skip",
-  },
+  "__tests__/default/hook-afterAll-fail.js:",
+  "__tests__/default/hook-afterAll-fail.js:test_0",
+  "__tests__/default/hook-afterAll-fail.js:",
+  "__tests__/default/hook-afterAll-fail.js:test_0",
 ]
 `;
 
@@ -2719,51 +2308,17 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-beforeAll-fail: emit
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-beforeAll-fail: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-beforeAll-fail: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/hook-beforeAll-fail.js",
-    "testId": "test_1",
-    "type": "test_skip",
-  },
+  "__tests__/default/hook-beforeAll-fail.js:",
+  "__tests__/default/hook-beforeAll-fail.js:test_0",
+  "__tests__/default/hook-beforeAll-fail.js:",
+  "__tests__/default/hook-beforeAll-fail.js:test_1",
+  "__tests__/default/hook-beforeAll-fail.js:test_0",
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-nesting 1`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-nesting: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/hook-nesting.js",
@@ -2807,7 +2362,18 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-nesting 1`] = `
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-concurrent 1`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/hook-nesting: metadata ids 1`] = `
+[
+  "__tests__/default/hook-nesting.js:",
+  "__tests__/default/hook-nesting.js:test_0",
+  "__tests__/default/hook-nesting.js:test_1",
+  "__tests__/default/hook-nesting.js:",
+  "__tests__/default/hook-nesting.js:test_0",
+  "__tests__/default/hook-nesting.js:test_1",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-concurrent: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/test-concurrent.js",
@@ -2896,32 +2462,20 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-concurrent 1`] = `
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-fail 1`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-concurrent: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/default/test-concurrent.js:",
+  "__tests__/default/test-concurrent.js:test_0",
+  "__tests__/default/test-concurrent.js:test_1",
+  "__tests__/default/test-concurrent.js:test_2",
+  "__tests__/default/test-concurrent.js:test_3",
+  "__tests__/default/test-concurrent.js:test_4",
+  "__tests__/default/test-concurrent.js:",
+  "__tests__/default/test-concurrent.js:test_0",
+  "__tests__/default/test-concurrent.js:test_1",
+  "__tests__/default/test-concurrent.js:test_2",
+  "__tests__/default/test-concurrent.js:test_3",
+  "__tests__/default/test-concurrent.js:test_4",
 ]
 `;
 
@@ -2954,61 +2508,12 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-fail: emitted events
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-fail: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-fail: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-fail.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-fail.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-pass 1`] = `
-[
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/default/test-fail.js:",
+  "__tests__/default/test-fail.js:test_0",
+  "__tests__/default/test-fail.js:",
+  "__tests__/default/test-fail.js:test_0",
 ]
 `;
 
@@ -3041,36 +2546,16 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-pass: emitted events
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-pass: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-pass: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-pass.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-pass.js",
-    "testId": "test_0",
-    "type": "test_done",
-  },
+  "__tests__/default/test-pass.js:",
+  "__tests__/default/test-pass.js:test_0",
+  "__tests__/default/test-pass.js:",
+  "__tests__/default/test-pass.js:test_0",
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-retry 1`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-retry: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/test-retry.js",
@@ -3098,57 +2583,66 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-retry 1`] = `
   },
   {
     "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_1",
-    "type": "add_test",
+    "testId": "test_0",
+    "type": "test_retry",
   },
   {
     "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_1",
+    "testId": "test_0",
     "type": "test_start",
   },
   {
     "testFilePath": "__tests__/default/test-retry.js",
-    "testId": "test_1",
+    "testId": "test_0",
     "type": "test_done",
   },
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-skip 1`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-retry: metadata ids 1`] = `
+[
+  "__tests__/default/test-retry.js:",
+  "__tests__/default/test-retry.js:test_0",
+  "__tests__/default/test-retry.js:test_0",
+  "__tests__/default/test-retry.js:",
+  "__tests__/default/test-retry.js:test_0",
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-skip: emitted events 1`] = `
 [
   {
     "testFilePath": "__tests__/default/test-skip.js",
     "type": "add_test_file",
   },
-]
-`;
-
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-todo 1`] = `
-[
-  {
-    "testFilePath": "__tests__/default/test-todo.js",
-    "type": "add_test_file",
-  },
   {
     "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-todo.js",
+    "testFilePath": "__tests__/default/test-skip.js",
     "type": "start_describe_definition",
   },
   {
-    "testFilePath": "__tests__/default/test-todo.js",
+    "testFilePath": "__tests__/default/test-skip.js",
     "testId": "test_0",
     "type": "add_test",
   },
   {
-    "testFilePath": "__tests__/default/test-todo.js",
+    "testFilePath": "__tests__/default/test-skip.js",
     "testId": "test_0",
     "type": "test_start",
   },
   {
-    "testFilePath": "__tests__/default/test-todo.js",
+    "testFilePath": "__tests__/default/test-skip.js",
     "testId": "test_0",
-    "type": "test_todo",
+    "type": "test_skip",
   },
+]
+`;
+
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-skip: metadata ids 1`] = `
+[
+  "__tests__/default/test-skip.js:",
+  "__tests__/default/test-skip.js:",
+  "__tests__/default/test-skip.js:test_0",
 ]
 `;
 
@@ -3181,31 +2675,11 @@ exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-todo: emitted events
 ]
 `;
 
-exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-todo: emitted events 2`] = `
+exports[`Fallback API e2e/__fixtures__/29.x.x/no-env-N/test-todo: metadata ids 1`] = `
 [
-  {
-    "testFilePath": "__tests__/default/test-todo.js",
-    "type": "add_test_file",
-  },
-  {
-    "describeId": "describe_0",
-    "testFilePath": "__tests__/default/test-todo.js",
-    "type": "start_describe_definition",
-  },
-  {
-    "testFilePath": "__tests__/default/test-todo.js",
-    "testId": "test_0",
-    "type": "add_test",
-  },
-  {
-    "testFilePath": "__tests__/default/test-todo.js",
-    "testId": "test_0",
-    "type": "test_start",
-  },
-  {
-    "testFilePath": "__tests__/default/test-todo.js",
-    "testId": "test_0",
-    "type": "test_todo",
-  },
+  "__tests__/default/test-todo.js:",
+  "__tests__/default/test-todo.js:test_0",
+  "__tests__/default/test-todo.js:",
+  "__tests__/default/test-todo.js:test_0",
 ]
 `;
