@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, beta ]
   pull_request:
     branches: [ master ]
 
@@ -118,6 +118,8 @@ jobs:
           path: artifacts
 
       - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
 
       - name: Install dependencies
         run: npm -g install "lcov-result-merger@4.x.x" "lcov-badge2@1.1.1"
@@ -139,3 +141,25 @@ jobs:
         with:
           add: docs/images/coverage.svg
           message: 'chore: update coverage badge'
+
+  publish:
+    name: Publish
+    needs: [sanity, compatibility]
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+
+      - name: Semantic release
+        run: npx --no-install semantic-release --debug
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
