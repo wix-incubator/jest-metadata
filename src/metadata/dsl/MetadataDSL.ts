@@ -91,7 +91,7 @@ export class MetadataDSL {
       console.warn(
         `Cannot use "jest-metadata" annotations because the test environment is not properly configured.
 There are two possible reasons for this:
-1. You are using a stanard Jest environment (e.g. "jest-environment-node") and not using "jest-metadata/environment-***" packages.
+1. You are using a standard Jest environment (e.g. "jest-environment-node") and not using "jest-metadata/environment-*" packages.
 2. You are a non-supported test runner (e.g. "jest-jasmine2") instead of "jest-circus".
   If this is not the case, then something is broken between your Jest configuration and jest-metadata environment.`,
       );
