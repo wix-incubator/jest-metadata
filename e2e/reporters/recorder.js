@@ -27,7 +27,7 @@ class E2eRecorderReporter extends JestMetadataReporter {
 
   #pushEvent = (event) => {
     const testFilePath = event.testFilePath
-      ? path.relative(cwd, event.testFilePath)
+      ? path.relative(cwd, event.testFilePath).replaceAll(path.win32.sep, path.posix.sep)
       : undefined;
 
     const id = testFilePath

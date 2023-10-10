@@ -6,6 +6,7 @@ const mixins = {
   }),
   reporter: (enable) => ({
     reporters: [
+      'summary',
       ...(enable ? ['jest-metadata/reporter'] : []),
       './reporters/benchmark',
     ],

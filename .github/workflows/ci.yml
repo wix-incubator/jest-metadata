@@ -5,58 +5,18 @@ on:
     branches: [ master, beta ]
   pull_request:
     branches: [ master, beta ]
-
   workflow_dispatch:
+    inputs:
+      os:
+        description: 'Operating System'
+        required: true
+        default: 'ubuntu-latest'
 
 jobs:
 
-  compatibility:
-    name: Compatibility Testing
-    strategy:
-      matrix:
-        jest:
-          - '27.x.x'
-          - '28.x.x'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-
-      - uses: bahmutov/npm-install@v1
-        with:
-          useLockFile: false
-
-      - name: Build package for E2E
-        run: npm run build:e2e
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: 'e2e/.nvmrc'
-
-      - name: Update fixtures
-        run: npm run update-fixtures
-        env:
-          JEST_VERSION: ${{ matrix.jest }}
-
-      - name: Assert no Git changes
-        run: git diff --exit-code e2e/__fixtures__
-
-      - name: Upload artifacts
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: artifacts-jest-${{ matrix.jest }}
-          path: artifacts/
   sanity:
     name: Platform Testing
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ github.event.inputs.os || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@v3
 
@@ -94,6 +54,48 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: artifacts-os-${{ matrix.os }}
+          path: artifacts/
+
+  compatibility:
+    name: Compatibility Testing
+    needs: sanity
+    strategy:
+      matrix:
+        jest:
+          - '27.x.x'
+          - '28.x.x'
+    runs-on: ${{ github.event.inputs.os || 'ubuntu-latest' }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+
+      - name: Build package for E2E
+        run: npm run build:e2e
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: 'e2e/.nvmrc'
+
+      - name: Update fixtures
+        run: npm run update-fixtures
+        env:
+          JEST_VERSION: ${{ matrix.jest }}
+
+      - name: Assert no Git changes
+        run: git diff --exit-code e2e/__fixtures__
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifacts-jest-${{ matrix.jest }}
           path: artifacts/
 
   coverage:
