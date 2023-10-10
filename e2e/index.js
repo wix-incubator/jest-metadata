@@ -6,7 +6,7 @@ const fixturesDir = path.join(__dirname, '__fixtures__');
 const getEvents = (glob, filterFn) => {
   return globby.sync(`*.x.x/${glob}/*.json`, { cwd: fixturesDir })
     .map(f => [
-      path.join(path.dirname(f), path.basename(f, '.json')),
+      path.join(path.dirname(f), path.basename(f, '.json')).replaceAll(path.win32.sep, path.posix.sep),
       require('./__fixtures__/' + f).filter(filterFn),
     ]);
 };
