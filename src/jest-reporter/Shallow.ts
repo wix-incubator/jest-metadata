@@ -14,7 +14,9 @@ export const Shallow = {
 
   testResult(testResult: TestResult): TestFileResultArg {
     return {
-      testFilePath: path.relative(process.cwd(), testResult.testFilePath),
+      testFilePath: path
+        .relative(process.cwd(), testResult.testFilePath)
+        .replaceAll(path.win32.sep, path.posix.sep),
       testResults: testResult.testResults.map(Shallow.testCaseResult),
     };
   },

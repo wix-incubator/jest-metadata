@@ -12,31 +12,9 @@
     "semver": "^7.5.4"
   },
   "scripts": {
-    "build": "npm run build:default && npm run build:bail",
     "build:jsdom": "cross-env JEST_ENVIRONMENT=jsdom npm run build",
     "build:node": "cross-env JEST_ENVIRONMENT=node npm run build",
-    "build:default": "npm run build:env-1 ; npm run build:env-N ; npm run build:no-env-1 ; npm run build:no-env-N ; true",
-    "build:bail": "npm run build:bail-env-1 ; npm run build:bail-env-N ; npm run build:bail-no-env-1 ; npm run build:bail-no-env-N ; true",
-    "build:env-1": "cross-env PRESET=env-1 MODE=recorder jest",
-    "build:env-N": "cross-env PRESET=env-N MODE=recorder jest",
-    "build:no-env-1": "cross-env PRESET=no-env-1 MODE=recorder jest",
-    "build:no-env-N": "cross-env PRESET=no-env-N MODE=recorder jest",
-    "build:bail-env-1": "cross-env PRESET=bail-env-1 MODE=recorder jest",
-    "build:bail-env-N": "cross-env PRESET=bail-env-N MODE=recorder jest",
-    "build:bail-no-env-1": "cross-env PRESET=bail-no-env-1 MODE=recorder jest",
-    "build:bail-no-env-N": "cross-env PRESET=bail-no-env-N MODE=recorder jest",
-    "bench": "npm run bench:1 && npm run bench:10 && npm run bench:100 && npm run bench:1000 && npm run bench:10000",
-    "bench:1": "cross-env NUM_TESTS=1 npm run bench:every",
-    "bench:10": "cross-env NUM_TESTS=10 npm run bench:every",
-    "bench:100": "cross-env NUM_TESTS=100 npm run bench:every",
-    "bench:1000": "cross-env NUM_TESTS=1000 npm run bench:every",
-    "bench:10000": "cross-env NUM_TESTS=10000 npm run bench:every",
-    "bench:every": "npm run bench:baseline-1 ; npm run bench:baseline-N ; npm run bench:fallback-1 ; npm run bench:fallback-N ; npm run bench:metadata-1 ; npm run bench:metadata-N ; true",
-    "bench:metadata-1": "cross-env PRESET=metadata-1 MODE=benchmark jest",
-    "bench:metadata-N": "cross-env PRESET=metadata-N MODE=benchmark jest",
-    "bench:fallback-1": "cross-env PRESET=fallback-1 MODE=benchmark jest",
-    "bench:fallback-N": "cross-env PRESET=fallback-N MODE=benchmark jest",
-    "bench:baseline-1": "cross-env PRESET=baseline-1 MODE=benchmark jest",
-    "bench:baseline-N": "cross-env PRESET=baseline-N MODE=benchmark jest"
+    "build": "node scripts/jest-foreach.mjs MODE=recorder PRESET=env-1,env-N,no-env-1,no-env-N,bail-env-1,bail-env-N,bail-no-env-1,bail-no-env-N",
+    "bench": "node scripts/jest-foreach.mjs MODE=benchmark NUM_TESTS=1,10,100,1000,10000 PRESET=metadata-1,metadata-N,fallback-1,fallback-N,baseline-1,baseline-N"
   }
 }
