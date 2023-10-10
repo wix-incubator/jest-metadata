@@ -15,7 +15,7 @@ on:
 jobs:
 
   sanity:
-    name: Platform Testing
+    name: Standard Testing
     runs-on: ${{ github.event.inputs.os || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@v3
@@ -59,6 +59,7 @@ jobs:
   compatibility:
     name: Compatibility Testing
     needs: sanity
+    if: github.event_name != 'workflow_dispatch'
     strategy:
       matrix:
         jest:
