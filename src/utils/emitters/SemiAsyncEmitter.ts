@@ -15,15 +15,23 @@ export class SemiAsyncEmitter<Event extends { type: string }>
     this.#syncEvents = new Set(syncEvents);
   }
 
-  on<E extends Event>(type: E['type'], listener: (event: E) => unknown, order?: number): this {
+  on<E extends Event>(
+    type: E['type'] | '*',
+    listener: (event: E) => unknown,
+    order?: number,
+  ): this {
     return this.#invoke('on', type, listener, order);
   }
 
-  once<E extends Event>(type: E['type'], listener: (event: E) => unknown, order?: number): this {
+  once<E extends Event>(
+    type: E['type'] | '*',
+    listener: (event: E) => unknown,
+    order?: number,
+  ): this {
     return this.#invoke('once', type, listener, order);
   }
 
-  off<E extends Event>(type: E['type'], listener: (event: E) => unknown): this {
+  off<E extends Event>(type: E['type'] | '*', listener: (event: E) => unknown): this {
     return this.#invoke('off', type, listener);
   }
 
@@ -35,7 +43,7 @@ export class SemiAsyncEmitter<Event extends { type: string }>
 
   #invoke<E extends Event>(
     methodName: 'on' | 'once' | 'off',
-    type: E['type'],
+    type: E['type'] | '*',
     listener: (event: E) => unknown,
     order?: number,
   ): this {
