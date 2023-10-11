@@ -1,3 +1,4 @@
+import { inspect } from 'util';
 import type { EnvironmentContext, JestEnvironment, JestEnvironmentConfig } from '@jest/environment';
 import type { Circus } from '@jest/types';
 import { JestMetadataError } from './errors';
@@ -6,14 +7,9 @@ import { SemiAsyncEmitter } from './utils';
 
 const emitterMap: WeakMap<object, SemiAsyncEmitter<ForwardedCircusEvent>> = new WeakMap();
 
-/**
- * @param jestEnvironment {@link JestEnvironment}
- * @param _jestEnvironmentConfig {@link JestEnvironmentConfig}
- * @param environmentContext {@link EnvironmentContext}
- */
 export function onTestEnvironmentCreate(
   jestEnvironment: JestEnvironment,
-  _jestEnvironmentConfig: JestEnvironmentConfig,
+  jestEnvironmentConfig: JestEnvironmentConfig,
   environmentContext: EnvironmentContext,
 ): void {
   injectRealmIntoSandbox(jestEnvironment.global, realm);
@@ -21,11 +17,25 @@ export function onTestEnvironmentCreate(
   realm.environmentHandler.handleEnvironmentCreated(testFilePath);
   realm.events.add(realm.setEmitter);
 
-  if (realm.type === 'child_process') {
-    realm.coreEmitter.emit({
-      type: 'add_test_file',
-      testFilePath,
-    });
+  if (!realm.globalMetadata.hasTestFileMetadata(testFilePath)) {
+    if (realm.type === 'child_process') {
+      realm.coreEmitter.emit({
+        type: 'add_test_file',
+        testFilePath,
+      });
+    } else {
+      const { globalConfig } = jestEnvironmentConfig;
+      const first = <T>(r: T[]) => r[0];
+      const hint = globalConfig?.reporters
+        ? `  "reporters": ${inspect(globalConfig.reporters.map(first))}\n`
+        : ''; // Jest 27 fallback
+
+      throw new JestMetadataError(
+        `Cannot use a metadata test environment without a metadata server.\n` +
+          `Please check that at least one of the reporters in your Jest config inherits from "jest-metadata/reporter".\n` +
+          hint,
+      );
+    }
   }
 
   const testEventHandler = ({ event, state }: ForwardedCircusEvent) => {

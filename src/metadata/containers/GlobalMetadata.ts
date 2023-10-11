@@ -31,12 +31,15 @@ export class GlobalMetadata extends BaseMetadata {
   }
 
   public getTestFileMetadata(testFilePath: string): TestFileMetadata {
-    const testFileMetadata = this[$byTestFilePath].get(testFilePath);
-    if (!testFileMetadata) {
+    if (!this.hasTestFileMetadata(testFilePath)) {
       throw new JestMetadataError(`No file metadata found for: ${testFilePath}`);
     }
 
-    return testFileMetadata;
+    return this[$byTestFilePath].get(testFilePath)!;
+  }
+
+  public hasTestFileMetadata(testFilePath: string): boolean {
+    return this[$byTestFilePath].has(testFilePath);
   }
 
   public registerTestFile(testFilePath: string): TestFileMetadata {
