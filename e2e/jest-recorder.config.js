@@ -37,6 +37,16 @@ const presets = {
     ...mixins.env(true),
     ...mixins.workers(2),
   },
+  'no-reporter-1': {
+    ...mixins.env(true),
+    ...mixins.workers(2),
+    reporters: ['default'],
+  },
+  'no-reporter-N': {
+    ...mixins.env(true),
+    ...mixins.workers(2),
+    reporters: ['default'],
+  },
   'no-env-1': {
     ...mixins.env(false),
     ...mixins.workers(1),
