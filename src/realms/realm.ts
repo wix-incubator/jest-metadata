@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires,node/no-missing-require */
 // TODO: think about ESM support via dynamic import
-import { getSandboxedRealm, isClient } from './detect';
+import { getSandboxedRealm, injectRealmIntoSandbox, isClient } from './detect';
 import type { ProcessRealm } from './ProcessRealm';
 
 function createRealm(): ProcessRealm {
@@ -13,4 +13,4 @@ function createRealm(): ProcessRealm {
   }
 }
 
-export default getSandboxedRealm() ?? createRealm();
+export default getSandboxedRealm() ?? injectRealmIntoSandbox(globalThis, createRealm());
