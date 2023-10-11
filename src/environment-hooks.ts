@@ -18,23 +18,28 @@ export function onTestEnvironmentCreate(
   realm.events.add(realm.setEmitter);
 
   if (!realm.globalMetadata.hasTestFileMetadata(testFilePath)) {
-    if (realm.type === 'child_process') {
-      realm.coreEmitter.emit({
-        type: 'add_test_file',
-        testFilePath,
-      });
-    } else {
+    realm.coreEmitter.emit({
+      type: 'add_test_file',
+      testFilePath,
+    });
+
+    if (realm.type === 'parent_process') {
       const { globalConfig } = jestEnvironmentConfig;
       const first = <T>(r: T[]) => r[0];
-      const hint = globalConfig?.reporters
-        ? `  "reporters": ${inspect(globalConfig.reporters.map(first))}\n`
+      const hint = globalConfig
+        ? `  "reporters": ${inspect(globalConfig.reporters?.map(first))}\n`
         : ''; // Jest 27 fallback
 
-      throw new JestMetadataError(
+      const message =
         `Cannot use a metadata test environment without a metadata server.\n` +
-          `Please check that at least one of the reporters in your Jest config inherits from "jest-metadata/reporter".\n` +
-          hint,
-      );
+        `Please check that at least one of the reporters in your Jest config inherits from "jest-metadata/reporter".\n` +
+        hint;
+
+      if (globalConfig && (globalConfig.runInBand || globalConfig.maxWorkers === 1)) {
+        console.warn('[jest-metadata] ' + message);
+      } else {
+        throw new JestMetadataError(message);
+      }
     }
   }
 

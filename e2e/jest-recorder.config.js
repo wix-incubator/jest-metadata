@@ -39,7 +39,7 @@ const presets = {
   },
   'no-reporter-1': {
     ...mixins.env(true),
-    ...mixins.workers(2),
+    ...mixins.workers(1),
     reporters: ['default'],
   },
   'no-reporter-N': {
