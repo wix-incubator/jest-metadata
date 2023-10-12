@@ -2,7 +2,7 @@ import type { JestEnvironment } from '@jest/environment';
 import type { Circus } from '@jest/types';
 
 import {
-  ForwardedCircusEvent,
+  TestEnvironmentEvent,
   getEmitter,
   onHandleTestEvent,
   onTestEnvironmentCreate,
@@ -11,10 +11,10 @@ import {
 } from './environment-hooks';
 import type { ReadonlyAsyncEmitter } from './types';
 
-export { ForwardedCircusEvent } from './environment-hooks';
+export { TestEnvironmentEvent } from './environment-hooks';
 
 export type WithEmitter<E extends JestEnvironment = JestEnvironment> = E & {
-  readonly testEvents: ReadonlyAsyncEmitter<ForwardedCircusEvent>;
+  readonly testEvents: ReadonlyAsyncEmitter<TestEnvironmentEvent>;
 };
 
 /**
@@ -89,7 +89,7 @@ export function WithMetadata<E extends JestEnvironment>(
         onTestEnvironmentCreate(this, args[0], args[1]);
       }
 
-      protected get testEvents(): ReadonlyAsyncEmitter<ForwardedCircusEvent> {
+      protected get testEvents(): ReadonlyAsyncEmitter<TestEnvironmentEvent> {
         return getEmitter(this);
       }
 

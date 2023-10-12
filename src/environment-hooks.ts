@@ -5,7 +5,8 @@ import { JestMetadataError } from './errors';
 import { realm, injectRealmIntoSandbox } from './realms';
 import { jestUtils, SemiAsyncEmitter } from './utils';
 
-const emitterMap: WeakMap<object, SemiAsyncEmitter<ForwardedCircusEvent>> = new WeakMap();
+const emitterMap: WeakMap<object, SemiAsyncEmitter<TestEnvironmentEvent>> = new WeakMap();
+const configMap: WeakMap<object, JestEnvironmentConfig> = new WeakMap();
 
 export function onTestEnvironmentCreate(
   jestEnvironment: JestEnvironment,
@@ -52,13 +53,15 @@ export function onTestEnvironmentCreate(
 
   const flushHandler = () => realm.ipc.flush();
 
-  const emitter = new SemiAsyncEmitter<ForwardedCircusEvent>('environment', [
+  const emitter = new SemiAsyncEmitter<TestEnvironmentEvent>('environment', [
     'start_describe_definition',
     'finish_describe_definition',
     'add_hook',
     'add_test',
     'error',
   ])
+    .on('test_environment_setup', startIpc, -1)
+    .on('test_environment_teardown', stopIpc, Number.MAX_SAFE_INTEGER)
     .on('setup', testEventHandler, -1)
     .on('include_test_location_in_result', testEventHandler, -1)
     .on('start_describe_definition', testEventHandler, -1)
@@ -88,24 +91,28 @@ export function onTestEnvironmentCreate(
     .on('teardown', testEventHandler, Number.MAX_SAFE_INTEGER);
 
   emitterMap.set(jestEnvironment, emitter);
+  configMap.set(jestEnvironment, jestEnvironmentConfig);
 }
 
-export type ForwardedCircusEvent<E extends Circus.Event = Circus.Event> = {
+export type TestEnvironmentEvent =
+  | {
+      type: 'test_environment_setup' | 'test_environment_teardown';
+    }
+  | ForwardedCircusEvent;
+
+type ForwardedCircusEvent<E extends Circus.Event = Circus.Event> = {
   type: E['name'];
   event: E;
   state: Circus.State;
 };
 
-export async function onTestEnvironmentSetup(_env: JestEnvironment): Promise<void> {
-  if (realm.type === 'child_process') {
-    await realm.ipc.start();
-  }
+export async function onTestEnvironmentSetup(env: JestEnvironment): Promise<void> {
+  await initReporters(env);
+  await getEmitter(env).emit({ type: 'test_environment_setup' });
 }
 
-export async function onTestEnvironmentTeardown(_env: JestEnvironment): Promise<void> {
-  if (realm.type === 'child_process') {
-    await realm.ipc.stop();
-  }
+export async function onTestEnvironmentTeardown(env: JestEnvironment): Promise<void> {
+  await getEmitter(env).emit({ type: 'test_environment_teardown' });
 }
 
 /**
@@ -118,6 +125,9 @@ export const onHandleTestEvent = (
   state: Circus.State,
 ): void | Promise<void> => getEmitter(env).emit({ type: event.name, event, state });
 
+/**
+ * Get the environment event emitter by the environment reference.
+ */
 export const getEmitter = (env: JestEnvironment) => {
   const emitter = emitterMap.get(env);
   if (!emitter) {
@@ -128,3 +138,49 @@ export const getEmitter = (env: JestEnvironment) => {
 
   return emitter;
 };
+
+/**
+ * Get the environment configuration by the environment reference.
+ */
+export const getConfig = (env: JestEnvironment) => {
+  const config = configMap.get(env);
+  if (!config) {
+    throw new JestMetadataError(
+      'Environment config is not found. Most likely, you are using a non-valid environment reference.',
+    );
+  }
+
+  return config;
+};
+
+async function initReporters(env: JestEnvironment) {
+  const reporterModules = (getConfig(env)?.globalConfig?.reporters ?? []).map((r) => r[0]);
+  const reporterExports = await Promise.all(
+    reporterModules.map((m) => {
+      try {
+        return import(m);
+      } catch (error: unknown) {
+        // TODO: log this to trace
+        console.warn(`[jest-metadata] Failed to import reporter module "${m}"`, error);
+        return;
+      }
+    }),
+  );
+
+  for (const reporterExport of reporterExports) {
+    const ReporterClass = reporterExport?.default ?? reporterExport;
+    ReporterClass?.onTestEnvironmentCreate?.(env);
+  }
+}
+
+async function startIpc() {
+  if (realm.type === 'child_process') {
+    await realm.ipc.start();
+  }
+}
+
+async function stopIpc() {
+  if (realm.type === 'child_process') {
+    await realm.ipc.stop();
+  }
+}

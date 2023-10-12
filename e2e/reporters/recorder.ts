@@ -89,6 +89,11 @@ class E2eRecorderReporter extends JestMetadataReporter {
       await debugUtils.aggregateLogs();
     }
   }
+
+  static onTestEnvironmentCreate(env) {
+    console.log('I AM ALIVE');
+    console.log('  ..--..');
+  }
 }
 
 function sleep(ms) {
