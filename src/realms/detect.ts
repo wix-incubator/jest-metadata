@@ -19,12 +19,25 @@ export function isJestWorker(): boolean {
   return 'JEST_WORKER_ID' in process.env;
 }
 
-export function injectRealmIntoSandbox(sandbox: any, realm: ProcessRealm): void {
+export function injectRealmIntoSandbox(sandbox: any, realm: ProcessRealm): ProcessRealm {
   sandbox.__JEST_METADATA__ = realm;
+  if (sandbox !== globalThis) {
+    sandbox.__JEST_METADATA_SANDBOX__ = true;
+  }
+
+  return realm;
 }
 
 export function getSandboxedRealm(): ProcessRealm | undefined {
-  return (global as any).__JEST_METADATA__;
+  const globalAny = globalThis as any;
+  const realm = globalAny.__JEST_METADATA__;
+  if (realm && !globalAny.__JEST_METADATA_SANDBOX__) {
+    console.warn(
+      '[jest-metadata] Detected duplicate jest-metadata package in the same process. This may lead to unexpected behavior.',
+    );
+  }
+
+  return realm;
 }
 
 export function getServerId(): string | undefined {
