@@ -93,13 +93,13 @@ export type ForwardedCircusEvent<E extends Circus.Event = Circus.Event> = {
   state: Circus.State;
 };
 
-export async function onTestEnvironmentSetup(): Promise<void> {
+export async function onTestEnvironmentSetup(_env: JestEnvironment): Promise<void> {
   if (realm.type === 'child_process') {
     await realm.ipc.start();
   }
 }
 
-export async function onTestEnvironmentTeardown(): Promise<void> {
+export async function onTestEnvironmentTeardown(_env: JestEnvironment): Promise<void> {
   if (realm.type === 'child_process') {
     await realm.ipc.stop();
   }
