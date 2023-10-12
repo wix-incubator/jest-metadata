@@ -23,7 +23,6 @@ const { metadata, $Set, $Push } = require('jest-metadata');
 
 const $Description = (text) => $Set('vendor.description', text);
 const $Maintainer = (name, email) => $Assign('vendor.maintainer', { name, email });
-const $Lead = (name, email) => $Merge('vendor.lead', { name, email });
 const $Tag = (value) => $Push(['vendor', 'labels'], value);
 const $Flaky = () => $Tag('flaky');
 const step = (text) => metadata.push('vendor.steps', [{ text, startedAt: now }]);
@@ -31,7 +30,6 @@ const step = (text) => metadata.push('vendor.steps', [{ text, startedAt: now }])
 const actions = require('./actions');
 
 $Maintainer('Jane Smith', 'jane.smith@example.com');
-$Lead('Samantha Jones', 'samantha.jones@example.com');
 $Description('This is a sample test suite.');
 describe('Login flow', () => {
   $Description('Prepare the environment');

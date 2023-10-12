@@ -2,14 +2,13 @@
 
 <div align="center">
 
-<img src="images/logo.png" width=256 height=256 />
+<img src=".idea/icon.svg" width=256 height=256 />
 
 # jest-metadata
 
-Share your custom data across all Jest contexts.
+🦸‍♂️ Superhero powers for your Jest reporter! 🦸‍♀️
 
 [![npm version](https://badge.fury.io/js/jest-metadata.svg?rnd=42)](https://badge.fury.io/js/jest-metadata)
-![test coverage](images/coverage.svg)
 
 </div>
 
@@ -18,19 +17,27 @@ Share your custom data across all Jest contexts.
 ## 🌟 Features
 
 * Attach custom metadata to Jest entities such as describe blocks, function definitions, test runs, and invocations.
-* Access metadata from custom reporters to generate insightful reports.
-* Integrate seamlessly with Jest Circus events.
-* Easy-to-use API for adding and retrieving metadata.
+* Access your metadata from your reporters to generate insightful reports.
+* Graceful degradation for default test environments (`node`, `jsdom`) and `jest-jasmine2` test runner.
+* Custom test environment support via a decorator class.
 
-## 📚 Prerequisites
+## 📚 Guidelines
+
+This library is primarily intended for the authors of custom Jest reporters.
+Direct usage of `jest-metadata` in test files is not recommended.
 
 To use `jest-metadata`, you should:
 
-* Have `jest-circus` as Jest test runner (default since `jest@27.x`).
-* Use a test environment class that complies with `jest-metadata` lifecycle.
-* Create or install a reporter that leverages `jest-metadata`.
+* Declare `jest` as a peer dependency (or direct one) in your package.
+* Provide your reporter as a class that inherits from `jest-metadata/reporter`.
+* Provide your test environment as a decorator class that can inherit from any `WithMetadata(*)` class.
+* Think about using a namespace for your metadata, so that it doesn't clash with other metadata.
 
-## 🚀 Installation
+The best live example of how to use `jest-metadata` at the moment is [jest-allure2-reporter].
+
+## 🚀 Quick Start
+
+To get your hands dirty, you can try out `jest-metadata` directly in your project.
 
 Install `jest-metadata` using npm:
 
@@ -41,15 +48,15 @@ npm install jest-metadata --save-dev
 In your Jest config, add the following:
 
 ```diff
-   "testRunner": "jest-circus/runner",
 +  "testEnvironment": "jest-metadata/environment-node",
-   "reporters": [
-     "default",
++  "reporters": [
++    "default",
 +    "./your-custom-reporter.js",
-   ],
++  ],
 ```
 
-If you need to use `jest-metadata` in a JSDOM environment or another custom test environment, please refer to the [Integrating `jest-metadata` into test environment](jest-environment.md) document.
+If you need to use `jest-metadata` in a JSDOM environment or another custom test environment,
+please refer to the [Integrating `jest-metadata` into test environment][jest-environment] guide.
 
 ## 📖 Usage
 
@@ -58,7 +65,7 @@ If you need to use `jest-metadata` in a JSDOM environment or another custom test
 Attach metadata to test entities using annotations:
 
 ```js
-import { $Set } from 'jest-metadata';
+import { metadata, $Set } from 'jest-metadata';
 
 // Write your own DSL for attaching metadata to test entities
 // Try to namespace your metadata to avoid collisions with other libraries
@@ -69,6 +76,10 @@ describe('Login flow', () => {
 
   $Description('This is a login test.');
   it('should login', () => {
+    // ...
+    metadata.push('mycompany.attachements', [
+      { name: 'screenshot', type: 'image/png', filePath: '/path/to/screenshot.png' },
+    ]);
     // ...
   });
 });
@@ -86,10 +97,11 @@ class CustomReporter extends JestMetadataReporter {
   async onTestCaseResult(test, testCaseResult) {
     await super.onTestCaseResult(test, testCaseResult);
 
-    const metadata = state.getRunMetadata(test.path).lastTestEntry;
+    const metadata = state.getTestFileMetadata(test.path).lastTestEntry;
 
     const titles = [testCaseResult.title, ...testCaseResult.ancestorTitles.slice().reverse()];
-    const descriptions = [metadata, ...metadata.ancestors()].map((m) => m.get('mycompany.description', ''));
+    const descriptions = [metadata, ...metadata.ancestors()].map((m) => m.get('mycompany.description', '')).find(x => x);
+    const attachments = [metadata, ...metadata.ancestors()].flatMap((m) => m.get('mycompany.attachements', []));
 
     const n = titles.length;
     for (let i = n - 1; i >= 0; i--) {
@@ -104,7 +116,7 @@ class CustomReporter extends JestMetadataReporter {
 
 ## 📄 Documentation
 
-For more detailed documentation, tutorials, and examples, see the [`docs` folder].
+For more detailed documentation and examples, see the [`docs` folder].
 
 ## 🌐 Contributing
 
@@ -120,8 +132,10 @@ For more information, see our [Contribution Guidelines].
 
 This project is licensed under the [MIT License].
 
-[`docs` folder]: ./
+[`docs` folder]: ./docs
 [GitHub issues]: https://github.com/wix-incubator/jest-metadata/issues
-[submit a new issue]: https://github.com/wix-incubator/jest-metadata/issues/new
+[submit a new issue]: https://github.com/wix-incubator/jest-metadata/issues/new/choose
 [Contribution Guidelines]: ./CONTRIBUTING.md
-[MIT License]: ../LICENSE
+[MIT License]: ./LICENSE
+[jest-environment]: ./docs/jest-environment.md
+[jest-allure2-reporter]: https://github.com/wix-incubator/jest-allure2-reporter

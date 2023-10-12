@@ -106,6 +106,7 @@ dist
 
 # IDE-related
 .idea
+!.idea/icon.svg
 .vscode
 
 # Generated content

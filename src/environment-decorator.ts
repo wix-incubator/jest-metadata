@@ -95,7 +95,7 @@ export function WithMetadata<E extends JestEnvironment>(
 
       async setup() {
         await super.setup();
-        await onTestEnvironmentSetup();
+        await onTestEnvironmentSetup(this);
       }
 
       // @ts-expect-error TS2415: The base class has an arrow function, but this can be a method
@@ -112,7 +112,7 @@ export function WithMetadata<E extends JestEnvironment>(
 
       async teardown() {
         await super.teardown();
-        await onTestEnvironmentTeardown();
+        await onTestEnvironmentTeardown(this);
       }
     },
   }[compositeName] as unknown as new (...args: any[]) => WithEmitter<E>;
