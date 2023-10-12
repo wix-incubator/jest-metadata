@@ -1,9 +1,7 @@
 /* eslint-disable unicorn/no-null */
-import lodashGet from 'lodash.get';
 import lodashMerge from 'lodash.merge';
-import lodashSet from 'lodash.set';
 
-import { logger, optimizeTracing } from '../../utils';
+import { get as lodashGet, set as lodashSet, logger, optimizeTracing } from '../../utils';
 import type { AggregatedIdentifier } from '../ids';
 import * as symbols from '../symbols';
 import type { Data, Metadata } from '../types';
@@ -58,7 +56,7 @@ export abstract class BaseMetadata implements Metadata {
       throw new TypeError(`Cannot push a non-array value to path "${path}". Received: ${values}`);
     }
 
-    const array = lodashGet(this[symbols.data], path, []);
+    const array = lodashGet(this[symbols.data], path, [] as unknown[]);
     if (!Array.isArray(array)) {
       throw new TypeError(
         `Cannot push to path "${path}", because it is not an array, but: ${array}`,
