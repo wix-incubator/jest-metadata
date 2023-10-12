@@ -3,7 +3,7 @@ import type { EnvironmentContext, JestEnvironment, JestEnvironmentConfig } from 
 import type { Circus } from '@jest/types';
 import { JestMetadataError } from './errors';
 import { realm, injectRealmIntoSandbox } from './realms';
-import { SemiAsyncEmitter } from './utils';
+import { jestUtils, SemiAsyncEmitter } from './utils';
 
 const emitterMap: WeakMap<object, SemiAsyncEmitter<ForwardedCircusEvent>> = new WeakMap();
 
@@ -35,7 +35,10 @@ export function onTestEnvironmentCreate(
         `Please check that at least one of the reporters in your Jest config inherits from "jest-metadata/reporter".\n` +
         hint;
 
-      if (globalConfig && (globalConfig.runInBand || globalConfig.maxWorkers === 1)) {
+      if (
+        globalConfig &&
+        (jestUtils.isSingleWorker(globalConfig) || jestUtils.isInsideIDE(globalConfig))
+      ) {
         console.warn('[jest-metadata] ' + message);
       } else {
         throw new JestMetadataError(message);
