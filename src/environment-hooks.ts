@@ -2,7 +2,7 @@ import { inspect } from 'util';
 import type { EnvironmentContext, JestEnvironment, JestEnvironmentConfig } from '@jest/environment';
 import type { Circus } from '@jest/types';
 import { JestMetadataError } from './errors';
-import { realm, injectRealmIntoSandbox } from './realms';
+import { injectRealmIntoSandbox, realm, detectDuplicateRealms } from './realms';
 import { jestUtils, SemiAsyncEmitter } from './utils';
 
 const emitterMap: WeakMap<object, SemiAsyncEmitter<ForwardedCircusEvent>> = new WeakMap();
@@ -12,6 +12,7 @@ export function onTestEnvironmentCreate(
   jestEnvironmentConfig: JestEnvironmentConfig,
   environmentContext: EnvironmentContext,
 ): void {
+  detectDuplicateRealms(true);
   injectRealmIntoSandbox(jestEnvironment.global, realm);
   const testFilePath = environmentContext.testPath;
   realm.environmentHandler.handleEnvironmentCreated(testFilePath);
@@ -103,6 +104,8 @@ export async function onTestEnvironmentSetup(_env: JestEnvironment): Promise<voi
 }
 
 export async function onTestEnvironmentTeardown(_env: JestEnvironment): Promise<void> {
+  detectDuplicateRealms(false);
+
   if (realm.type === 'child_process') {
     await realm.ipc.stop();
   }
