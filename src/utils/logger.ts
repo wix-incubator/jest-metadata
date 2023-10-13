@@ -2,26 +2,23 @@ import fs from 'fs';
 import path from 'path';
 import { traceEventStream, uniteTraceEventsToFile, wrapLogger } from 'bunyamin';
 import { createLogger } from 'bunyan';
+import createDebugStream from 'bunyan-debug-stream';
 import { noop } from './noop';
 
 const logsDirectory = process.env.JEST_METADATA_DEBUG;
 
-export const logger = create();
+export const logger = wrapLogger({
+  logger: createBunyanImpl(isTraceEnabled()),
+});
 
 export const nologger = wrapLogger({
   logger: createBunyanNoop(),
-});
+}) as typeof logger;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const optimizeForLogger: <F>(f: F) => F = isEnabled() ? (f) => f : ((() => noop) as any);
+export const optimizeTracing: <F>(f: F) => F = isTraceEnabled() ? (f) => f : ((() => noop) as any);
 
-function create() {
-  return wrapLogger({
-    logger: (isEnabled() ? createBunyanImpl : createBunyanNoop)(),
-  });
-}
-
-function isEnabled(): boolean {
+function isTraceEnabled(): boolean {
   return !!logsDirectory;
 }
 
@@ -44,27 +41,46 @@ function createLogFilePath() {
   return filePath;
 }
 
-function createBunyanImpl() {
+function createBunyanImpl(traceEnabled: boolean) {
   const label = process.env.JEST_WORKER_ID ? `Worker ${process.env.JEST_WORKER_ID}` : 'Main';
   const bunyan = createLogger({
     name: `Jest Metadata (${label})`,
     streams: [
       {
-        level: 'trace' as const,
-        stream: traceEventStream({
-          filePath: createLogFilePath(),
-          threadGroups: [
-            { id: 'ipc-server', displayName: 'IPC Server' },
-            { id: 'ipc-client', displayName: 'IPC Client' },
-            { id: 'emitter-core', displayName: 'Emitter (core)' },
-            { id: 'emitter-set', displayName: 'Emitter (set)' },
-            { id: 'emitter-events', displayName: 'Emitter (events)' },
-            { id: 'emitter-environment', displayName: 'Test Environment' },
-            { id: 'metadata', displayName: 'Metadata' },
-            { id: 'reporter', displayName: 'Reporter' },
-          ],
+        level: 'warn' as const,
+        stream: createDebugStream({
+          out: process.stderr,
+          showMetadata: false,
+          showDate: false,
+          showPid: false,
+          showProcess: false,
+          showLoggerName: false,
+          showLevel: false,
+          prefixers: {
+            cat: () => 'jest-metadata',
+          },
         }),
       },
+      ...(traceEnabled
+        ? [
+            {
+              level: 'trace' as const,
+              stream: traceEventStream({
+                filePath: createLogFilePath(),
+                threadGroups: [
+                  { id: 'ipc-server', displayName: 'IPC Server' },
+                  { id: 'ipc-client', displayName: 'IPC Client' },
+                  { id: 'emitter-core', displayName: 'Emitter (core)' },
+                  { id: 'emitter-set', displayName: 'Emitter (set)' },
+                  { id: 'emitter-events', displayName: 'Emitter (events)' },
+                  { id: 'environment', displayName: 'Test Environment' },
+                  { id: 'metadata', displayName: 'Metadata' },
+                  { id: 'reporter', displayName: 'Reporter' },
+                ],
+              }),
+            },
+          ]
+        : []),
     ],
   });
 

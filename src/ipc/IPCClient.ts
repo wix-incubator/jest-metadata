@@ -3,7 +3,7 @@ import stripAnsi from 'strip-ansi';
 
 import { JestMetadataError } from '../errors';
 import type { MetadataEvent } from '../metadata';
-import { logger, optimizeForLogger } from '../utils';
+import { logger, optimizeTracing } from '../utils';
 import { sendAsyncMessage } from './sendAsyncMessage';
 
 const log = logger.child({ cat: 'ipc', tid: 'ipc-client' });
@@ -17,9 +17,9 @@ export type IPCClientConfig = {
   serverId: string | undefined;
 };
 
-const __SEND = optimizeForLogger((msg: unknown) => ({ msg }));
-const __OMIT = optimizeForLogger((event: unknown) => ({ event }));
-const __ERROR = optimizeForLogger((error: unknown) => ({ cat: ['error'], error }));
+const __SEND = optimizeTracing((msg: unknown) => ({ msg }));
+const __OMIT = optimizeTracing((event: unknown) => ({ event }));
+const __ERROR = optimizeTracing((error: unknown) => ({ cat: ['error'], error }));
 
 export class IPCClient {
   private readonly _ipc: IPC;
@@ -44,7 +44,7 @@ export class IPCClient {
     Object.assign(this._ipc.config, {
       id: config.clientId,
       appspace: config.appspace,
-      logger: optimizeForLogger((msg: string) => log.trace(stripAnsi(msg))),
+      logger: optimizeTracing((msg: string) => log.trace(stripAnsi(msg))),
       stopRetrying: 0,
       maxRetries: 0,
     });
@@ -105,17 +105,32 @@ export class IPCClient {
 
     const connection = await new Promise<IPCConnection | undefined>((resolve) => {
       const onConnect = (client: typeof node_ipc) => {
-        client.of[serverId]
-          // @ts-expect-error TS2339: Property 'once' does not exist on type 'Client'.
-          .once('error', (err) => {
-            log.error(__ERROR(err), 'Failed to connect to IPC server.');
-            resolve(void 0);
-          })
-          .once('disconnect', () => {
-            log.error(__ERROR(void 0), 'IPC server has unexpectedly disconnected.');
-            resolve(void 0);
-          })
-          .once('connect', () => resolve(client.of[serverId]));
+        const connection = client.of[serverId];
+
+        const onError = (err: Error) => {
+          unsubscribe();
+          log.error(__ERROR(err), 'Failed to connect to IPC server.');
+          resolve(void 0);
+        };
+
+        const onDisconnect = () => {
+          unsubscribe();
+          log.error(__ERROR(void 0), 'IPC server has unexpectedly disconnected.');
+          resolve(void 0);
+        };
+
+        const onConnect = () => {
+          unsubscribe();
+          resolve(client.of[serverId]);
+        };
+
+        const unsubscribe = () => {
+          connection.off('error', onError);
+          connection.off('disconnect', onDisconnect);
+          connection.off('connect', onConnect);
+        };
+
+        connection.on('error', onError).on('disconnect', onDisconnect).on('connect', onConnect);
       };
 
       // @ts-expect-error TS2769: No overload matches this call.

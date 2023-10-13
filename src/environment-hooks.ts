@@ -3,8 +3,9 @@ import type { EnvironmentContext, JestEnvironment, JestEnvironmentConfig } from 
 import type { Circus } from '@jest/types';
 import { JestMetadataError } from './errors';
 import { injectRealmIntoSandbox, realm, detectDuplicateRealms } from './realms';
-import { jestUtils, SemiAsyncEmitter } from './utils';
+import { logger, jestUtils, SemiAsyncEmitter } from './utils';
 
+const log = logger.child({ cat: 'environment', tid: 'environment' });
 const emitterMap: WeakMap<object, SemiAsyncEmitter<ForwardedCircusEvent>> = new WeakMap();
 
 export function onTestEnvironmentCreate(
@@ -40,8 +41,9 @@ export function onTestEnvironmentCreate(
         globalConfig &&
         (jestUtils.isSingleWorker(globalConfig) || jestUtils.isInsideIDE(globalConfig))
       ) {
-        console.warn('[jest-metadata] ' + message);
+        log.warn(message);
       } else {
+        log.debug(message);
         throw new JestMetadataError(message);
       }
     }

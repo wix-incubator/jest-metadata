@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { logger } from '../utils';
 import type { ProcessRealm } from './ProcessRealm';
 
 const _initialServerId = getServerId();
@@ -47,10 +48,10 @@ export function detectDuplicateRealms(enabled: boolean): void {
 
 export function getSandboxedRealm(): ProcessRealm | undefined {
   const globalAny = globalThis as any;
-  const realm = globalAny.__JEST_METADATA__;
+  const realm = globalAny.__JEST_METADATA__ as ProcessRealm | undefined;
   if (realm && globalAny.__JEST_METADATA_SANDBOX__ === false) {
-    console.warn(
-      '[jest-metadata] Detected duplicate jest-metadata package in the same process. This may lead to unexpected behavior.',
+    logger.warn(
+      'Detected duplicate jest-metadata package in the same process. This may lead to unexpected behavior.',
     );
   }
 

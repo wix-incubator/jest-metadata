@@ -3,7 +3,7 @@ import lodashGet from 'lodash.get';
 import lodashMerge from 'lodash.merge';
 import lodashSet from 'lodash.set';
 
-import { logger, optimizeForLogger } from '../../utils';
+import { logger, optimizeTracing } from '../../utils';
 import type { AggregatedIdentifier } from '../ids';
 import * as symbols from '../symbols';
 import type { Data, Metadata } from '../types';
@@ -11,7 +11,7 @@ import type { MetadataContext } from './MetadataContext';
 
 const log = logger.child({ cat: 'metadata', tid: 'metadata' });
 
-const __LOG_METADATA = optimizeForLogger((metadata: BaseMetadata, id: AggregatedIdentifier) => {
+const __LOG_METADATA = optimizeTracing((metadata: BaseMetadata, id: AggregatedIdentifier) => {
   log.trace({ id }, metadata.constructor.name);
 });
 
