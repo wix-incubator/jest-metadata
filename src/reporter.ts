@@ -10,10 +10,12 @@ import type {
   TestResult,
 } from '@jest/reporters';
 import { JestMetadataError } from './errors';
-import { realm as unknownRealm } from './realms';
+import { detectDuplicateRealms, realm as unknownRealm } from './realms';
 import type { ParentProcessRealm } from './realms';
 
 const realm = unknownRealm as ParentProcessRealm;
+
+detectDuplicateRealms(true);
 
 export const query = realm.query;
 
@@ -32,6 +34,7 @@ export class JestMetadataReporter implements Reporter {
   }
 
   onRunStart(_results: AggregatedResult, _options: ReporterOnStartOptions): Promise<void> {
+    detectDuplicateRealms(false);
     return realm.reporterServer.onRunStart();
   }
 
