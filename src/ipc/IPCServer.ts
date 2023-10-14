@@ -4,7 +4,7 @@ import node_ipc from 'node-ipc';
 import stripAnsi from 'strip-ansi';
 
 import type { Metadata, MetadataEventEmitter } from '../metadata';
-import { Deferred, logger, makeDeferred, optimizeForLogger } from '../utils';
+import { Deferred, logger, makeDeferred, optimizeTracing } from '../utils';
 import type { BatchMessage } from './BatchMessage';
 
 const log = logger.child({ cat: 'ipc', tid: 'ipc-server' });
@@ -31,7 +31,7 @@ export class IPCServer {
     this._ipc = new node_ipc.IPC();
     this._ipc.config.id = config.serverId;
     this._ipc.config.appspace = config.appspace;
-    this._ipc.config.logger = optimizeForLogger((msg) => log.trace(stripAnsi(msg)));
+    this._ipc.config.logger = optimizeTracing((msg) => log.trace(stripAnsi(msg)));
     this._globalMetadata = config.globalMetadata;
     this._emitter = config.emitter;
   }
@@ -120,8 +120,7 @@ export class IPCServer {
 
   private _setEmergencyTimeout(ms: number) {
     return setTimeout(() => {
-      console.warn('[jest-metadata] IPC clients did not flush all messages in time');
-      log.warn('forced shutdown');
+      log.warn('IPC clients did not flush all messages in time, forcing shutdown...');
       this._flushDeferred!.resolve();
     }, ms);
   }

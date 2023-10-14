@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import type { ReadonlyEmitter } from '../../types';
 import { iterateSorted } from '../iterateSorted';
-import { logger, nologger, optimizeForLogger } from '../logger';
+import { logger, nologger, optimizeTracing } from '../logger';
 
 //#region Optimized event helpers
 
 const __CATEGORY_LISTENERS = ['listeners'];
-const __LISTENERS = optimizeForLogger((listener: unknown) => ({
+const __LISTENERS = optimizeTracing((listener: unknown) => ({
   cat: __CATEGORY_LISTENERS,
   fn: `${listener}`,
 }));

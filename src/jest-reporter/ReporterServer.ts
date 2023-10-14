@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function,unicorn/no-for-loop */
 import type { TestCaseResult, TestResult } from '@jest/reporters';
 import type { IPCServer } from '../ipc';
-import { logger, memoizeArg1, memoizeLast, optimizeForLogger } from '../utils';
+import { logger, memoizeArg1, memoizeLast, optimizeTracing } from '../utils';
 import type { AssociateMetadata } from './AssociateMetadata';
 import type { FallbackAPI } from './FallbackAPI';
 
@@ -11,7 +11,7 @@ export type ReporterServerConfig = {
   associate: AssociateMetadata;
 };
 
-const __REPORTER = optimizeForLogger((testFilePath: string, data?: unknown) => {
+const __REPORTER = optimizeTracing((testFilePath: string, data?: unknown) => {
   return {
     tid: ['reporter', testFilePath],
     data,
