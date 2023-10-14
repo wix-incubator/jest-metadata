@@ -2,8 +2,10 @@ import node_ipc from 'node-ipc';
 import stripAnsi from 'strip-ansi';
 
 import { JestMetadataError } from '../errors';
-import type { MetadataEvent } from '../metadata';
+import type { GlobalMetadata, MetadataEvent } from '../metadata';
+import { internal } from '../metadata';
 import { logger, optimizeTracing } from '../utils';
+import type { BatchMessage } from './BatchMessage';
 import { sendAsyncMessage } from './sendAsyncMessage';
 
 const log = logger.child({ cat: 'ipc', tid: 'ipc-client' });
@@ -15,6 +17,7 @@ export type IPCClientConfig = {
   appspace: string;
   clientId: string | undefined;
   serverId: string | undefined;
+  globalMetadata: GlobalMetadata;
 };
 
 const __SEND = optimizeTracing((msg: unknown) => ({ msg }));
@@ -28,6 +31,7 @@ export class IPCClient {
   private _stopPromise?: Promise<void>;
   private _queue: MetadataEvent[] = [];
   private _connection?: IPCConnection;
+  private _globalMetadata: GlobalMetadata;
 
   constructor(config: IPCClientConfig) {
     if (!config.serverId) {
@@ -38,6 +42,7 @@ export class IPCClient {
       throw new JestMetadataError('IPC client ID is not specified when creating IPC client.');
     }
 
+    this._globalMetadata = config.globalMetadata;
     this._ipc = new node_ipc.IPC();
     this._serverId = config.serverId;
 
@@ -79,7 +84,7 @@ export class IPCClient {
     this._queue.push(event);
   }
 
-  async flush(last: boolean = false): Promise<void> {
+  async flush(modifier?: 'first' | 'last'): Promise<void> {
     if (!this._connection) {
       log.trace(__OMIT(this._queue), 'flush (no connection)');
       return;
@@ -87,11 +92,20 @@ export class IPCClient {
 
     const connection = this._connection;
     const batch = this._queue.splice(0, this._queue.length);
-    if (last || batch.length > 0) {
-      const msg = { last, batch };
-      await log.trace.complete(__SEND(msg), 'send', () =>
-        sendAsyncMessage(connection, 'clientMessageBatch', msg),
-      );
+    if (modifier || batch.length > 0) {
+      const msg: BatchMessage = { batch };
+      if (modifier === 'first') {
+        msg.first = true;
+      }
+      if (modifier === 'last') {
+        msg.last = true;
+      }
+
+      await log.trace.complete(__SEND(msg), 'send', async () => {
+        const data = await sendAsyncMessage(connection, 'clientMessageBatch', msg);
+        // Direct update to avoid emitting events.
+        Object.assign(this._globalMetadata[internal.data], data);
+      });
     } else {
       log.trace('empty-queue');
     }
@@ -140,7 +154,7 @@ export class IPCClient {
     if (connection) {
       this._connection = connection;
       this._connection.on('beforeExit', () => this.stop());
-      await this.flush();
+      await this.flush('first');
     }
   }
 
@@ -149,7 +163,7 @@ export class IPCClient {
     this._startPromise = undefined;
 
     if (this._connection) {
-      await this.flush(true);
+      await this.flush('last');
       await new Promise((resolve, reject) => {
         this._ipc.of[this._serverId]
           // @ts-expect-error TS2339: Property 'once' does not exist on type 'Client'.

@@ -12,6 +12,7 @@ export class ParentProcessRealm extends BaseRealm {
     appspace: `jest-metadata@${getVersion()}-`,
     serverId: `${process.pid}`,
     emitter: this.coreEmitter,
+    globalMetadata: this.globalMetadata,
   });
 
   readonly fallbackAPI = new FallbackAPI(this.globalMetadata, this.coreEmitter);

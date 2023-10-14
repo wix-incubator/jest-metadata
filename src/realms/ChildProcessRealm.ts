@@ -16,6 +16,7 @@ export class ChildProcessRealm extends BaseRealm {
     appspace: `jest-metadata@${getVersion()}-`,
     serverId: getServerId()!,
     clientId: getClientId(),
+    globalMetadata: this.globalMetadata,
   });
 
   constructor() {
