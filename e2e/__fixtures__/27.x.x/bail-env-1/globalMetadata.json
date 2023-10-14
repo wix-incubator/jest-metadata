@@ -1,6 +1,6 @@
 [
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "targetId": "globalMetadata",
     "path": "vendor.tests",
     "value": [

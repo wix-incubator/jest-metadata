@@ -8,8 +8,8 @@ import {
   MetadataEventEmitter,
   MetadataEventHandler,
   MetadataFactoryImpl,
-  SetMetadataEvent,
-  SetMetadataEventEmitter,
+  WriteMetadataEvent,
+  WriteMetadataEventEmitter,
 } from '../metadata';
 
 import { AggregatedEmitter, SerialSyncEmitter } from '../utils';
@@ -21,7 +21,9 @@ export abstract class BaseRealm {
       this.metadataHandler.handle(event);
     },
   ) as MetadataEventEmitter;
-  readonly setEmitter = new SerialSyncEmitter<SetMetadataEvent>('set') as SetMetadataEventEmitter;
+  readonly setEmitter = new SerialSyncEmitter<WriteMetadataEvent>(
+    'set',
+  ) as WriteMetadataEventEmitter;
   readonly events = new AggregatedEmitter<MetadataEvent>('events').add(this.coreEmitter);
 
   readonly metadataRegistry = new GlobalMetadataRegistry();

@@ -20,7 +20,7 @@ import type {
   RunDescribeStartEvent,
   RunFinishEvent,
   RunStartEvent,
-  SetMetadataEvent,
+  WriteMetadataEvent,
   StartDescribeDefinitionEvent,
   TestDoneEvent,
   AddTestFileEvent,
@@ -226,7 +226,7 @@ export class MetadataEventHandler {
       test[internal.finish]();
     },
 
-    set_metadata: (event: SetMetadataEvent) => {
+    write_metadata: (event: WriteMetadataEvent) => {
       const targetId = new AggregatedIdentifier(event.testFilePath, event.targetId);
       const metadata = this._metadataRegistry.get(targetId);
 

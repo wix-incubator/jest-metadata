@@ -6,7 +6,7 @@ import {
   MetadataEventEmitter,
   MetadataEventHandler,
   MetadataFactoryImpl,
-  SetMetadataEventEmitter,
+  WriteMetadataEventEmitter,
 } from '../../metadata';
 import { SerialSyncEmitter } from '../../utils';
 import { AssociateMetadata } from '../AssociateMetadata';
@@ -26,7 +26,7 @@ describe('Fallback API', () => {
     const emitter = new SerialSyncEmitter<MetadataEvent>('core').on('*', (event: MetadataEvent) => {
       metadataHandler.handle(event);
     }) as MetadataEventEmitter;
-    const setEmitter = new SerialSyncEmitter('set') as SetMetadataEventEmitter;
+    const setEmitter = new SerialSyncEmitter('set') as WriteMetadataEventEmitter;
     const metadataRegistry = new GlobalMetadataRegistry();
     const metadataFactory = new MetadataFactoryImpl(metadataRegistry, setEmitter);
     const globalMetadata = metadataFactory.createGlobalMetadata();

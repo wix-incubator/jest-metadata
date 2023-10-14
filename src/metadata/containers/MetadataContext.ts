@@ -1,11 +1,11 @@
 import type { MetadataChecker } from '../checker';
 import type { MetadataFactory } from '../factory';
 import type { MetadataSelectorFactory } from '../selector';
-import type { SetMetadataEventEmitter } from '../types';
+import type { WriteMetadataEventEmitter } from '../types';
 
 export type MetadataContext = {
   checker: MetadataChecker;
-  emitter: SetMetadataEventEmitter;
+  emitter: WriteMetadataEventEmitter;
   factory: MetadataFactory;
   createMetadataSelector: MetadataSelectorFactory;
 };
