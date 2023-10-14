@@ -2,17 +2,17 @@
 
 <div align="center">
 
-<img src=".idea/icon.svg" width=256 height=256 />
+<img src="https://github.com/wix-incubator/jest-metadata/assets/1962469/09c460b4-054f-42bc-ab2f-26d83dc925d7" width=256 height=256 />
 
 # jest-metadata
 
-🦸‍♂️ Superhero powers for your Jest reporter! 🦸‍♀️
+🦸‍♂️ Superhero power for your Jest reporters! 🦸‍♀️
 
 [![npm version](https://badge.fury.io/js/jest-metadata.svg?rnd=42)](https://badge.fury.io/js/jest-metadata)
 
 </div>
 
-`jest-metadata` is a library that allows you to attach user-defined data to any `jest-circus` entity like describe blocks, function definitions, test runs, invocations, and more. Your custom data can be accessed by custom reporters to produce rich and insightful reports leveraging low-level details from [`jest-circus` events](https://github.com/facebook/jest/blob/8433c5cbcbf139d5174bf254996f9f02297a97c5/packages/jest-types/src/Circus.ts#L43) and any additional data you want to use in your reports.
+`jest-metadata` is a library that allows you to attach user-defined data to any `jest-circus` entity like describe blocks, function definitions, test runs, invocations, and more. Custom reporters can access your custom data to produce rich and insightful reports leveraging low-level details from [`jest-circus` events](https://github.com/facebook/jest/blob/8433c5cbcbf139d5174bf254996f9f02297a97c5/packages/jest-types/src/Circus.ts#L43) and any additional data you want to use in your reports.
 
 ## 🌟 Features
 
@@ -31,7 +31,7 @@ To use `jest-metadata`, you should:
 * Declare `jest` as a peer dependency (or direct one) in your package.
 * Provide your reporter as a class that inherits from `jest-metadata/reporter`.
 * Provide your test environment as a decorator class that can inherit from any `WithMetadata(*)` class.
-* Think about using a namespace for your metadata, so that it doesn't clash with other metadata.
+* Think about using a namespace for your metadata, so it doesn't clash with other metadata.
 
 The best live example of how to use `jest-metadata` at the moment is [jest-allure2-reporter].
 
