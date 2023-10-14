@@ -1,7 +1,7 @@
 {
   "name": "jest-metadata",
   "version": "1.0.0",
-  "description": "🦸‍♂️ Superhero powers for your Jest reporter! 🦸‍♀️",
+  "description": "🦸‍♂️ Superhero power for your Jest reporters! 🦸‍♀️",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
