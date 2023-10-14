@@ -133,7 +133,7 @@
     "hookId": "hook_1"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/duplicate-name.js",
     "targetId": "hook_1.0",
     "path": "note",
@@ -156,7 +156,7 @@
     "hookId": "hook_2"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/duplicate-name.js",
     "targetId": "hook_2.0",
     "path": "note",
@@ -194,7 +194,7 @@
     "testId": "test_0"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/duplicate-name.js",
     "targetId": "test_0.0.fn",
     "path": "note",
@@ -237,7 +237,7 @@
     "testId": "test_1"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/duplicate-name.js",
     "targetId": "test_1.0.fn",
     "path": "note",
@@ -285,7 +285,7 @@
     "testId": "test_1"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/duplicate-name.js",
     "targetId": "test_1.1.fn",
     "path": "note",
@@ -308,7 +308,7 @@
     "hookId": "hook_3"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/duplicate-name.js",
     "targetId": "hook_3.0",
     "path": "note",
@@ -356,7 +356,7 @@
     "hookId": "hook_4"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/duplicate-name.js",
     "targetId": "hook_4.0",
     "path": "note",
@@ -394,7 +394,7 @@
     "testId": "test_4"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/duplicate-name.js",
     "targetId": "test_4.0.fn",
     "path": "note",
@@ -437,7 +437,7 @@
     "testId": "test_5"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/duplicate-name.js",
     "targetId": "test_5.0.fn",
     "path": "note",
@@ -485,7 +485,7 @@
     "testId": "test_4"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/duplicate-name.js",
     "targetId": "test_4.1.fn",
     "path": "note",
@@ -508,7 +508,7 @@
     "hookId": "hook_5"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/duplicate-name.js",
     "targetId": "hook_5.0",
     "path": "note",

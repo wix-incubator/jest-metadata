@@ -14,7 +14,7 @@ export { RunDescribeFinishEvent } from './RunDescribeFinishEvent';
 export { RunDescribeStartEvent } from './RunDescribeStartEvent';
 export { RunFinishEvent } from './RunFinishEvent';
 export { RunStartEvent } from './RunStartEvent';
-export { SetMetadataEvent } from './SetMetadataEvent';
+export { WriteMetadataEvent } from './WriteMetadataEvent';
 export { StartDescribeDefinitionEvent } from './StartDescribeDefinitionEvent';
 export { TestDoneEvent } from './TestDoneEvent';
 export { TestFnFailureEvent } from './TestFnFailureEvent';

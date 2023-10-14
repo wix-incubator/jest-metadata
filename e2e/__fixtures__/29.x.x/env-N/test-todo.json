@@ -92,7 +92,7 @@
     "hookId": "hook_1"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/test-todo.js",
     "targetId": "hook_1.0",
     "path": "note",
@@ -115,7 +115,7 @@
     "hookId": "hook_2"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/test-todo.js",
     "targetId": "hook_2.0",
     "path": "note",
@@ -143,7 +143,7 @@
     "hookId": "hook_3"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/test-todo.js",
     "targetId": "hook_3.0",
     "path": "note",
@@ -166,7 +166,7 @@
     "hookId": "hook_4"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/test-todo.js",
     "targetId": "hook_4.0",
     "path": "note",

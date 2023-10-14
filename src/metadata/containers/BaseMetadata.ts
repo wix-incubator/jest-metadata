@@ -41,7 +41,7 @@ export abstract class BaseMetadata implements Metadata {
     this.#set(path, value);
 
     this[symbols.context].emitter.emit({
-      type: 'set_metadata',
+      type: 'write_metadata',
       testFilePath: this[symbols.id].testFilePath,
       targetId: this[symbols.id].identifier,
       path,
@@ -69,7 +69,7 @@ export abstract class BaseMetadata implements Metadata {
     this.#set(path, array);
 
     this[symbols.context].emitter.emit({
-      type: 'set_metadata',
+      type: 'write_metadata',
       testFilePath: this[symbols.id].testFilePath,
       targetId: this[symbols.id].identifier,
       path,
@@ -89,7 +89,7 @@ export abstract class BaseMetadata implements Metadata {
     }
 
     this[symbols.context].emitter.emit({
-      type: 'set_metadata',
+      type: 'write_metadata',
       testFilePath: this[symbols.id].testFilePath,
       targetId: this[symbols.id].identifier,
       path,
@@ -109,7 +109,7 @@ export abstract class BaseMetadata implements Metadata {
     }
 
     this[symbols.context].emitter.emit({
-      type: 'set_metadata',
+      type: 'write_metadata',
       testFilePath: this[symbols.id].testFilePath,
       targetId: this[symbols.id].identifier,
       path,

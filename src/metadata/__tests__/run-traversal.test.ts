@@ -6,7 +6,7 @@ import {
   Metadata,
   MetadataEventHandler,
   MetadataFactoryImpl,
-  SetMetadataEventEmitter,
+  WriteMetadataEventEmitter,
 } from '../index';
 
 describe('file metadata traversal:', () => {
@@ -15,7 +15,7 @@ describe('file metadata traversal:', () => {
   });
 
   test.each(lastFixtures)(`fixtures/%s`, (_name: string, fixture: any[]) => {
-    const emitter: SetMetadataEventEmitter = new SerialSyncEmitter('set');
+    const emitter: WriteMetadataEventEmitter = new SerialSyncEmitter('set');
     const metadataRegistry = new GlobalMetadataRegistry();
     const metadataFactory = new MetadataFactoryImpl(metadataRegistry, emitter);
     const globalMetadata = metadataFactory.createGlobalMetadata();

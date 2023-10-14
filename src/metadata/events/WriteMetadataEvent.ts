@@ -1,5 +1,5 @@
-export type SetMetadataEvent = {
-  type: 'set_metadata';
+export type WriteMetadataEvent = {
+  type: 'write_metadata';
   testFilePath?: string;
   targetId: string; // instance ID
   path?: string | readonly string[];

@@ -16,7 +16,7 @@ import { AggregatedIdentifier } from '../ids';
 import type { FileMetadataRegistry } from '../registry';
 import { MetadataSelectorImpl } from '../selector';
 import * as symbols from '../symbols';
-import type { HookType, SetMetadataEventEmitter } from '../types';
+import type { HookType, WriteMetadataEventEmitter } from '../types';
 
 import type { MetadataFactory } from './MetadataFactory';
 
@@ -36,7 +36,7 @@ export class MetadataFactoryImpl implements MetadataFactory {
 
   constructor(
     private readonly metadataRegistry: FileMetadataRegistry<unknown>,
-    private readonly emitter: SetMetadataEventEmitter,
+    private readonly emitter: WriteMetadataEventEmitter,
   ) {
     this.#context = {
       factory: this,
