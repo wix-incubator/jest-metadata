@@ -29,7 +29,7 @@ export class IPCClient {
   private readonly _serverId: string;
   private _startPromise?: Promise<void>;
   private _stopPromise?: Promise<void>;
-  private _queue: MetadataEvent[] = [];
+  private _queue: string[] = [];
   private _connection?: IPCConnection;
   private _globalMetadata: GlobalMetadata;
 
@@ -81,7 +81,7 @@ export class IPCClient {
       return;
     }
 
-    this._queue.push(event);
+    this._queue.push(JSON.stringify(event));
   }
 
   async flush(modifier?: 'first' | 'last'): Promise<void> {

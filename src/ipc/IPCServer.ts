@@ -92,7 +92,8 @@ export class IPCServer {
   }
 
   private _onClientMessageBatch({ batch, first, last }: BatchMessage, socket: Socket) {
-    for (const event of batch) {
+    for (const rawEvent of batch) {
+      const event = JSON.parse(rawEvent);
       if (event.type !== 'add_test_file') {
         // Jest Metadata server adds new test files before we get
         // the independent confirmation from the Jest worker via IPC.
