@@ -1,7 +1,7 @@
 {
   "name": "jest-metadata",
   "version": "1.0.0",
-  "description": "Extend Jest with custom metadata",
+  "description": "🦸‍♂️ Superhero powers for your Jest reporter! 🦸‍♀️",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
