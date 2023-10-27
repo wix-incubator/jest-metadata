@@ -1,4 +1,4 @@
-const { metadata, $Assign, $Push, $Set, $Merge  } = require('jest-metadata');
+const { metadata, $Assign, $Push, $Set, $Merge, $Unshift  } = require('jest-metadata');
 
 let now = 1672524000000;
 
@@ -16,7 +16,7 @@ const $Description = (text) => $Set('vendor.description', text);
 const $Maintainer = (name, email) => $Assign('vendor.maintainer', { name, email });
 const $Lead = (name, email) => $Merge('vendor.lead', { name, email });
 const $Tag = (value) => $Push(['vendor', 'labels'], value);
-const $Flaky = () => $Tag('flaky');
+const $Flaky = () => $Unshift(['vendor', 'labels'], 'flaky');
 
 const step = (text) => metadata.push('vendor.steps', [{ text, startedAt: now }]);
 
@@ -55,8 +55,8 @@ describe('Login flow', () => {
     step('Assert that the login failed');
   });
 
-  $Flaky();
   $Tag('sanity');
+  $Flaky();
   test('Happy scenario', () => {
     step('Enter valid credentials');
     actions.sleep(100);
