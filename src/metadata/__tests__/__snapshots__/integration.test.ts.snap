@@ -19,7 +19,7 @@ object "HookInvocationMetadata" as tests_bail_bail_short_js_hook_0_0 #fcb
 tests_bail_bail_short_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_bail_bail_short_js_test_0_0_fn #fea
 tests_bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_bail_bail_short_js : testResults[0]
+global_metadata --> tests_bail_bail_short_js : testFiles[0]
 tests_bail_bail_short_js --> tests_bail_bail_short_js_describe_0 : rootDescribeBlock
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_hook_0 : children[0]
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_test_0 : children[1]
@@ -72,7 +72,7 @@ object "HookInvocationMetadata" as tests_bail_bail_long_js_hook_0_1 #fcb
 tests_bail_bail_long_js_hook_0_1 : id = "hook_0.1"
 object "TestFnInvocationMetadata" as tests_bail_bail_long_js_test_1_0_fn #fea
 tests_bail_bail_long_js_test_1_0_fn : id = "test_1.0.fn"
-global_metadata --> tests_bail_bail_long_js : testResults[0]
+global_metadata --> tests_bail_bail_long_js : testFiles[0]
 tests_bail_bail_long_js --> tests_bail_bail_long_js_describe_0 : rootDescribeBlock
 tests_bail_bail_long_js_describe_0 --> tests_bail_bail_long_js_hook_0 : children[0]
 tests_bail_bail_long_js_describe_0 --> tests_bail_bail_long_js_test_0 : children[1]
@@ -111,7 +111,7 @@ object "HookInvocationMetadata" as tests_bail_bail_short_js_hook_0_0 #fcb
 tests_bail_bail_short_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_bail_bail_short_js_test_0_0_fn #fea
 tests_bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_bail_bail_short_js : testResults[0]
+global_metadata --> tests_bail_bail_short_js : testFiles[0]
 tests_bail_bail_short_js --> tests_bail_bail_short_js_describe_0 : rootDescribeBlock
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_hook_0 : children[0]
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_test_0 : children[1]
@@ -184,7 +184,7 @@ object "HookInvocationMetadata" as tests_default_duplicate_cases_js_hook_0_3 #fc
 tests_default_duplicate_cases_js_hook_0_3 : id = "hook_0.3"
 object "TestFnInvocationMetadata" as tests_default_duplicate_cases_js_test_3_0_fn #fea
 tests_default_duplicate_cases_js_test_3_0_fn : id = "test_3.0.fn"
-global_metadata --> tests_default_duplicate_cases_js : testResults[0]
+global_metadata --> tests_default_duplicate_cases_js : testFiles[0]
 tests_default_duplicate_cases_js --> tests_default_duplicate_cases_js_describe_0 : rootDescribeBlock
 tests_default_duplicate_cases_js_describe_0 --> tests_default_duplicate_cases_js_hook_0 : children[0]
 tests_default_duplicate_cases_js_describe_0 --> tests_default_duplicate_cases_js_describe_1 : children[1]
@@ -251,7 +251,7 @@ object "HookInvocationMetadata" as tests_default_duplicate_generation_js_hook_0_
 tests_default_duplicate_generation_js_hook_0_2 : id = "hook_0.2"
 object "TestFnInvocationMetadata" as tests_default_duplicate_generation_js_test_0_1_fn #fea
 tests_default_duplicate_generation_js_test_0_1_fn : id = "test_0.1.fn"
-global_metadata --> tests_default_duplicate_generation_js : testResults[0]
+global_metadata --> tests_default_duplicate_generation_js : testFiles[0]
 tests_default_duplicate_generation_js --> tests_default_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_default_duplicate_generation_js_describe_0 --> tests_default_duplicate_generation_js_hook_0 : children[0]
 tests_default_duplicate_generation_js_describe_0 --> tests_default_duplicate_generation_js_test_0 : children[1]
@@ -381,7 +381,7 @@ tests_default_duplicate_name_js_test_4_1_fn : data = {\\n  "note": "Nested suite
 object "HookInvocationMetadata" as tests_default_duplicate_name_js_hook_5_0 #fcb
 tests_default_duplicate_name_js_hook_5_0 : id = "hook_5.0"
 tests_default_duplicate_name_js_hook_5_0 : data = {\\n  "note": "Nested suite 2 > afterAll"\\n}
-global_metadata --> tests_default_duplicate_name_js : testResults[0]
+global_metadata --> tests_default_duplicate_name_js : testFiles[0]
 tests_default_duplicate_name_js --> tests_default_duplicate_name_js_describe_0 : rootDescribeBlock
 tests_default_duplicate_name_js_describe_0 --> tests_default_duplicate_name_js_hook_0 : children[0]
 tests_default_duplicate_name_js_describe_0 --> tests_default_duplicate_name_js_describe_1 : children[1]
@@ -488,7 +488,7 @@ object "HookInvocationMetadata" as tests_default_hook_after_all_fail_js_hook_2_0
 tests_default_hook_after_all_fail_js_hook_2_0 : id = "hook_2.0"
 object "HookInvocationMetadata" as tests_default_hook_after_all_fail_js_hook_1_0 #fcb
 tests_default_hook_after_all_fail_js_hook_1_0 : id = "hook_1.0"
-global_metadata --> tests_default_hook_after_all_fail_js : testResults[0]
+global_metadata --> tests_default_hook_after_all_fail_js : testFiles[0]
 tests_default_hook_after_all_fail_js --> tests_default_hook_after_all_fail_js_describe_0 : rootDescribeBlock
 tests_default_hook_after_all_fail_js_describe_0 --> tests_default_hook_after_all_fail_js_hook_0 : children[0]
 tests_default_hook_after_all_fail_js_describe_0 --> tests_default_hook_after_all_fail_js_hook_1 : children[1]
@@ -537,7 +537,7 @@ object "TestInvocationMetadata" as tests_default_hook_before_all_fail_js_test_1_
 tests_default_hook_before_all_fail_js_test_1_0 : id = "test_1.0"
 object "TestFnInvocationMetadata" as tests_default_hook_before_all_fail_js_test_1_0_fn #fea
 tests_default_hook_before_all_fail_js_test_1_0_fn : id = "test_1.0.fn"
-global_metadata --> tests_default_hook_before_all_fail_js : testResults[0]
+global_metadata --> tests_default_hook_before_all_fail_js : testFiles[0]
 tests_default_hook_before_all_fail_js --> tests_default_hook_before_all_fail_js_describe_0 : rootDescribeBlock
 tests_default_hook_before_all_fail_js_describe_0 --> tests_default_hook_before_all_fail_js_hook_0 : children[0]
 tests_default_hook_before_all_fail_js_describe_0 --> tests_default_hook_before_all_fail_js_hook_1 : children[1]
@@ -623,7 +623,7 @@ tests_default_hook_nesting_js_hook_3_1 : data = {\\n  "vendor": {\\n    "steps":
 object "HookInvocationMetadata" as tests_default_hook_nesting_js_hook_4_0 #fcb
 tests_default_hook_nesting_js_hook_4_0 : id = "hook_4.0"
 tests_default_hook_nesting_js_hook_4_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Close the browser",\\n        "startedAt": 1672524001500\\n      }\\n    ]\\n  }\\n}
-global_metadata --> tests_default_hook_nesting_js : testResults[0]
+global_metadata --> tests_default_hook_nesting_js : testFiles[0]
 tests_default_hook_nesting_js --> tests_default_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_default_hook_nesting_js_describe_0 --> tests_default_hook_nesting_js_hook_0 : children[0]
 tests_default_hook_nesting_js_describe_0 --> tests_default_hook_nesting_js_describe_1 : children[1]
@@ -716,7 +716,7 @@ tests_default_test_concurrent_js_hook_0_4 : id = "hook_0.4"
 object "TestFnInvocationMetadata" as tests_default_test_concurrent_js_test_4_0_fn #fea
 tests_default_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
 tests_default_test_concurrent_js_test_4_0_fn : data = {\\n  "test": {\\n    "slept": 500\\n  }\\n}
-global_metadata --> tests_default_test_concurrent_js : testResults[0]
+global_metadata --> tests_default_test_concurrent_js : testFiles[0]
 tests_default_test_concurrent_js --> tests_default_test_concurrent_js_describe_0 : rootDescribeBlock
 tests_default_test_concurrent_js_describe_0 --> tests_default_test_concurrent_js_hook_0 : children[0]
 tests_default_test_concurrent_js_describe_0 --> tests_default_test_concurrent_js_test_0 : children[1]
@@ -773,7 +773,7 @@ object "HookInvocationMetadata" as tests_default_test_fail_js_hook_0_0 #fcb
 tests_default_test_fail_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_default_test_fail_js_test_0_0_fn #fea
 tests_default_test_fail_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_default_test_fail_js : testResults[0]
+global_metadata --> tests_default_test_fail_js : testFiles[0]
 tests_default_test_fail_js --> tests_default_test_fail_js_describe_0 : rootDescribeBlock
 tests_default_test_fail_js_describe_0 --> tests_default_test_fail_js_hook_0 : children[0]
 tests_default_test_fail_js_describe_0 --> tests_default_test_fail_js_test_0 : children[1]
@@ -806,7 +806,7 @@ object "HookInvocationMetadata" as tests_default_test_pass_js_hook_0_0 #fcb
 tests_default_test_pass_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_default_test_pass_js_test_0_0_fn #fea
 tests_default_test_pass_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_default_test_pass_js : testResults[0]
+global_metadata --> tests_default_test_pass_js : testFiles[0]
 tests_default_test_pass_js --> tests_default_test_pass_js_describe_0 : rootDescribeBlock
 tests_default_test_pass_js_describe_0 --> tests_default_test_pass_js_hook_0 : children[0]
 tests_default_test_pass_js_describe_0 --> tests_default_test_pass_js_test_0 : children[1]
@@ -855,7 +855,7 @@ object "TestFnInvocationMetadata" as tests_default_test_retry_js_test_0_1_fn #fe
 tests_default_test_retry_js_test_0_1_fn : id = "test_0.1.fn"
 object "HookInvocationMetadata" as tests_default_test_retry_js_hook_2_0 #fcb
 tests_default_test_retry_js_hook_2_0 : id = "hook_2.0"
-global_metadata --> tests_default_test_retry_js : testResults[0]
+global_metadata --> tests_default_test_retry_js : testFiles[0]
 tests_default_test_retry_js --> tests_default_test_retry_js_describe_0 : rootDescribeBlock
 tests_default_test_retry_js_describe_0 --> tests_default_test_retry_js_hook_0 : children[0]
 tests_default_test_retry_js_describe_0 --> tests_default_test_retry_js_hook_1 : children[1]
@@ -911,7 +911,7 @@ tests_default_test_skip_js_hook_4 : id = "hook_4"
 tests_default_test_skip_js_hook_4 : hookType = "afterAll"
 object "TestInvocationMetadata" as tests_default_test_skip_js_test_0_0 #ffb
 tests_default_test_skip_js_test_0_0 : id = "test_0.0"
-global_metadata --> tests_default_test_skip_js : testResults[0]
+global_metadata --> tests_default_test_skip_js : testFiles[0]
 tests_default_test_skip_js --> tests_default_test_skip_js_describe_0 : rootDescribeBlock
 tests_default_test_skip_js_describe_0 --> tests_default_test_skip_js_hook_0 : children[0]
 tests_default_test_skip_js_describe_0 --> tests_default_test_skip_js_describe_1 : children[1]
@@ -970,7 +970,7 @@ tests_default_test_todo_js_hook_3_0 : data = {\\n  "note": "afterAll inner"\\n}
 object "HookInvocationMetadata" as tests_default_test_todo_js_hook_4_0 #fcb
 tests_default_test_todo_js_hook_4_0 : id = "hook_4.0"
 tests_default_test_todo_js_hook_4_0 : data = {\\n  "note": "afterAll"\\n}
-global_metadata --> tests_default_test_todo_js : testResults[0]
+global_metadata --> tests_default_test_todo_js : testFiles[0]
 tests_default_test_todo_js --> tests_default_test_todo_js_describe_0 : rootDescribeBlock
 tests_default_test_todo_js_describe_0 --> tests_default_test_todo_js_hook_0 : children[0]
 tests_default_test_todo_js_describe_0 --> tests_default_test_todo_js_describe_1 : children[1]
@@ -1013,7 +1013,7 @@ object "HookInvocationMetadata" as tests_bail_bail_short_js_hook_0_0 #fcb
 tests_bail_bail_short_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_bail_bail_short_js_test_0_0_fn #fea
 tests_bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_bail_bail_short_js : testResults[0]
+global_metadata --> tests_bail_bail_short_js : testFiles[0]
 tests_bail_bail_short_js --> tests_bail_bail_short_js_describe_0 : rootDescribeBlock
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_hook_0 : children[0]
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_test_0 : children[1]
@@ -1066,7 +1066,7 @@ object "HookInvocationMetadata" as tests_bail_bail_long_js_hook_0_1 #fcb
 tests_bail_bail_long_js_hook_0_1 : id = "hook_0.1"
 object "TestFnInvocationMetadata" as tests_bail_bail_long_js_test_1_0_fn #fea
 tests_bail_bail_long_js_test_1_0_fn : id = "test_1.0.fn"
-global_metadata --> tests_bail_bail_long_js : testResults[0]
+global_metadata --> tests_bail_bail_long_js : testFiles[0]
 tests_bail_bail_long_js --> tests_bail_bail_long_js_describe_0 : rootDescribeBlock
 tests_bail_bail_long_js_describe_0 --> tests_bail_bail_long_js_hook_0 : children[0]
 tests_bail_bail_long_js_describe_0 --> tests_bail_bail_long_js_test_0 : children[1]
@@ -1105,7 +1105,7 @@ object "HookInvocationMetadata" as tests_bail_bail_short_js_hook_0_0 #fcb
 tests_bail_bail_short_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_bail_bail_short_js_test_0_0_fn #fea
 tests_bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_bail_bail_short_js : testResults[0]
+global_metadata --> tests_bail_bail_short_js : testFiles[0]
 tests_bail_bail_short_js --> tests_bail_bail_short_js_describe_0 : rootDescribeBlock
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_hook_0 : children[0]
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_test_0 : children[1]
@@ -1178,7 +1178,7 @@ object "HookInvocationMetadata" as tests_default_duplicate_cases_js_hook_0_3 #fc
 tests_default_duplicate_cases_js_hook_0_3 : id = "hook_0.3"
 object "TestFnInvocationMetadata" as tests_default_duplicate_cases_js_test_3_0_fn #fea
 tests_default_duplicate_cases_js_test_3_0_fn : id = "test_3.0.fn"
-global_metadata --> tests_default_duplicate_cases_js : testResults[0]
+global_metadata --> tests_default_duplicate_cases_js : testFiles[0]
 tests_default_duplicate_cases_js --> tests_default_duplicate_cases_js_describe_0 : rootDescribeBlock
 tests_default_duplicate_cases_js_describe_0 --> tests_default_duplicate_cases_js_hook_0 : children[0]
 tests_default_duplicate_cases_js_describe_0 --> tests_default_duplicate_cases_js_describe_1 : children[1]
@@ -1245,7 +1245,7 @@ object "HookInvocationMetadata" as tests_default_duplicate_generation_js_hook_0_
 tests_default_duplicate_generation_js_hook_0_2 : id = "hook_0.2"
 object "TestFnInvocationMetadata" as tests_default_duplicate_generation_js_test_0_1_fn #fea
 tests_default_duplicate_generation_js_test_0_1_fn : id = "test_0.1.fn"
-global_metadata --> tests_default_duplicate_generation_js : testResults[0]
+global_metadata --> tests_default_duplicate_generation_js : testFiles[0]
 tests_default_duplicate_generation_js --> tests_default_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_default_duplicate_generation_js_describe_0 --> tests_default_duplicate_generation_js_hook_0 : children[0]
 tests_default_duplicate_generation_js_describe_0 --> tests_default_duplicate_generation_js_test_0 : children[1]
@@ -1375,7 +1375,7 @@ tests_default_duplicate_name_js_test_4_1_fn : data = {\\n  "note": "Nested suite
 object "HookInvocationMetadata" as tests_default_duplicate_name_js_hook_5_0 #fcb
 tests_default_duplicate_name_js_hook_5_0 : id = "hook_5.0"
 tests_default_duplicate_name_js_hook_5_0 : data = {\\n  "note": "Nested suite 2 > afterAll"\\n}
-global_metadata --> tests_default_duplicate_name_js : testResults[0]
+global_metadata --> tests_default_duplicate_name_js : testFiles[0]
 tests_default_duplicate_name_js --> tests_default_duplicate_name_js_describe_0 : rootDescribeBlock
 tests_default_duplicate_name_js_describe_0 --> tests_default_duplicate_name_js_hook_0 : children[0]
 tests_default_duplicate_name_js_describe_0 --> tests_default_duplicate_name_js_describe_1 : children[1]
@@ -1482,7 +1482,7 @@ object "HookInvocationMetadata" as tests_default_hook_after_all_fail_js_hook_2_0
 tests_default_hook_after_all_fail_js_hook_2_0 : id = "hook_2.0"
 object "HookInvocationMetadata" as tests_default_hook_after_all_fail_js_hook_1_0 #fcb
 tests_default_hook_after_all_fail_js_hook_1_0 : id = "hook_1.0"
-global_metadata --> tests_default_hook_after_all_fail_js : testResults[0]
+global_metadata --> tests_default_hook_after_all_fail_js : testFiles[0]
 tests_default_hook_after_all_fail_js --> tests_default_hook_after_all_fail_js_describe_0 : rootDescribeBlock
 tests_default_hook_after_all_fail_js_describe_0 --> tests_default_hook_after_all_fail_js_hook_0 : children[0]
 tests_default_hook_after_all_fail_js_describe_0 --> tests_default_hook_after_all_fail_js_hook_1 : children[1]
@@ -1531,7 +1531,7 @@ object "TestInvocationMetadata" as tests_default_hook_before_all_fail_js_test_1_
 tests_default_hook_before_all_fail_js_test_1_0 : id = "test_1.0"
 object "TestFnInvocationMetadata" as tests_default_hook_before_all_fail_js_test_1_0_fn #fea
 tests_default_hook_before_all_fail_js_test_1_0_fn : id = "test_1.0.fn"
-global_metadata --> tests_default_hook_before_all_fail_js : testResults[0]
+global_metadata --> tests_default_hook_before_all_fail_js : testFiles[0]
 tests_default_hook_before_all_fail_js --> tests_default_hook_before_all_fail_js_describe_0 : rootDescribeBlock
 tests_default_hook_before_all_fail_js_describe_0 --> tests_default_hook_before_all_fail_js_hook_0 : children[0]
 tests_default_hook_before_all_fail_js_describe_0 --> tests_default_hook_before_all_fail_js_hook_1 : children[1]
@@ -1617,7 +1617,7 @@ tests_default_hook_nesting_js_hook_3_1 : data = {\\n  "vendor": {\\n    "steps":
 object "HookInvocationMetadata" as tests_default_hook_nesting_js_hook_4_0 #fcb
 tests_default_hook_nesting_js_hook_4_0 : id = "hook_4.0"
 tests_default_hook_nesting_js_hook_4_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Close the browser",\\n        "startedAt": 1672524001500\\n      }\\n    ]\\n  }\\n}
-global_metadata --> tests_default_hook_nesting_js : testResults[0]
+global_metadata --> tests_default_hook_nesting_js : testFiles[0]
 tests_default_hook_nesting_js --> tests_default_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_default_hook_nesting_js_describe_0 --> tests_default_hook_nesting_js_hook_0 : children[0]
 tests_default_hook_nesting_js_describe_0 --> tests_default_hook_nesting_js_describe_1 : children[1]
@@ -1700,7 +1700,7 @@ tests_default_test_concurrent_js_test_4_0 : id = "test_4.0"
 object "TestFnInvocationMetadata" as tests_default_test_concurrent_js_test_4_0_fn #fea
 tests_default_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
 tests_default_test_concurrent_js_test_4_0_fn : data = {\\n  "test": {\\n    "slept": 500\\n  }\\n}
-global_metadata --> tests_default_test_concurrent_js : testResults[0]
+global_metadata --> tests_default_test_concurrent_js : testFiles[0]
 tests_default_test_concurrent_js --> tests_default_test_concurrent_js_describe_0 : rootDescribeBlock
 tests_default_test_concurrent_js_describe_0 --> tests_default_test_concurrent_js_hook_0 : children[0]
 tests_default_test_concurrent_js_describe_0 --> tests_default_test_concurrent_js_test_0 : children[1]
@@ -1747,7 +1747,7 @@ object "HookInvocationMetadata" as tests_default_test_fail_js_hook_0_0 #fcb
 tests_default_test_fail_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_default_test_fail_js_test_0_0_fn #fea
 tests_default_test_fail_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_default_test_fail_js : testResults[0]
+global_metadata --> tests_default_test_fail_js : testFiles[0]
 tests_default_test_fail_js --> tests_default_test_fail_js_describe_0 : rootDescribeBlock
 tests_default_test_fail_js_describe_0 --> tests_default_test_fail_js_hook_0 : children[0]
 tests_default_test_fail_js_describe_0 --> tests_default_test_fail_js_test_0 : children[1]
@@ -1780,7 +1780,7 @@ object "HookInvocationMetadata" as tests_default_test_pass_js_hook_0_0 #fcb
 tests_default_test_pass_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_default_test_pass_js_test_0_0_fn #fea
 tests_default_test_pass_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_default_test_pass_js : testResults[0]
+global_metadata --> tests_default_test_pass_js : testFiles[0]
 tests_default_test_pass_js --> tests_default_test_pass_js_describe_0 : rootDescribeBlock
 tests_default_test_pass_js_describe_0 --> tests_default_test_pass_js_hook_0 : children[0]
 tests_default_test_pass_js_describe_0 --> tests_default_test_pass_js_test_0 : children[1]
@@ -1829,7 +1829,7 @@ object "TestFnInvocationMetadata" as tests_default_test_retry_js_test_0_1_fn #fe
 tests_default_test_retry_js_test_0_1_fn : id = "test_0.1.fn"
 object "HookInvocationMetadata" as tests_default_test_retry_js_hook_2_0 #fcb
 tests_default_test_retry_js_hook_2_0 : id = "hook_2.0"
-global_metadata --> tests_default_test_retry_js : testResults[0]
+global_metadata --> tests_default_test_retry_js : testFiles[0]
 tests_default_test_retry_js --> tests_default_test_retry_js_describe_0 : rootDescribeBlock
 tests_default_test_retry_js_describe_0 --> tests_default_test_retry_js_hook_0 : children[0]
 tests_default_test_retry_js_describe_0 --> tests_default_test_retry_js_hook_1 : children[1]
@@ -1885,7 +1885,7 @@ tests_default_test_skip_js_hook_4 : id = "hook_4"
 tests_default_test_skip_js_hook_4 : hookType = "afterAll"
 object "TestInvocationMetadata" as tests_default_test_skip_js_test_0_0 #ffb
 tests_default_test_skip_js_test_0_0 : id = "test_0.0"
-global_metadata --> tests_default_test_skip_js : testResults[0]
+global_metadata --> tests_default_test_skip_js : testFiles[0]
 tests_default_test_skip_js --> tests_default_test_skip_js_describe_0 : rootDescribeBlock
 tests_default_test_skip_js_describe_0 --> tests_default_test_skip_js_hook_0 : children[0]
 tests_default_test_skip_js_describe_0 --> tests_default_test_skip_js_describe_1 : children[1]
@@ -1944,7 +1944,7 @@ tests_default_test_todo_js_hook_3_0 : data = {\\n  "note": "afterAll inner"\\n}
 object "HookInvocationMetadata" as tests_default_test_todo_js_hook_4_0 #fcb
 tests_default_test_todo_js_hook_4_0 : id = "hook_4.0"
 tests_default_test_todo_js_hook_4_0 : data = {\\n  "note": "afterAll"\\n}
-global_metadata --> tests_default_test_todo_js : testResults[0]
+global_metadata --> tests_default_test_todo_js : testFiles[0]
 tests_default_test_todo_js --> tests_default_test_todo_js_describe_0 : rootDescribeBlock
 tests_default_test_todo_js_describe_0 --> tests_default_test_todo_js_hook_0 : children[0]
 tests_default_test_todo_js_describe_0 --> tests_default_test_todo_js_describe_1 : children[1]
@@ -1987,7 +1987,7 @@ object "HookInvocationMetadata" as tests_bail_bail_short_js_hook_0_0 #fcb
 tests_bail_bail_short_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_bail_bail_short_js_test_0_0_fn #fea
 tests_bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_bail_bail_short_js : testResults[0]
+global_metadata --> tests_bail_bail_short_js : testFiles[0]
 tests_bail_bail_short_js --> tests_bail_bail_short_js_describe_0 : rootDescribeBlock
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_hook_0 : children[0]
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_test_0 : children[1]
@@ -2040,7 +2040,7 @@ object "HookInvocationMetadata" as tests_bail_bail_long_js_hook_0_1 #fcb
 tests_bail_bail_long_js_hook_0_1 : id = "hook_0.1"
 object "TestFnInvocationMetadata" as tests_bail_bail_long_js_test_1_0_fn #fea
 tests_bail_bail_long_js_test_1_0_fn : id = "test_1.0.fn"
-global_metadata --> tests_bail_bail_long_js : testResults[0]
+global_metadata --> tests_bail_bail_long_js : testFiles[0]
 tests_bail_bail_long_js --> tests_bail_bail_long_js_describe_0 : rootDescribeBlock
 tests_bail_bail_long_js_describe_0 --> tests_bail_bail_long_js_hook_0 : children[0]
 tests_bail_bail_long_js_describe_0 --> tests_bail_bail_long_js_test_0 : children[1]
@@ -2079,7 +2079,7 @@ object "HookInvocationMetadata" as tests_bail_bail_short_js_hook_0_0 #fcb
 tests_bail_bail_short_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_bail_bail_short_js_test_0_0_fn #fea
 tests_bail_bail_short_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_bail_bail_short_js : testResults[0]
+global_metadata --> tests_bail_bail_short_js : testFiles[0]
 tests_bail_bail_short_js --> tests_bail_bail_short_js_describe_0 : rootDescribeBlock
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_hook_0 : children[0]
 tests_bail_bail_short_js_describe_0 --> tests_bail_bail_short_js_test_0 : children[1]
@@ -2152,7 +2152,7 @@ object "HookInvocationMetadata" as tests_default_duplicate_cases_js_hook_0_3 #fc
 tests_default_duplicate_cases_js_hook_0_3 : id = "hook_0.3"
 object "TestFnInvocationMetadata" as tests_default_duplicate_cases_js_test_3_0_fn #fea
 tests_default_duplicate_cases_js_test_3_0_fn : id = "test_3.0.fn"
-global_metadata --> tests_default_duplicate_cases_js : testResults[0]
+global_metadata --> tests_default_duplicate_cases_js : testFiles[0]
 tests_default_duplicate_cases_js --> tests_default_duplicate_cases_js_describe_0 : rootDescribeBlock
 tests_default_duplicate_cases_js_describe_0 --> tests_default_duplicate_cases_js_hook_0 : children[0]
 tests_default_duplicate_cases_js_describe_0 --> tests_default_duplicate_cases_js_describe_1 : children[1]
@@ -2219,7 +2219,7 @@ object "HookInvocationMetadata" as tests_default_duplicate_generation_js_hook_0_
 tests_default_duplicate_generation_js_hook_0_2 : id = "hook_0.2"
 object "TestFnInvocationMetadata" as tests_default_duplicate_generation_js_test_0_1_fn #fea
 tests_default_duplicate_generation_js_test_0_1_fn : id = "test_0.1.fn"
-global_metadata --> tests_default_duplicate_generation_js : testResults[0]
+global_metadata --> tests_default_duplicate_generation_js : testFiles[0]
 tests_default_duplicate_generation_js --> tests_default_duplicate_generation_js_describe_0 : rootDescribeBlock
 tests_default_duplicate_generation_js_describe_0 --> tests_default_duplicate_generation_js_hook_0 : children[0]
 tests_default_duplicate_generation_js_describe_0 --> tests_default_duplicate_generation_js_test_0 : children[1]
@@ -2349,7 +2349,7 @@ tests_default_duplicate_name_js_test_4_1_fn : data = {\\n  "note": "Nested suite
 object "HookInvocationMetadata" as tests_default_duplicate_name_js_hook_5_0 #fcb
 tests_default_duplicate_name_js_hook_5_0 : id = "hook_5.0"
 tests_default_duplicate_name_js_hook_5_0 : data = {\\n  "note": "Nested suite 2 > afterAll"\\n}
-global_metadata --> tests_default_duplicate_name_js : testResults[0]
+global_metadata --> tests_default_duplicate_name_js : testFiles[0]
 tests_default_duplicate_name_js --> tests_default_duplicate_name_js_describe_0 : rootDescribeBlock
 tests_default_duplicate_name_js_describe_0 --> tests_default_duplicate_name_js_hook_0 : children[0]
 tests_default_duplicate_name_js_describe_0 --> tests_default_duplicate_name_js_describe_1 : children[1]
@@ -2456,7 +2456,7 @@ object "HookInvocationMetadata" as tests_default_hook_after_all_fail_js_hook_2_0
 tests_default_hook_after_all_fail_js_hook_2_0 : id = "hook_2.0"
 object "HookInvocationMetadata" as tests_default_hook_after_all_fail_js_hook_1_0 #fcb
 tests_default_hook_after_all_fail_js_hook_1_0 : id = "hook_1.0"
-global_metadata --> tests_default_hook_after_all_fail_js : testResults[0]
+global_metadata --> tests_default_hook_after_all_fail_js : testFiles[0]
 tests_default_hook_after_all_fail_js --> tests_default_hook_after_all_fail_js_describe_0 : rootDescribeBlock
 tests_default_hook_after_all_fail_js_describe_0 --> tests_default_hook_after_all_fail_js_hook_0 : children[0]
 tests_default_hook_after_all_fail_js_describe_0 --> tests_default_hook_after_all_fail_js_hook_1 : children[1]
@@ -2505,7 +2505,7 @@ object "TestInvocationMetadata" as tests_default_hook_before_all_fail_js_test_1_
 tests_default_hook_before_all_fail_js_test_1_0 : id = "test_1.0"
 object "TestFnInvocationMetadata" as tests_default_hook_before_all_fail_js_test_1_0_fn #fea
 tests_default_hook_before_all_fail_js_test_1_0_fn : id = "test_1.0.fn"
-global_metadata --> tests_default_hook_before_all_fail_js : testResults[0]
+global_metadata --> tests_default_hook_before_all_fail_js : testFiles[0]
 tests_default_hook_before_all_fail_js --> tests_default_hook_before_all_fail_js_describe_0 : rootDescribeBlock
 tests_default_hook_before_all_fail_js_describe_0 --> tests_default_hook_before_all_fail_js_hook_0 : children[0]
 tests_default_hook_before_all_fail_js_describe_0 --> tests_default_hook_before_all_fail_js_hook_1 : children[1]
@@ -2591,7 +2591,7 @@ tests_default_hook_nesting_js_hook_3_1 : data = {\\n  "vendor": {\\n    "steps":
 object "HookInvocationMetadata" as tests_default_hook_nesting_js_hook_4_0 #fcb
 tests_default_hook_nesting_js_hook_4_0 : id = "hook_4.0"
 tests_default_hook_nesting_js_hook_4_0 : data = {\\n  "vendor": {\\n    "steps": [\\n      {\\n        "text": "Close the browser",\\n        "startedAt": 1672524001500\\n      }\\n    ]\\n  }\\n}
-global_metadata --> tests_default_hook_nesting_js : testResults[0]
+global_metadata --> tests_default_hook_nesting_js : testFiles[0]
 tests_default_hook_nesting_js --> tests_default_hook_nesting_js_describe_0 : rootDescribeBlock
 tests_default_hook_nesting_js_describe_0 --> tests_default_hook_nesting_js_hook_0 : children[0]
 tests_default_hook_nesting_js_describe_0 --> tests_default_hook_nesting_js_describe_1 : children[1]
@@ -2674,7 +2674,7 @@ tests_default_test_concurrent_js_test_4_0 : id = "test_4.0"
 object "TestFnInvocationMetadata" as tests_default_test_concurrent_js_test_4_0_fn #fea
 tests_default_test_concurrent_js_test_4_0_fn : id = "test_4.0.fn"
 tests_default_test_concurrent_js_test_4_0_fn : data = {\\n  "test": {\\n    "slept": 500\\n  }\\n}
-global_metadata --> tests_default_test_concurrent_js : testResults[0]
+global_metadata --> tests_default_test_concurrent_js : testFiles[0]
 tests_default_test_concurrent_js --> tests_default_test_concurrent_js_describe_0 : rootDescribeBlock
 tests_default_test_concurrent_js_describe_0 --> tests_default_test_concurrent_js_hook_0 : children[0]
 tests_default_test_concurrent_js_describe_0 --> tests_default_test_concurrent_js_test_0 : children[1]
@@ -2721,7 +2721,7 @@ object "HookInvocationMetadata" as tests_default_test_fail_js_hook_0_0 #fcb
 tests_default_test_fail_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_default_test_fail_js_test_0_0_fn #fea
 tests_default_test_fail_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_default_test_fail_js : testResults[0]
+global_metadata --> tests_default_test_fail_js : testFiles[0]
 tests_default_test_fail_js --> tests_default_test_fail_js_describe_0 : rootDescribeBlock
 tests_default_test_fail_js_describe_0 --> tests_default_test_fail_js_hook_0 : children[0]
 tests_default_test_fail_js_describe_0 --> tests_default_test_fail_js_test_0 : children[1]
@@ -2754,7 +2754,7 @@ object "HookInvocationMetadata" as tests_default_test_pass_js_hook_0_0 #fcb
 tests_default_test_pass_js_hook_0_0 : id = "hook_0.0"
 object "TestFnInvocationMetadata" as tests_default_test_pass_js_test_0_0_fn #fea
 tests_default_test_pass_js_test_0_0_fn : id = "test_0.0.fn"
-global_metadata --> tests_default_test_pass_js : testResults[0]
+global_metadata --> tests_default_test_pass_js : testFiles[0]
 tests_default_test_pass_js --> tests_default_test_pass_js_describe_0 : rootDescribeBlock
 tests_default_test_pass_js_describe_0 --> tests_default_test_pass_js_hook_0 : children[0]
 tests_default_test_pass_js_describe_0 --> tests_default_test_pass_js_test_0 : children[1]
@@ -2803,7 +2803,7 @@ object "TestFnInvocationMetadata" as tests_default_test_retry_js_test_0_1_fn #fe
 tests_default_test_retry_js_test_0_1_fn : id = "test_0.1.fn"
 object "HookInvocationMetadata" as tests_default_test_retry_js_hook_2_0 #fcb
 tests_default_test_retry_js_hook_2_0 : id = "hook_2.0"
-global_metadata --> tests_default_test_retry_js : testResults[0]
+global_metadata --> tests_default_test_retry_js : testFiles[0]
 tests_default_test_retry_js --> tests_default_test_retry_js_describe_0 : rootDescribeBlock
 tests_default_test_retry_js_describe_0 --> tests_default_test_retry_js_hook_0 : children[0]
 tests_default_test_retry_js_describe_0 --> tests_default_test_retry_js_hook_1 : children[1]
@@ -2859,7 +2859,7 @@ tests_default_test_skip_js_hook_4 : id = "hook_4"
 tests_default_test_skip_js_hook_4 : hookType = "afterAll"
 object "TestInvocationMetadata" as tests_default_test_skip_js_test_0_0 #ffb
 tests_default_test_skip_js_test_0_0 : id = "test_0.0"
-global_metadata --> tests_default_test_skip_js : testResults[0]
+global_metadata --> tests_default_test_skip_js : testFiles[0]
 tests_default_test_skip_js --> tests_default_test_skip_js_describe_0 : rootDescribeBlock
 tests_default_test_skip_js_describe_0 --> tests_default_test_skip_js_hook_0 : children[0]
 tests_default_test_skip_js_describe_0 --> tests_default_test_skip_js_describe_1 : children[1]
@@ -2918,7 +2918,7 @@ tests_default_test_todo_js_hook_3_0 : data = {\\n  "note": "afterAll inner"\\n}
 object "HookInvocationMetadata" as tests_default_test_todo_js_hook_4_0 #fcb
 tests_default_test_todo_js_hook_4_0 : id = "hook_4.0"
 tests_default_test_todo_js_hook_4_0 : data = {\\n  "note": "afterAll"\\n}
-global_metadata --> tests_default_test_todo_js : testResults[0]
+global_metadata --> tests_default_test_todo_js : testFiles[0]
 tests_default_test_todo_js --> tests_default_test_todo_js_describe_0 : rootDescribeBlock
 tests_default_test_todo_js_describe_0 --> tests_default_test_todo_js_hook_0 : children[0]
 tests_default_test_todo_js_describe_0 --> tests_default_test_todo_js_describe_1 : children[1]
