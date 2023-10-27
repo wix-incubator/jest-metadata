@@ -6,6 +6,7 @@ export interface Metadata {
   get<T>(path?: string | readonly string[], fallbackValue?: T): T;
   set(path: string | readonly string[], value: unknown): this;
   push(path: string | readonly string[], values: unknown[]): this;
+  unshift(path: string | readonly string[], values: unknown[]): this;
   assign(path: undefined | string | readonly string[], value: Data): this;
   merge(path: undefined | string | readonly string[], value: Data): this;
 }

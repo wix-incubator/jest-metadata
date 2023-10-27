@@ -141,7 +141,7 @@
       "labels"
     ],
     "value": [
-      "flaky"
+      "sanity"
     ],
     "operation": "push"
   },
@@ -154,9 +154,9 @@
       "labels"
     ],
     "value": [
-      "sanity"
+      "flaky"
     ],
-    "operation": "push"
+    "operation": "unshift"
   },
   {
     "type": "finish_describe_definition",

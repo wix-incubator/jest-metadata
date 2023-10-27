@@ -43,6 +43,13 @@ export const $Push = realm.metadataDSL.$Push;
 /**
  * Pseudo-annotation that allows to associate metadata with a test block.
  * It is not an ECMAScript decorator, but it behaves similarly.
+ * Use it to prepend a value to an array in metadata.
+ */
+export const $Unshift = realm.metadataDSL.$Unshift;
+
+/**
+ * Pseudo-annotation that allows to associate metadata with a test block.
+ * It is not an ECMAScript decorator, but it behaves similarly.
  * Use it to assign multiple values to an object in metadata.
  */
 export const $Assign = realm.metadataDSL.$Assign;
