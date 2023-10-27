@@ -53,31 +53,11 @@ export abstract class BaseMetadata implements Metadata {
   }
 
   push(path: string | readonly string[], values: unknown[]): this {
-    this.#assertPath(path, 'push to');
-    if (!Array.isArray(values)) {
-      throw new TypeError(`Cannot push a non-array value to path "${path}". Received: ${values}`);
-    }
+    return this.#concat('push', path, values);
+  }
 
-    const array = lodashGet(this[symbols.data], path, []);
-    if (!Array.isArray(array)) {
-      throw new TypeError(
-        `Cannot push to path "${path}", because it is not an array, but: ${array}`,
-      );
-    }
-
-    array.push(...values);
-    this.#set(path, array);
-
-    this[symbols.context].emitter.emit({
-      type: 'write_metadata',
-      testFilePath: this[symbols.id].testFilePath,
-      targetId: this[symbols.id].identifier,
-      path,
-      value: values,
-      operation: 'push',
-    });
-
-    return this;
+  unshift(path: string | readonly string[], values: unknown[]): this {
+    return this.#concat('unshift', path, values);
   }
 
   assign(path: undefined | string | readonly string[], value: object): this {
@@ -132,5 +112,35 @@ export abstract class BaseMetadata implements Metadata {
     if (path == null) {
       throw new TypeError(`Cannot ${operationName} metadata without a path`);
     }
+  }
+
+  #concat(operation: 'push' | 'unshift', path: string | readonly string[], values: unknown[]) {
+    this.#assertPath(path, `${operation} to`);
+    if (!Array.isArray(values)) {
+      throw new TypeError(
+        `Cannot ${operation} a non-array value to path "${path}". Received: ${values}`,
+      );
+    }
+
+    const array = lodashGet(this[symbols.data], path, []);
+    if (!Array.isArray(array)) {
+      throw new TypeError(
+        `Cannot ${operation} to path "${path}", because it is not an array, but: ${array}`,
+      );
+    }
+
+    array[operation](...values);
+    this.#set(path, array);
+
+    this[symbols.context].emitter.emit({
+      type: 'write_metadata',
+      testFilePath: this[symbols.id].testFilePath,
+      targetId: this[symbols.id].identifier,
+      path,
+      value: values,
+      operation,
+    });
+
+    return this;
   }
 }

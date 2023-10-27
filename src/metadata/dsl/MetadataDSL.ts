@@ -56,6 +56,16 @@ export class MetadataDSL {
     });
   };
 
+  $Unshift = (path: string | readonly string[], ...values: unknown[]): void => {
+    this.#assertPath(path);
+    this.#assertValues(values);
+
+    this.schedule(() => {
+      const metadata = this.#metadata();
+      metadata.unshift(path, values);
+    });
+  };
+
   $Assign = (path: string | readonly string[] | undefined, value: Data): void => {
     this.#assertPath(path);
     this.#assertValue(value);
