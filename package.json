@@ -74,7 +74,11 @@
     "url": "git+https://github.com/wix-incubator/jest-metadata.git"
   },
   "keywords": [
-    "jest"
+    "jest",
+    "reporter",
+    "metadata",
+    "jest-reporter",
+    "jest-metadata"
   ],
   "author": "Yaroslav Serhieiev <yaroslavs@wix.com>",
   "license": "MIT",
