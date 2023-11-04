@@ -9,7 +9,7 @@ const $byTestFilePath = Symbol('byTestFilePath');
 
 export class GlobalMetadata extends BaseMetadata {
   public readonly [$byTestFilePath]: Map<string, TestFileMetadata> = new Map();
-  public readonly testResults: TestFileMetadata[] = [];
+  public readonly testFiles: TestFileMetadata[] = [];
 
   public get currentMetadata(): BaseMetadata {
     const file = this.lastTestFile;
@@ -27,7 +27,7 @@ export class GlobalMetadata extends BaseMetadata {
   }
 
   public get lastTestFile(): TestFileMetadata | undefined {
-    return this.testResults[this.testResults.length - 1];
+    return this.testFiles[this.testFiles.length - 1];
   }
 
   public getTestFileMetadata(testFilePath: string): TestFileMetadata {
@@ -53,7 +53,7 @@ export class GlobalMetadata extends BaseMetadata {
       this,
     );
 
-    this.testResults.push(testFileMetadata);
+    this.testFiles.push(testFileMetadata);
     this[$byTestFilePath].set(testFilePath, testFileMetadata);
 
     return testFileMetadata;

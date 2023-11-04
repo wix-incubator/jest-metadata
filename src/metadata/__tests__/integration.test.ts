@@ -6,14 +6,14 @@ import {
   GlobalMetadataRegistry,
   MetadataEventHandler,
   MetadataFactoryImpl,
-  SetMetadataEventEmitter,
+  WriteMetadataEventEmitter,
 } from '../index';
 
 describe('metadata - integration test:', () => {
   test.each(Object.values(fixtures.metadata))(
     `e2e/__fixtures__/%s`,
     (_name: string, fixture: any[]) => {
-      const emitter: SetMetadataEventEmitter = new SerialSyncEmitter('set');
+      const emitter: WriteMetadataEventEmitter = new SerialSyncEmitter('set');
       const metadataRegistry = new GlobalMetadataRegistry();
       const metadataFactory = new MetadataFactoryImpl(metadataRegistry, emitter);
       const globalMetadata = metadataFactory.createGlobalMetadata();

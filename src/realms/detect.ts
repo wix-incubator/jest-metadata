@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { logger } from '../utils';
 import type { ProcessRealm } from './ProcessRealm';
 
 const _initialServerId = getServerId();
@@ -28,12 +29,29 @@ export function injectRealmIntoSandbox(sandbox: any, realm: ProcessRealm): Proce
   return realm;
 }
 
+/**
+ * Workaround for the fallback mode, when Jest uses jest-environment-node.
+ * Jest blindly copies `globalThis` into the sandbox, so it is not enough to
+ * simply check that __JEST_METADATA_SANDBOX__ is not truthy.
+ *
+ * This is especially bad in Jest's single worker mode, because
+ * reporter's globalThis === testEnvironment's globalThis == sandbox.
+ *
+ * This hook is enabled after the copying happens, and disabled at later stages
+ * when all potentially conflicting packages are loaded. It is not easy to
+ * grasp, but it works.
+ */
+export function detectDuplicateRealms(enabled: boolean): void {
+  const globalAny = globalThis as any;
+  globalAny.__JEST_METADATA_SANDBOX__ = enabled ? false : undefined;
+}
+
 export function getSandboxedRealm(): ProcessRealm | undefined {
   const globalAny = globalThis as any;
-  const realm = globalAny.__JEST_METADATA__;
-  if (realm && !globalAny.__JEST_METADATA_SANDBOX__) {
-    console.warn(
-      '[jest-metadata] Detected duplicate jest-metadata package in the same process. This may lead to unexpected behavior.',
+  const realm = globalAny.__JEST_METADATA__ as ProcessRealm | undefined;
+  if (realm && globalAny.__JEST_METADATA_SANDBOX__ === false) {
+    logger.warn(
+      'Detected duplicate jest-metadata package in the same process. This may lead to unexpected behavior.',
     );
   }
 

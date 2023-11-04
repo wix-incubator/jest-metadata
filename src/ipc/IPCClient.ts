@@ -2,8 +2,10 @@ import node_ipc from 'node-ipc';
 import stripAnsi from 'strip-ansi';
 
 import { JestMetadataError } from '../errors';
-import type { MetadataEvent } from '../metadata';
-import { logger, optimizeForLogger } from '../utils';
+import type { GlobalMetadata, MetadataEvent } from '../metadata';
+import { internal } from '../metadata';
+import { logger, optimizeTracing } from '../utils';
+import type { BatchMessage } from './BatchMessage';
 import { sendAsyncMessage } from './sendAsyncMessage';
 
 const log = logger.child({ cat: 'ipc', tid: 'ipc-client' });
@@ -15,19 +17,21 @@ export type IPCClientConfig = {
   appspace: string;
   clientId: string | undefined;
   serverId: string | undefined;
+  globalMetadata: GlobalMetadata;
 };
 
-const __SEND = optimizeForLogger((msg: unknown) => ({ msg }));
-const __OMIT = optimizeForLogger((event: unknown) => ({ event }));
-const __ERROR = optimizeForLogger((error: unknown) => ({ cat: ['error'], error }));
+const __SEND = optimizeTracing((msg: unknown) => ({ msg }));
+const __OMIT = optimizeTracing((event: unknown) => ({ event }));
+const __ERROR = optimizeTracing((error: unknown) => ({ cat: ['error'], error }));
 
 export class IPCClient {
   private readonly _ipc: IPC;
   private readonly _serverId: string;
   private _startPromise?: Promise<void>;
   private _stopPromise?: Promise<void>;
-  private _queue: MetadataEvent[] = [];
+  private _queue: string[] = [];
   private _connection?: IPCConnection;
+  private _globalMetadata: GlobalMetadata;
 
   constructor(config: IPCClientConfig) {
     if (!config.serverId) {
@@ -38,13 +42,14 @@ export class IPCClient {
       throw new JestMetadataError('IPC client ID is not specified when creating IPC client.');
     }
 
+    this._globalMetadata = config.globalMetadata;
     this._ipc = new node_ipc.IPC();
     this._serverId = config.serverId;
 
     Object.assign(this._ipc.config, {
       id: config.clientId,
       appspace: config.appspace,
-      logger: optimizeForLogger((msg: string) => log.trace(stripAnsi(msg))),
+      logger: optimizeTracing((msg: string) => log.trace(stripAnsi(msg))),
       stopRetrying: 0,
       maxRetries: 0,
     });
@@ -76,10 +81,10 @@ export class IPCClient {
       return;
     }
 
-    this._queue.push(event);
+    this._queue.push(JSON.stringify(event));
   }
 
-  async flush(last: boolean = false): Promise<void> {
+  async flush(modifier?: 'first' | 'last'): Promise<void> {
     if (!this._connection) {
       log.trace(__OMIT(this._queue), 'flush (no connection)');
       return;
@@ -87,11 +92,20 @@ export class IPCClient {
 
     const connection = this._connection;
     const batch = this._queue.splice(0, this._queue.length);
-    if (last || batch.length > 0) {
-      const msg = { last, batch };
-      await log.trace.complete(__SEND(msg), 'send', () =>
-        sendAsyncMessage(connection, 'clientMessageBatch', msg),
-      );
+    if (modifier || batch.length > 0) {
+      const msg: BatchMessage = { batch };
+      if (modifier === 'first') {
+        msg.first = true;
+      }
+      if (modifier === 'last') {
+        msg.last = true;
+      }
+
+      await log.trace.complete(__SEND(msg), 'send', async () => {
+        const data = await sendAsyncMessage(connection, 'clientMessageBatch', msg);
+        // Direct update to avoid emitting events.
+        Object.assign(this._globalMetadata[internal.data], data);
+      });
     } else {
       log.trace('empty-queue');
     }
@@ -105,17 +119,32 @@ export class IPCClient {
 
     const connection = await new Promise<IPCConnection | undefined>((resolve) => {
       const onConnect = (client: typeof node_ipc) => {
-        client.of[serverId]
-          // @ts-expect-error TS2339: Property 'once' does not exist on type 'Client'.
-          .once('error', (err) => {
-            log.error(__ERROR(err), 'Failed to connect to IPC server.');
-            resolve(void 0);
-          })
-          .once('disconnect', () => {
-            log.error(__ERROR(void 0), 'IPC server has unexpectedly disconnected.');
-            resolve(void 0);
-          })
-          .once('connect', () => resolve(client.of[serverId]));
+        const connection = client.of[serverId];
+
+        const onError = (err: Error) => {
+          unsubscribe();
+          log.error(__ERROR(err), 'Failed to connect to IPC server.');
+          resolve(void 0);
+        };
+
+        const onDisconnect = () => {
+          unsubscribe();
+          log.error(__ERROR(void 0), 'IPC server has unexpectedly disconnected.');
+          resolve(void 0);
+        };
+
+        const onConnect = () => {
+          unsubscribe();
+          resolve(client.of[serverId]);
+        };
+
+        const unsubscribe = () => {
+          connection.off('error', onError);
+          connection.off('disconnect', onDisconnect);
+          connection.off('connect', onConnect);
+        };
+
+        connection.on('error', onError).on('disconnect', onDisconnect).on('connect', onConnect);
       };
 
       // @ts-expect-error TS2769: No overload matches this call.
@@ -125,7 +154,7 @@ export class IPCClient {
     if (connection) {
       this._connection = connection;
       this._connection.on('beforeExit', () => this.stop());
-      await this.flush();
+      await this.flush('first');
     }
   }
 
@@ -134,7 +163,7 @@ export class IPCClient {
     this._startPromise = undefined;
 
     if (this._connection) {
-      await this.flush(true);
+      await this.flush('last');
       await new Promise((resolve, reject) => {
         this._ipc.of[this._serverId]
           // @ts-expect-error TS2339: Property 'once' does not exist on type 'Client'.

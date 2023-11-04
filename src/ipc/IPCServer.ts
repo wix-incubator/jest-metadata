@@ -3,22 +3,18 @@ import type { Socket } from 'net';
 import node_ipc from 'node-ipc';
 import stripAnsi from 'strip-ansi';
 
-import type { MetadataEvent, MetadataEventEmitter } from '../metadata';
-import { Deferred, logger, makeDeferred, optimizeForLogger } from '../utils';
+import type { Metadata, MetadataEventEmitter } from '../metadata';
+import { Deferred, logger, makeDeferred, optimizeTracing } from '../utils';
+import type { BatchMessage } from './BatchMessage';
 
 const log = logger.child({ cat: 'ipc', tid: 'ipc-server' });
 
 type IPC = Omit<typeof node_ipc, 'IPC'>;
 
-type BatchMessage = {
-  /** Whether this is the last batch of messages. */
-  last: boolean;
-  batch: MetadataEvent[];
-};
-
 export type IPCServerConfig = {
   appspace: string;
   serverId: string;
+  globalMetadata: Metadata;
   emitter: MetadataEventEmitter;
 };
 
@@ -27,6 +23,7 @@ export class IPCServer {
   private _stopPromise?: Promise<void>;
   private _flushDeferred?: Deferred<void>;
   private readonly _ipc: IPC;
+  private readonly _globalMetadata: Metadata;
   private readonly _emitter: MetadataEventEmitter;
   private readonly _knownSockets = new Set<Socket>();
 
@@ -34,7 +31,8 @@ export class IPCServer {
     this._ipc = new node_ipc.IPC();
     this._ipc.config.id = config.serverId;
     this._ipc.config.appspace = config.appspace;
-    this._ipc.config.logger = optimizeForLogger((msg) => log.trace(stripAnsi(msg)));
+    this._ipc.config.logger = optimizeTracing((msg) => log.trace(stripAnsi(msg)));
+    this._globalMetadata = config.globalMetadata;
     this._emitter = config.emitter;
   }
 
@@ -93,8 +91,9 @@ export class IPCServer {
     });
   }
 
-  private _onClientMessageBatch({ last, batch }: BatchMessage, socket: Socket) {
-    for (const event of batch) {
+  private _onClientMessageBatch({ batch, first, last }: BatchMessage, socket: Socket) {
+    for (const rawEvent of batch) {
+      const event = JSON.parse(rawEvent);
       if (event.type !== 'add_test_file') {
         // Jest Metadata server adds new test files before we get
         // the independent confirmation from the Jest worker via IPC.
@@ -103,7 +102,8 @@ export class IPCServer {
       }
     }
 
-    this._ipc.server.emit(socket, 'clientMessageBatchDone');
+    const payload = first ? this._globalMetadata.get() : void 0;
+    this._ipc.server.emit(socket, 'clientMessageBatchDone', payload);
 
     if (last) {
       this._knownSockets.delete(socket);
@@ -121,8 +121,7 @@ export class IPCServer {
 
   private _setEmergencyTimeout(ms: number) {
     return setTimeout(() => {
-      console.warn('[jest-metadata] IPC clients did not flush all messages in time');
-      log.warn('forced shutdown');
+      log.warn('IPC clients did not flush all messages in time, forcing shutdown...');
       this._flushDeferred!.resolve();
     }, ms);
   }

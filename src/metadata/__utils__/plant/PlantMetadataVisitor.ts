@@ -33,7 +33,7 @@ export class PlantMetadataVisitor extends MetadataVisitor {
   }
 
   protected visitGlobal(metadata: GlobalMetadata): void {
-    this._registerLink(metadata, 'testResults');
+    this._registerLink(metadata, 'testFiles');
   }
 
   protected visitDescribeBlock(metadata: DescribeBlockMetadata): void {

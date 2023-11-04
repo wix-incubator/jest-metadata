@@ -1,9 +1,7 @@
 /* eslint-disable unicorn/no-null */
-import lodashGet from 'lodash.get';
 import lodashMerge from 'lodash.merge';
-import lodashSet from 'lodash.set';
 
-import { logger, optimizeForLogger } from '../../utils';
+import { get as lodashGet, set as lodashSet, logger, optimizeTracing } from '../../utils';
 import type { AggregatedIdentifier } from '../ids';
 import * as symbols from '../symbols';
 import type { Data, Metadata } from '../types';
@@ -11,7 +9,7 @@ import type { MetadataContext } from './MetadataContext';
 
 const log = logger.child({ cat: 'metadata', tid: 'metadata' });
 
-const __LOG_METADATA = optimizeForLogger((metadata: BaseMetadata, id: AggregatedIdentifier) => {
+const __LOG_METADATA = optimizeTracing((metadata: BaseMetadata, id: AggregatedIdentifier) => {
   log.trace({ id }, metadata.constructor.name);
 });
 
@@ -41,7 +39,7 @@ export abstract class BaseMetadata implements Metadata {
     this.#set(path, value);
 
     this[symbols.context].emitter.emit({
-      type: 'set_metadata',
+      type: 'write_metadata',
       testFilePath: this[symbols.id].testFilePath,
       targetId: this[symbols.id].identifier,
       path,
@@ -53,31 +51,11 @@ export abstract class BaseMetadata implements Metadata {
   }
 
   push(path: string | readonly string[], values: unknown[]): this {
-    this.#assertPath(path, 'push to');
-    if (!Array.isArray(values)) {
-      throw new TypeError(`Cannot push a non-array value to path "${path}". Received: ${values}`);
-    }
+    return this.#concat('push', path, values);
+  }
 
-    const array = lodashGet(this[symbols.data], path, []);
-    if (!Array.isArray(array)) {
-      throw new TypeError(
-        `Cannot push to path "${path}", because it is not an array, but: ${array}`,
-      );
-    }
-
-    array.push(...values);
-    this.#set(path, array);
-
-    this[symbols.context].emitter.emit({
-      type: 'set_metadata',
-      testFilePath: this[symbols.id].testFilePath,
-      targetId: this[symbols.id].identifier,
-      path,
-      value: values,
-      operation: 'push',
-    });
-
-    return this;
+  unshift(path: string | readonly string[], values: unknown[]): this {
+    return this.#concat('unshift', path, values);
   }
 
   assign(path: undefined | string | readonly string[], value: object): this {
@@ -89,7 +67,7 @@ export abstract class BaseMetadata implements Metadata {
     }
 
     this[symbols.context].emitter.emit({
-      type: 'set_metadata',
+      type: 'write_metadata',
       testFilePath: this[symbols.id].testFilePath,
       targetId: this[symbols.id].identifier,
       path,
@@ -109,7 +87,7 @@ export abstract class BaseMetadata implements Metadata {
     }
 
     this[symbols.context].emitter.emit({
-      type: 'set_metadata',
+      type: 'write_metadata',
       testFilePath: this[symbols.id].testFilePath,
       targetId: this[symbols.id].identifier,
       path,
@@ -132,5 +110,35 @@ export abstract class BaseMetadata implements Metadata {
     if (path == null) {
       throw new TypeError(`Cannot ${operationName} metadata without a path`);
     }
+  }
+
+  #concat(operation: 'push' | 'unshift', path: string | readonly string[], values: unknown[]) {
+    this.#assertPath(path, `${operation} to`);
+    if (!Array.isArray(values)) {
+      throw new TypeError(
+        `Cannot ${operation} a non-array value to path "${path}". Received: ${values}`,
+      );
+    }
+
+    const array = lodashGet(this[symbols.data], path, [] as unknown[]);
+    if (!Array.isArray(array)) {
+      throw new TypeError(
+        `Cannot ${operation} to path "${path}", because it is not an array, but: ${array}`,
+      );
+    }
+
+    array[operation](...values);
+    this.#set(path, array);
+
+    this[symbols.context].emitter.emit({
+      type: 'write_metadata',
+      testFilePath: this[symbols.id].testFilePath,
+      targetId: this[symbols.id].identifier,
+      path,
+      value: values,
+      operation,
+    });
+
+    return this;
   }
 }

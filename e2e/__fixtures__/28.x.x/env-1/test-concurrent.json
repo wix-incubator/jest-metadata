@@ -68,7 +68,7 @@
     "testId": "test_0"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/test-concurrent.js",
     "targetId": "test_0.0.fn",
     "path": "test.slept",
@@ -96,7 +96,7 @@
     "testId": "test_1"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/test-concurrent.js",
     "targetId": "test_1.0.fn",
     "path": "test.slept",
@@ -124,7 +124,7 @@
     "testId": "test_2"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/test-concurrent.js",
     "targetId": "test_2.0.fn",
     "path": "test.slept",
@@ -152,7 +152,7 @@
     "testId": "test_3"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/test-concurrent.js",
     "targetId": "test_3.0.fn",
     "path": "test.slept",
@@ -180,7 +180,7 @@
     "testId": "test_4"
   },
   {
-    "type": "set_metadata",
+    "type": "write_metadata",
     "testFilePath": "__tests__/default/test-concurrent.js",
     "targetId": "test_4.0.fn",
     "path": "test.slept",

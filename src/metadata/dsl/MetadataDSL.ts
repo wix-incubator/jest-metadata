@@ -1,5 +1,8 @@
 import { JestMetadataError } from '../../errors';
+import { logger } from '../../utils';
 import type { Data, Metadata, ReadonlyMetadataEventEmitter } from '../types';
+
+const log = logger.child({ cat: 'metadata', tid: 'metadata' });
 
 export class MetadataDSL {
   readonly #metadata: () => Metadata;
@@ -53,6 +56,16 @@ export class MetadataDSL {
     });
   };
 
+  $Unshift = (path: string | readonly string[], ...values: unknown[]): void => {
+    this.#assertPath(path);
+    this.#assertValues(values);
+
+    this.schedule(() => {
+      const metadata = this.#metadata();
+      metadata.unshift(path, values);
+    });
+  };
+
   $Assign = (path: string | readonly string[] | undefined, value: Data): void => {
     this.#assertPath(path);
     this.#assertValue(value);
@@ -88,7 +101,7 @@ export class MetadataDSL {
 
   #assertConfigured(): boolean {
     if (!this.#configured) {
-      console.warn(
+      log.warn(
         `Cannot use "jest-metadata" annotations because the test environment is not properly configured.
 There are two possible reasons for this:
 1. You are using a standard Jest environment (e.g. "jest-environment-node") and not using "jest-metadata/environment-*" packages.

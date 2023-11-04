@@ -2,9 +2,10 @@ import { inspect } from 'util';
 import type { EnvironmentContext, JestEnvironment, JestEnvironmentConfig } from '@jest/environment';
 import type { Circus } from '@jest/types';
 import { JestMetadataError } from './errors';
-import { realm, injectRealmIntoSandbox } from './realms';
-import { jestUtils, SemiAsyncEmitter } from './utils';
+import { injectRealmIntoSandbox, realm, detectDuplicateRealms } from './realms';
+import { logger, jestUtils, SemiAsyncEmitter } from './utils';
 
+const log = logger.child({ cat: 'environment', tid: 'environment' });
 const emitterMap: WeakMap<object, SemiAsyncEmitter<TestEnvironmentEvent>> = new WeakMap();
 const configMap: WeakMap<object, JestEnvironmentConfig> = new WeakMap();
 
@@ -13,6 +14,7 @@ export function onTestEnvironmentCreate(
   jestEnvironmentConfig: JestEnvironmentConfig,
   environmentContext: EnvironmentContext,
 ): void {
+  detectDuplicateRealms(true);
   injectRealmIntoSandbox(jestEnvironment.global, realm);
   const testFilePath = environmentContext.testPath;
   realm.environmentHandler.handleEnvironmentCreated(testFilePath);
@@ -40,8 +42,9 @@ export function onTestEnvironmentCreate(
         globalConfig &&
         (jestUtils.isSingleWorker(globalConfig) || jestUtils.isInsideIDE(globalConfig))
       ) {
-        console.warn('[jest-metadata] ' + message);
+        log.warn(message);
       } else {
+        log.debug(message);
         throw new JestMetadataError(message);
       }
     }
@@ -180,6 +183,8 @@ async function startIpc() {
 }
 
 async function stopIpc() {
+  detectDuplicateRealms(false);
+
   if (realm.type === 'child_process') {
     await realm.ipc.stop();
   }

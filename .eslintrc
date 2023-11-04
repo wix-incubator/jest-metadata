@@ -62,6 +62,7 @@
     "unicorn/prefer-string-replace-all": "off",
     "unicorn/prevent-abbreviations": "off",
     "unicorn/no-array-callback-reference": "off",
+    "unicorn/no-null": "off",
     "unicorn/no-this-assignment": "off",
     "unicorn/no-unused-properties": "off",
     "unicorn/prefer-module": "off"

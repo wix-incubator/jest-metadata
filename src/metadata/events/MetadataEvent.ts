@@ -9,7 +9,6 @@ import type { RunDescribeFinishEvent } from './RunDescribeFinishEvent';
 import type { RunDescribeStartEvent } from './RunDescribeStartEvent';
 import type { RunFinishEvent } from './RunFinishEvent';
 import type { RunStartEvent } from './RunStartEvent';
-import type { SetMetadataEvent } from './SetMetadataEvent';
 import type { SetupEvent } from './SetupEvent';
 import type { StartDescribeDefinitionEvent } from './StartDescribeDefinitionEvent';
 import type { TestDoneEvent } from './TestDoneEvent';
@@ -21,6 +20,7 @@ import type { TestSkipEvent } from './TestSkipEvent';
 import type { TestStartedEvent } from './TestStartedEvent';
 import type { TestStartEvent } from './TestStartEvent';
 import type { TestTodoEvent } from './TestTodoEvent';
+import type { WriteMetadataEvent } from './WriteMetadataEvent';
 
 export type MetadataEvent =
   | SetupEvent
@@ -34,7 +34,7 @@ export type MetadataEvent =
   | RunDescribeStartEvent
   | RunFinishEvent
   | RunStartEvent
-  | SetMetadataEvent
+  | WriteMetadataEvent
   | StartDescribeDefinitionEvent
   | TestDoneEvent
   | AddTestFileEvent
