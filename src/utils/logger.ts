@@ -1,19 +1,23 @@
 import fs from 'fs';
 import path from 'path';
-import { traceEventStream, uniteTraceEventsToFile, wrapLogger } from 'bunyamin';
+import { bunyamin, traceEventStream, uniteTraceEventsToFile } from 'bunyamin';
 import { createLogger } from 'bunyan';
 import createDebugStream from 'bunyan-debug-stream';
 import { noop } from './noop';
 
 const logsDirectory = process.env.JEST_METADATA_DEBUG;
 
-export const logger = wrapLogger({
-  logger: createBunyanImpl(isTraceEnabled()),
-});
-
-export const nologger = wrapLogger({
-  logger: createBunyanNoop(),
-}) as typeof logger;
+bunyamin.logger = createBunyanImpl(isTraceEnabled());
+bunyamin.threadGroups.push(
+  { id: 'ipc-server', displayName: 'IPC Server (jest-metadata)' },
+  { id: 'ipc-client', displayName: 'IPC Client (jest-metadata)' },
+  { id: 'emitter-core', displayName: 'Core emitter (jest-metadata)' },
+  { id: 'emitter-set', displayName: 'Set emitter (jest-metadata)' },
+  { id: 'emitter-events', displayName: 'Events emitter (jest-metadata)' },
+  { id: 'environment', displayName: 'Test Environment (jest-metadata)' },
+  { id: 'metadata', displayName: 'Metadata (jest-metadata)' },
+  { id: 'reporter', displayName: 'Reporter (jest-metadata)' },
+);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const optimizeTracing: <F>(f: F) => F = isTraceEnabled() ? (f) => f : ((() => noop) as any);
@@ -67,16 +71,7 @@ function createBunyanImpl(traceEnabled: boolean) {
               level: 'trace' as const,
               stream: traceEventStream({
                 filePath: createLogFilePath(),
-                threadGroups: [
-                  { id: 'ipc-server', displayName: 'IPC Server' },
-                  { id: 'ipc-client', displayName: 'IPC Client' },
-                  { id: 'emitter-core', displayName: 'Emitter (core)' },
-                  { id: 'emitter-set', displayName: 'Emitter (set)' },
-                  { id: 'emitter-events', displayName: 'Emitter (events)' },
-                  { id: 'environment', displayName: 'Test Environment' },
-                  { id: 'metadata', displayName: 'Metadata' },
-                  { id: 'reporter', displayName: 'Reporter' },
-                ],
+                threadGroups: bunyamin.threadGroups,
               }),
             },
           ]
@@ -85,17 +80,6 @@ function createBunyanImpl(traceEnabled: boolean) {
   });
 
   return bunyan;
-}
-
-function createBunyanNoop() {
-  return {
-    trace: noop,
-    debug: noop,
-    info: noop,
-    warn: noop,
-    error: noop,
-    fatal: noop,
-  };
 }
 
 const LOG_PATTERN = /^jest-metadata\..*\.log$/;
@@ -123,3 +107,5 @@ export async function aggregateLogs() {
     fs.renameSync(logs[0], unitedLogPath);
   }
 }
+
+export { bunyamin as logger, nobunyamin as nologger } from 'bunyamin';
