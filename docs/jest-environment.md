@@ -29,36 +29,52 @@ If you already have a custom test environment, you can extend it via composition
 
 ## Manual integration
 
-If your use case is not covered by the above, you can call `jest-metadata` lifecycle methods manually:
+If your use case is not covered by the above, you can rewrite your test environment
+into a listener of `jest-environment-emit` events. Here is an example of how to do it:
 
-```diff
-+ import * as jmHooks from 'jest-metadata/environment-hooks';
-
-class MyCustomEnvironment extends NodeEnvironment {
-  constructor(config, context) {
-    super(config, context);
-+   jmHooks.onTestEnvironmentCreate(this, config, context);
-  }
-
-  async setup() {
-    await super.setup();
-+   await jmHooks.onTestEnvironmentSetup(this);
-  }
-
-  async teardown() {
-+   await jmHooks.onTestEnvironmentTeardown(this);
-    await super.teardown();
-  }
-
-  async handleTestEvent(event, state) {
-+   await jmHooks.onTestEnvironmentHandleTestEvent(this, event, state);
-    // ...
-  }
+```js title="jest.config.js"
+/** @type {import('jest').Config} */
+module.exports = {
+  testEnvironment: 'jest-environment-emit',
+  testEnvironmentOptions: {
+    listeners: [
+      'jest-metadata/environment-listener',
+      ['your-project/listener', { /* options */ }],
+    ],
+  },
+};
 ```
+
+where `your-project/listener` file contains the following code:
+
+```js title="your-project/listeners.js"
+import * as jee from 'jest-environment-emit';
+
+const listener: jee.EnvironmentListenerFn = (context, yourOptions) => {
+  context.testEvents
+    .on('test_environment_setup', ({ env }: jee.TestEnvironmentSetupEvent) => {
+      // ...
+    })
+    .on('test_start', ({ event, state }: jee.TestEnvironmentCircusEvent) => {
+      // ...
+    })
+    .on('test_done', ({ event, state }: jee.TestEnvironmentCircusEvent) => {
+      // ...
+    })
+    .on('test_environment_teardown', ({ env }: jee.TestEnvironmentTeardownEvent) => {
+      // ...
+    });
+};
+
+export default listener;
+```
+
+## Lifecycle of `jest-metadata` test environment
 
 Here is a brief description of each lifecycle method:
 
-* `onTestEnvironmentCreate` - called when the test environment is created. This is the first lifecycle method to be called. It injects `__JEST_METADATA__` context into `this.global` object to eliminate sandboxing issues.
-* `onTestEnvironmentSetup` - called when the test environment is set up. This is the second lifecycle method to be called. It initializes `jest-metadata` IPC client if Jest is running in a multi-worker mode to enable communication with the main process where the reporters reside.
-* `onTestEnvironmentHandleTestEvent` - called when the test environment receives a test event from `jest-circus`. This method is called many times during the test run. It is responsible for building a metadata tree, parallel to `jest-circus` State tree, and for sending test events to the main process.
-* `onTestEnvironmentTeardown` - called when the test environment is torn down. This is the last lifecycle method to be called. It is responsible for shutting down the IPC client and for sending the final test event to the main process.
+* `test_environment_setup`:
+  * injects `__JEST_METADATA__` context into `this.global` object to eliminate sandboxing issues;
+  * initializes `jest-metadata` IPC client if Jest is running in a multi-worker mode to enable communication with the main process where the reporters reside;
+* all `jest-circus` events coming to `handleTestEvent` – building a metadata tree, parallel to `jest-circus` State tree, and for sending test events to the main process.
+* `test_environment_teardown` – responsible for shutting down the IPC client and for sending the final test event to the main process.

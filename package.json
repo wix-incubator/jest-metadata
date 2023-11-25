@@ -30,10 +30,10 @@
       "require": "./dist/environment-decorator.js",
       "types": "./dist/environment-decorator.d.ts"
     },
-    "./environment-hooks": {
-      "import": "./dist/environment-hooks.js",
-      "require": "./dist/environment-hooks.js",
-      "types": "./dist/environment-hooks.d.ts"
+    "./environment-listener": {
+      "import": "./dist/environment-listener.js",
+      "require": "./dist/environment-listener.js",
+      "types": "./dist/environment-listener.d.ts"
     },
     "./environment-jsdom": {
       "import": "./dist/environment-jsdom.js",
@@ -87,10 +87,11 @@
   },
   "homepage": "https://github.com/wix-incubator/jest-metadata#readme",
   "dependencies": {
-    "bunyamin": "^1.1.1",
+    "bunyamin": "^1.4.2",
     "bunyan": "^2.0.5",
     "bunyan-debug-stream": "^3.1.0",
     "funpermaproxy": "^1.1.0",
+    "jest-environment-emit": "^1.0.0-alpha.5",
     "lodash.merge": "^4.6.2",
     "node-ipc": "9.2.1",
     "strip-ansi": "^6.0.0",

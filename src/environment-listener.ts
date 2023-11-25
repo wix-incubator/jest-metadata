@@ -1,18 +1,15 @@
 import { inspect } from 'util';
-import type { EnvironmentContext, JestEnvironment, JestEnvironmentConfig } from '@jest/environment';
-import type { Circus } from '@jest/types';
+import type { EnvironmentListenerFn, TestEnvironmentCircusEvent } from 'jest-environment-emit';
 import { JestMetadataError } from './errors';
-import { injectRealmIntoSandbox, realm, detectDuplicateRealms } from './realms';
-import { logger, jestUtils, SemiAsyncEmitter } from './utils';
+import { detectDuplicateRealms, injectRealmIntoSandbox, realm } from './realms';
+import { jestUtils, logger } from './utils';
 
-const log = logger.child({ cat: 'environment', tid: 'environment' });
-const emitterMap: WeakMap<object, SemiAsyncEmitter<ForwardedCircusEvent>> = new WeakMap();
+const listener: EnvironmentListenerFn = (context) => {
+  const log = logger.child({ cat: 'environment', tid: 'environment' });
+  const jestEnvironment = context.env;
+  const jestEnvironmentConfig = context.config;
+  const environmentContext = context.context;
 
-export function onTestEnvironmentCreate(
-  jestEnvironment: JestEnvironment,
-  jestEnvironmentConfig: JestEnvironmentConfig,
-  environmentContext: EnvironmentContext,
-): void {
   detectDuplicateRealms(true);
   injectRealmIntoSandbox(jestEnvironment.global, realm);
   const testFilePath = environmentContext.testPath;
@@ -49,19 +46,33 @@ export function onTestEnvironmentCreate(
     }
   }
 
-  const testEventHandler = ({ event, state }: ForwardedCircusEvent) => {
+  const testEventHandler = ({ event, state }: TestEnvironmentCircusEvent) => {
     realm.environmentHandler.handleTestEvent(event, state);
   };
 
   const flushHandler = () => realm.ipc.flush();
 
-  const emitter = new SemiAsyncEmitter<ForwardedCircusEvent>('environment', [
-    'start_describe_definition',
-    'finish_describe_definition',
-    'add_hook',
-    'add_test',
-    'error',
-  ])
+  context.testEvents
+    .on(
+      'test_environment_setup',
+      async function () {
+        if (realm.type === 'child_process') {
+          await realm.ipc.start();
+        }
+      },
+      -1,
+    )
+    .on(
+      'test_environment_teardown',
+      async function () {
+        detectDuplicateRealms(false);
+
+        if (realm.type === 'child_process') {
+          await realm.ipc.stop();
+        }
+      },
+      Number.MAX_SAFE_INTEGER,
+    )
     .on('setup', testEventHandler, -1)
     .on('include_test_location_in_result', testEventHandler, -1)
     .on('start_describe_definition', testEventHandler, -1)
@@ -89,47 +100,6 @@ export function onTestEnvironmentCreate(
     .on('run_finish', testEventHandler, Number.MAX_SAFE_INTEGER - 1)
     .on('run_finish', flushHandler, Number.MAX_SAFE_INTEGER)
     .on('teardown', testEventHandler, Number.MAX_SAFE_INTEGER);
-
-  emitterMap.set(jestEnvironment, emitter);
-}
-
-export type ForwardedCircusEvent<E extends Circus.Event = Circus.Event> = {
-  type: E['name'];
-  event: E;
-  state: Circus.State;
 };
 
-export async function onTestEnvironmentSetup(_env: JestEnvironment): Promise<void> {
-  if (realm.type === 'child_process') {
-    await realm.ipc.start();
-  }
-}
-
-export async function onTestEnvironmentTeardown(_env: JestEnvironment): Promise<void> {
-  detectDuplicateRealms(false);
-
-  if (realm.type === 'child_process') {
-    await realm.ipc.stop();
-  }
-}
-
-/**
- * Pass Jest Circus event and state to the handler.
- * After recalculating the state, this method synchronizes with the metadata server.
- */
-export const onHandleTestEvent = (
-  env: JestEnvironment,
-  event: Circus.Event,
-  state: Circus.State,
-): void | Promise<void> => getEmitter(env).emit({ type: event.name, event, state });
-
-export const getEmitter = (env: JestEnvironment) => {
-  const emitter = emitterMap.get(env);
-  if (!emitter) {
-    throw new JestMetadataError(
-      'Emitter is not found. Most likely, you are using a non-valid environment reference.',
-    );
-  }
-
-  return emitter;
-};
+export default listener;
