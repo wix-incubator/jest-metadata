@@ -4,9 +4,8 @@ import { JestMetadataError } from './errors';
 import { detectDuplicateRealms, injectRealmIntoSandbox, realm } from './realms';
 import { jestUtils, logger } from './utils';
 
-const log = logger.child({ cat: 'environment', tid: 'environment' });
-
 const listener: EnvironmentListenerFn = (context) => {
+  const log = logger.child({ cat: 'environment', tid: 'environment' });
   const jestEnvironment = context.env;
   const jestEnvironmentConfig = context.config;
   const environmentContext = context.context;

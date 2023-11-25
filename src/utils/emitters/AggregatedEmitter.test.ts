@@ -1,5 +1,5 @@
 import { AggregatedEmitter } from './AggregatedEmitter';
-import { SerialSyncEmitter } from './SerialSyncEmitter';
+import { SerialEmitter } from './SerialEmitter';
 
 describe('AggregatedEmitter', () => {
   let emitter: AggregatedEmitter<{ type: string }>;
@@ -9,8 +9,8 @@ describe('AggregatedEmitter', () => {
   });
 
   test('should re-emit events of added #emitters', () => {
-    const dummy1 = new SerialSyncEmitter('dummy1');
-    const dummy2 = new SerialSyncEmitter('dummy2');
+    const dummy1 = new SerialEmitter('dummy1');
+    const dummy2 = new SerialEmitter('dummy2');
     const listener = jest.fn();
     const event1 = { type: 'test', id: 1 };
     const event2 = { type: 'test', id: 2 };
@@ -26,8 +26,8 @@ describe('AggregatedEmitter', () => {
   });
 
   test('should allow subscribing to events only once', () => {
-    const dummy1 = new SerialSyncEmitter('dummy1');
-    const dummy2 = new SerialSyncEmitter('dummy2');
+    const dummy1 = new SerialEmitter('dummy1');
+    const dummy2 = new SerialEmitter('dummy2');
     const listener = jest.fn();
     const event1 = { type: 'test', id: 1 };
     const event2 = { type: 'test', id: 2 };
@@ -42,7 +42,7 @@ describe('AggregatedEmitter', () => {
   });
 
   test('should allow unsubscribing from events', () => {
-    const dummy = new SerialSyncEmitter('dummy1');
+    const dummy = new SerialEmitter('dummy1');
     const listener = jest.fn();
     const event = { type: 'test', id: 1 };
 

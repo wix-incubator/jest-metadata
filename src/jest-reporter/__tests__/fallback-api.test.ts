@@ -8,7 +8,7 @@ import {
   MetadataFactoryImpl,
   WriteMetadataEventEmitter,
 } from '../../metadata';
-import { SerialSyncEmitter } from '../../utils';
+import { SerialEmitter } from '../../utils';
 import { AssociateMetadata } from '../AssociateMetadata';
 import { FallbackAPI } from '../FallbackAPI';
 import { QueryMetadata } from '../QueryMetadata';
@@ -23,10 +23,10 @@ describe('Fallback API', () => {
     const IPCServer = jest.requireMock('../../ipc').IPCServer;
     const ipc: jest.Mocked<IPCServer> = new IPCServer();
 
-    const emitter = new SerialSyncEmitter<MetadataEvent>('core').on('*', (event: MetadataEvent) => {
+    const emitter = new SerialEmitter<MetadataEvent>('core').on('*', (event: MetadataEvent) => {
       metadataHandler.handle(event);
     }) as MetadataEventEmitter;
-    const setEmitter = new SerialSyncEmitter('set') as WriteMetadataEventEmitter;
+    const setEmitter = new SerialEmitter('set') as WriteMetadataEventEmitter;
     const metadataRegistry = new GlobalMetadataRegistry();
     const metadataFactory = new MetadataFactoryImpl(metadataRegistry, setEmitter);
     const globalMetadata = metadataFactory.createGlobalMetadata();
