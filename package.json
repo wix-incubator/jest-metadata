@@ -30,6 +30,11 @@
       "require": "./dist/environment-decorator.js",
       "types": "./dist/environment-decorator.d.ts"
     },
+    "./environment-listener": {
+      "import": "./dist/environment-listener.js",
+      "require": "./dist/environment-listener.js",
+      "types": "./dist/environment-listener.d.ts"
+    },
     "./environment-jsdom": {
       "import": "./dist/environment-jsdom.js",
       "require": "./dist/environment-jsdom.js",
@@ -86,7 +91,7 @@
     "bunyan": "^2.0.5",
     "bunyan-debug-stream": "^3.1.0",
     "funpermaproxy": "^1.1.0",
-    "jest-environment-emit": "^1.0.0-alpha.2",
+    "jest-environment-emit": "^1.0.0-alpha.4",
     "lodash.merge": "^4.6.2",
     "node-ipc": "9.2.1",
     "strip-ansi": "^6.0.0",
