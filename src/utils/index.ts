@@ -1,7 +1,7 @@
 export * from './emitters';
 export * as jestUtils from './jestUtils';
 export { getVersion } from './getVersion';
-export { aggregateLogs, logger, optimizeTracing } from './logger';
+export { logger, optimizeTracing } from './logger';
 export { get } from './get';
 export { set } from './set';
 export { makeDeferred, Deferred } from './makeDeferred';

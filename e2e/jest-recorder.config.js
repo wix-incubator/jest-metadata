@@ -10,7 +10,7 @@ const JEST_ENVIRONMENT = process.env.JEST_ENVIRONMENT || 'node';
 if (CI) {
   const logsDir = path.join(artifactsDir, PRESET, 'logs');
   fs.mkdirSync(logsDir, { recursive: true });
-  process.env.JEST_METADATA_DEBUG = logsDir;
+  process.env.JEST_BUNYAMIN_DIR = logsDir;
 }
 
 const mixins = {

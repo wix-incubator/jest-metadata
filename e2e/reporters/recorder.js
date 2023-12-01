@@ -83,11 +83,6 @@ class E2eRecorderReporter extends JestMetadataReporter {
       fs.mkdirSync(path.dirname(fixturePath), { recursive: true });
       fs.writeFileSync(fixturePath, contents + '\n');
     }
-
-    if (debugUtils.isEnabled()) {
-      await sleep(1000);
-      await debugUtils.aggregateLogs();
-    }
   }
 }
 

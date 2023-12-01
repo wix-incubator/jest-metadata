@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function,unicorn/no-for-loop */
 import type { TestCaseResult, TestResult } from '@jest/reporters';
+// eslint-disable-next-line import/no-internal-modules
+import { aggregateLogs } from 'jest-environment-emit/debug';
 import type { IPCServer } from '../ipc';
 import { logger, memoizeArg1, memoizeLast, optimizeTracing } from '../utils';
 import type { AssociateMetadata } from './AssociateMetadata';
@@ -97,5 +99,10 @@ export class ReporterServer {
 
   async onRunComplete(): Promise<void> {
     await this.#ipc.stop();
+
+    if (process.env.JEST_BUNYAMIN_DIR) {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await aggregateLogs();
+    }
   }
 }
