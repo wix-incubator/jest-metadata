@@ -1,6 +1,6 @@
 import fixtures from '../../../e2e';
 
-import { SerialSyncEmitter } from '../../utils';
+import { SerialEmitter } from '../../utils';
 import {
   GlobalMetadataRegistry,
   Metadata,
@@ -15,7 +15,7 @@ describe('file metadata traversal:', () => {
   });
 
   test.each(lastFixtures)(`fixtures/%s`, (_name: string, fixture: any[]) => {
-    const emitter: WriteMetadataEventEmitter = new SerialSyncEmitter('set');
+    const emitter: WriteMetadataEventEmitter = new SerialEmitter('set');
     const metadataRegistry = new GlobalMetadataRegistry();
     const metadataFactory = new MetadataFactoryImpl(metadataRegistry, emitter);
     const globalMetadata = metadataFactory.createGlobalMetadata();

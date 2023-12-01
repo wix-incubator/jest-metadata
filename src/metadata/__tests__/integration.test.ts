@@ -1,6 +1,6 @@
 import fixtures from '../../../e2e';
 
-import { SerialSyncEmitter } from '../../utils';
+import { SerialEmitter } from '../../utils';
 import { PlantSerializer } from '../__utils__';
 import {
   GlobalMetadataRegistry,
@@ -13,7 +13,7 @@ describe('metadata - integration test:', () => {
   test.each(Object.values(fixtures.metadata))(
     `e2e/__fixtures__/%s`,
     (_name: string, fixture: any[]) => {
-      const emitter: WriteMetadataEventEmitter = new SerialSyncEmitter('set');
+      const emitter: WriteMetadataEventEmitter = new SerialEmitter('set');
       const metadataRegistry = new GlobalMetadataRegistry();
       const metadataFactory = new MetadataFactoryImpl(metadataRegistry, emitter);
       const globalMetadata = metadataFactory.createGlobalMetadata();
