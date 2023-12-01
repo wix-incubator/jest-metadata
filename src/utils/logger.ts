@@ -1,25 +1,22 @@
 import fs from 'fs';
 import path from 'path';
-import { bunyamin, traceEventStream, uniteTraceEventsToFile } from 'bunyamin';
+import { bunyamin, threadGroups, traceEventStream, uniteTraceEventsToFile } from 'bunyamin';
 import { createLogger } from 'bunyan';
 import createDebugStream from 'bunyan-debug-stream';
 import { noop } from './noop';
 
 const logsDirectory = process.env.JEST_METADATA_DEBUG;
 
-bunyamin.logger = createBunyanImpl(isTraceEnabled());
-if (!bunyamin.threadGroups.some((x) => x.id === 'metadata')) {
-  bunyamin.threadGroups.push(
-    { id: 'ipc-server', displayName: 'IPC Server (jest-metadata)' },
-    { id: 'ipc-client', displayName: 'IPC Client (jest-metadata)' },
-    { id: 'emitter-core', displayName: 'Core emitter (jest-metadata)' },
-    { id: 'emitter-set', displayName: 'Set emitter (jest-metadata)' },
-    { id: 'emitter-events', displayName: 'Events emitter (jest-metadata)' },
-    { id: 'environment', displayName: 'Test Environment (jest-metadata)' },
-    { id: 'metadata', displayName: 'Metadata (jest-metadata)' },
-    { id: 'reporter', displayName: 'Reporter (jest-metadata)' },
-  );
-}
+bunyamin.useLogger(createBunyanImpl(isTraceEnabled()), 1);
+
+threadGroups.add({ id: 'ipc-server', displayName: 'IPC Server (jest-metadata)' });
+threadGroups.add({ id: 'ipc-client', displayName: 'IPC Client (jest-metadata)' });
+threadGroups.add({ id: 'emitter-core', displayName: 'Core emitter (jest-metadata)' });
+threadGroups.add({ id: 'emitter-set', displayName: 'Set emitter (jest-metadata)' });
+threadGroups.add({ id: 'emitter-events', displayName: 'Events emitter (jest-metadata)' });
+threadGroups.add({ id: 'environment', displayName: 'Test Environment (jest-metadata)' });
+threadGroups.add({ id: 'metadata', displayName: 'Metadata (jest-metadata)' });
+threadGroups.add({ id: 'reporter', displayName: 'Reporter (jest-metadata)' });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const optimizeTracing: <F>(f: F) => F = isTraceEnabled() ? (f) => f : ((() => noop) as any);
