@@ -1,5 +1,4 @@
 import { bunyamin, isDebug, threadGroups } from 'bunyamin';
-import { noop } from './noop';
 
 threadGroups.add({ id: 'ipc-server', displayName: 'IPC Server (jest-metadata)' });
 threadGroups.add({ id: 'ipc-client', displayName: 'IPC Client (jest-metadata)' });
@@ -14,8 +13,10 @@ function isTraceEnabled(): boolean {
   return isDebug('jest-metadata');
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const optimizeTracing: <F>(f: F) => F = isTraceEnabled() ? (f) => f : ((() => noop) as any);
+const EMPTY = {};
+const NOOP: any = () => EMPTY;
+
+export const optimizeTracing: <F>(f: F) => F = isTraceEnabled() ? (f) => f : () => NOOP;
 
 export const logger = bunyamin.child({ cat: 'jest-metadata' });
 
