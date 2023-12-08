@@ -23,7 +23,8 @@ assert(isClass(NodeTestEnvironment), 'jest-metadata/environment-node should expo
 
 const JestMetadataReporter = require('jest-metadata/reporter');
 assert(isClass(JestMetadataReporter), 'jest-metadata/reporter should export a class as its default export');
-assert(typeof JestMetadataReporter.query === 'object', 'jest-metadata/reporter class should export .query helper');
+assert(JestMetadataReporter.JestMetadataReporter, 'jest-metadata/reporter should export `JestMetadataReporter` class as a named export');
+assert(typeof JestMetadataReporter.query === 'object', 'jest-metadata/reporter should export query helper');
 
 function isClass(obj) {
   return typeof obj === 'function' && /^class\s/.test(Function.prototype.toString.call(obj));

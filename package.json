@@ -10,6 +10,7 @@
     "src",
     "dist",
     "*.js",
+    "*.d.ts",
     "*.mjs",
     "!**/__utils__",
     "!**/__tests__",
@@ -24,32 +25,32 @@
     "./debug": {
       "import": "./debug.mjs",
       "require": "./debug.js",
-      "types": "./dist/debug.d.ts"
+      "types": "./debug.d.ts"
     },
     "./environment-decorator": {
       "import": "./environment-decorator.mjs",
       "require": "./environment-decorator.js",
-      "types": "./dist/environment-decorator.d.ts"
+      "types": "./environment-decorator.d.ts"
     },
     "./environment-listener": {
       "import": "./environment-listener.mjs",
       "require": "./environment-listener.js",
-      "types": "./dist/environment-listener.d.ts"
+      "types": "./environment-listener.d.ts"
     },
     "./environment-jsdom": {
       "import": "./environment-jsdom.mjs",
       "require": "./environment-jsdom.js",
-      "types": "./dist/environment-jsdom.d.ts"
+      "types": "./environment-jsdom.d.ts"
     },
     "./environment-node": {
       "import": "./environment-node.mjs",
       "require": "./environment-node.js",
-      "types": "./dist/environment-node.d.ts"
+      "types": "./environment-node.d.ts"
     },
     "./reporter": {
       "import": "./reporter.mjs",
       "require": "./reporter.js",
-      "types": "./dist/reporter.d.ts"
+      "types": "./reporter.d.ts"
     },
     "./package.json": "./package.json"
   },

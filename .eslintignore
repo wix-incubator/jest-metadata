@@ -4,3 +4,4 @@ e2e/**
 package-e2e/**
 *.js
 *.mjs
+*.d.ts

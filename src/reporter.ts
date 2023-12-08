@@ -12,21 +12,31 @@ import type {
 import { JestMetadataError } from './errors';
 import { detectDuplicateRealms, realm as unknownRealm } from './realms';
 import type { ParentProcessRealm } from './realms';
+import { logger } from './utils';
 
 const realm = unknownRealm as ParentProcessRealm;
 
 detectDuplicateRealms(true);
 
+export const query = realm.query;
+
 /**
  * @implements {import('@jest/reporters').Reporter}
  */
-export default class JestMetadataReporter implements Reporter {
+export class JestMetadataReporter implements Reporter {
   static readonly query = realm.query;
 
   constructor(_globalConfig: Config.GlobalConfig) {
     if (realm.type !== 'parent_process') {
       throw new JestMetadataError(`JestMetadataReporter can be used only in the parent process`);
     }
+  }
+
+  static get JestMetadataReporter() {
+    logger.warn(
+      `Don't use named export 'JestMetadataReporter' from 'jest-metadata/reporter'. Use default export instead.`,
+    );
+    return JestMetadataReporter;
   }
 
   getLastError(): Error | void {
@@ -79,3 +89,5 @@ export default class JestMetadataReporter implements Reporter {
     return realm.reporterServer.onRunComplete();
   }
 }
+
+export default JestMetadataReporter;
