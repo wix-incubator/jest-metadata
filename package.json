@@ -10,44 +10,45 @@
     "src",
     "dist",
     "*.js",
+    "*.mjs",
     "!**/__utils__",
     "!**/__tests__",
     "!**/*.test.*"
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js",
+      "import": "./index.mjs",
+      "require": "./index.js",
       "types": "./dist/index.d.ts"
     },
     "./debug": {
-      "import": "./dist/debug.js",
-      "require": "./dist/debug.js",
+      "import": "./debug.mjs",
+      "require": "./debug.js",
       "types": "./dist/debug.d.ts"
     },
     "./environment-decorator": {
-      "import": "./dist/environment-decorator.js",
-      "require": "./dist/environment-decorator.js",
+      "import": "./environment-decorator.mjs",
+      "require": "./environment-decorator.js",
       "types": "./dist/environment-decorator.d.ts"
     },
     "./environment-listener": {
-      "import": "./dist/environment-listener.js",
-      "require": "./dist/environment-listener.js",
+      "import": "./environment-listener.mjs",
+      "require": "./environment-listener.js",
       "types": "./dist/environment-listener.d.ts"
     },
     "./environment-jsdom": {
-      "import": "./dist/environment-jsdom.js",
-      "require": "./dist/environment-jsdom.js",
+      "import": "./environment-jsdom.mjs",
+      "require": "./environment-jsdom.js",
       "types": "./dist/environment-jsdom.d.ts"
     },
     "./environment-node": {
-      "import": "./dist/environment-node.js",
-      "require": "./dist/environment-node.js",
+      "import": "./environment-node.mjs",
+      "require": "./environment-node.js",
       "types": "./dist/environment-node.d.ts"
     },
     "./reporter": {
-      "import": "./dist/reporter.js",
-      "require": "./dist/reporter.js",
+      "import": "./reporter.mjs",
+      "require": "./reporter.js",
       "types": "./dist/reporter.d.ts"
     },
     "./package.json": "./package.json"
