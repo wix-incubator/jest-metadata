@@ -4,7 +4,7 @@ const path = require('path');
 const { satisfies: semverSatisfies } = require('semver');
 const { version: jestVersion } = require('jest/package.json');
 const debugUtils = require('jest-metadata/debug');
-const { JestMetadataReporter } = require('jest-metadata/reporter');
+const JestMetadataReporter = require('jest-metadata/reporter');
 
 const PRESET = process.env.PRESET || '';
 const cwd = process.cwd();

@@ -17,12 +17,12 @@ const realm = unknownRealm as ParentProcessRealm;
 
 detectDuplicateRealms(true);
 
-export const query = realm.query;
-
 /**
  * @implements {import('@jest/reporters').Reporter}
  */
-export class JestMetadataReporter implements Reporter {
+export default class JestMetadataReporter implements Reporter {
+  static readonly query = realm.query;
+
   constructor(_globalConfig: Config.GlobalConfig) {
     if (realm.type !== 'parent_process') {
       throw new JestMetadataError(`JestMetadataReporter can be used only in the parent process`);
@@ -79,5 +79,3 @@ export class JestMetadataReporter implements Reporter {
     return realm.reporterServer.onRunComplete();
   }
 }
-
-export default JestMetadataReporter;
