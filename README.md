@@ -139,5 +139,3 @@ This project is licensed under the [MIT License].
 [MIT License]: ./LICENSE
 [jest-environment]: ./docs/jest-environment.md
 [jest-allure2-reporter]: https://github.com/wix-incubator/jest-allure2-reporter
-
-test123
