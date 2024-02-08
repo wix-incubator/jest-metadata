@@ -61,7 +61,7 @@
     "prepare": "husky install || true",
     "prepack": "tsc",
     "build": "tsc",
-    "build:e2e": "tsc && nyc instrument --in-place dist && npm pack && mv jest-metadata-*.tgz package.tar.gz",
+    "build:e2e": "pwd && tsc && nyc instrument --in-place dist && npm pack && mv jest-metadata-*.tgz package.tar.gz",
     "docs": "typedoc",
     "start": "http-server -p 3000 website",
     "setup-fixture": "node scripts/setup-fixture.mjs",
