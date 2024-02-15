@@ -37,15 +37,8 @@ jobs:
       - name: Build package for E2E
         run: npm run build:e2e
 
-      - name: Packaging tests - Install
-        uses: bahmutov/npm-install@v1
-        with:
-          useLockFile: false
-          working-directory: package-e2e
-
-      - name: Packaging tests - Run
-        run: npm test
-        working-directory: package-e2e
+      - name: Packaging tests
+        run: scripts/test-package-e2e.sh
 
       - name: E2E tests - Install
         uses: bahmutov/npm-install@v1

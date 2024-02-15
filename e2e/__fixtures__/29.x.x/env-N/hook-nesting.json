@@ -49,6 +49,28 @@
     "type": "write_metadata",
     "testFilePath": "__tests__/default/hook-nesting.js",
     "targetId": "describe_1",
+    "path": "vendor.author",
+    "value": {
+      "name": "John Doe",
+      "email": "john.doe@example.com"
+    },
+    "operation": "defaults"
+  },
+  {
+    "type": "write_metadata",
+    "testFilePath": "__tests__/default/hook-nesting.js",
+    "targetId": "describe_1",
+    "path": "vendor.author",
+    "value": {
+      "name": "Impostor",
+      "email": "impostor@example.fake"
+    },
+    "operation": "defaults"
+  },
+  {
+    "type": "write_metadata",
+    "testFilePath": "__tests__/default/hook-nesting.js",
+    "targetId": "describe_1",
     "path": "vendor.description",
     "value": "This is a sample test suite.",
     "operation": "set"

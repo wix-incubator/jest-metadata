@@ -4,5 +4,5 @@ export type WriteMetadataEvent = {
   targetId: string; // instance ID
   path?: string | readonly string[];
   value: unknown;
-  operation: 'set' | 'assign' | 'merge' | 'push' | 'unshift';
+  operation: 'set' | 'assign' | 'defaults' | 'merge' | 'push' | 'unshift';
 };
