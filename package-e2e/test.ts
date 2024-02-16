@@ -1,4 +1,4 @@
-import { $Set, $Push, $Merge, $Assign, $Unshift, state, metadata } from 'jest-metadata';
+import { $Set, $Push, $Merge, $Assign, $Defaults, $Unshift, state, metadata } from 'jest-metadata';
 import { events } from 'jest-metadata/debug';
 import type { GlobalMetadata, Metadata } from 'jest-metadata';
 import JestMetadataReporter, { query, JestMetadataReporter as JestMetadataReporterNamed } from 'jest-metadata/reporter';
@@ -12,11 +12,24 @@ function assertType<T>(_actual: T, _other?: T): void {
 
 assertType<GlobalMetadata>(state);
 assertType<Metadata>(metadata);
-assertType<Function>($Set);
-assertType<Function>($Push);
-assertType<Function>($Merge);
-assertType<Function>($Assign);
-assertType<Function>($Unshift);
+
+$Set('path', 'value' as unknown);
+$Set(['path'], 'value' as unknown);
+
+$Push('path', -1, '2', true);
+$Push(['path'], -1, '2', true);
+
+$Unshift('path', -1, '2', true);
+$Unshift(['path'], -1, '2', true);
+
+$Merge('path', { key: 'value' });
+$Merge(['path'], { key: 'value' });
+
+$Assign('path', { key: 'value' });
+$Assign(['path'], { key: 'value' });
+
+$Defaults('path', { key: 'value' });
+$Defaults(['path'], { key: 'value' });
 
 assertType<object>(events);
 

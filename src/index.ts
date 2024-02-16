@@ -55,6 +55,13 @@ export const $Unshift = realm.metadataDSL.$Unshift;
 export const $Assign = realm.metadataDSL.$Assign;
 
 /**
+ *  Pseudo-annotation that allows to associate metadata with a test block.
+ *  It is not an ECMAScript decorator, but it behaves similarly.
+ *  Use it to ensure multiple placeholder values to an object in metadata.
+ */
+export const $Defaults = realm.metadataDSL.$Defaults;
+
+/**
  * Pseudo-annotation that allows to associate metadata with a test block.
  * It is not an ECMAScript decorator, but it behaves similarly.
  * Use it to deeply merge multiple values to an object in metadata.

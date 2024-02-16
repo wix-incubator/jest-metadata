@@ -78,6 +78,30 @@ export abstract class BaseMetadata implements Metadata {
     return this;
   }
 
+  defaults(path: undefined | string | readonly string[], value: object): this {
+    const oldValue = this.#get(path, {});
+    const source = (oldValue && typeof oldValue === 'object' ? oldValue : {}) as Data;
+    for (const key of Object.keys(value)) {
+      if (source[key] === undefined) {
+        source[key] = (value as Data)[key];
+      }
+    }
+    if (path != null) {
+      this.#set(path, source);
+    }
+
+    this[symbols.context].emitter.emit({
+      type: 'write_metadata',
+      testFilePath: this[symbols.id].testFilePath,
+      targetId: this[symbols.id].identifier,
+      path,
+      value,
+      operation: 'defaults',
+    });
+
+    return this;
+  }
+
   merge(path: undefined | string | readonly string[], value: object): this {
     const oldValue = this.#get(path, {});
     const source = oldValue && typeof oldValue === 'object' ? oldValue : {};

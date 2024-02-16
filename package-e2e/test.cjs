@@ -1,12 +1,13 @@
 const assert = require('assert');
 
-const { metadata, state, $Set, $Push, $Merge, $Assign, $Unshift } = require('jest-metadata');
+const { metadata, state, $Set, $Push, $Merge, $Assign, $Defaults, $Unshift } = require('jest-metadata');
 assert(typeof metadata === 'object', 'jest-metadata should export `metadata` object');
 assert(typeof state === 'object', 'jest-metadata should export `state` object');
 assert(typeof $Set === 'function', 'jest-metadata should export $Set function as a named export');
 assert(typeof $Push === 'function', 'jest-metadata should export $Push function as a named export');
 assert(typeof $Merge === 'function', 'jest-metadata should export $Merge function as a named export');
 assert(typeof $Assign === 'function', 'jest-metadata should export $Assign function as a named export');
+assert(typeof $Defaults === 'function', 'jest-metadata should export $Defaults function as a named export');
 assert(typeof $Unshift === 'function', 'jest-metadata should export $Unshift function as a named export');
 
 const { events } = require('jest-metadata/debug');

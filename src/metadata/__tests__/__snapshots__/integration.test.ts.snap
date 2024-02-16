@@ -568,7 +568,7 @@ tests_default_hook_nesting_js_hook_0 : id = "hook_0"
 tests_default_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_default_hook_nesting_js_describe_1 #ded
 tests_default_hook_nesting_js_describe_1 : id = "describe_1"
-tests_default_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
+tests_default_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "author": {\\n      "name": "John Doe",\\n      "email": "john.doe@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
 object "HookDefinitionMetadata" as tests_default_hook_nesting_js_hook_1 #fdd
 tests_default_hook_nesting_js_hook_1 : id = "hook_1"
 tests_default_hook_nesting_js_hook_1 : data = {\\n  "vendor": {\\n    "description": "Prepare the environment"\\n  }\\n}
@@ -1562,7 +1562,7 @@ tests_default_hook_nesting_js_hook_0 : id = "hook_0"
 tests_default_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_default_hook_nesting_js_describe_1 #ded
 tests_default_hook_nesting_js_describe_1 : id = "describe_1"
-tests_default_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
+tests_default_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "author": {\\n      "name": "John Doe",\\n      "email": "john.doe@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
 object "HookDefinitionMetadata" as tests_default_hook_nesting_js_hook_1 #fdd
 tests_default_hook_nesting_js_hook_1 : id = "hook_1"
 tests_default_hook_nesting_js_hook_1 : data = {\\n  "vendor": {\\n    "description": "Prepare the environment"\\n  }\\n}
@@ -2536,7 +2536,7 @@ tests_default_hook_nesting_js_hook_0 : id = "hook_0"
 tests_default_hook_nesting_js_hook_0 : hookType = "beforeEach"
 object "DescribeBlockMetadata" as tests_default_hook_nesting_js_describe_1 #ded
 tests_default_hook_nesting_js_describe_1 : id = "describe_1"
-tests_default_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
+tests_default_hook_nesting_js_describe_1 : data = {\\n  "vendor": {\\n    "maintainer": {\\n      "name": "Jane Smith",\\n      "email": "jane.smith@example.com"\\n    },\\n    "lead": {\\n      "name": "Samantha Jones",\\n      "email": "samantha.jones@example.com"\\n    },\\n    "author": {\\n      "name": "John Doe",\\n      "email": "john.doe@example.com"\\n    },\\n    "description": "This is a sample test suite."\\n  }\\n}
 object "HookDefinitionMetadata" as tests_default_hook_nesting_js_hook_1 #fdd
 tests_default_hook_nesting_js_hook_1 : id = "hook_1"
 tests_default_hook_nesting_js_hook_1 : data = {\\n  "vendor": {\\n    "description": "Prepare the environment"\\n  }\\n}

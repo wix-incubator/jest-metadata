@@ -75,6 +75,15 @@ export class MetadataDSL {
     });
   };
 
+  $Defaults = (path: string | readonly string[] | undefined, value: Data): void => {
+    this.#assertPath(path);
+    this.#assertValue(value);
+
+    this.schedule(() => {
+      this.#metadata().defaults(path, value);
+    });
+  };
+
   $Merge = (path: string | readonly string[] | undefined, value: Data): void => {
     this.#assertPath(path);
     this.#assertValue(value);
