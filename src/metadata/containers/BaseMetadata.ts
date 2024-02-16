@@ -34,7 +34,8 @@ export abstract class BaseMetadata implements Metadata {
     return this.#get(path, fallbackValue);
   }
 
-  set(path: string | readonly string[], value: unknown): this {
+  set(path: string | readonly string[], $value: unknown): this {
+    const value = this.#sanitize($value);
     this.#assertPath(path, 'set');
     this.#set(path, value);
 
@@ -50,17 +51,18 @@ export abstract class BaseMetadata implements Metadata {
     return this;
   }
 
-  push(path: string | readonly string[], values: unknown[]): this {
-    return this.#concat('push', path, values);
+  push(path: string | readonly string[], $values: unknown[]): this {
+    return this.#concat('push', path, this.#sanitize($values));
   }
 
-  unshift(path: string | readonly string[], values: unknown[]): this {
-    return this.#concat('unshift', path, values);
+  unshift(path: string | readonly string[], $values: unknown[]): this {
+    return this.#concat('unshift', path, this.#sanitize($values));
   }
 
-  assign(path: undefined | string | readonly string[], value: object): this {
+  assign(path: undefined | string | readonly string[], $value: object): this {
     const oldValue = this.#get(path, {});
     const source = oldValue && typeof oldValue === 'object' ? oldValue : {};
+    const value = this.#sanitize($value);
     Object.assign(source, value);
     if (path != null) {
       this.#set(path, source);
@@ -78,12 +80,13 @@ export abstract class BaseMetadata implements Metadata {
     return this;
   }
 
-  defaults(path: undefined | string | readonly string[], value: object): this {
+  defaults(path: undefined | string | readonly string[], $value: object): this {
     const oldValue = this.#get(path, {});
+    const value = this.#sanitize($value);
     const source = (oldValue && typeof oldValue === 'object' ? oldValue : {}) as Data;
     for (const key of Object.keys(value)) {
       if (source[key] === undefined) {
-        source[key] = (value as Data)[key];
+        source[key] = ($value as Data)[key];
       }
     }
     if (path != null) {
@@ -102,8 +105,9 @@ export abstract class BaseMetadata implements Metadata {
     return this;
   }
 
-  merge(path: undefined | string | readonly string[], value: object): this {
+  merge(path: undefined | string | readonly string[], $value: object): this {
     const oldValue = this.#get(path, {});
+    const value = this.#sanitize($value);
     const source = oldValue && typeof oldValue === 'object' ? oldValue : {};
     lodashMerge(source, value);
     if (path != null) {
@@ -164,5 +168,13 @@ export abstract class BaseMetadata implements Metadata {
     });
 
     return this;
+  }
+
+  #sanitize<T>(value: T): T {
+    try {
+      return JSON.parse(JSON.stringify(value)) as T;
+    } catch {
+      throw new TypeError(`Given value cannot be serialized to JSON: ${value}`);
+    }
   }
 }
