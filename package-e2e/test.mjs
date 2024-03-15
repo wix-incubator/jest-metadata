@@ -1,6 +1,6 @@
 import assert from 'assert';
 import { $Set, $Push, $Merge, $Assign, $Defaults, $Unshift, state, metadata } from 'jest-metadata';
-import { events } from 'jest-metadata/debug';
+import { events, metadataRegistryEvents } from 'jest-metadata/debug';
 import JsdomTestEnvironment from 'jest-metadata/environment-jsdom';
 import NodeTestEnvironment from 'jest-metadata/environment-node';
 import environmentListener from 'jest-metadata/environment-listener';
@@ -16,6 +16,7 @@ assert(typeof $Defaults === 'function', 'jest-metadata should export `$Defaults`
 assert(typeof $Unshift === 'function', 'jest-metadata should export `$Unshift` function as a named export');
 
 assert(typeof events === 'object', 'jest-metadata/debug should export `events` object');
+assert(typeof metadataRegistryEvents === 'object', 'jest-metadata/debug should export `metadataRegistryEvents` object');
 
 assert(typeof environmentListener === 'function', 'jest-metadata/environment-listener should export a function as its default export');
 

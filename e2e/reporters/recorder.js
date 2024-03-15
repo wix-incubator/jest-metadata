@@ -16,6 +16,7 @@ class E2eRecorderReporter extends JestMetadataReporter {
   _events = {};
   _single = false;
   _bail = false;
+  _countOfMetadataObjects = 0;
 
   constructor(globalConfig) {
     super(globalConfig);
@@ -44,6 +45,7 @@ class E2eRecorderReporter extends JestMetadataReporter {
   };
 
   #subscribeToMetadataEvents = () => {
+    debugUtils.metadataRegistryEvents.on('register_metadata', () => this._countOfMetadataObjects++);
     if (PRESET.includes('no-env')) return;
     debugUtils.events.on('*', this.#pushEvent);
   };
@@ -83,11 +85,9 @@ class E2eRecorderReporter extends JestMetadataReporter {
       fs.mkdirSync(path.dirname(fixturePath), { recursive: true });
       fs.writeFileSync(fixturePath, contents + '\n');
     }
-  }
-}
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+    console.log('Total metadata objects:', this._countOfMetadataObjects);
+  }
 }
 
 module.exports = E2eRecorderReporter;
