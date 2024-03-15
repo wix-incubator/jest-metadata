@@ -9,3 +9,5 @@ export function isFallback() {
 }
 
 export const events = realm.events;
+
+export const metadataRegistryEvents = realm.metadataRegistry.events;

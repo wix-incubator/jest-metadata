@@ -1,5 +1,5 @@
 import { $Set, $Push, $Merge, $Assign, $Defaults, $Unshift, state, metadata } from 'jest-metadata';
-import { events } from 'jest-metadata/debug';
+import { events, metadataRegistryEvents } from 'jest-metadata/debug';
 import type { GlobalMetadata, Metadata } from 'jest-metadata';
 import JestMetadataReporter, { query, JestMetadataReporter as JestMetadataReporterNamed } from 'jest-metadata/reporter';
 import JsdomTestEnvironment from 'jest-metadata/environment-jsdom';
@@ -55,6 +55,11 @@ events.on('test_skip', (e) => assertType<string>(e.type));
 events.on('test_start', (e) => assertType<string>(e.type));
 events.on('test_started', (e) => assertType<string>(e.type));
 events.on('test_todo', (e) => assertType<string>(e.type));
+
+metadataRegistryEvents.on('register_metadata', (e) => {
+  assertType<'register_metadata'>(e.type);
+  assertType<unknown>(e.metadata.get());
+});
 
 assertType<Function>(JestMetadataReporter, JestMetadataReporterNamed);
 assertType<object>(JestMetadataReporter.query, query);
