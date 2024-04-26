@@ -563,6 +563,7 @@ global_metadata : id = "globalMetadata"
 object "TestFileMetadata" as tests_default_hook_nesting_js #def
 object "DescribeBlockMetadata" as tests_default_hook_nesting_js_describe_0 #ded
 tests_default_hook_nesting_js_describe_0 : id = "describe_0"
+tests_default_hook_nesting_js_describe_0 : data = {\\n  "vendor": {\\n    "filename": "hook-nesting.js"\\n  }\\n}
 object "HookDefinitionMetadata" as tests_default_hook_nesting_js_hook_0 #fdd
 tests_default_hook_nesting_js_hook_0 : id = "hook_0"
 tests_default_hook_nesting_js_hook_0 : hookType = "beforeEach"
@@ -1557,6 +1558,7 @@ global_metadata : id = "globalMetadata"
 object "TestFileMetadata" as tests_default_hook_nesting_js #def
 object "DescribeBlockMetadata" as tests_default_hook_nesting_js_describe_0 #ded
 tests_default_hook_nesting_js_describe_0 : id = "describe_0"
+tests_default_hook_nesting_js_describe_0 : data = {\\n  "vendor": {\\n    "filename": "hook-nesting.js"\\n  }\\n}
 object "HookDefinitionMetadata" as tests_default_hook_nesting_js_hook_0 #fdd
 tests_default_hook_nesting_js_hook_0 : id = "hook_0"
 tests_default_hook_nesting_js_hook_0 : hookType = "beforeEach"
@@ -2531,6 +2533,7 @@ global_metadata : id = "globalMetadata"
 object "TestFileMetadata" as tests_default_hook_nesting_js #def
 object "DescribeBlockMetadata" as tests_default_hook_nesting_js_describe_0 #ded
 tests_default_hook_nesting_js_describe_0 : id = "describe_0"
+tests_default_hook_nesting_js_describe_0 : data = {\\n  "vendor": {\\n    "filename": "hook-nesting.js"\\n  }\\n}
 object "HookDefinitionMetadata" as tests_default_hook_nesting_js_hook_0 #fdd
 tests_default_hook_nesting_js_hook_0 : id = "hook_0"
 tests_default_hook_nesting_js_hook_0 : hookType = "beforeEach"

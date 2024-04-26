@@ -243,4 +243,14 @@ export class MetadataEventHandler {
     const handler = this._handlers[event.type] as (event: MetadataEvent) => void;
     handler(event);
   };
+
+  backToDescribe = (testFilePath: string): void => {
+    const file = this._metadata.getTestFileMetadata(testFilePath);
+    const currentDescribeBlock = file.current.describeBlock;
+    if (!currentDescribeBlock) {
+      throw new JestMetadataError('No current describe block');
+    }
+
+    file[internal.currentMetadata] = currentDescribeBlock;
+  };
 }

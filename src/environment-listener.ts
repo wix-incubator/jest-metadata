@@ -50,6 +50,10 @@ const listener: EnvironmentListenerFn = (context) => {
     realm.environmentHandler.handleTestEvent(event, state);
   };
 
+  const backToDescribe = () => {
+    realm.metadataHandler.backToDescribe(testFilePath);
+  };
+
   const flushHandler = () => realm.ipc.flush();
 
   context.testEvents
@@ -79,6 +83,8 @@ const listener: EnvironmentListenerFn = (context) => {
     .on('finish_describe_definition', testEventHandler, Number.MAX_SAFE_INTEGER)
     .on('add_hook', testEventHandler, -1)
     .on('add_test', testEventHandler, -1)
+    .on('add_hook', backToDescribe, Number.MAX_SAFE_INTEGER)
+    .on('add_test', backToDescribe, Number.MAX_SAFE_INTEGER)
     .on('run_start', testEventHandler, -1)
     .on('run_start', flushHandler, Number.MAX_SAFE_INTEGER)
     .on('run_describe_start', testEventHandler, -1)

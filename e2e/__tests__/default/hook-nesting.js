@@ -21,12 +21,17 @@ const $Flaky = () => $Unshift(['vendor', 'labels'], 'flaky');
 
 const step = (text) => metadata.push('vendor.steps', [{ text, startedAt: now }]);
 
+// Should be attached to ROOT_DESCRIBE_BLOCK
+metadata.set('vendor.filename', 'hook-nesting.js');
+
 $Maintainer('Jane Smith', 'jane.smith@example.com');
 $Lead('Samantha Jones', 'samantha.jones@example.com');
 $Author('John Doe', 'john.doe@example.com');
 $Author('Impostor', 'impostor@example.fake');
-$Description('This is a sample test suite.');
 describe('Login flow', () => {
+  // ↑ Should be attached to `describe` block
+  metadata.set('vendor.description', 'This is a sample test suite.');
+
   $Description('Prepare the environment');
   beforeAll(() => {
     step('Open the browser');
