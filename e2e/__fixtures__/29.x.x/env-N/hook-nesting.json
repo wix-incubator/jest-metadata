@@ -19,6 +19,14 @@
     "hookType": "beforeEach"
   },
   {
+    "type": "write_metadata",
+    "testFilePath": "__tests__/default/hook-nesting.js",
+    "targetId": "describe_0",
+    "path": "vendor.filename",
+    "value": "hook-nesting.js",
+    "operation": "set"
+  },
+  {
     "type": "start_describe_definition",
     "testFilePath": "__tests__/default/hook-nesting.js",
     "describeId": "describe_1"
