@@ -1,9 +1,11 @@
+import path from 'node:path';
+
 /* eslint-disable @typescript-eslint/no-empty-function,unicorn/no-for-loop */
 import type { TestCaseResult, TestResult } from '@jest/reporters';
 // eslint-disable-next-line import/no-internal-modules
 import { aggregateLogs } from 'jest-environment-emit/debug';
 import type { IPCServer } from '../ipc';
-import { logger, memoizeArg1, memoizeLast, optimizeTracing } from '../utils';
+import { diagnostics, memoizeArg1, memoizeLast, optimizeTracing } from '../utils';
 import type { AssociateMetadata } from './AssociateMetadata';
 import type { FallbackAPI } from './FallbackAPI';
 
@@ -11,28 +13,35 @@ export type ReporterServerConfig = {
   ipc: IPCServer;
   fallbackAPI: FallbackAPI;
   associate: AssociateMetadata;
+  rootDir: string;
 };
 
 const __REPORTER = optimizeTracing((testFilePath: string, data?: unknown) => {
   return {
-    tid: ['reporter', testFilePath],
+    tid: ['jest-metadata-reporter', testFilePath],
     data,
   };
+});
+
+const __FILE = optimizeTracing((cwd: string, testFilePath: string) => {
+  return path.relative(cwd, testFilePath);
 });
 
 /**
  * @implements {import('@jest/reporters').Reporter}
  */
 export class ReporterServer {
-  #log = logger.child({ cat: 'reporter', tid: 'reporter' });
+  #log = diagnostics.child({ cat: 'reporter', tid: 'jest-metadata-reporter' });
   #associate: AssociateMetadata;
   #fallbackAPI: FallbackAPI;
   #ipc: IPCServer;
+  #rootDir: string;
 
   constructor(config: ReporterServerConfig) {
     this.#associate = config.associate;
     this.#fallbackAPI = config.fallbackAPI;
     this.#ipc = config.ipc;
+    this.#rootDir = config.rootDir;
 
     // We are memoizing all methods because there might be
     // multiple reporters based on jest-metadata, so we need to
@@ -67,7 +76,7 @@ export class ReporterServer {
   }
 
   onTestFileStart(testPath: string): void {
-    this.#log.debug.begin(__REPORTER(testPath), testPath);
+    this.#log.debug.begin(__REPORTER(testPath), __FILE(this.#rootDir, testPath));
     const testFileMetadata = this.#fallbackAPI.reportTestFile(testPath);
     this.#associate.filePath(testPath, testFileMetadata);
   }

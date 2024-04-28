@@ -21,6 +21,7 @@ export class ParentProcessRealm extends BaseRealm {
     associate: this.associate,
     fallbackAPI: this.fallbackAPI,
     ipc: this.ipc,
+    rootDir: process.cwd(),
   });
 
   constructor() {

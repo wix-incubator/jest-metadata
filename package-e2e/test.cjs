@@ -10,9 +10,10 @@ assert(typeof $Assign === 'function', 'jest-metadata should export $Assign funct
 assert(typeof $Defaults === 'function', 'jest-metadata should export $Defaults function as a named export');
 assert(typeof $Unshift === 'function', 'jest-metadata should export $Unshift function as a named export');
 
-const { events, metadataRegistryEvents } = require('jest-metadata/debug');
+const { events, metadataRegistryEvents, visualize } = require('jest-metadata/debug');
 assert(typeof events === 'object', 'jest-metadata/debug should export `events` object');
 assert(typeof metadataRegistryEvents === 'object', 'jest-metadata/debug should export `metadataRegistryEvents` object');
+assert(typeof visualize === 'function', 'jest-metadata/debug should export `visualize` function as a named export');
 
 const environmentListener = require('jest-metadata/environment-listener');
 assert(typeof environmentListener === 'function', 'jest-metadata/environment-listener should export a class as its default export');

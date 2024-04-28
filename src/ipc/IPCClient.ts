@@ -4,11 +4,11 @@ import stripAnsi from 'strip-ansi';
 import { JestMetadataError } from '../errors';
 import type { GlobalMetadata, MetadataEvent } from '../metadata';
 import { internal } from '../metadata';
-import { logger, optimizeTracing } from '../utils';
+import { diagnostics, optimizeTracing } from '../utils';
 import type { BatchMessage } from './BatchMessage';
 import { sendAsyncMessage } from './sendAsyncMessage';
 
-const log = logger.child({ cat: 'ipc', tid: 'ipc-client' });
+const log = diagnostics.child({ cat: ['ipc', 'ipc-client'], tid: 'jest-metadata-ipc' });
 
 type IPC = Omit<typeof node_ipc, 'IPC'>;
 type IPCConnection = (typeof node_ipc)['of'][string];

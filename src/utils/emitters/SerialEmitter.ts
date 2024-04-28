@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import type { Emitter } from '../../types';
 
-import { logger, nologger, optimizeTracing } from '../logger';
+import { diagnostics, nologger, optimizeTracing } from '../logger';
 
 //#region Optimized event helpers
 
@@ -37,13 +37,16 @@ const ONCE: unique symbol = Symbol('ONCE');
  * will be queued and emitted after the current event is finished.
  */
 export class SerialEmitter<Event extends { type: string }> implements Emitter<Event> {
-  protected readonly _log: typeof logger;
+  protected readonly _log: typeof diagnostics;
   protected readonly _listeners: Map<Event['type'] | '*', Function[]> = new Map();
 
   #queue: Event[] = [];
 
   constructor(name?: string, shouldLog = true) {
-    this._log = (shouldLog ? logger : nologger).child({ cat: `emitter`, tid: `emitter-${name}` });
+    this._log = (shouldLog ? diagnostics : nologger).child({
+      cat: [`emitter`, `emitter-${name}`],
+      tid: `jest-metadata-emitter-${name}`,
+    });
     this._listeners.set('*', []);
   }
 

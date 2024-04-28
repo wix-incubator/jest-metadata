@@ -2,7 +2,7 @@ import { JestMetadataError } from '../../errors';
 import { logger } from '../../utils';
 import type { Data, Metadata, ReadonlyMetadataEventEmitter } from '../types';
 
-const log = logger.child({ cat: 'metadata', tid: 'metadata' });
+const log = logger.child({ cat: 'dsl', tid: 'jest-metadata' });
 
 export class MetadataDSL {
   readonly #metadata: () => Metadata;

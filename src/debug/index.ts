@@ -1,6 +1,6 @@
-import { ParentProcessRealm, realm } from './realms';
+import { ParentProcessRealm, realm } from '../realms';
 
-export { Shallow } from './jest-reporter';
+export { Shallow } from '../jest-reporter';
 
 export function isFallback() {
   return realm.type === 'parent_process'
@@ -11,3 +11,5 @@ export function isFallback() {
 export const events = realm.events;
 
 export const metadataRegistryEvents = realm.metadataRegistry.events;
+
+export * from './visualize';
