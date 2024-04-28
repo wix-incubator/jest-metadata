@@ -1,6 +1,4 @@
-import { isEmpty, omitBy } from 'lodash';
-
-import type { Metadata } from '../../index';
+import type { Metadata } from '../../metadata';
 import { PlantObject } from './PlantObject';
 
 const COLORS: Record<string, string> = {
@@ -21,13 +19,25 @@ export class MetadataPlantObject extends PlantObject {
       id: metadata.id,
       name,
       color: COLORS[name],
-      properties: omitBy(
-        {
-          id: metadata.id.split(':').pop(),
-          data: metadata.get(),
-        },
-        isEmpty,
-      ),
+      properties: getProperties(metadata),
     });
   }
+}
+
+function getProperties(metadata: Metadata): Record<string, unknown> {
+  const [fileId, childId] = metadata.id.split(':');
+  const result: Record<string, unknown> = {
+    id: childId || fileId,
+    data: metadata.get(),
+  };
+
+  if (!result.id) {
+    delete result.id;
+  }
+
+  if (!result.data || Object.keys(result.data).length === 0) {
+    delete result.data;
+  }
+
+  return result;
 }

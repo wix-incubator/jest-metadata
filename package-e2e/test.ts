@@ -1,5 +1,5 @@
 import { $Set, $Push, $Merge, $Assign, $Defaults, $Unshift, state, metadata } from 'jest-metadata';
-import { events, metadataRegistryEvents } from 'jest-metadata/debug';
+import { events, metadataRegistryEvents, visualize } from 'jest-metadata/debug';
 import type { GlobalMetadata, Metadata } from 'jest-metadata';
 import JestMetadataReporter, { query, JestMetadataReporter as JestMetadataReporterNamed } from 'jest-metadata/reporter';
 import JsdomTestEnvironment from 'jest-metadata/environment-jsdom';
@@ -74,3 +74,8 @@ assertType<Function>(JsdomTestEnvironment);
 assertType<Function>(NodeTestEnvironment);
 
 assertType<Function>(environmentListener);
+
+assertType<Function>(() => {
+  assertType<Promise<string>>(visualize('/path/to/bunyamin.log'));
+  assertType<Promise<string>>(visualize([{ type: 'setup', testFilePath: 'test.ts' }]));
+});

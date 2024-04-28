@@ -1,13 +1,13 @@
 /* eslint-disable unicorn/no-null */
 import lodashMerge from 'lodash.merge';
 
-import { get as lodashGet, set as lodashSet, logger, optimizeTracing } from '../../utils';
+import { get as lodashGet, set as lodashSet, diagnostics, optimizeTracing } from '../../utils';
 import type { AggregatedIdentifier } from '../ids';
 import * as symbols from '../symbols';
 import type { Data, Metadata } from '../types';
 import type { MetadataContext } from './MetadataContext';
 
-const log = logger.child({ cat: 'metadata', tid: 'metadata' });
+const log = diagnostics.child({ cat: 'metadata', tid: 'jest-metadata' });
 
 const __LOG_METADATA = optimizeTracing((metadata: BaseMetadata, id: AggregatedIdentifier) => {
   log.trace({ id }, metadata.constructor.name);
@@ -124,6 +124,14 @@ export abstract class BaseMetadata implements Metadata {
     });
 
     return this;
+  }
+
+  toJSON() {
+    return {
+      id: this.id,
+      type: this.constructor.name,
+      data: this[symbols.data],
+    };
   }
 
   #get(path?: string | readonly string[], fallbackValue?: unknown): Data | unknown {

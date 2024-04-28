@@ -5,7 +5,7 @@ import { detectDuplicateRealms, injectRealmIntoSandbox, realm } from './realms';
 import { jestUtils, logger } from './utils';
 
 const listener: EnvironmentListenerFn = (context) => {
-  const log = logger.child({ cat: 'environment', tid: 'environment' });
+  const log = logger.child({ cat: 'jest-metadata-environment', tid: 'jest-metadata' });
   const jestEnvironment = context.env;
   const jestEnvironmentConfig = context.config;
   const environmentContext = context.context;

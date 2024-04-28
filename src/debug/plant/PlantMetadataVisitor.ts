@@ -8,7 +8,7 @@ import type {
   TestEntryMetadata,
   TestFnInvocationMetadata,
   TestInvocationMetadata,
-} from '../../index';
+} from '../../metadata';
 import { MetadataVisitor } from '../MetadataVisitor';
 import { MetadataPlantObject } from './MetadataPlantObject';
 import { PlantLink } from './PlantLink';

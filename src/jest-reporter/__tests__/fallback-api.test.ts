@@ -40,6 +40,7 @@ describe('Fallback API', () => {
     const fallbackAPI = new FallbackAPI(globalMetadata, emitter);
     server = new ReporterServer({
       associate,
+      rootDir: process.cwd(),
       fallbackAPI,
       ipc,
     });

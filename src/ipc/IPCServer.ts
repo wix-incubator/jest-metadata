@@ -4,10 +4,13 @@ import node_ipc from 'node-ipc';
 import stripAnsi from 'strip-ansi';
 
 import type { Metadata, MetadataEventEmitter } from '../metadata';
-import { Deferred, logger, makeDeferred, optimizeTracing } from '../utils';
+import { Deferred, diagnostics, makeDeferred, optimizeTracing } from '../utils';
 import type { BatchMessage } from './BatchMessage';
 
-const log = logger.child({ cat: 'ipc', tid: 'ipc-server' });
+const log = diagnostics.child({
+  cat: ['ipc', 'ipc-server'],
+  tid: 'jest-metadata-ipc',
+});
 
 type IPC = Omit<typeof node_ipc, 'IPC'>;
 
