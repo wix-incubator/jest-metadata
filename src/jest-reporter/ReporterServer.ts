@@ -72,13 +72,24 @@ export class ReporterServer {
   }
 
   async onRunStart(): Promise<void> {
-    await this.#ipc.start();
+    this.#log.debug.begin(__REPORTER(''), 'test run');
+
+    try {
+      await this.#ipc.start();
+    } catch (error) {
+      this.#log.error(error, 'Caught unhandled error in onRunStart');
+    }
   }
 
   onTestFileStart(testPath: string): void {
     this.#log.debug.begin(__REPORTER(testPath), __FILE(this.#rootDir, testPath));
-    const testFileMetadata = this.#fallbackAPI.reportTestFile(testPath);
-    this.#associate.filePath(testPath, testFileMetadata);
+
+    try {
+      const testFileMetadata = this.#fallbackAPI.reportTestFile(testPath);
+      this.#associate.filePath(testPath, testFileMetadata);
+    } catch (error) {
+      this.#log.error(error, 'Caught unhandled error in onTestFileStart');
+    }
   }
 
   onTestCaseStart(testPath: string, testCaseStartInfo: unknown): void {
@@ -92,26 +103,40 @@ export class ReporterServer {
   onTestCaseResult(testPath: string, testCaseResult: TestCaseResult): void {
     this.#log.debug(__REPORTER(testPath), 'onTestCaseResult');
 
-    const lastTestEntry = this.#fallbackAPI.reportTestCase(testPath, testCaseResult);
-    this.#associate.testCaseResult(testCaseResult, lastTestEntry);
+    try {
+      const lastTestEntry = this.#fallbackAPI.reportTestCase(testPath, testCaseResult);
+      this.#associate.testCaseResult(testCaseResult, lastTestEntry);
+    } catch (error: unknown) {
+      this.#log.error(error, 'Caught unhandled error in onTestCaseResult');
+    }
   }
 
   onTestFileResult(testPath: string, testResult: TestResult): void {
-    const allTestEntries = this.#fallbackAPI.reportTestFileResult(testResult);
-    const testResults = testResult.testResults;
-    for (let i = 0; i < testResults.length; i++) {
-      this.#associate.testCaseResult(testResults[i], allTestEntries[i]);
+    try {
+      const allTestEntries = this.#fallbackAPI.reportTestFileResult(testResult);
+      const testResults = testResult.testResults;
+      for (let i = 0; i < testResults.length; i++) {
+        this.#associate.testCaseResult(testResults[i], allTestEntries[i]);
+      }
+    } catch (error: unknown) {
+      this.#log.error(error, 'Caught unhandled error in onTestFileResult');
+    } finally {
+      this.#log.debug.end(__REPORTER(testPath));
     }
-
-    this.#log.debug.end(__REPORTER(testPath));
   }
 
   async onRunComplete(): Promise<void> {
-    await this.#ipc.stop();
+    try {
+      await this.#ipc.stop();
+    } catch (error: unknown) {
+      this.#log.error(error, 'Caught unhandled error in onRunComplete');
+    } finally {
+      this.#log.debug.end(__REPORTER(''));
 
-    if (process.env.JEST_BUNYAMIN_DIR) {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      await aggregateLogs();
+      if (process.env.JEST_BUNYAMIN_DIR) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await aggregateLogs();
+      }
     }
   }
 }
