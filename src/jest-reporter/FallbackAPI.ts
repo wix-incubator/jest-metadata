@@ -3,6 +3,7 @@ import { JestMetadataError } from '../errors';
 import type {
   GlobalMetadata,
   MetadataEventEmitter,
+  TestFileMetadata,
   TestDoneEvent,
   TestEntryMetadata,
   TestSkipEvent,
@@ -24,7 +25,7 @@ export type AggregatedResultArg = {
 };
 
 export class FallbackAPI {
-  private _fallbackMode: boolean | undefined = undefined;
+  private _fallbackModes = new Map<string, boolean>();
   private _cache = new Map<string, Rotator<TestEntryInfo>>();
 
   constructor(
@@ -33,7 +34,7 @@ export class FallbackAPI {
   ) {}
 
   public get enabled() {
-    return this._fallbackMode ?? true;
+    return this._fallbackModes.size > 0 ? this._fallbackModes.values().next().value : true;
   }
 
   reportTestFile(testFilePath: string) {
@@ -47,11 +48,8 @@ export class FallbackAPI {
 
   reportTestCase(testFilePath: string, testCaseResult: TestCaseResultArg): TestEntryMetadata {
     const file = this.globalMetadata.getTestFileMetadata(testFilePath);
-    if (this._fallbackMode === undefined) {
-      this._fallbackMode = !file.rootDescribeBlock;
-    }
-
-    if (!this._fallbackMode) {
+    const fallbackMode = this._determineFallbackModeStatus(testFilePath, file);
+    if (!fallbackMode) {
       return file.lastTestEntry!;
     }
 
@@ -140,10 +138,7 @@ export class FallbackAPI {
   reportTestFileResult(testFileResult: TestFileResultArg): TestEntryMetadata[] {
     const { testFilePath, testResults } = testFileResult;
     const file = this.globalMetadata.getTestFileMetadata(testFilePath);
-
-    if (this._fallbackMode === undefined) {
-      this._fallbackMode = !file.rootDescribeBlock;
-    }
+    const fallbackMode = this._determineFallbackModeStatus(testFilePath, file);
 
     if (!file.rootDescribeBlock) {
       this.eventEmitter.emit({
@@ -154,7 +149,7 @@ export class FallbackAPI {
     }
 
     const rootDescribeBlock = file.rootDescribeBlock!;
-    if (!this._fallbackMode) {
+    if (!fallbackMode) {
       return [...rootDescribeBlock.allTestEntries()];
     }
 
@@ -222,6 +217,14 @@ export class FallbackAPI {
         throw new JestMetadataError(`Unexpected test case result status: ${testCaseResult.status}`);
       }
     }
+  }
+
+  private _determineFallbackModeStatus(testFilePath: string, file: TestFileMetadata): boolean {
+    if (!this._fallbackModes.has(testFilePath)) {
+      this._fallbackModes.set(testFilePath, !file.rootDescribeBlock);
+    }
+
+    return this._fallbackModes.get(testFilePath)!;
   }
 }
 
