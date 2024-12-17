@@ -6,6 +6,6 @@ export function isSingleWorker(config: Config.GlobalConfig) {
 
 export function isInsideIDE(config: Config.GlobalConfig) {
   const isSingleReporter = config.reporters && config.reporters.length === 1;
-  const singleReporter = isSingleReporter ? config.reporters?.[0]?.[0] ?? '' : '';
+  const singleReporter = isSingleReporter ? (config.reporters?.[0]?.[0] ?? '') : '';
   return /jest-intellij/i.test(singleReporter);
 }
