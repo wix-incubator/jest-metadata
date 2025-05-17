@@ -13,6 +13,7 @@ import type { TestInvocationMetadata } from './TestInvocationMetadata';
 export class TestFileMetadata extends BaseMetadata {
   [symbols.rootDescribeBlock]: DescribeBlockMetadata | undefined;
   [symbols.lastTestEntry]: TestEntryMetadata | undefined;
+  [symbols.reportedTestEntries]: TestEntryMetadata[] = [];
   [symbols.currentMetadata]: BaseMetadata = this;
 
   readonly current = this[symbols.context].createMetadataSelector(
@@ -79,5 +80,16 @@ export class TestFileMetadata extends BaseMetadata {
     if (this[symbols.rootDescribeBlock]) {
       yield* this[symbols.rootDescribeBlock].allTestInvocations();
     }
+  }
+
+  /**
+   * A specialized method to access test entries based on Jest's reporting sequence.
+   * For internal use only - handles race conditions and inconsistencies in Jest's
+   * reporting behavior (particularly with skipped vs. todo tests).
+   *
+   * @internal
+   */
+  _getReportedEntryByIndex(index: number): TestEntryMetadata | undefined {
+    return this[symbols.reportedTestEntries][index];
   }
 }

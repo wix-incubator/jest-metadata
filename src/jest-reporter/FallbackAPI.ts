@@ -8,7 +8,7 @@ import type {
   TestEntryMetadata,
   TestSkipEvent,
 } from '../metadata';
-import { Rotator } from '../utils';
+import { diagnostics, Rotator } from '../utils';
 
 export type TestCaseResultArg = Pick<
   TestCaseResult,
@@ -27,6 +27,8 @@ export type AggregatedResultArg = {
 export class FallbackAPI {
   private _fallbackModes = new Map<string, boolean>();
   private _cache = new Map<string, Rotator<TestEntryInfo>>();
+  private _testEntryCounter = new Map<string, number>();
+  private _log = diagnostics.child({ cat: 'fallback-api', tid: 'jest-metadata-reporter' });
 
   constructor(
     private readonly globalMetadata: GlobalMetadata,
@@ -50,7 +52,17 @@ export class FallbackAPI {
     const file = this.globalMetadata.getTestFileMetadata(testFilePath);
     const fallbackMode = this._determineFallbackModeStatus(testFilePath, file);
     if (!fallbackMode) {
-      return file.lastTestEntry!;
+      const testEntryIndex = this._incrementTestEntryIndex(testFilePath);
+      const testEntryMetadata = file._getReportedEntryByIndex(testEntryIndex);
+      if (!testEntryMetadata) {
+        this._log.error(
+          'Failed to get test entry metadata for %j in file: %j',
+          testCaseResult.title,
+          testFilePath,
+        );
+      }
+
+      return file._getReportedEntryByIndex(testEntryIndex)!;
     }
 
     if (!file.rootDescribeBlock) {
@@ -217,6 +229,12 @@ export class FallbackAPI {
         throw new JestMetadataError(`Unexpected test case result status: ${testCaseResult.status}`);
       }
     }
+  }
+
+  private _incrementTestEntryIndex(testFilePath: string) {
+    const count = this._testEntryCounter.get(testFilePath) ?? 0;
+    this._testEntryCounter.set(testFilePath, count + 1);
+    return count;
   }
 
   private _determineFallbackModeStatus(testFilePath: string, file: TestFileMetadata): boolean {
