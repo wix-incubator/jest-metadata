@@ -61,6 +61,23 @@ class E2eRecorderReporter extends JestMetadataReporter {
   }
 
   onTestCaseResult(test, fullTestCaseResult) {
+    if (fullTestCaseResult.title === 'should skip') {
+      console.warn(`
+      ╔═══════════════════════════════════════════════════════════════╗
+      ║                                                               ║
+      ║   WARNING! IMPORTANT CHANGE IN JEST DETECTED!                 ║
+      ║                                                               ║
+      ║   Jest reporters implementation has changed:                  ║
+      ║   Now skipped tests are being reported too!                   ║
+      ║                                                               ║
+      ║   This may affect your test results and reporting logic!      ║
+      ║                                                               ║
+      ╚═══════════════════════════════════════════════════════════════╝
+      `);
+
+      process.exit(1);
+    }
+
     const testCaseResult = debugUtils.Shallow.testCaseResult(fullTestCaseResult);
     this.#pushReporterEvent('onTestCaseResult', { testFilePath: test.path, testCaseResult });
     super.onTestCaseResult(test, fullTestCaseResult);

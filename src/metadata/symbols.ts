@@ -4,6 +4,7 @@ export const addTestEntry = Symbol('ADD_TEST_ENTRY');
 export const context = Symbol('CONTEXT');
 export const currentMetadata = Symbol('CURRENT_METADATA');
 export const lastTestEntry = Symbol('LAST_TEST_ENTRY');
+export const reportedTestEntries = Symbol('REPORTED_TEST_ENTRIES');
 export const data = Symbol('DATA');
 export const finish = Symbol('FINISH');
 export const id = Symbol('ID');

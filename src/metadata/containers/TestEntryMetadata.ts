@@ -50,7 +50,7 @@ export class TestEntryMetadata extends BaseMetadata {
     return invocation;
   }
 
-  [symbols.finish](): void {
+  [symbols.finish](skipped = false): void {
     const file = this.describeBlock.file;
     const lastInvocation = this.invocations[this.invocations.length - 1];
     if (!lastInvocation) {
@@ -58,5 +58,8 @@ export class TestEntryMetadata extends BaseMetadata {
     }
 
     file[symbols.currentMetadata] = this.describeBlock;
+    if (!skipped) {
+      file[symbols.reportedTestEntries].push(this);
+    }
   }
 }

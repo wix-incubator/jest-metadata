@@ -207,7 +207,7 @@ export class MetadataEventHandler {
       const test = this._metadataRegistry.get(testId) as TestEntryMetadata;
       // TODO: [internal.as](TestEntryMetadata);
 
-      test[internal.finish]();
+      test[internal.finish](true);
     },
 
     test_todo: (event: TestTodoEvent) => {

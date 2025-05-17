@@ -1,4 +1,5 @@
 import { inspect } from 'util';
+import type { Circus } from '@jest/types';
 import type { EnvironmentListenerFn, TestEnvironmentCircusEvent } from 'jest-environment-emit';
 import { JestMetadataError } from './errors';
 import { detectDuplicateRealms, injectRealmIntoSandbox, realm } from './realms';
@@ -55,6 +56,13 @@ const listener: EnvironmentListenerFn = (context) => {
   };
 
   const flushHandler = () => realm.ipc.flush();
+  const afterAllFlushHandler = ({
+    event,
+  }: TestEnvironmentCircusEvent<Circus.Event & { name: 'hook_success' | 'hook_failure' }>) => {
+    if (event.hook.type === 'afterAll') {
+      realm.ipc.flush();
+    }
+  };
 
   context.testEvents
     .on(
@@ -88,15 +96,18 @@ const listener: EnvironmentListenerFn = (context) => {
     .on('run_start', testEventHandler, -1)
     .on('run_start', flushHandler, Number.MAX_SAFE_INTEGER)
     .on('run_describe_start', testEventHandler, -1)
-    .on('hook_failure', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('hook_failure', testEventHandler, Number.MAX_SAFE_INTEGER - 1)
+    .on('hook_failure', afterAllFlushHandler, Number.MAX_SAFE_INTEGER)
     .on('hook_start', testEventHandler, -1)
-    .on('hook_success', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('hook_success', testEventHandler, Number.MAX_SAFE_INTEGER - 1)
+    .on('hook_success', afterAllFlushHandler, Number.MAX_SAFE_INTEGER)
     .on('test_start', testEventHandler, -1)
-    .on('test_start', flushHandler, Number.MAX_SAFE_INTEGER)
     .on('test_started', testEventHandler, -1)
     .on('test_retry', testEventHandler, -1)
-    .on('test_skip', testEventHandler, Number.MAX_SAFE_INTEGER)
-    .on('test_todo', testEventHandler, Number.MAX_SAFE_INTEGER)
+    .on('test_skip', testEventHandler, Number.MAX_SAFE_INTEGER - 1)
+    .on('test_skip', flushHandler, Number.MAX_SAFE_INTEGER)
+    .on('test_todo', testEventHandler, Number.MAX_SAFE_INTEGER - 1)
+    .on('test_todo', flushHandler, Number.MAX_SAFE_INTEGER)
     .on('test_fn_start', testEventHandler, -1)
     .on('test_fn_failure', testEventHandler, Number.MAX_SAFE_INTEGER)
     .on('test_fn_success', testEventHandler, Number.MAX_SAFE_INTEGER)
