@@ -28,7 +28,7 @@ if [ -z "$JEST_VERSION" ]; then
   npm run build:e2e
 
   # Iterate over Jest versions
-  for version in 27.x.x 28.x.x 29.x.x; do
+  for version in 29.x.x 30.x.x; do
     export JEST_VERSION="$version"
     build_fixtures
   done

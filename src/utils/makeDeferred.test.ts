@@ -1,3 +1,4 @@
+import { describe, jest, it, expect, beforeEach, afterEach } from '@jest/globals';
 import { makeDeferred } from './makeDeferred';
 
 describe('makeDeferred', () => {

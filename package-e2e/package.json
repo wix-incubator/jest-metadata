@@ -10,8 +10,8 @@
     "test:ts": "tsc"
   },
   "dependencies": {
-    "jest": "^29.0.0",
-    "jest-environment-jsdom": "^29.0.0",
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.0",
     "jest-metadata": "file:../package.tar.gz"
   }
 }

@@ -67,8 +67,7 @@ jobs:
     strategy:
       matrix:
         jest:
-          - '27.x.x'
-          - '28.x.x'
+          - '29.x.x'
     runs-on: ${{ github.event.inputs.os || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@v3

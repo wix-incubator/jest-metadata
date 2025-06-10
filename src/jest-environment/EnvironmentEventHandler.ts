@@ -221,6 +221,10 @@ export class EnvironmentEventHandler {
     error: () => {
       /* no-op */
     },
+
+    error_handled: () => {
+      /* no-op - this is a new Jest 30 event, keeping as no-op for now */
+    },
   };
 
   constructor(config: CircusTestEventHandlerConfig) {

@@ -1,3 +1,4 @@
+import { describe, it, expect } from '@jest/globals';
 import { memoizeArg1 } from './memoizeArg1';
 
 describe('memoizeArg1', () => {

@@ -1,3 +1,4 @@
+import { describe, test, expect } from '@jest/globals';
 import fixtures from '../../../e2e';
 
 import { visualize } from '../../debug';

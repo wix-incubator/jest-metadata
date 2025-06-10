@@ -1,3 +1,4 @@
+import { describe, it, expect } from '@jest/globals';
 import { isPrimitive } from './isPrimitive';
 
 describe('isPrimitive function', () => {

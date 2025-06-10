@@ -1,3 +1,4 @@
+import { describe, jest, test, expect, beforeEach } from '@jest/globals';
 import { AggregatedEmitter } from './AggregatedEmitter';
 import { SerialEmitter } from './SerialEmitter';
 

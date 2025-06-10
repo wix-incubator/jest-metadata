@@ -1,3 +1,4 @@
+import { describe, jest, it, expect } from '@jest/globals';
 import { SerialEmitter } from './SerialEmitter';
 
 describe('SerialEmitter', () => {
