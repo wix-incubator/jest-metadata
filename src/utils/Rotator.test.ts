@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach } from '@jest/globals';
 import { Rotator } from './Rotator';
 
 describe('Rotator', () => {

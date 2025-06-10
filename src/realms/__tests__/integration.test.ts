@@ -1,3 +1,4 @@
+import { describe, test, expect } from '@jest/globals';
 import { realm } from '../index';
 
 describe('realms: integration test', () => {

@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     "target": "es2022",
+    "lib": ["ES2022", "ESNext.Disposable"],
     "module": "node16",
     "declaration": true,
     "sourceMap": true,
     "outDir": "./dist",
     "rootDir": "./src",
     "importHelpers": true,
-    "importsNotUsedAsValues": "error",
-    "ignoreDeprecations": "5.0",
+    "verbatimModuleSyntax": false,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,

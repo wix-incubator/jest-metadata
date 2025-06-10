@@ -1,3 +1,4 @@
+import { describe, jest, test, expect, beforeEach } from '@jest/globals';
 import fixtures from '../../../e2e';
 import type { IPCServer } from '../../ipc';
 import {
@@ -20,7 +21,7 @@ describe('Fallback API', () => {
   let metadataHandler: MetadataEventHandler;
 
   beforeEach(() => {
-    const IPCServer = jest.requireMock('../../ipc').IPCServer;
+    const IPCServer = jest.requireMock<any>('../../ipc').IPCServer;
     const ipc: jest.Mocked<IPCServer> = new IPCServer();
 
     const emitter = new SerialEmitter<MetadataEvent>('core').on('*', (event: MetadataEvent) => {
