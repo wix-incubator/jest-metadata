@@ -7,11 +7,12 @@
   "files": [
     ".idea/icon.svg",
     "README.md",
+    "scripts/postinstall.js",
     "src",
     "dist",
-    "*.js",
-    "*.d.ts",
-    "*.mjs",
+    "./*.js",
+    "./*.d.ts",
+    "./*.mjs",
     "!**/__utils__",
     "!**/__tests__",
     "!**/*.test.*"
@@ -60,6 +61,7 @@
   "scripts": {
     "prepare": "husky install || true",
     "prepack": "tsc",
+    "postinstall": "node scripts/postinstall.js",
     "build": "tsc",
     "build:e2e": "tsc && nyc instrument --in-place dist && npm pack && mv jest-metadata-*.tgz package.tar.gz",
     "docs": "typedoc",
